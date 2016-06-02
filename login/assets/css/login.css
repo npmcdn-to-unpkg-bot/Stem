@@ -1,0 +1,36 @@
+.error {
+	color: #e55;
+}
+.login-btn .icon {
+    height: 48px;
+    padding: 14px 17px;
+    color: #3C5A98;
+    font-size: 24px;
+    line-height: 24px;
+}
+.abcRioButtonIcon {
+    border-right: 1px solid #ddd;
+    background: #f9f9f9;
+}
+.abcRioButtonLightBlue {
+    width: 65% !important;
+	min-width: 250px;
+	height: 50px;
+    margin: 10px auto;
+	cursor: pointer;
+	border: 1px solid #ddd;
+}
+.abcRioButtonContents {
+    font-size: 16px !important;
+    line-height: 48px;
+}	
+.input-group .form-control {
+	margin-bottom: 10px;
+}
+.input-group {
+    margin: 0px 15px 10px 0;
+}
+.input-group-addon {
+    background-color: transparent;
+    border: none;	
+}
