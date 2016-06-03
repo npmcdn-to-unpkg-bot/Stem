@@ -20,17 +20,22 @@
 	cursor: pointer;
 	border: 1px solid #ddd;
 }
-.abcRioButtonContents {
-    font-size: 16px !important;
-    line-height: 48px;
-}	
 .input-group .form-control {
 	margin-bottom: 10px;
-}
-.input-group {
-    margin: 0px 15px 10px 0;
 }
 .input-group-addon {
     background-color: transparent;
     border: none;	
+	font-size: 25px;
+    padding-top: 0;
+    padding-right: 10px;
+	padding-bottom: 0;
+	padding-left: 0;
 }
+.input-group-addon .fa {
+	width: 22px;
+}
+.input-group-addon .fa-envelope {
+	font-size: 20px;
+}
+

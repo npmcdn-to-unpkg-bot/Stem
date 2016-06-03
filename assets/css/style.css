@@ -1,0 +1,107 @@
+@font-face {
+    font-family: angelface;
+    src: url(../fonts/angelface.otf);
+}
+
+body {
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+	color: #fff;
+	background: #ffffff;
+	text-align: center;
+	background: url("http://st.depositphotos.com/1000251/3507/i/950/depositphotos_35078527-Electric-guitar-and-amplifier.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+a {
+	color: #202020;
+}
+a:hover {
+	text-decoration: none;
+	cursor: pointer;
+	color: #50E3C2;
+}
+ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.spacer {
+	display: block;
+	padding: 10px;
+}
+.display-true {
+	display: block;
+}
+.display-false {
+    display: none;
+}
+
+/* BEGIN Header Styles */
+.navbar {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.navbar-header {
+	padding: 10px 15px 0;
+}
+a.brand {
+	font-size: 40px;
+	font-family: angelface;
+	color: #50E3C2;
+}
+.navbar-right {
+	background-color: rgba(255, 255, 255, 0.7);
+	margin: 10px 0 10px 10px;
+}
+.navbar a.login {
+	background-color: #50E3C2;
+	color: #fff;
+}
+.navbar a.login:hover {
+	color: #333;
+}
+/* END Header Styles */
+
+/* BEGIN Login Styles */
+#r-login {
+    width: 330px;
+    position: absolute;
+    right: 15px;
+	background-color: rgba(255, 255, 255, 0.7);
+    margin-top: -5px;
+    padding: 5px 20px 10px;
+    color: #333;
+}
+#r-login .login-btn, .abcRioButtonLightBlue {
+    font-size: 20px;
+    color: #fff !important;
+    background-color: #999 !important;
+    height: 40px !important;
+    width: 100% !important;
+    margin: 10px 0;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    border-color: #888;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: background-color .218s,border-color .218s,box-shadow .218s;
+    transition: background-color .218s,border-color .218s,box-shadow .218s;
+    -webkit-user-select: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+.abcRioButtonIcon {
+    display: none;
+}
+.abcRioButtonContents {
+    line-height: 38px !important;
+}
+/* END Login Styles */
+
+

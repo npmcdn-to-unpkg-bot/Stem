@@ -331,7 +331,7 @@ var Login = React.createClass({
 							{!this.state.currentUser ? 
 								<div className="input-group">
 									<span className="input-group-addon">
-										<i className="material-icons">face</i>
+										<span className="fa fa-user" aria-hidden="true"></span>
 									</span>
 									<input type="text" className="form-control" value={this.state.FirstName} onChange={this.handleFirstNameChange} placeholder="First Name..." />
 									<input type="text" className="form-control" value={this.state.LastName} onChange={this.handleLastNameChange} placeholder="Last Name..." />
@@ -339,14 +339,14 @@ var Login = React.createClass({
 							: null }
 							<div className="input-group">
 								<span className="input-group-addon">
-									<i className="material-icons">email</i>
+									<span className="fa fa-envelope" aria-hidden="true"></span>
 								</span>
 								<input type="email" className="form-control" value={this.state.Email} onChange={this.handleEmailChange} placeholder="Email..." />
 							</div>
 				
 							<div className="input-group">
 								<span className="input-group-addon">
-									<i className="material-icons">lock_outline</i>
+									<span className="fa fa-lock" aria-hidden="true"></span>
 								</span>
 								<input type="password" className="form-control" value={this.state.Password} onChange={this.handlePasswordChange} placeholder="Password..." />
 							</div>
@@ -355,25 +355,17 @@ var Login = React.createClass({
 								<span className="error">{this.state.errorMessage}</span>
 							: null }
 							
-							<button onClick={this.handleSubmit} className="btn btn-raised btn-primary btn-lg">
-								<h2>Submit</h2>	
+							<button onClick={this.handleSubmit} className="btn btn-raised btn-primary login-btn">
+								Submit
 							</button>
 							
-							{this.state.currentUser ? 
-								<div className="container">
-									<span className="spacer">
-										<a onClick={this.handleClick.bind(self, false)}>Haven't signed up yet? Register here!</a>
-									</span>
-								</div>
-							:
-								<div>
-									<div className="container">
-										<span className="spacer">
-											<a onClick={this.handleClick.bind(self, true)}>Return to sign in form.</a>
-										</span>
-									</div>
-								</div>
-							}
+							<span className="spacer">
+								{this.state.currentUser ? 
+									<a onClick={this.handleClick.bind(self, false)}>Haven't signed up yet? Register here!</a>
+								:
+									<a onClick={this.handleClick.bind(self, true)}>Return to sign in form.</a>
+								}
+							</span>
 						</form>
 							
 						<div id="fstatus"/>
