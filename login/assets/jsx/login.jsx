@@ -331,7 +331,7 @@ var Login = React.createClass({
 							{!this.state.currentUser ? 
 								<div className="input-group">
 									<span className="input-group-addon">
-										<span className="fa fa-user" aria-hidden="true"></span>
+										<span className="glyphicon glyphicon-user"></span>
 									</span>
 									<input type="text" className="form-control" value={this.state.FirstName} onChange={this.handleFirstNameChange} placeholder="First Name..." />
 									<input type="text" className="form-control" value={this.state.LastName} onChange={this.handleLastNameChange} placeholder="Last Name..." />
@@ -339,14 +339,14 @@ var Login = React.createClass({
 							: null }
 							<div className="input-group">
 								<span className="input-group-addon">
-									<span className="fa fa-envelope" aria-hidden="true"></span>
+									<span className="glyphicon glyphicon-envelope"></span>
 								</span>
 								<input type="email" className="form-control" value={this.state.Email} onChange={this.handleEmailChange} placeholder="Email..." />
 							</div>
 				
 							<div className="input-group">
 								<span className="input-group-addon">
-									<span className="fa fa-lock" aria-hidden="true"></span>
+									<span className="glyphicon glyphicon-lock"></span>
 								</span>
 								<input type="password" className="form-control" value={this.state.Password} onChange={this.handlePasswordChange} placeholder="Password..." />
 							</div>

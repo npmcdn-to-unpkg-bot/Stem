@@ -1,6 +1,6 @@
 @font-face {
-    font-family: angelface;
-    src: url(../fonts/angelface.otf);
+    font-family: fancyfont;
+    src: url(../fonts/SignPainter-HouseScript.ttf);
 }
 
 body {
@@ -42,20 +42,39 @@ ol, ul {
 }
 
 /* BEGIN Header Styles */
-.navbar {
+.navbar.member {
+	background-color: #fff;
+}
+.navbar.member .navbar-right a {
+	color: #999;
+    padding: 14px 14px 0;
+    font-size: 18px;
+}
+.navbar.member .navbar-right a.primary {
+	color: #50E3C2;
+}
+
+.navbar.landing {
 	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
 }
 .navbar-header {
 	padding: 10px 15px 0;
+	text-align: left;
 }
 a.brand {
 	font-size: 40px;
-	font-family: angelface;
+	font-family: fancyfont;
 	color: #50E3C2;
 }
 .navbar-right {
 	background-color: rgba(255, 255, 255, 0.7);
-	margin: 10px 0 10px 10px;
+	margin: 10px 0;
 }
 .navbar a.login {
 	background-color: #50E3C2;
@@ -64,13 +83,19 @@ a.brand {
 .navbar a.login:hover {
 	color: #333;
 }
+.navbar-toggle {
+    font-size: 18px;
+    margin: 0;
+    padding: 12px 5px 0;
+}
 /* END Header Styles */
 
 /* BEGIN Login Styles */
 #r-login {
     width: 330px;
     position: absolute;
-    right: 15px;
+	top: 70px;
+    right: 16px;
 	background-color: rgba(255, 255, 255, 0.7);
     margin-top: -5px;
     padding: 5px 20px 10px;
@@ -101,6 +126,7 @@ a.brand {
 }
 .abcRioButtonContents {
     line-height: 38px !important;
+	font-size: 14px !important;
 }
 /* END Login Styles */
 

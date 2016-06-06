@@ -26,7 +26,8 @@
 .input-group-addon {
     background-color: transparent;
     border: none;	
-	font-size: 25px;
+	font-size: 18px;
+	line-height: 24px;
     padding-top: 0;
     padding-right: 10px;
 	padding-bottom: 0;
