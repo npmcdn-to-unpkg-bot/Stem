@@ -1,4 +1,4 @@
-var Musicians = React.createClass({
+var ArtistProfile = React.createClass({
 	
     render: function() {
         var self = this;
@@ -6,7 +6,7 @@ var Musicians = React.createClass({
 		return (
 			<div>
 				<h1>
-					Musicians Page Coming Soon
+					Artist Profile Page Coming Soon
 				</h1>
 			</div>	
 		);

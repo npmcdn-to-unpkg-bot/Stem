@@ -5,15 +5,18 @@
 
 body {
 	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-	color: #fff;
-	background: #ffffff;
+	color: #555;
+	background: #FAFAFA;
 	text-align: center;
+}
+.landing-bg {
 	background: url("http://st.depositphotos.com/1000251/3507/i/950/depositphotos_35078527-Electric-guitar-and-amplifier.jpg") no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
+
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
@@ -47,11 +50,8 @@ ol, ul {
 }
 .navbar.member .navbar-right a {
 	color: #999;
-    padding: 14px 14px 0;
+    padding: 14px 14px;
     font-size: 18px;
-}
-.navbar.member .navbar-right a.primary {
-	color: #50E3C2;
 }
 
 .navbar.landing {
@@ -67,14 +67,17 @@ ol, ul {
 	padding: 10px 15px 0;
 	text-align: left;
 }
+.navbar-right {
+	background-color: rgba(255, 255, 255, 0.7);
+	margin: 10px 0;
+}
 a.brand {
 	font-size: 40px;
 	font-family: fancyfont;
 	color: #50E3C2;
 }
-.navbar-right {
-	background-color: rgba(255, 255, 255, 0.7);
-	margin: 10px 0;
+.navbar .navbar-right a.primary, .navbar .primary {
+	color: #50E3C2;
 }
 .navbar a.login {
 	background-color: #50E3C2;

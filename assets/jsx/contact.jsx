@@ -4,8 +4,7 @@ var Contact = React.createClass({
         var self = this;
 		
 		return (
-			<div className="container">
-				<br /><br />
+			<div>
 				<h1>
 					Contact Page Coming Soon
 				</h1>

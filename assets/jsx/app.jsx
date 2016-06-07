@@ -2,20 +2,38 @@ var App = React.createClass({
     getInitialState: function() {
         return { 
 			focused: 0,
-			items: ['Home', 'Musicians', 'Creators', 'Blog', 'Contact'],
+			items: ['Home', 'Login', 'Musicians', 'Creators', 'Blog', 'Contact', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Logout'],
 			displayLoginPage: false
 		};
     },
+	
+	componentDidMount: function() {
+		sessionStorage.setItem('userId',1);
+		// TO DO: remove this! Hard coding this temporarily for testing purposes.
+	},
+	
+	setBackground: function() {
+		console.log('userId = ' + sessionStorage.getItem('userId'));
+		if(sessionStorage.getItem('userId') == null) {
+			$('body').addClass('landing-bg');
+		} else {
+			$('body').removeClass('landing-bg');
+		}
+	},
 	
     navClicked: function(index) {
 	    $('.btn-navbar').click();
 	    $('.navbar-toggle').click();
 		
-		if(index == 5) {
+		if(index == 1) {
 			this.setState({displayLoginPage: true});
 		} else {
 			this.setState({displayLoginPage: false});
 		}
+		if(index == 10) {
+			sessionStorage.clear();
+		}
+		this.setBackground();
         this.setState({focused: index});
     },
 	
@@ -26,25 +44,34 @@ var App = React.createClass({
 			<div>
 				{ sessionStorage.getItem('userId') != null ?
 					<nav className="navbar member">
-						<div className="navbar-header">         
+						<div className="navbar-header pull-left">         
 							<a className="brand" onClick={self.navClicked.bind(self,0)}>
 								Stem
 							</a>
 						</div>	
-						<div className="nav navbar-nav navbar-right">
+						<div className="nav navbar-nav navbar-right pull-right">
 							<a className="glyphicon glyphicon-search"></a>
 							<a className="glyphicon glyphicon-th-list"></a>
 							<a className="glyphicon glyphicon-bell"></a>
-							<a onClick={self.navClicked.bind(self, 5)} className="glyphicon glyphicon-menu-hamburger primary"></a>
+							<a className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span className="glyphicon glyphicon-menu-hamburger"></span>
+							</a>
+							<ul className="dropdown-menu">
+								{ this.state.items.map(function(i, index) {
+			        				if(index > 5) {
+										return <li onClick={self.navClicked.bind(self, index)}><a>{i}</a></li>;
+									}
+								})}    
+							</ul>					
 						</div>
 					</nav>
 				:
 					<nav className="navbar landing">
 						<div className="navbar-header">
-							<button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-index" aria-expanded="false">
+							<button type="button" className="navbar-toggle collapsed primary" data-toggle="collapse" data-target="#navigation-index" aria-expanded="false">
 								<span className="sr-only">Toggle navigation</span>
 	      						<span className="glyphicon glyphicon-menu-hamburger"></span>
-							</button>            
+							</button>     
 							<a className="brand" onClick={self.navClicked.bind(self,0)}>
 								Stem
 							</a>
@@ -52,11 +79,11 @@ var App = React.createClass({
 						<div className="collapse navbar-collapse" id="navigation-index">
 							<ul className="nav navbar-nav navbar-right">
 								{ this.state.items.map(function(i, index) {
-			        				if(index != 0) {
+			        				if(index > 1 && index <= 5) {
 										return <li onClick={self.navClicked.bind(self, index)}><a>{i}</a></li>;
 									}
 								})}    
-								<li onClick={self.navClicked.bind(self, 5)}><a className="login">Login / Signup</a></li>
+								<li onClick={self.navClicked.bind(self, 1)}><a className="login">Login / Signup</a></li>
 							</ul>
 						</div>
 					</nav>
@@ -72,27 +99,51 @@ var App = React.createClass({
 						</h1>
 					: null}
 					
-					{ this.state.focused == 1 ?
+					{ this.state.focused == 2 ?
 						<div>
 							<Musicians />
 						</div>
 					: null}	
 					
-					{ this.state.focused == 2 ?
+					{ this.state.focused == 3 ?
 						<div>
 							<Creators />
 						</div>
 					: null}	
 					
-					{ this.state.focused == 3 ?
+					{ this.state.focused == 4 ?
 						<div>
 							<Blog />
 						</div>
 					: null}	
 				
-					{ this.state.focused == 4 ?
+					{ this.state.focused == 5 ?
 						<div>
 							<Contact />
+						</div>
+					: null}	
+					
+					{ this.state.focused == 6 ?
+						<div>
+							<CreatorProfile />
+						</div>
+					: null}	
+					
+					{ this.state.focused == 7 ?
+						<div>
+							<ArtistProfile />
+						</div>
+					: null}	
+					
+					{ this.state.focused == 8 ?
+						<div>
+							<SongList />
+						</div>
+					: null}	
+					
+					{ this.state.focused == 9 ?
+						<div>
+							<ProfileSettings />
 						</div>
 					: null}	
 				</div>
