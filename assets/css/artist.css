@@ -1,0 +1,180 @@
+  /*-- Artist Profile Banner--*/
+
+/*  .artist-wrapper {
+    margin-top: 60px;
+  }*/
+  .artist-banner  {
+    background-image: url('https://i.ytimg.com/vi/AqpzxxxrkAY/maxresdefault.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    overflow: hidden;
+    width: 100%;
+    height: 280px;
+    position: absolute;
+    z-index: -99;
+
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(7px);
+    -o-filter: blur(7px);
+    -ms-filter: blur(7px);
+    filter: blur(7px);
+
+  }
+  .artist-stats-wrapper {
+    font-family: "roboto-light";
+    list-style: none;
+    color: #fff;
+  }
+    .artist-stats-wrapper h1 {
+      font-style: italic;
+    }
+    .artist-profile-img {
+      border-radius: 50%;
+      width: 180px;
+      position: absolute;
+      margin: 20px 0 0;
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+    }
+    .artist-header-btn-icon {
+      font-family: "entypo";
+      font-size: 35px;
+    }
+      .btn.collab-btn {
+        border-radius: 0;
+      }
+      .collab-btn {
+        height: 50px;
+        background-color: #50E3C2;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+      }
+        .collab-btn h3 {
+          margin: 0 0 0;
+        }
+      .btn.follow-btn {
+        border-radius: 0;
+      }
+      .follow-btn {
+        height: 50px;
+        background-color: #484C4D;
+        margin-right: 10px;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+      }
+        .follow-btn h3 {
+          margin: 0 0 0;
+        }
+
+/*mobile    */
+@media (max-width: 768px) {
+  .artitst-stats-wrapper, .artist-banner-content, p {
+    color: #484C4D;
+    text-align: center;
+  }
+  .artist-banner{
+    height: 200px;
+  }
+  .artist-profile-img {
+    margin: 60px 0 0;
+  }
+  .artist-banner-content {
+    margin: 250px 0 10px;
+  }
+  .btn.follow-btn {
+    margin: 10px 0 10px;
+  }
+}
+/*tablet*/
+@media (min-width: 767px) and (max-width: 991px) {
+
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+/* large desktop*/
+@media (min-width: 1200px) {
+  
+  .artist-stats-wrapper {
+    margin: 30px 0 0;
+  }
+} 
+/*-- Artist Stats Bar --*/
+
+.artist-stats-bar {
+  color: #484C4D;
+}
+  .artist-stats-list {
+    position: absolute;
+    line-height: 10px;
+    padding: 20px;
+    list-style: none;
+  }
+    .artist-stats-bar span {
+      font-size: 35px;
+      margin-top: 20px;
+      font-family: "entypo";
+    }
+.artist-stats-bar-background {
+  background-color: #fff;
+  height: 60px;
+  margin-top: 30px;
+  position: relative;
+  opacity: .6;
+}    
+
+/*mobile    */
+@media (max-width: 768px) {
+  .artist-stats-list {
+    margin-top: 10px;
+    padding: 15px 0 0;
+  }
+  .artist-stats-bar span {
+    visibility: hidden;
+    /*margin-top: 30px;*/
+  }
+  .artist-stats-bar-background {
+    visibility: hidden;
+  }
+}
+/*tablet*/
+@media (min-width: 769px) and (max-width: 990px) {
+  .artist-stats-bar-background {
+    margin-top: 220px;
+  }
+  .artist-stats-list {
+    margin-top: -65px;
+  }
+}
+/*desktop*/
+@media (min-width: 991px) and (max-width: 1199px) {
+  .artist-stats-bar-background {
+    margin-top: 220px;
+  }
+  .artist-stats-list {
+    margin-top: -65px;
+  }
+}
+/* large desktop*/
+@media (min-width: 1200px) {
+  .artist-stats-list {
+    margin-top: -65px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
