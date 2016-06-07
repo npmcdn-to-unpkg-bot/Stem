@@ -92,7 +92,7 @@ var App = React.createClass({
 					<div id="r-login"></div>
 				</div>
 				  
-				<div className="container">
+				<div className="wrapper">
 					{ this.state.focused == 0 ?
 						<h1>
 							Hello { sessionStorage.getItem('userFirstName') }
