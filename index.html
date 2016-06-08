@@ -13,9 +13,16 @@
         
         <!-- CSS Files -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="assets/css/artist.css">
+        <link rel="stylesheet" href="assets/css/creator.css">
         <link href="login/assets/css/login.css" rel="stylesheet">
         <link href="assets/css/style.css" rel="stylesheet">
+        <script>
+        $(document).ready(function() {
+            $('.artist-timeline-show').click(function() {
+                $('.artist-timeline').addClass('show-timeline');
+            })
+        });
+        </script>
     </head>
   
 	<body>
@@ -27,13 +34,13 @@
         <script type="text/jsx" src="assets/jsx/creators.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/blog.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/contact.jsx"> </script>
-        <script type="text/jsx" src="assets/jsx/creatorprofile.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/creator-components/creatorprofile.jsx"> </script>
         <!-- Artist -->
-        <script type="text/jsx" src="assets/jsx/artist-components/artistprofile.jsx"> </script>
-        <script type="text/jsx" src="assets/jsx/artist-components/artist-header.jsx"> </script>
-        <script type="text/jsx" src="assets/jsx/artist-components/artist-stats-bar.jsx"> </script>
-        <script type="text/jsx" src="assets/jsx/artist-components/artist-timeline.jsx"> </script>
-        <script type="text/jsx" src="assets/jsx/artist-components/artist-sidebar-right.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/artistprofile.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/creator-components/creator-header.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/creator-components/creator-stats-bar.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/creator-components/creator-timeline.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/creator-components/creator-sidebar-right.jsx"> </script>
 
 
         <script type="text/jsx" src="assets/jsx/songlist.jsx"> </script>
@@ -43,7 +50,6 @@
         <!-- Core JS Files -->
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-        
         <script src="https://apis.google.com/js/platform.js" async defer></script>
 
         <!-- React -->

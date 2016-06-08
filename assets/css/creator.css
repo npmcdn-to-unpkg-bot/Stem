@@ -1,10 +1,10 @@
   /*-- Artist Profile Banner--*/
 
-  .artist-wrapper {
+  .creator-wrapper {
     margin-top: -20px;
     text-align: left;
   }
-  .artist-banner  {
+  .creator-banner  {
     background-image: url('https://i.ytimg.com/vi/AqpzxxxrkAY/maxresdefault.jpg');
     background-repeat: no-repeat;
     background-position: center center;
@@ -22,22 +22,22 @@
     filter: blur(7px);
 
   }
-  .artist-stats-wrapper {
+  .creator-stats-wrapper {
     font-family: "roboto-light";
     list-style: none;
     color: #fff;
   }
-    .artist-stats-wrapper h1 {
+    .creator-stats-wrapper h1 {
       font-style: italic;
     }
-    .artist-profile-img {
+    .creator-profile-img {
       border-radius: 50%;
       width: 180px;
       position: absolute;
       margin: 20px 0 0;
       box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
     }
-    .artist-header-btn-icon {
+    .creator-header-btn-icon {
       font-family: "entypo";
       font-size: 35px;
     }
@@ -74,17 +74,17 @@
 
 /*mobile    */
 @media (max-width: 768px) {
-  .artitst-stats-wrapper, .artist-banner-content, p {
+  .artitst-stats-wrapper, .creator-banner-content, p {
     color: #484C4D;
     text-align: center;
   }
-  .artist-banner{
+  .creator-banner{
     height: 200px;
   }
-  .artist-profile-img {
+  .creator-profile-img {
     margin: 60px 0 0;
   }
-  .artist-banner-content {
+  .creator-banner-content {
     margin: 250px 0 10px;
   }
   .btn.follow-btn {
@@ -93,44 +93,44 @@
 }
 /*tablet*/
 @media (min-width: 767px) and (max-width: 991px) {
-  .artist-stats-wrapper h1, .artist-profile-img {
+  .creator-stats-wrapper h1, .creator-profile-img {
     margin-top: 25px;
   }
 
 
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .artist-stats-wrapper h1, .artist-profile-img {
+  .creator-stats-wrapper h1, .creator-profile-img {
     margin-top: 25px;
   }
 }
 /* large desktop*/
 @media (min-width: 1200px) {
   
-  .artist-stats-wrapper {
+  .creator-stats-wrapper {
     margin-top: -20px;
   }
-  .artist-stats-wrapper h1, .artist-profile-img {
+  .creator-stats-wrapper h1, .creator-profile-img {
     margin-top: 25px;
   }
 } 
-/*-- Artist Stats Bar --*/
+/*-- creator Stats Bar --*/
 
-.artist-stats-bar {
+.creator-stats-bar {
   color: #484C4D;
 }
-  .artist-stats-list {
+  .creator-stats-list {
     position: absolute;
     line-height: 10px;
     padding: 20px;
     list-style: none;
   }
-    .artist-stats-bar span {
+    .creator-stats-bar span {
       font-size: 35px;
       margin-top: 20px;
       font-family: "social shapes";
     }
-.artist-stats-bar-background {
+.creator-stats-bar-background {
   background-color: #fff;
   height: 60px;
   margin-top: 30px;
@@ -140,14 +140,14 @@
 
 /*mobile    */
 @media (max-width: 768px) {
-  .artist-stats-list {
+  .creator-stats-list {
     margin-top: 110px;
     padding: 15px 0 0;
   }
-  .artist-stats-bar span {
+  .creator-stats-bar span {
     visibility: hidden;
   }
-  .artist-stats-bar-background {
+  .creator-stats-bar-background {
     position: absolute;
     visibility: hidden;
   }
@@ -155,45 +155,45 @@
 }
 /*tablet*/
 @media (min-width: 769px) and (max-width: 990px) {
-  .artist-stats-bar-background {
+  .creator-stats-bar-background {
     margin-top: 220px;
   }
-  .artist-stats-list {
+  .creator-stats-list {
     margin-top: -65px;
   }
 }
 /*desktop*/
 @media (min-width: 991px) and (max-width: 1199px) {
-  .artist-stats-bar-background {
+  .creator-stats-bar-background {
     margin-top: 220px;
   }
-  .artist-stats-list {
+  .creator-stats-list {
     margin-top: -65px;
   }
 }
 /* large desktop*/
 @media (min-width: 1200px) {
-  .artist-stats-list {
+  .creator-stats-list {
     margin-top: 215px;
   }
-  .artist-stats-bar-background {
+  .creator-stats-bar-background {
     margin-top: 58px;
   }
 }
-.artist-social-icons {
+.creator-social-icons {
   margin: 10px 3px 0 3px;
 }
 
-/*-- Artist Timeline --*/
+/*-- creator Timeline --*/
 
-.artist-timeline {
+.creator-timeline {
     list-style: none;
     padding: 20px 0 20px;
     position: relative;
 
 }
 
-    .artist-timeline:before {
+    .creator-timeline:before {
         top: 0;
         bottom: 0;
         position: absolute;
@@ -203,26 +203,26 @@
         left: 55px;
     }
 
-    .artist-timeline > li {
+    .creator-timeline > li {
         margin-bottom: 20px;
         position: relative;
     }
-        .artist-timeline > li:before,
-        .artist-timeline > li:after {
+        .creator-timeline > li:before,
+        .creator-timeline > li:after {
             content: " ";
             display: table;
         }
-        .artist-timeline > li:after {
+        .creator-timeline > li:after {
             clear: both;
         }
 
-        .artist-timeline > li > .artist-timeline-panel {
+        .creator-timeline > li > .creator-timeline-panel {
             margin-left: 110px;
             padding: 20px;
             position: relative;
         }
 
-        .artist-timeline > li > .artist-timeline-badge {
+        .creator-timeline > li > .creator-timeline-badge {
             color: #fff;
             width: 50px;
             height: 50px;
@@ -239,15 +239,15 @@
             border-bottom-left-radius: 50%;
         }
 
-.artist-timeline-title {
+.creator-timeline-title {
     margin-top: 0;
     color: inherit;
 }
-.artist-timeline-body {
+.creator-timeline-body {
   text-align: left;
 }
-.artist-timeline-body > p,
-.artist-timeline-body > ul {
+.creator-timeline-body > p,
+.creator-timeline-body > ul {
     margin-bottom: 0;
 }
 iframe {
@@ -255,67 +255,67 @@ iframe {
     padding: none;
     border: none;
 }
-.artist-upload-timestamp, .artist-content-media-description, .artist-content-video-header {
+.creator-upload-timestamp, .creator-content-media-description, .creator-content-video-header {
   text-align: left;
 }
-  .artist-upload-timestamp {
+  .creator-upload-timestamp {
     margin: 0 0 20px -40px;
   }
-  .artist-content-video-header {
+  .creator-content-video-header {
     margin: 20px 0 5px;
   }
-  .artist-content-media-description {
+  .creator-content-media-description {
     margin: 0 0 0 -15px;
   }
-    .artist-content-media-description a {
+    .creator-content-media-description a {
       color: #4A90E2;
     }
-.artist-timeline-img {
+.creator-timeline-img {
   width: 175px;
   height: 175px;
 }
- .artist-timeline-video {
+ .creator-timeline-video {
   width: 560px; 
   height:315px;
  }
  /*mobile*/
 @media (max-width: 768px) {
-  .artist-timeline-wrapper {
+  .creator-timeline-wrapper {
     margin-top: 200px;
   }
-  .artist-timeline-body, .artist-timeline-title {
+  .creator-timeline-body, .creator-timeline-title {
     display: none;
   }
-  .artist-timeline-panel, .artist-timeline-video {
+  .creator-timeline-panel, .creator-timeline-video {
     height: 50px;
   }
-  ul.artist-timeline {
+  ul.creator-timeline {
     padding: none;
   }
-  .artist-upload-timestamp {
+  .creator-upload-timestamp {
     margin: 0;
   }
-  .artist-timeline > li > .artist-timeline-panel {
+  .creator-timeline > li > .creator-timeline-panel {
     margin-left: 60px;
   }
-  .artist-timeline::before {
+  .creator-timeline::before {
     left: 40px;
   }
 
 }
 /*tablet*/
 @media (min-width: 769px) and (max-width: 990px) {
-  .artist-timeline-video {
+  .creator-timeline-video {
     width: 350px; 
     height: 100%;
   }
-  .artist-timeline::before {
+  .creator-timeline::before {
     left: 35px;
   }
 }
 /*desktop*/
 @media (min-width: 991px) and (max-width: 1199px) {
-  .artist-timeline-video {
+  .creator-timeline-video {
     width: 450px; 
     height: 100%;
   }  
@@ -324,9 +324,9 @@ iframe {
 @media (min-width: 1200px) {
 }
 
-/*-- Artist Sidebar Right --*/
+/*-- creator Sidebar Right --*/
 
-.artist-sidebar-right-wrapper {
+.creator-sidebar-right-wrapper {
   font-family: "roboto-light";
   height: 100vh;
   overflow: hidden;
@@ -351,11 +351,13 @@ iframe {
   }
 }
 
-
-
-
-
-
+/*.artist-timeline li:nth-of-type(1n+3) {
+  display: none;
+}
+.show-timeline {
+  display: block;
+}
+*/
 
 
 

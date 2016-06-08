@@ -5,9 +5,10 @@ var CreatorProfile = React.createClass({
 		
 		return (
 			<div>
-				<h1>
-					Creator Profile Page Coming Soon
-				</h1>
+				<CreatorHeader />
+				<CreatorStatsBar />
+				<CreatorTimeline />
+				<CreatorSideBarRight />
 			</div>	
 		);
 	}
