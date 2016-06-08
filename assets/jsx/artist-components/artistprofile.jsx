@@ -7,6 +7,8 @@ var ArtistProfile = React.createClass({
 			<div>
 					<ArtistHeader />
 					<ArtistStatsBar />
+					<ArtistTimeline />
+					<ArtistSideBarRight />
 			</div>	
 		);
 	}
