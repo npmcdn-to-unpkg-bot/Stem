@@ -5,7 +5,7 @@ var ArtistProfile = React.createClass({
 		
 		return (
 			<div>
-					<h1>Artist Profile Coming Soon!</h1>
+					<ArtistNavBar />
 			</div>	
 		);
 	}
