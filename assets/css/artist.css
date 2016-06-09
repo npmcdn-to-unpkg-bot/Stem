@@ -45,3 +45,130 @@
     display: inline;
   }  
 }
+/*-- Artist Featured --*/
+
+.artist-featured-header {
+  font-family: "roboto-medium";
+  background-image: url('assets/images/echosmith.jpg');
+  margin-top: 60px;
+  padding-top: 100px; 
+  background-image: url('http://www.echosmith.com/sites/g/files/g2000002326/f/201410/Echosmith-SiteBackground-1920x1280_05_rev.jpg');
+  background-repeat: no-repeat;
+  background-position: 30% 30%;
+  background-size: 100%;
+  overflow: hidden;
+  width: 100%;
+  height: 425px;
+  position: absolute;
+}
+.artist-featured-header-bar {
+  background:rgba(255,255,255, 0.6);
+  margin-top: 195px;
+  width: 100%;
+  height: 130px;
+  position: absolute;
+  z-index: 1;
+}
+.artist-featured-header-info {
+  position: relative;
+  margin-top: 225px;
+  padding-right: 0;
+  color: #484C4D;
+  text-align: left;
+  line-height: 10px;
+  opacity: .8;
+  z-index: 2;
+}
+  .artist-featured-header-info-icon {
+    margin-left: 20px;
+  }
+  .artist-featured-header-info h1 {
+    margin: -10px 0 10px;
+    font-style: italic;
+  }
+  .artist-featured-header-info p {
+    opacity: .7;
+  }
+.artist-featured-badge {
+    margin-top: -80px;
+    border-top: 75px solid rgb(80, 227, 194);
+    border-left: 50px solid transparent;
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+    height: 0;
+    position: relative;
+    color: white;
+    z-index: 2;
+}
+  .artist-featured-badge-icon {
+    margin-top: -55px;
+  }
+  .artist-featured-badge-info {
+    margin-top: -30px;
+  }
+  .artist-featured-badge-info h4 {
+    font-family: "roboto-light";
+    margin-top: -20px;
+  }
+/*mobile*/
+@media (max-width: 768px) {
+  .artist-featured-header {
+    background-position: center top;
+    overflow: visible;
+    height: 280px;
+  }
+  .artist-featured-header-bar {
+    display: none;
+  }
+  .artist-featured-header-info-icon {
+    margin-left: 0;
+  }
+  .artist-featured-badge-icon {
+    display: none;
+  }
+    .artist-featured-badge-info {
+      margin-top: -15px;
+    }
+    .artist-featured-badge {
+      margin-top: 100px;
+      border-top: 50px solid rgb(80, 227, 194);
+    }
+  .artist-featured-header-info {
+    position: absolute;
+    margin: 200px 0 0 20px;
+  }
+  .artist-featured-header-info h1 {
+    margin-left: 20px;
+  }
+  .artist-featured-header-info p {
+    margin-left: 20px;
+    text-align: left;
+  }
+}
+/*tablet*/
+@media (min-width: 769px) and (max-width: 991px) {
+  .artist-featured-badge-icon {
+    margin-left: -60px;
+  }
+  .artist-featured-badge-info h4 {
+    margin-left: -40px;
+  }
+  .artist-featured-badge {
+    margin-top: -90px;
+  }
+  .artist-featured-header-info ul {
+    margin-left: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
