@@ -8,22 +8,17 @@
         <!-- Fonts and icons -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="assets/js/artist.js"></script>
+
         
         <!-- CSS Files -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="assets/css/creator.css">
         <link rel="stylesheet" href="assets/css/artist.css">
+        <link rel="stylesheet" href="assets/css/playlist.css">
+        <link rel="stylesheet" href="assets/css/artist-search.css">
         <link href="login/assets/css/login.css" rel="stylesheet">
         <link href="assets/css/style.css" rel="stylesheet">
-        <script>
-        $(document).ready(function() {
-            $('.artist-timeline-show').click(function() {
-                $('.artist-timeline').addClass('show-timeline');
-            })
-        });
-        </script>
+
     </head>
   
 	<body>
@@ -40,15 +35,25 @@
         <script type="text/jsx" src="assets/jsx/artist-components/artistprofile.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/artist-components/artist-navBar.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/artist-components/artist-featured.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/artist-components/artist-main-content.jsx"> </script>
 
         <!-- Creators -->
         <script type="text/jsx" src="assets/jsx/creator-components/creator-header.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/creator-components/creator-stats-bar.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/creator-components/creator-timeline.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/creator-components/creator-sidebar-right.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/artist-search-components/creator-artist-search.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/artist-search-components/artist-search-side-bar.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/artist-search-components/search-results-table.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/artist-search-components/artist-search-mobile.jsx"> </script>
+
+        <!-- Playlist -->
+        <script type="text/jsx" src="assets/jsx/playlist-components/playlist.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/playlist-components/playlist-header.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/playlist-components/playlist-table.jsx"> </script>
+        <script type="text/jsx" src="assets/jsx/playlist-components/playlist-mobile-view.jsx"> </script>
 
 
-        <script type="text/jsx" src="assets/jsx/songlist.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/profilesettings.jsx"> </script>
         <script type="text/jsx" src="login/assets/jsx/login.jsx"> </script>
         

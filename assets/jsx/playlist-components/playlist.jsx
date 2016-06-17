@@ -5,9 +5,10 @@ var SongList = React.createClass({
 		
 		return (
 			<div>
-				<h1>
-					Song List Page Coming Soon
-				</h1>
+				<ArtistNavBar />
+				<PlaylistHeader />
+				<PlaylistTable />
+				<PlaylistMobileView />
 			</div>	
 		);
 	}

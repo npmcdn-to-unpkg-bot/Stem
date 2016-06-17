@@ -7,6 +7,7 @@ var ArtistProfile = React.createClass({
 			<div>
 					<ArtistNavBar />
 					<ArtistFeatured />
+					<ArtistMainContent />
 			</div>	
 		);
 	}

@@ -137,6 +137,13 @@ var Login = React.createClass({
 			errorMessage: ''
 		});
     },
+
+    handleConfirmPasswordChange: function(e) {
+        this.setState({
+			ConfirmPassword:e.target.value,
+			errorMessage: ''
+		});
+    },
 	
 	handleSubmit: function(e) {
 		var currentUser = this.state.currentUser;
@@ -146,8 +153,9 @@ var Login = React.createClass({
 	    var LastName = this.state.LastName.trim();
 	    var Email = this.state.Email.trim();
 	    var Password = this.state.Password.trim();
+	    var ConfirmPassword = this.state.ConfirmPassword.trim();
 		
-		if(!Email || !Password) {
+		if(!Email || !Password || !ConfirmPassword) {
 	    	this.setState({ errorMessage: '* Please complete the form before submitting' });
 	    } else if(!this.state.currentUser && (!FirstName || !LastName)) {
 	    	this.setState({ errorMessage: '* Please complete the form before submitting' });
@@ -328,15 +336,6 @@ var Login = React.createClass({
 							<div className="login-btn" id="g-signin2" data-onsuccess={this.onSignIn} />
 							<span className="spacer" />
 							<p>or be classical...</p>							
-							{!this.state.currentUser ? 
-								<div className="input-group">
-									<span className="input-group-addon">
-										<span className="glyphicon glyphicon-user"></span>
-									</span>
-									<input type="text" className="form-control" value={this.state.FirstName} onChange={this.handleFirstNameChange} placeholder="First Name..." />
-									<input type="text" className="form-control" value={this.state.LastName} onChange={this.handleLastNameChange} placeholder="Last Name..." />
-								</div>
-							: null }
 							<div className="input-group">
 								<span className="input-group-addon">
 									<span className="glyphicon glyphicon-envelope"></span>
@@ -350,6 +349,15 @@ var Login = React.createClass({
 								</span>
 								<input type="password" className="form-control" value={this.state.Password} onChange={this.handlePasswordChange} placeholder="Password..." />
 							</div>
+							
+							{!this.state.currentUser ? 
+								<div className="input-group">
+								<span className="input-group-addon">
+									<span className="glyphicon glyphicon-lock"></span>
+								</span>
+								<input type="confirm_password" className="form-control" value={this.state.ConfirmPassword} onChange={this.handleConfirmPasswordChange} placeholder="Confirm Password..." />
+							</div>
+							: null }
 							
 							{ this.state.errorMessage != '' ?
 								<span className="error">{this.state.errorMessage}</span>

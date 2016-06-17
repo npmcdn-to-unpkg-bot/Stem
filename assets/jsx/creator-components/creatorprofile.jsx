@@ -8,7 +8,6 @@ var CreatorProfile = React.createClass({
 				<CreatorHeader />
 				<CreatorStatsBar />
 				<CreatorTimeline />
-				<CreatorSideBarRight />
 			</div>	
 		);
 	}

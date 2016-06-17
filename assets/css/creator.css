@@ -99,6 +99,7 @@
 
 
 }
+/*desktop*/
 @media (min-width: 992px) and (max-width: 1199px) {
   .creator-stats-wrapper h1, .creator-profile-img {
     margin-top: 25px;
@@ -310,7 +311,7 @@ iframe {
     height: 100%;
   }
   .creator-timeline::before {
-    left: 35px;
+    left: 55px;
   }
 }
 /*desktop*/
