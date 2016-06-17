@@ -1,13 +1,11 @@
 var Login = React.createClass({
     getInitialState: function() {
-		return {
-			currentUser: true,
-			FirstName: '',
-			LastName: '',
-			Email: '',
-			Password: '',
-			errorMessage: ''
-		};
+			return {
+				currentUser: true,
+				Username: '',
+				Password: '',
+				errorMessage: ''
+			};
     },
 	
 	componentDidMount: function() {
@@ -65,9 +63,7 @@ var Login = React.createClass({
 		console.log(JSON.stringify(profile, null, 2));
 		
 		this.upsertUser({ 
-			FirstName: profile.getGivenName(), 
-			LastName: profile.getFamilyName(), 
-			Email: profile.getEmail()
+			Username: profile.getUsername()
 		});
 	},
 	/////// END Google+ login
@@ -110,23 +106,9 @@ var Login = React.createClass({
 		});
 	},
 	
-    handleFirstNameChange: function(e) {
+    handleUserNameChange: function(e) {
         this.setState({
-			FirstName:e.target.value,
-			errorMessage: ''
-		});
-    },
-	
-    handleLastNameChange: function(e) {
-        this.setState({
-			LastName:e.target.value,
-			errorMessage: ''
-		});
-    },
-	
-    handleEmailChange: function(e) {
-        this.setState({
-			Email:e.target.value,
+			Username:e.target.value,
 			errorMessage: ''
 		});
     },
@@ -149,34 +131,34 @@ var Login = React.createClass({
 		var currentUser = this.state.currentUser;
 		
 	    e.preventDefault();
-	    var FirstName = this.state.FirstName.trim();
-	    var LastName = this.state.LastName.trim();
-	    var Email = this.state.Email.trim();
-	    var Password = this.state.Password.trim();
-	    var ConfirmPassword = this.state.ConfirmPassword.trim();
+	    var Username = this.state.Username;
+	    var Password = this.state.Password;
+	    var ConfirmPassword = this.state.ConfirmPassword;
 		
-		if(!Email || !Password || !ConfirmPassword) {
-	    	this.setState({ errorMessage: '* Please complete the form before submitting' });
-	    } else if(!this.state.currentUser && (!FirstName || !LastName)) {
-	    	this.setState({ errorMessage: '* Please complete the form before submitting' });
-		} else {
-	    	this.handleCommentSubmit({ FirstName: FirstName, LastName: LastName, Email: Email, CurrentUser: currentUser });
+		if(Username && Password && ConfirmPassword) {
+	   	this.handleCommitSubmit({Username: Username, Password: Password, ConfirmPassword: ConfirmPassword, CurrentUser: currentUser });
+		} 
+		else {
+			this.handleCommitSubmit({Username: Username, Password: Password});
 		}
 	},
 	
-	handleCommentSubmit: function(user) {
+	handleCommitSubmit: function(user) {
 		var self = this,
 			currentUser = this.state.currentUser,
 			api = this.props.api;
 		
-		var cleanEmail = encodeURIComponent(user.Email);
-		console.log('cleanEmail = ' + cleanEmail);
+		var cleanUsername = encodeURIComponent(user.Username);
+		var cleanPassword = encodeURIComponent(user.Password);
+		var cleanConfirmPassword = encodeURIComponent(user.ConfirmPassword);
+		console.log('clean = ' + cleanUsername + cleanPassword + cleanConfirmPassword);
 		
 		if(user.CurrentUser) {
+			var data = "grant_type=password&username=" + this.state.Username + "&password=" + this.state.Password;
 			$.ajax({
-				type: 'GET',
-				url: api + '/byEmail/' + cleanEmail,
-				dataType: 'json',
+				type: 'POST',
+				url: 'http://52.32.255.104/token',
+				data: data,
 				success: function(response) {
 					console.log('success!');
 					console.log(JSON.stringify(response, null, 2));
@@ -191,18 +173,19 @@ var Login = React.createClass({
 				}.bind(this)
 			});		
 		} else {
-			$.ajax({
+			$.ajax({	
 				type: 'POST',
-				url: api,
+				url: 'http://52.32.255.104/api/account/register',
+				contentType: "application/json; charset=utf-8",
 				dataType: 'json',
-				data: user,
+				data: JSON.stringify(user),
 				success: function(response) {
 					console.log('success!');
 					console.log(JSON.stringify(response, null, 2));
 					sessionStorage.setItem('userId', response.Id);
-					sessionStorage.setItem('userFirstName', response.FirstName);
-					sessionStorage.setItem('userLastName', response.LastName);
-					sessionStorage.setItem('userEmail', response.Email);
+					sessionStorage.setItem('userUsername', response.Username);
+					sessionStorage.setItem('userPassword', response.Password);
+					sessionStorage.setItem('userConfirmPassword', response.ConfirmPassword);
 				}.bind(this),
 				error: function(xhr, status, err) {
 					console.error(this.props.url, status, err.toString());
@@ -340,7 +323,7 @@ var Login = React.createClass({
 								<span className="input-group-addon">
 									<span className="glyphicon glyphicon-envelope"></span>
 								</span>
-								<input type="email" className="form-control" value={this.state.Email} onChange={this.handleEmailChange} placeholder="Email..." />
+								<input type="userName" className="form-control" value={this.state.Username} onChange={this.handleUserNameChange} placeholder="Username..." />
 							</div>
 				
 							<div className="input-group">
