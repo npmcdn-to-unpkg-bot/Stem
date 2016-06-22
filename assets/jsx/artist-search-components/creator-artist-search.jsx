@@ -5,7 +5,6 @@ var ArtistSearch = React.createClass({
 
     return (
       <div>
-        <ArtistNavBar />
         <ArtistSearchSideBar />
         <ArtistSearchResultsTable />
       </div>
