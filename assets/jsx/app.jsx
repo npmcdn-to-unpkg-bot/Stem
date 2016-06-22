@@ -4,6 +4,7 @@ var connect = ReactRedux.connect;
 
 const initialState = {
     isLoggedIn: false,
+    displayMenu: false,
     navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal', 'Logout'],
     currentPage: 0
 };
@@ -14,23 +15,35 @@ var reducer = function(state, action) {
   }
   var newState = state;
   switch(action.type) {
-    case 'SIGNIN':
-        console.log('SIGNIN');
+    case 'SignIn':
+        console.log('SignIn');
         state.isLoggedIn = true;
         console.log('state = ' + JSON.stringify(state));
         //mapStateToProps();
         return state;
 
-    case 'SIGNOUT':
-        console.log('SIGNOUT');
+    case 'SignOut':
+        console.log('SignOut');
         state.isLoggedIn = false;
         console.log('state = ' + JSON.stringify(state));
         return state;
 
-    case 'NAV':
-        console.log('NAV');
+    case 'ShowMenu':
+        console.log('ShowMenu');
+        newState = Object.assign({}, state, {displayMenu: true});
+        console.log('newState = ' + JSON.stringify(newState));
+        return newState;
+
+    case 'HideMenu':
+        console.log('HideMenu');
+        newState = Object.assign({}, state, {displayMenu: false});
+        console.log('newState = ' + JSON.stringify(newState));
+        return newState;
+
+    case 'GoToPage':
+        console.log('GoToPage');
         console.log('action.data = ' + JSON.stringify(action.data));
-        newState = Object.assign({}, state, {currentPage: action.data.currentPage});
+        newState = Object.assign({}, state, {currentPage: action.data.currentPage, displayMenu: false});
         console.log('newState = ' + JSON.stringify(newState));
         return newState;
 
@@ -46,31 +59,36 @@ var store = createStore(reducer, initialState);
 var AppState = function(state) {
   return {
         isLoggedIn: state.isLoggedIn,
+        displayMenu: state.displayMenu,
         navItems: state.navItems,
         currentPage: state.currentPage
     }
 }
 
-var AppDispatch = function(dispatch) {
-  return {
-    NAV: function(id) {
-        console.log('dispatched');
-        dispatch({
-            pageID: id
-        })
-    }
-  }
-}
+
+//var AppDispatch = function(dispatch) {
+//return {
+//GoToPage: function(id) {
+//console.log('dispatched');
+//dispatch({
+//pageID: id
+//})
+//}
+//}
+//}
 
 var App = React.createClass({
     showMenu: function() {
-        this.refs.menu.show();
+        store.dispatch({
+          type: 'ShowMenu'
+        });
+        //this.refs.menu.show();
     },
 
     navigate: function(id) {
         console.log('navigate. id = ' + id);
         store.dispatch({
-          type: 'NAV',
+          type: 'GoToPage',
           data: {currentPage: id}
         });
     },
@@ -83,7 +101,7 @@ var App = React.createClass({
                 <nav className="header">
                     <div className="header-content">
                         <div className="header-brand pull-left">         
-                            <a className="brand">
+                            <a onClick={this.navigate.bind(this, 0)} className="brand">
                                 Stem
                             </a>
                         </div>
@@ -98,7 +116,7 @@ var App = React.createClass({
                     </div> 
                 </nav>
 
-                <Menu ref="menu" alignment="right">
+                <Menu displayMenu={this.props.displayMenu} ref="menu" alignment="right">
                     <div className="menu-content">
                         <MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
                         { this.props.navItems.map(function(i, index) {
@@ -158,28 +176,18 @@ var App = React.createClass({
 });
 
 var Menu = React.createClass({
-    getInitialState: function() {
-        return {
-            visible: false  
-        };
-    },
-
-    show: function() {
-        this.setState({ visible: true });
-        document.getElementById("m-overlay").addEventListener("click", this.hide);
-    },
-
-    hide: function() {
-        document.removeEventListener("click", this.hide);
-        this.setState({ visible: false });
+    hideMenu: function() {
+        store.dispatch({
+          type: 'HideMenu'
+        });
     },
 
     render: function() {
         return (
             <div>
-                <div id="m-overlay" className={(this.state.visible ? "menu-page-overlay active" : "menu-page-overlay")}></div>
+                <div onClick={this.hideMenu} id="m-overlay" className={(this.props.displayMenu ? "menu-page-overlay active" : "menu-page-overlay")}></div>
                 <div className="menu">
-                    <div className={(this.state.visible ? "visible " : "") + this.props.alignment}>{this.props.children}</div>
+                    <div className={(this.props.displayMenu ? "visible " : "") + this.props.alignment}>{this.props.children}</div>
                 </div>
             </div>
         );
@@ -204,8 +212,8 @@ var MenuHeader = React.createClass({
 var MenuItem = React.createClass({
     navigate: function(id) {
         store.dispatch({
-          type: 'NAV',
-          data: {currentPage: id}
+          type: 'GoToPage',
+          data: {currentPage: id, displayMenu: false}
         });
     },
 
