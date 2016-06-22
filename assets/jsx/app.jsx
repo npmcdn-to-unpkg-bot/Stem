@@ -4,6 +4,8 @@ var connect = ReactRedux.connect;
 
 const initialState = {
     isLoggedIn: false,
+    displayMenu: false,
+    displayFilterMenu: false,
     navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal', 'Logout'],
     currentPage: 0
 };
@@ -14,23 +16,47 @@ var reducer = function(state, action) {
   }
   var newState = state;
   switch(action.type) {
-    case 'SIGNIN':
-        console.log('SIGNIN');
+    case 'SignIn':
+        console.log('SignIn');
         state.isLoggedIn = true;
         console.log('state = ' + JSON.stringify(state));
         //mapStateToProps();
         return state;
 
-    case 'SIGNOUT':
-        console.log('SIGNOUT');
+    case 'SignOut':
+        console.log('SignOut');
         state.isLoggedIn = false;
         console.log('state = ' + JSON.stringify(state));
         return state;
 
-    case 'NAV':
-        console.log('NAV');
+    case 'ShowMenu':
+        console.log('ShowMenu');
+        newState = Object.assign({}, state, {displayMenu: true});
+        console.log('newState = ' + JSON.stringify(newState));
+        return newState;
+
+    case 'HideMenu':
+        console.log('HideMenu');
+        newState = Object.assign({}, state, {displayMenu: false});
+        console.log('newState = ' + JSON.stringify(newState));
+        return newState;
+
+    case 'GoToPage':
+        console.log('GoToPage');
         console.log('action.data = ' + JSON.stringify(action.data));
-        newState = Object.assign({}, state, {currentPage: action.data.currentPage});
+        newState = Object.assign({}, state, {currentPage: action.data.currentPage, displayMenu: false});
+        console.log('newState = ' + JSON.stringify(newState));
+        return newState;
+
+    case 'ShowFilterMenu':
+        console.log('ShowFilterMenu');
+        newState = Object.assign({}, state, {displayFilterMenu: true});
+        console.log('newState = ' + JSON.stringify(newState));
+        return newState;
+
+    case 'HideFilterMenu':
+        console.log('HideFilterMenu');
+        newState = Object.assign({}, state, {displayFilterMenu: false});
         console.log('newState = ' + JSON.stringify(newState));
         return newState;
 
@@ -46,31 +72,36 @@ var store = createStore(reducer, initialState);
 var AppState = function(state) {
   return {
         isLoggedIn: state.isLoggedIn,
+        displayMenu: state.displayMenu,
+        displayFilterMenu: state.displayFilterMenu,
         navItems: state.navItems,
         currentPage: state.currentPage
     }
 }
 
-var AppDispatch = function(dispatch) {
-  return {
-    NAV: function(id) {
-        console.log('dispatched');
-        dispatch({
-            pageID: id
-        })
-    }
-  }
-}
+
+//var AppDispatch = function(dispatch) {
+//return {
+//GoToPage: function(id) {
+//console.log('dispatched');
+//dispatch({
+//pageID: id
+//})
+//}
+//}
+//}
 
 var App = React.createClass({
     showMenu: function() {
-        this.refs.menu.show();
+        store.dispatch({
+          type: 'ShowMenu'
+        });
     },
 
     navigate: function(id) {
         console.log('navigate. id = ' + id);
         store.dispatch({
-          type: 'NAV',
+          type: 'GoToPage',
           data: {currentPage: id}
         });
     },
@@ -83,7 +114,7 @@ var App = React.createClass({
                 <nav className="header">
                     <div className="header-content">
                         <div className="header-brand pull-left">         
-                            <a className="brand">
+                            <a onClick={this.navigate.bind(this, 0)} className="brand">
                                 Stem
                             </a>
                         </div>
@@ -98,7 +129,7 @@ var App = React.createClass({
                     </div> 
                 </nav>
 
-                <Menu ref="menu" alignment="right">
+                <Menu displayMenu={this.props.displayMenu} alignment="right">
                     <div className="menu-content">
                         <MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
                         { this.props.navItems.map(function(i, index) {
@@ -106,8 +137,6 @@ var App = React.createClass({
                         })}   
                     </div>
                 </Menu>
-
-                <FilterNav />
 
                 <div className="wrapper">
                     { this.props.currentPage == 0 ?
@@ -124,12 +153,14 @@ var App = React.createClass({
                     
                     { this.props.currentPage == 2 ?
                         <div>
+                            <FilterNav displayFilterMenu={this.props.displayFilterMenu} />
                             <ArtistProfile />
                         </div>
                     : null} 
                     
                     { this.props.currentPage == 3 ?
                         <div>
+                            <FilterNav displayFilterMenu={this.props.displayFilterMenu} />
                             <SongList />
                         </div>
                     : null} 
@@ -142,6 +173,7 @@ var App = React.createClass({
 
                     { this.props.currentPage == 5 ?
                         <div>
+                            <FilterNav displayFilterMenu={this.props.displayFilterMenu} />
                             <ArtistSearch />
                         </div>
                     : null} 
@@ -158,28 +190,18 @@ var App = React.createClass({
 });
 
 var Menu = React.createClass({
-    getInitialState: function() {
-        return {
-            visible: false  
-        };
-    },
-
-    show: function() {
-        this.setState({ visible: true });
-        document.getElementById("m-overlay").addEventListener("click", this.hide);
-    },
-
-    hide: function() {
-        document.removeEventListener("click", this.hide);
-        this.setState({ visible: false });
+    hideMenu: function() {
+        store.dispatch({
+          type: 'HideMenu'
+        });
     },
 
     render: function() {
         return (
             <div>
-                <div id="m-overlay" className={(this.state.visible ? "menu-page-overlay active" : "menu-page-overlay")}></div>
+                <div onClick={this.hideMenu} id="m-overlay" className={(this.props.displayMenu ? "menu-page-overlay active" : "menu-page-overlay")}></div>
                 <div className="menu">
-                    <div className={(this.state.visible ? "visible " : "") + this.props.alignment}>{this.props.children}</div>
+                    <div className={(this.props.displayMenu ? "visible " : "") + this.props.alignment}>{this.props.children}</div>
                 </div>
             </div>
         );
@@ -204,140 +226,14 @@ var MenuHeader = React.createClass({
 var MenuItem = React.createClass({
     navigate: function(id) {
         store.dispatch({
-          type: 'NAV',
-          data: {currentPage: id}
+          type: 'GoToPage',
+          data: {currentPage: id, displayMenu: false}
         });
     },
 
     render: function() {
         return (
             <div onClick={this.navigate.bind(this, this.props.meunItemID)} id={this.props.meunItemID} className={this.props.meunItemID == this.props.currentPage ? "menu-item active" : "menu-item"}>{this.props.children}</div>
-        );
-    }
-});
-
-
-var FilterNav = React.createClass({
-    getInitialState: function() {
-        return {
-            filterWidth: 0,
-            filterUlWidth: 0
-        }
-    },
-    
-    componentDidMount: function() {
-        return {
-            windowWidth: window.innerWidth,
-            filterCount: $('.filter-nav ul li').length,
-            filterWidth: $('.filter-nav ul li').width(),
-            filterUlWidth: this.state.filterCount * this.state.filterWidth
-        };
-    },
-    
-    moveLeft: function() {
-        $('.filter-nav ul').animate({
-            left: + this.state.filterWidth
-        }, 200, function () {
-            $('.filter-nav ul li:last-child').prependTo('.filter-nav ul');
-            $('.filter-nav ul').css('left', '');
-        });
-    },
-
-    moveRight: function() {
-        $('.filter-nav ul').animate({
-            left: - this.state.filterWidth
-        }, 200, function () {
-            $('.filter-nav ul li:first-child').appendTo('.filter-nav ul');
-            $('.filter-nav ul').css('left', '');
-        });
-    },
-        
-    showFilterMenu: function() {
-        this.refs.filterMenu.show();
-    },
-    
-    hideFilterMenu: function() {
-        this.refs.filterMenu.hide();
-    },
-    
-    render: function() {
-        return (
-            <div>
-                <div className="filter-nav" style={this.state.slideWidth > 0 ? {width: this.state.filterWidth + 'px'} : null}>
-                    <a onClick={this.moveRight} className="control_next">&gt;</a>
-                    <a onClick={this.moveLeft} className="control_prev">&lt;</a>
-                    <ul style={this.state.filterUlWidth > 0 ? {width: this.state.filterUlWidth, marginLeft: -this.state.filterWidth} : null}>
-                        <li onClick={this.showFilterMenu} className="filter-link">a</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">b</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">c</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">d</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">e</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">f</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">a</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">b</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">c</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">d</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">e</li>
-                        <li onClick={this.showFilterMenu} className="filter-link">f</li>
-                    </ul>
-                </div>
-                <FilterMenu ref="filterMenu">
-                    <div className="filter-menu-content">
-                        <div className="filter-menu-header">
-                            Select Genres 
-                        </div>
-                        <FilterItem filterId="1">Filter One</FilterItem>
-                        <FilterItem filterId="2">Filter Two</FilterItem>
-                        <FilterItem filterId="3">Filter Three</FilterItem>
-                        <FilterItem filterId="4">Filter Four</FilterItem>
-                    </div>
-                    <div className="filter-menu-footer">
-                        <a onClick={this.hideFilterMenu}>Apply Filters</a>
-                    </div>
-                </FilterMenu>
-            </div>
-        );
-    }
-
-});
-
-var FilterMenu = React.createClass({
-    getInitialState: function() {
-        return {
-            visible: false  
-        };
-    },
-
-    show: function() {
-        this.setState({ visible: true });
-        document.getElementById("f-overlay").addEventListener("click", this.hide);
-    },
-
-    hide: function() {
-        document.removeEventListener("click", this.hide);
-        this.setState({ visible: false });
-    },
-
-    render: function() {
-        return (
-            <div>
-                <div id="f-overlay" className={(this.state.visible ? "filter-page-overlay active" : "filter-page-overlay")}></div>
-                <div className="filter-menu">
-                    <div className={this.state.visible ? "visible " : ""}>{this.props.children}</div>
-                </div>
-            </div>
-        );
-    }
-});
-
-var FilterItem = React.createClass({
-    toggleFilter: function(filterId) {
-        
-    },
-
-    render: function() {
-        return (
-            <div className={this.props.active ? "filter-item active" : "filter-item"} onClick={this.toggleFilter.bind(this, this.props.filterId)}>{this.props.children}</div>
         );
     }
 });

@@ -4,7 +4,6 @@
   height: 370px;
   background-image: url('https://pixabay.com/static/uploads/photo/2015/05/15/14/31/amplifier-768536_960_720.jpg');
   position: absolute; 
-  margin-top: 60px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
@@ -61,7 +60,6 @@
   background: rgb(80, 227, 194);
   opacity: .15;
   position: absolute;
-  margin-top: 60px;
   z-index: 2;
 }
 /*mobile*/

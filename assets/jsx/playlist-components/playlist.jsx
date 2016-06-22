@@ -5,7 +5,6 @@ var SongList = React.createClass({
 		
 		return (
 			<div>
-				<ArtistNavBar />
 				<PlaylistHeader />
 				<PlaylistTable />
 				<PlaylistMobileView />
