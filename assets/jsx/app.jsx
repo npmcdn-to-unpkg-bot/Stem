@@ -2,7 +2,7 @@ var App = React.createClass({
     getInitialState: function() {
         return { 
 			focused: 0,
-			items: ['Home', 'Login', 'Musicians', 'Creators', 'Blog', 'Contact', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Logout'],
+			items: ['Home', 'Login', 'Musicians', 'Creators', 'Blog', 'Contact', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal', 'Logout'],
 			displayLoginPage: false
 		};
     },
@@ -30,7 +30,7 @@ var App = React.createClass({
 		} else {
 			this.setState({displayLoginPage: false});
 		}
-		if(index == 11) {
+		if(index == 12) {
 			sessionStorage.clear();
 		}
 		this.setBackground();
@@ -150,6 +150,12 @@ var App = React.createClass({
 					{ this.state.focused == 10 ?
 						<div>
 							<ArtistSearch />
+						</div>
+					: null}
+
+					{ this.state.focused == 11 ?
+						<div>
+							<ArtistInternal />
 						</div>
 					: null}
 				</div>
