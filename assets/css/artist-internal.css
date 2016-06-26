@@ -1,0 +1,187 @@
+/*-- Artist Internal -- */
+.artist-internal-wrapper-fluid {
+  background-color: white;
+  text-align: left;
+  color: #9B9B9B;
+  position: absolute; 
+}
+  .artist-internal-sidebar-wrapper {
+    background-color: #FAFAFA;
+    margin-right: 30px;
+  }
+
+  .artist-internal-download-count {
+    font-family: 'roboto-light';
+    border-bottom: 1px solid lightgrey;
+    padding: 30px 0;
+  }
+  .artist-internal-download-count h3 {
+    font-family: 'roboto-medium';
+    margin-bottom: 15px;
+  }
+  .artist-internal-download-count span {
+    color: #9B9B9B;
+  }
+  .artist-internal-download-count h2 {
+    color: #50E3C2;
+    margin-top: -10px;
+  }
+  .artist-internal-play-count {
+    padding-top: 20px;
+    font-family: 'roboto-light';
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 30px;
+  }
+  .artist-internal-play-count h3 {
+    font-family: 'roboto-medium';
+    margin-bottom: 15px;
+  }
+  .artist-internal-play-count h2 {
+    color: #50E3C2;
+    margin-top: -10px;
+  }
+  .artist-internal-play-count span {
+    color: #9B9B9B;
+  }
+  .artist-internal-top-interest-img {
+    width: 60px;
+    border-radius: 50%;
+  }
+  .artist-internal-top-interest {
+    font-family: 'roboto-light';
+    padding: 20px 0;
+    border-bottom: 1px solid lightgrey;
+  }
+  .artist-internal-top-interest h3 {
+    font-family: 'roboto-medium';
+    margin-bottom: 20px;
+  }
+  .artist-internal-top-interest span {
+    color: #9B9B9B;
+  }
+    .artist-internal-top-interest li {
+      margin: 5px 0 5px -15px;
+      padding: 0;
+    }
+      .artist-internal-top-interest li h4 {
+        margin-top: 15px;
+      }
+  .artist-internal-top-regions {
+    padding-top: 20px;
+  } 
+    .artist-internal-top-regions span {
+      color: #9B9B9B;
+    } 
+    .artist-internal-top-regions h3 {
+      margin-bottom: 20px;
+    }  
+    .artist-internal-top-regions h4 {
+      font-family: 'roboto-light';
+      margin-bottom: 10px;
+    }
+    .artist-internal-top-regions li {
+      margin: 10px 0 10px -25px;
+    } 
+.pull-right {
+  float: right !important;
+}  
+@media (max-width: 768px) {
+  .artist-internal-wrapper p {
+    text-align: left;
+  }
+  .artist-internal-top-interest h4 {
+    margin-top: 15px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+}
+/*-- Artist Upload --*/
+.artist-internal-greeting {
+  margin: 25px 0;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .artist-upload-wrapper {
+    display: none;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .artist-internal-greeting {
+    margin margin-left: 25px;
+  }
+}
+.artist-upload-wrapper {
+  border: 1px solid lightgrey;
+  padding: 20px;
+  margin-left: 20px;
+  background-color: white;
+  filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+  -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+  font-family: 'roboto-light';
+}
+  .artist-upload-wrapper h3 {
+    color: #50E3C2;
+  }
+  .artist-upload-wrapper a {
+    color: #50E3C2;
+  }
+.artist-upload-drop {
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px dashed lightgrey;
+  text-align: center;
+}
+.artist-upload-up {
+  color: #9B9B9B;
+}
+.artist-upload p {
+  margin: 20px 0 2px 0;
+}
+.artist-add-artist-link {
+  margin-top: 8px;
+}
+.artist-upload-input {
+  height: 50px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+}
+.artist-upload-btn {
+  height: 50px;
+  margin: 30px 0;
+  border-radius: 0;
+  color: white;
+  background-color: #50E3C2;
+  filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+  -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+}
+  .artist-upload-btn:hover {
+    background-color: rgba(80, 227, 194, 0.1);
+    color: white;
+  } 
+
+/*-- Artist Internal Library --*/
+.artist-internal-library-wrapper {
+  font-family: 'roboto-light';
+  position: relative;
+  margin: 40px 0 50px 0;
+}
+ .artist-internal-library-wrapper h3 {
+  font-family: 'roboto-medium';
+ } 
+.artist-internal-library-wrapper thead th {
+  padding: 10px;
+  background-color: rgba(80, 227, 194, 0.1);
+  border-top: 1px solid lightgrey;
+}
+  .artist-internal-library-table {
+    margin-bottom: 80px;
+  }
+  .artist-internal-library-header {
+    margin-bottom: 40px;
+  }
+  .artist-internal-library-table-header {
+    padding: 10px 0;
+  }
+  .artist-internal-library-table td {
+    padding: 20px 10px;
+    border-bottom: 1px solid lightgrey;
+  }

@@ -2,39 +2,38 @@ var ArtistInternalSideBar = React.createClass({
   render: function () {
     var self = this;
     return (
-      <div className="artist-internal-sidebar-wrapper col-sm-4 col-md-4 col-lg-3">
-        <div className="artist-internal-download-count col-sm-12 col-md-12 col-lg-12">
+      <div className="artist-internal-sidebar-wrapper row no-gutters col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <div className="artist-internal-download-count col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <h3>Download Count <small><span className="glyphicon glyphicon-chevron-right pull-right"></span></small></h3>
           <p>For current month</p>
           <h2>5,062</h2>
         </div>
-        <div className="artist-internal-play-count col-sm-12 col-md-12 col-lg-12">
+        <div className="artist-internal-play-count col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <h3>Play Count <small><span className="glyphicon glyphicon-chevron-right pull-right"></span></small></h3>
           <p>For the current month</p>
           <h2>20,662</h2>
         </div>
         <div className="artist-internal-top-interest col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <h3>Top Interest <small><span className="glyphicon glyphicon-chevron-right pull-right"></span></small></h3>
-          <ul className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <li className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul className="">
+            <li className="col-xs-12">
               <div className="col-xs-3 col-sm-4 col-md-4 col-lg-4">
                 <img className="artist-internal-top-interest-img " src="https://pbs.twimg.com/media/CI7uacEUkAACUnZ.jpg" />
               </div>
               <h4 className="col-xs-8 col-sm-8 col-md-8 col-lg-8">Daniele DeHart</h4>
             </li>
-            <li className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <li className="col-xs-12">
               <div className="col-xs-3 col-sm-4 col-md-4 col-lg-4">
                 <img className="artist-internal-top-interest-img " src="https://pbs.twimg.com/media/CI7uacEUkAACUnZ.jpg" />
               </div>
               <h4 className="col-xs-8 col-sm-8 col-md-8 col-lg-8">Daniele DeHart</h4>
             </li>
-            <li className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <li className="col-xs-12">
               <div className="col-xs-3 col-sm-4 col-md-4 col-lg-4">
                 <img className="artist-internal-top-interest-img " src="https://pbs.twimg.com/media/CI7uacEUkAACUnZ.jpg" />
               </div>
               <h4 className="col-xs-8 col-sm-8 col-md-8 col-lg-8">Daniele DeHart</h4>
             </li>
-
           </ul>
         </div> 
         <div className="artist-internal-top-regions col-xs-12 col-sm-12 col-md-12  col-lg-12">

@@ -5,7 +5,6 @@ var PlaylistHeader = React.createClass({
 
     return (
       <div className="playlist-header-wrapper-fluid">
-      <div className="playlist-header-overlay"></div>
         <div className="playlist-header-banner col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul>
             <li><h1 className="playlist-header-header">Top of Rock</h1></li>

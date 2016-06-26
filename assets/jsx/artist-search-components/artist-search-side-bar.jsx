@@ -4,8 +4,8 @@ var ArtistSearchSideBar = React.createClass({
     var self = this;
 
     return (
-      <div className="artist-search-wrapper row">
-        <div className="artist-search-side-bar-wrapper col-xs-12 col-md-3 col-lg-3">
+      <div className="artist-search-wrapper">
+        <div className="artist-search-side-bar-wrapper col-xs-12 col-sm-3 col-md-3 col-lg-2">
           <ul className="artist-search-tags-list col-md-12 col-lg-12">
             <li><button className="btn artist-search-tags"><h4>Rock and Roll <span className="glyphicon glyphicon-remove-circle"></span></h4></button></li>
             <li><button className="btn artist-search-tags"><h4>Female Vocals <span className="glyphicon glyphicon-remove-circle"></span></h4></button></li>
