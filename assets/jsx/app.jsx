@@ -142,6 +142,7 @@ var App = React.createClass({
                     { this.props.currentPage == 0 ?
                         <h1>
                             {this.props.isLoggedIn ? "hello world" : "goodbye world"}
+                            <i className="icon-note"></i>
                         </h1>
                     : null}
                     
