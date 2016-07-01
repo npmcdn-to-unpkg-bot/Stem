@@ -373,25 +373,30 @@
   .artist-internal-top-interest-wrapper h3 {
     text-align: left;
   }
-.artist-internal-top-interest-img {
+.artist-internal-analytics-top-interest-img {
   width: 150px;
   border-radius: 50%;
+  margin-left: -10px;
+  position: absolute;
 }
-  .artist-internal-top-interest-img:hover {
+  .artist-internal-analytics-top-interest-img:hover {
     width: 220px;
-    /*margin-bottom: -40px;*/
-    /*padding-bottom: 40px;*/
+    margin-top: -35px;
+    margin-left: -35px;
   }
-.artist-internal-top-interest-list {
-  margin: 40px 0;
+.artist-internal-analytics-top-interest-list {
+  margin: 40px 0 80px -80px;
+  overflow: visible;
+  position: relative;
 }    
-  .artist-internal-top-interest-list li {
+  .artist-internal-analytics-top-interest-list li {
     display: inline-block;
-    margin: 0 20px;
-    text-align: center;
+    margin: 0 0px;
   }
   .artist-internal-top-interest-detail {
-    margin-top: 30px;
+    margin-top: 175px;
+    margin-left: 140px;
+    /*text-align: center;*/
   }
 
 
