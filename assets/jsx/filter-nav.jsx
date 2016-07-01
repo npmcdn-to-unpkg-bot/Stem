@@ -17,16 +17,16 @@ var FilterNav = React.createClass({
                 <div className="filter-nav">
                     <ul className="filter-nav-list">
                         <div className="internal col-sm-6 col-md-6 col-lg-6 row-fluid artist-navBar-icon-width">
-                            <li><a onClick={this.showFilterMenu}><span className="glyphicon navIcon glyphicon-headphones col-sm-3 col-md-3 col-lg-3 fa-2x"></span></a></li>
-                            <li><a onClick={this.showFilterMenu}><span className="glyphicon navIcon glyphicon-heart col-sm-3 col-md-3 col-lg-3 fa-2x"></span></a></li>
-                            <li><a onClick={this.showFilterMenu}><span className="artist-navBar-icons col-sm-3 col-md-3 col-lg-3 fa-4x">,</span></a></li>
-                            <li><a onClick={this.showFilterMenu}><span className="artist-navBar-icons col-sm-3 col-md-3 col-lg-3 fa-4x">5</span></a></li>
+                            <li><a onClick={this.showFilterMenu}><i className="icon-soundcloud"></i></a></li>
+                            <li><a onClick={this.showFilterMenu}><i className="icon-heart"></i></a></li>
+                            <li><a onClick={this.showFilterMenu}><i className="icon-flow-branch"></i></a></li>
+                            <li><a onClick={this.showFilterMenu}><i className="icon-user-pair"></i></a></li>
                         </div>
                         <div className="internal col-sm-6 col-md-6 col-lg-6 row-fluid artist-navBar-icon-width">
-                            <li><a onClick={this.showFilterMenu}><span className="artist-navBar-icons col-sm-3 col-md-3 col-lg-3 fa-4x">,</span></a></li>
-                            <li><a onClick={this.showFilterMenu}><span className="glyphicon navIcon glyphicon-music col-sm-3 col-md-3 col-lg-3 fa-2x"></span></a></li>
-                            <li><a onClick={this.showFilterMenu}><span className="artist-navBar-icons col-sm-3 col-md-3 col-lg-3 fa-4x">.</span></a></li>
-                            <li><a onClick={this.showFilterMenu}><span className="glyphicon navIcon glyphicon-list-alt col-sm-3 col-md-3 col-lg-3 fa-2x"></span></a></li>
+                            <li><a onClick={this.showFilterMenu}><i className="icon-note"></i></a></li>
+                            <li><a onClick={this.showFilterMenu}><i className="icon-users"></i></a></li>
+                            <li><a onClick={this.showFilterMenu}><i className="icon-user"></i></a></li>
+                            <li><a onClick={this.showFilterMenu}><i className="icon-list"></i></a></li>
                         </div>
                     </ul>
                 </div>
