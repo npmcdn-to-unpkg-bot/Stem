@@ -4,7 +4,7 @@ var ArtistUpload = React.createClass({
             visible: false  
         };
     },
-    onClick: function() {
+    uploadFormToggle: function() {
       if ( this.state.visible == false) {
         this.setState({ visible: true });
       } else {
@@ -16,7 +16,7 @@ var ArtistUpload = React.createClass({
     var self = this;
     return (
       <div className="artist-upload-wrapper col-sm-7 col-md-7 col-lg-8">
-        <a onClick={this.onClick}><h3><span className="glyphicon glyphicon-headphones"></span> Upload your work <span className={(this.state.visible ? "glyphicon glyphicon-chevron-up artist-upload-up pull-right" : "glyphicon glyphicon-chevron-down artist-upload-up pull-right")}></span></h3></a>
+        <a onClick={this.uploadFormToggle}><h3><span className="glyphicon glyphicon-headphones"></span> Upload your work <span className={(this.state.visible ? "glyphicon glyphicon-chevron-up artist-upload-up pull-right" : "glyphicon glyphicon-chevron-down artist-upload-up pull-right")}></span></h3></a>
         { this.state.visible ? <ArtistUploadForm /> : null}
       </div>
     )

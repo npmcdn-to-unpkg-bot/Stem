@@ -8,6 +8,7 @@
   .artist-internal-sidebar-wrapper {
     background-color: #FAFAFA;
     margin-right: 30px;
+    padding-bottom: 100%;
   }
 
   .artist-internal-download-count {
@@ -84,10 +85,12 @@
     } 
 .pull-right {
   float: right !important;
-}  
+}
+/*mobile  */
 @media (max-width: 768px) {
-  .artist-internal-wrapper p {
+  .artist-internal-sidebar-wrapper p {
     text-align: left;
+    padding-bottom: 0;
   }
   .artist-internal-top-interest h4 {
     margin-top: 15px;
@@ -185,3 +188,211 @@
     padding: 20px 10px;
     border-bottom: 1px solid lightgrey;
   }
+
+  /*-- Artist Internal Graph --*/
+  .artist-internal-analyitics-download-wrapper {
+    font-family: 'roboto';
+    padding: 40px 0 0 0;
+    background-color: white;
+    /*height: 100vh;*/
+    border-bottom: 1px solid lightgrey;
+
+  }
+    .artist-internal-analyitics-download-wrapper p {
+      color: #9B9B9B;
+      margin-top: 15px;
+    }
+  .artist-internal-analyitics-download-header h4 {
+    text-align: right;
+  }  
+  .graph-bar {
+    stroke: rgba(80, 227, 194, 0.4);
+    stroke-width: 200;
+  }
+  .bar-svg {
+    width: 100%;
+  }
+  .bar-svg li {
+    position: relative;
+    display: inline-block;
+    height: 200px;
+    transform: rotate(180deg);
+  }
+    .bar-svg svg {
+      width: 100px;
+    }
+    .bar-labels {
+      position: absolute;
+      padding-top: 130px; 
+      z-index: 99;
+      color: white;
+    }
+      .bar-labels li {
+        display: inline-block;
+        padding: 24px;
+      }
+.graph-content-wrapper {
+  position: relative;
+  white-space: nowrap;
+}
+.bar-graph-background-wrapper {
+  margin-top: 60px;
+  max-width: 900px;
+  height: 280px;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 99;
+  padding-left: 0;
+}  
+  .bar-graph-background-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .bar-graph-background {
+    position: absolute;
+    width: 100%;
+    z-index: -999;
+  }
+  .bar-graph-background-panels {
+    height: 50px;
+    padding-left: 0;
+    background-color: #FAFAFA;
+    opacity: .7;
+  }
+  .bar-graph-background-panels-light {
+    height: 50px;
+    background-color: #FAFAFA;
+    opacity: .5;
+  }
+  .artist-internal-download-label {
+    transform: rotate(270deg);
+    position: relative;
+    margin-top: 120px;
+
+  }
+  .artist-internal-analyitics-download-value-labels {
+    margin-top: 15px;
+    margin-right: 15px;
+    text-align: right;
+    color: #9B9B9B;
+  }
+    .artist-internal-analyitics-download-value-labels li {
+      line-height: 50px;
+      float: right;
+    }
+/*desktop*/
+@media (min-width: 993px) and (max-width: 1199px) {
+  .artist-internal-analyitics-download-wrapper {
+    padding: 40px 40px 0;
+  }
+  .graph-content-wrapper {
+    min-width: 897px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+/*  .bar-svg svg {
+      width: 80px;
+  }*/
+}
+/*-- Plays Graph--*/
+.artist-internal-analytics-plays-wrapper {
+  background-color: white;
+  padding-top: 40px;
+  border-bottom: 1px solid lightgrey;
+  /*margin-bottom: 20px;*/
+  text-align: left;
+}
+  .artist-internal-analytics-plays-wrapper h4 {
+    text-align: right;
+  }
+.line-chart-wrapper {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  /*margin-left: 15px;*/
+  height: 100%;
+}
+  #line-chart-svg {
+    filter: FlipH;
+    transform: scaleY(-1);
+
+  }
+.line-graph-grid-wrapper {
+  width: 900px;
+}
+  .line-chart {
+    stroke: rgba(80, 227, 194, 0.4);
+    stroke-width: 3;
+    fill: none;
+  }
+  .line-graph-grid {
+    height: 58px;
+    border: 1px dashed lightgrey;
+    opacity: .5;
+  }
+  .line-graph-grid-columns-wrapper {
+    position: absolute;
+  }
+  .line-graph-grid-rows-wrapper {
+    position: absolute;
+    width: 900px;
+
+  }
+    .line-graph-grid-columns {
+      width: 75px;
+      height: 290px;
+      border: 1px dashed lightgrey;
+      display: inline-block;
+      opacity: .5;
+    }
+    .line-graph-grid-months {
+      margin-left: -15px;
+      margin-top: 10px;
+    }
+      .line-graph-grid-months li {
+        display: inline-block;
+        color: #9B9B9B;
+        padding: 0 38px 50px 0;
+      }
+  .artist-internal-analyitics-plays-value-labels {
+    margin-top: 10px;
+    padding: 0;
+    color: #9B9B9B;
+  }
+  .artist-internal-analyitics-plays-value-labels li {
+    line-height: 60px;
+    float: right;
+  }
+/*-- Artist Analytics Top Interests --*/
+.artist-internal-top-interest-wrapper {
+  background-color: white;
+  padding-top: 40px;
+}
+  .artist-internal-top-interest-wrapper h4 {
+    text-align: right;
+  }
+  .artist-internal-top-interest-wrapper h3 {
+    text-align: left;
+  }
+.artist-internal-top-interest-img {
+  width: 150px;
+  border-radius: 50%;
+}
+  .artist-internal-top-interest-img:hover {
+    width: 220px;
+    /*margin-bottom: -40px;*/
+    /*padding-bottom: 40px;*/
+  }
+.artist-internal-top-interest-list {
+  margin: 40px 0;
+}    
+  .artist-internal-top-interest-list li {
+    display: inline-block;
+    margin: 0 20px;
+    text-align: center;
+  }
+  .artist-internal-top-interest-detail {
+    margin-top: 30px;
+  }
+
+
+
