@@ -4,6 +4,7 @@ var connect = ReactRedux.connect;
 
 const initialState = {
     isLoggedIn: false,
+    authToken: '',
     displayMenu: false,
     displayFilterMenu: false,
     navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal', 'Artist Analytics', 'Logout'],
@@ -16,18 +17,15 @@ var reducer = function(state, action) {
   }
   var newState = state;
   switch(action.type) {
-    case 'SignIn':
-        console.log('SignIn');
-        state.isLoggedIn = true;
-        console.log('state = ' + JSON.stringify(state));
+    case 'UpdateLoginStatus':
+        console.log('UpdateLoginStatus');
+        newState = Object.assign({}, state, {
+            isLoggedIn: action.data.isLoggedIn, 
+            authToken: action.data.authToken
+        });
+        console.log('newState = ' + JSON.stringify(newState));
         //mapStateToProps();
-        return state;
-
-    case 'SignOut':
-        console.log('SignOut');
-        state.isLoggedIn = false;
-        console.log('state = ' + JSON.stringify(state));
-        return state;
+        return newState;
 
     case 'ShowMenu':
         console.log('ShowMenu');
@@ -72,6 +70,7 @@ var store = createStore(reducer, initialState);
 var AppState = function(state) {
   return {
         isLoggedIn: state.isLoggedIn,
+        authToken: state.authToken,
         displayMenu: state.displayMenu,
         displayFilterMenu: state.displayFilterMenu,
         navItems: state.navItems,
@@ -110,87 +109,95 @@ var App = React.createClass({
         var currentPage = this.props.currentPage;
         
         return (
-            <div>               
-                <nav className="header">
-                    <div className="header-content">
-                        <div className="header-brand pull-left">         
-                            <a onClick={this.navigate.bind(this, 0)} className="brand">
-                                Stem
-                            </a>
-                        </div>
-                        <div className="nav header-nav header-right pull-right">
-                            <a className="glyphicon glyphicon-search"></a>
-                            <a className="glyphicon glyphicon-th-list"></a>
-                            <a className="glyphicon glyphicon-bell"></a>
-                            <a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span className="glyphicon glyphicon-menu-hamburger"></span>
-                            </a>                 
-                        </div> 
-                    </div> 
-                </nav>
+            <div> 
+                { this.props.isLoggedIn ?   
+                    <div>   
+                        <nav className="header">
+                            <div className="header-content">
+                                <div className="header-brand pull-left">         
+                                    <a onClick={this.navigate.bind(this, 0)} className="brand">
+                                        Stem
+                                    </a>
+                                </div>
+                                <div className="nav header-nav header-right pull-right">
+                                    <a className="glyphicon glyphicon-search"></a>
+                                    <a className="glyphicon glyphicon-th-list"></a>
+                                    <a className="glyphicon glyphicon-bell"></a>
+                                    <a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span className="glyphicon glyphicon-menu-hamburger"></span>
+                                    </a>                 
+                                </div> 
+                            </div> 
+                        </nav>
 
-                <Menu displayMenu={this.props.displayMenu} alignment="right">
-                    <div className="menu-content">
-                        <MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
-                        { this.props.navItems.map(function(i, index) {
-                            return <MenuItem hash={i} meunItemID={index} currentPage={currentPage}>{i}</MenuItem>
-                        })}   
+                        <Menu displayMenu={this.props.displayMenu} alignment="right">
+                            <div className="menu-content">
+                                <MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
+                                { this.props.navItems.map(function(i, index) {
+                                    return <MenuItem hash={i} meunItemID={index} currentPage={currentPage}>{i}</MenuItem>
+                                })}   
+                            </div>
+                        </Menu>
+
+                        <div className="wrapper">
+                            { this.props.currentPage == 0 ?
+                                <div>
+                                    <h1>
+                                        {this.props.isLoggedIn ? "Thanks for logging in!" : "Opps, how'd you get here?!"}
+                                        <i className="icon-note"></i>
+                                    </h1>
+                                </div>
+                            : null}
+                            
+                            { this.props.currentPage == 1 ?
+                                <div>
+                                    <CreatorProfile />
+                                </div>
+                            : null} 
+                            
+                            { this.props.currentPage == 2 ?
+                                <div>
+                                    <FilterNav displayFilterMenu={this.props.displayFilterMenu} />
+                                    <ArtistProfile />
+                                </div>
+                            : null} 
+                            
+                            { this.props.currentPage == 3 ?
+                                <div>
+                                    <FilterNav displayFilterMenu={this.props.displayFilterMenu} />
+                                    <SongList />
+                                </div>
+                            : null} 
+                            
+                            { this.props.currentPage == 4 ?
+                                <div>
+                                    <ProfileSettings />
+                                </div>
+                            : null} 
+
+                            { this.props.currentPage == 5 ?
+                                <div>
+                                    <FilterNav displayFilterMenu={this.props.displayFilterMenu} />
+                                    <ArtistSearch />
+                                </div>
+                            : null} 
+
+                            { this.props.currentPage == 6 ?
+                                <div>
+                                    <ArtistInternal />
+                                </div>
+                            : null}
+
+                            { this.props.currentPage == 7 ?
+                                <div>
+                                    <ArtistInternalAnalytics />
+                                </div>
+                            : null} 
+                        </div>
                     </div>
-                </Menu>
-
-                <div className="wrapper">
-                    { this.props.currentPage == 0 ?
-                        <h1>
-                            {this.props.isLoggedIn ? "hello world" : "goodbye world"}
-                            <i className="icon-note"></i>
-                        </h1>
-                    : null}
-                    
-                    { this.props.currentPage == 1 ?
-                        <div>
-                            <CreatorProfile />
-                        </div>
-                    : null} 
-                    
-                    { this.props.currentPage == 2 ?
-                        <div>
-                            <FilterNav displayFilterMenu={this.props.displayFilterMenu} />
-                            <ArtistProfile />
-                        </div>
-                    : null} 
-                    
-                    { this.props.currentPage == 3 ?
-                        <div>
-                            <FilterNav displayFilterMenu={this.props.displayFilterMenu} />
-                            <SongList />
-                        </div>
-                    : null} 
-                    
-                    { this.props.currentPage == 4 ?
-                        <div>
-                            <ProfileSettings />
-                        </div>
-                    : null} 
-
-                    { this.props.currentPage == 5 ?
-                        <div>
-                            <FilterNav displayFilterMenu={this.props.displayFilterMenu} />
-                            <ArtistSearch />
-                        </div>
-                    : null} 
-
-                    { this.props.currentPage == 6 ?
-                        <div>
-                            <ArtistInternal />
-                        </div>
-                    : null}
-
-                    { this.props.currentPage == 7 ?
-                        <div>
-                            <ArtistInternalAnalytics />
-                        </div>
-                    : null} 
-                </div>
+                :
+                    <Login baseAPI="http://52.32.255.104" />  
+                }
             </div>
         );
     }

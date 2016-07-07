@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <meta name="google-SignIn-client_id" content="121745528258-fqreo4vned09p9uf4pu2kkbijr1i1udu.apps.googleusercontent.com">
+        <meta name="google-signin-client_id" content="121745528258-fqreo4vned09p9uf4pu2kkbijr1i1udu.apps.googleusercontent.com">
         
         <!-- Fonts and icons -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
@@ -15,23 +15,24 @@
         <link rel="stylesheet" href="assets/css/artist.css">
 
         <link rel="stylesheet" href="assets/css/nav.css">
-        <link rel="stylesheet" href="login/assets/css/login.css">
+        <link rel="stylesheet" href="assets/css/login.css">
         <link rel="stylesheet" href="assets/css/icons.css">
         <link rel="stylesheet" href="assets/css/style.css">
 
         <link rel="stylesheet" href="assets/css/playlist.css">
         <link rel="stylesheet" href="assets/css/artist-search.css">
         <link rel="stylesheet" href="assets/css/artist-internal.css">
-        <link href="login/assets/css/login.css" rel="stylesheet">
-        <link href="assets/css/style.css" rel="stylesheet">
     </head>
   
     <body>
         <div id="app" class="content-wrapper"></div> 
         
         <!-- JSX Component Files -->
+        <script type="text/jsx" src="assets/jsx/login.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/filter-nav.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/app.jsx"> </script>
+
+        <script type="text/jsx" src="assets/jsx/profilesettings.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/creator-components/creatorprofile.jsx"> </script>
 
         <!-- Artist -->
@@ -63,10 +64,6 @@
         <script type="text/jsx" src="assets/jsx/playlist-components/playlist-header.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/playlist-components/playlist-table.jsx"> </script>
         <script type="text/jsx" src="assets/jsx/playlist-components/playlist-mobile-view.jsx"> </script>
-
-        <script type="text/jsx" src="assets/jsx/songlist.jsx"> </script>
-        <script type="text/jsx" src="assets/jsx/profilesettings.jsx"> </script>
-        <script type="text/jsx" src="login/assets/jsx/login.jsx"> </script>
         
         <!-- Core JS Files -->
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -74,10 +71,10 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
 
         <!-- React -->
-        <!-- The core React library -->
         <script src="http://fb.me/react-0.14.7.js"></script>
         <script src="https://fb.me/react-dom-0.14.7.js"></script>
 
+        <!-- Redux -->
         <script src="https://npmcdn.com/redux@3.0.4/dist/redux.js"></script>
         <script src="https://npmcdn.com/react-redux@4.0.0/dist/react-redux.js"></script>
 
