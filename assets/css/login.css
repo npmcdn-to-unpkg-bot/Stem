@@ -1,0 +1,70 @@
+#bg {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+}
+#bg img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+}
+.login-form {
+    width: 420px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px 40px 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+    opacity: .9;
+}
+
+.error {
+	color: #e55;
+}
+.login-btn .icon {
+    height: 48px;
+    padding: 14px 17px;
+    color: #3C5A98;
+    font-size: 24px;
+    line-height: 24px;
+}
+.abcRioButtonIcon {
+    border-right: 1px solid #ddd;
+    background: #f9f9f9;
+}
+.abcRioButtonLightBlue {
+    width: 65% !important;
+	min-width: 250px;
+	height: 50px;
+    margin: 10px auto;
+	cursor: pointer;
+	border: 1px solid #ddd;
+}
+.input-group .form-control {
+	margin-bottom: 10px;
+}
+.input-group-addon {
+    background-color: transparent;
+    border: none;	
+	font-size: 18px;
+	line-height: 24px;
+    padding-top: 0;
+    padding-right: 10px;
+	padding-bottom: 0;
+	padding-left: 0;
+}
+.input-group-addon .fa {
+	width: 22px;
+}
+.input-group-addon .fa-envelope {
+	font-size: 20px;
+}
+
