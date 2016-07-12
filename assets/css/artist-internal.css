@@ -399,5 +399,18 @@
     /*text-align: center;*/
   }
 
+/*-- Artist Account Setting --*/
+.artist-account-wrapper {
+  width: 100%;
+  margin: 0;
+}
 
+.artist-account-navbar-wrapper  {
+  background-color: #FAFAFA;
+  border: 1px solid black;
+  height: 100%;
+}
+.artist-account-form-content-wrapper {
+  background-color: white;
+}
 

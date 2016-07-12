@@ -7,7 +7,7 @@ const initialState = {
     authToken: '',
     displayMenu: false,
     displayFilterMenu: false,
-    navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal', 'Artist Analytics', 'Logout'],
+    navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal', 'Artist Analytics', 'Artist Account Settings', 'Logout'],
     currentPage: 0
 };
 
@@ -191,6 +191,12 @@ var App = React.createClass({
                             { this.props.currentPage == 7 ?
                                 <div>
                                     <ArtistInternalAnalytics />
+                                </div>
+                            : null}
+
+                            { this.props.currentPage == 8 ?
+                                <div>
+                                    <ArtistAccountSettings />
                                 </div>
                             : null} 
                         </div>
