@@ -421,27 +421,24 @@
   background-color: white;
   height: 1000px;
 }
-/*------------*/
-.account-page-overlay {
-    background: #ccc;
-    bottom: 0;
-    display: none;
-    left: 0;
-    opacity: 0;
-    overflow: hidden;
-    position: fixed;
-    right: 0;
-    top: 0;
-    transition: opacity 0.2s linear 0s;
+
+.artist-account-setting-header {
+  text-align: left;
 }
-.account-page-overlay.active {
-    display: block;
-    opacity: 0.25;
-    transform: translateX(0px);
+.artist-account-setting-upload-wrapper{
+  border: 1px solid black;
+  height: 300px;
 }
-.menu-page-overlay {
-    z-index: 3500;
-}
-.filter-page-overlay {
-    z-index: 1000;
-}
+  .artist-account-setting-profile-img {
+    height: 175px;
+    width: 175px;
+    border-radius: 50%;
+    background-color: red;
+  }
+  .artist-account-setting-profile-banner-img {
+    height: 175px;
+    background-color: yellow;
+  }
+  .account-setting-bio-box {
+    height: 150px;
+  }
