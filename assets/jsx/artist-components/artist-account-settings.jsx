@@ -1,12 +1,10 @@
 var ArtistAccountSettings = React.createClass({
   render: function() {
     return (
-      <div className="artist-account-wrapper">
-        <div className="col-lg-2">
+      <div className="artist-account-wrapper row no-gutters">
+        <div>
           <ArtistAccountNavBar />
-        </div>
-        <div className="artist-account-form-content-wrapper col-lg-10">
-        </div>  
+        </div> 
       </div>
     )
   }

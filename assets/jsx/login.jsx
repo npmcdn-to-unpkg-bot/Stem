@@ -173,7 +173,7 @@ var Login = React.createClass({
             var data = "grant_type=password&username=" + user.UserName + "&password=" + user.Password;
             $.ajax({
                 type: "POST",
-                url: api + '/token',
+                url: api + '/api/Authentication/Login',
 				contentType: "application/x-www-form-urlencoded",
 				accept: "application/json",
 				dataType: 'json',
@@ -191,7 +191,7 @@ var Login = React.createClass({
 		} else {
 			$.ajax({	
 				type: 'POST',
-				url: api + '/api/account/register',
+				url: api + '/api/Authentication/Register',
 				contentType: "application/json; charset=utf-8",
 				dataType: 'json',
 				data: JSON.stringify(user),

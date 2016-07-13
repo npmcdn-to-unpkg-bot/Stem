@@ -1,10 +1,10 @@
 var Content = React.createClass({
     getInitialState: function() {
-        return { 
-			focused: 0,
-			items: ['Home', 'Musicians', 'Creators', 'Blog', 'Contact'],
-			displayLoginPage: false
-		};
+       return { 
+				focused: 0,
+				items: ['Home', 'Musicians', 'Creators', 'Blog', 'Contact'],
+				displayLoginPage: false
+			};
     },
 	
     navClicked: function(index) {

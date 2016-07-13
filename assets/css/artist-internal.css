@@ -401,16 +401,46 @@
 
 /*-- Artist Account Setting --*/
 .artist-account-wrapper {
-  width: 100%;
-  margin: 0;
+  /*width: 100%;*/
 }
 
 .artist-account-navbar-wrapper  {
   background-color: #FAFAFA;
-  border: 1px solid black;
-  height: 100%;
+  margin-top: 15px; 
 }
+  .artist-account-navbar-wrapper li {
+    padding: 15px 0 15px 15px;
+    text-align: left;
+  }
+    .artist-account-navbar-wrapper li:hover {
+      background-color: rgba(255, 255, 255, 0.6);
+      border-right: 5px inset rgb(80, 227, 194);
+    }
 .artist-account-form-content-wrapper {
   background-color: white;
+  height: 1000px;
 }
-
+/*------------*/
+.account-page-overlay {
+    background: #ccc;
+    bottom: 0;
+    display: none;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: opacity 0.2s linear 0s;
+}
+.account-page-overlay.active {
+    display: block;
+    opacity: 0.25;
+    transform: translateX(0px);
+}
+.menu-page-overlay {
+    z-index: 3500;
+}
+.filter-page-overlay {
+    z-index: 1000;
+}
