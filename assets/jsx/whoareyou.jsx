@@ -13,8 +13,8 @@ var WhoAreYou = React.createClass({
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 		        store.dispatch({
-					type: 'GoToPage',
-					data: {currentPage: 4}
+					type: 'UpdateUserRecord',
+					data: {userInfo: response, currentPage: 4}
 		        });
             },
 			error: function(response) {
@@ -42,23 +42,23 @@ var WhoAreYou = React.createClass({
 							<p>Help us customize your experience by letting us know who you are...</p>
 						</div>
 						<div className="row">
-							<div className="col-xs-4">
+							<div className="col-sm-4 pad-l-lg">
 								<span className="spacer">
 									<img onClick={this.handleClick.bind(self, 1)} className="btn btn-circle" src="http://90s411.com/images/office-space-lumbergh.jpg" />
 								</span>
-								<h4>Creator</h4>
+								<h4 className="pad-b-md">Creator</h4>
 							</div>
-							<div className="col-xs-4">
+							<div className="col-sm-4">
 								<span className="spacer">
 									<img onClick={this.handleClick.bind(self, 2)} className="btn btn-circle" src="https://lifeloofah.files.wordpress.com/2016/02/a-stapler.jpg" />
 								</span>
-								<h4>Musician</h4>
+								<h4 className="pad-b-md">Musician</h4>
 							</div>
-							<div className="col-xs-4">
+							<div className="col-sm-4 pad-r-lg">
 								<span className="spacer">
 									<img onClick={this.handleClick.bind(self, 3)} className="btn btn-circle" src="http://gifrific.com/wp-content/uploads/2012/07/michael-bolton-office-space-320x320.gif" />
 								</span>
-								<h4>Manager/Agent</h4>
+								<h4 className="pad-b-md">Manager/Agent</h4>
 							</div>
 						</div>
 					</div>

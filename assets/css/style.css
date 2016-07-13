@@ -35,6 +35,55 @@ ol, ul {
 	padding: 10px;
 }
 
+.pad-t-sm {
+    padding-top: 10px;
+}
+.pad-r-sm {
+    padding-right: 10px;
+}
+.pad-b-sm {
+    padding-bottom: 10px;
+}
+.pad-l-sm {
+    padding-left: 10px;
+}
+
+.pad-t-md {
+    padding-top: 20px;
+}
+.pad-r-md {
+    padding-right: 20px;
+}
+.pad-b-md {
+    padding-bottom: 20px;
+}
+.pad-l-md {
+    padding-left: 20px;
+}
+
+.pad-t-lg {
+    padding-top: 40px;
+}
+.pad-r-lg {
+    padding-right: 40px;
+}
+.pad-b-lg {
+    padding-bottom: 40px;
+}
+.pad-l-lg {
+    padding-left: 40px;
+}
+
+.pad-box-sm {
+    padding: 10px;
+}
+.pad-box-md {
+    padding: 20px;
+}
+.pad-box-lg {
+    padding: 40px;
+}
+
 .display-true {
 	display: block;
 }
