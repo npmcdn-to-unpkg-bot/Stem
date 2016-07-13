@@ -1,3 +1,4 @@
+"use strict";
 var Login = React.createClass({
     getInitialState: function() {
 		return {
@@ -238,20 +239,20 @@ var Login = React.createClass({
             success: function (response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
-				self.updateLoginStatus(true, authToken, 0);
+				self.updateLoginStatus(true, authToken, response, 0);
             },
             error: function (response) {
 				console.log(JSON.stringify(response, null, 2));
-				self.updateLoginStatus(true, authToken, 100);
+				self.updateLoginStatus(true, authToken, null, 100);
             }
         });	
 	},
 
-    updateLoginStatus: function(isLoggedIn, authToken, currentPage) {
+    updateLoginStatus: function(isLoggedIn, authToken, userInfo, currentPage) {
 		//FB.logout();
         store.dispatch({
           type: 'UpdateLoginStatus',
-          data: {isLoggedIn: isLoggedIn, authToken: authToken, currentPage: currentPage}
+          data: {isLoggedIn: isLoggedIn, authToken: authToken, userInfo: userInfo, currentPage: currentPage}
         });
     },
 

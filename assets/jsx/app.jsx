@@ -6,6 +6,7 @@ const initialState = {
 		baseAPI: 'http://52.32.255.104/api',
 		isLoggedIn: false,
 		authToken: '',
+        userInfo: {},
 		displayMenu: false,
 		displayFilterMenu: false,
 		navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
@@ -23,11 +24,20 @@ var reducer = function(state, action) {
 				newState = Object.assign({}, state, {
 						isLoggedIn: action.data.isLoggedIn, 
 						authToken: action.data.authToken,
+                        userInfo: action.data.userInfo,
 						currentPage: action.data.currentPage
 				});
 				console.log('newState = ' + JSON.stringify(newState));
-				//mapStateToProps();
 				return newState;
+
+        case 'UpdateUserRecord':
+                console.log('UpdateLoginStatus');
+                newState = Object.assign({}, state, {
+                        userInfo: action.data.userInfo,
+                        currentPage: action.data.currentPage
+                });
+                console.log('newState = ' + JSON.stringify(newState));
+                return newState;
 
 		case 'ShowMenu':
 				console.log('ShowMenu');
@@ -74,6 +84,7 @@ var AppState = function(state) {
 				baseAPI: state.baseAPI,
 				isLoggedIn: state.isLoggedIn,
 				authToken: state.authToken,
+                userInfo: state.userInfo,
 				displayMenu: state.displayMenu,
 				displayFilterMenu: state.displayFilterMenu,
 				navItems: state.navItems,
