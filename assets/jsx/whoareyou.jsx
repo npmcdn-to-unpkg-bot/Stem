@@ -35,30 +35,24 @@ var WhoAreYou = React.createClass({
 				<div className="form">
 					<div className="form-bg"></div>
 					<div className="form-content">
-						<div className="row">
+						<div className="row spacer">
 						<h3>You made it! Thanks for joining up!</h3>
 						</div>
-						<div className="row spacer">
+						<div className="row pad-b-md">
 							<p>Help us customize your experience by letting us know who you are...</p>
 						</div>
-						<div className="row">
-							<div className="col-sm-4 pad-l-lg">
-								<span className="spacer">
-									<img onClick={this.handleClick.bind(self, 1)} className="btn-circle" width="200px" src="assets/images/WhoRU_Creator.png" />
-								</span>
-								<h4 className="pad-b-md">Creator</h4>
+						<div className="row pad-r-md pad-l-md">
+							<div className="col-sm-4">
+								<img onClick={this.handleClick.bind(self, 1)} className="btn-circle" width="200px" src="assets/images/WhoRU_Creator.png" />
+								<h4 className="pad-b-md spacer">Creator</h4>
 							</div>
 							<div className="col-sm-4">
-								<span className="spacer">
-									<img onClick={this.handleClick.bind(self, 2)} className="btn-circle" width="200px" src="assets/images/WhoRU_Musician.png" />
-								</span>
-								<h4 className="pad-b-md">Musician</h4>
+								<img onClick={this.handleClick.bind(self, 2)} className="btn-circle" width="200px" src="assets/images/WhoRU_Musician.png" />
+								<h4 className="pad-b-md spacer">Musician</h4>
 							</div>
-							<div className="col-sm-4 pad-r-lg">
-								<span className="spacer">
-									<img onClick={this.handleClick.bind(self, 3)} className="btn-circle" width="200px" src="assets/images/WhoRU_Manager.png" />
-								</span>
-								<h4 className="pad-b-md">Manager/Agent</h4>
+							<div className="col-sm-4">
+								<img onClick={this.handleClick.bind(self, 3)} className="btn-circle" width="200px" src="assets/images/WhoRU_Manager.png" />
+								<h4 className="pad-b-md spacer">Manager/Agent</h4>
 							</div>
 						</div>
 					</div>
