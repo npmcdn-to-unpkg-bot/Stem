@@ -44,19 +44,19 @@ var WhoAreYou = React.createClass({
 						<div className="row">
 							<div className="col-sm-4 pad-l-lg">
 								<span className="spacer">
-									<img onClick={this.handleClick.bind(self, 1)} className="btn btn-circle" src="http://90s411.com/images/office-space-lumbergh.jpg" />
+									<img onClick={this.handleClick.bind(self, 1)} className="btn-circle" width="200px" src="assets/images/WhoRU_Creator.png" />
 								</span>
 								<h4 className="pad-b-md">Creator</h4>
 							</div>
 							<div className="col-sm-4">
 								<span className="spacer">
-									<img onClick={this.handleClick.bind(self, 2)} className="btn btn-circle" src="https://lifeloofah.files.wordpress.com/2016/02/a-stapler.jpg" />
+									<img onClick={this.handleClick.bind(self, 2)} className="btn-circle" width="200px" src="assets/images/WhoRU_Musician.png" />
 								</span>
 								<h4 className="pad-b-md">Musician</h4>
 							</div>
 							<div className="col-sm-4 pad-r-lg">
 								<span className="spacer">
-									<img onClick={this.handleClick.bind(self, 3)} className="btn btn-circle" src="http://gifrific.com/wp-content/uploads/2012/07/michael-bolton-office-space-320x320.gif" />
+									<img onClick={this.handleClick.bind(self, 3)} className="btn-circle" width="200px" src="assets/images/WhoRU_Manager.png" />
 								</span>
 								<h4 className="pad-b-md">Manager/Agent</h4>
 							</div>

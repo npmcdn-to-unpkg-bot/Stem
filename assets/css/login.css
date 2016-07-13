@@ -59,7 +59,7 @@
 
 .abcRioButtonLightBlue {
     color: #fff !important;
-    background-color: #999 !important;
+    background-color: #3B5998 !important;
     height: 45px !important;
     width: 100% !important;
     margin: 10px 0;
@@ -72,10 +72,13 @@
     width: 100%;
     padding: 6px;
 }
+#g-signin2 .abcRioButtonContentWrapper {
+    background: #db3236;
+}  
 .abcRioButtonContents {
-    line-height: 30px !important;
     font-size: 22px !important;
     font-weight: normal !important;
+    line-height: 34px !important;
 }
 .abcRioButtonLightBlue {
     width: 100% !important;

@@ -143,10 +143,8 @@ ol, ul {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
     padding: 0;
-    border: 1px solid #999;
+    cursor: pointer;
 }
 /* END Form Styles */
 

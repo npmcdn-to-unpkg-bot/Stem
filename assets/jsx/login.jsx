@@ -313,7 +313,11 @@ var Login = React.createClass({
 							: null }
 							
 							<button onClick={this.handleSubmit} className="btn btn-wide btn-primary">
-								Login to Stem
+								{ this.state.currentUser ?
+									<span>Login to Stem</span>
+								:
+									<span>Create Account</span>
+								}
 							</button>
 						</form>
 						
