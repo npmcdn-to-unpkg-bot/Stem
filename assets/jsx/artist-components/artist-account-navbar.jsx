@@ -9,8 +9,8 @@ var ArtistAccountNavBar = React.createClass({
       <div className="row no-gutters">
         <div className="artist-account-navbar-wrapper col-lg-2">
           <ul className="">
-            <a onClick={this.showAccountSettings}><li className="col-lg-12"><h5>Account</h5></li></a>
-            <a onClick={this.showContactSettings}><li className="col-lg-12"><h5>Contact Info</h5></li></a>
+            <a onClick=""><li className="col-lg-12"><h5>Account</h5></li></a>
+            <a onClick=""><li className="col-lg-12"><h5>Contact Info</h5></li></a>
             <a onClick=""><li className="col-lg-12"><h5>Connected Accounts</h5></li></a>
             <a onClick=""><li className="col-lg-12"><h5>Notifications</h5></li></a>
             <a onClick=""><li className="col-lg-12"><h5>Password</h5></li></a>
