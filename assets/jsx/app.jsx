@@ -188,7 +188,7 @@ var App = React.createClass({
 										
 										{ this.props.currentPage == 4 ?
 												<div>
-														<ArtistAccountSettings />
+														<ArtistAccountSettings userInfo={this.props.userInfo} />
 												</div>
 										: null} 
 
