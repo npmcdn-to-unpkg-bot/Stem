@@ -35,6 +35,55 @@ ol, ul {
 	padding: 10px;
 }
 
+.pad-t-sm {
+    padding-top: 5px;
+}
+.pad-r-sm {
+    padding-right: 5px;
+}
+.pad-b-sm {
+    padding-bottom: 5px;
+}
+.pad-l-sm {
+    padding-left: 5px;
+}
+
+.pad-t-md {
+    padding-top: 10px;
+}
+.pad-r-md {
+    padding-right: 10px;
+}
+.pad-b-md {
+    padding-bottom: 10px;
+}
+.pad-l-md {
+    padding-left: 10px;
+}
+
+.pad-t-lg {
+    padding-top: 20px;
+}
+.pad-r-lg {
+    padding-right: 20px;
+}
+.pad-b-lg {
+    padding-bottom: 20px;
+}
+.pad-l-lg {
+    padding-left: 20px;
+}
+
+.pad-box-sm {
+    padding: 5px;
+}
+.pad-box-md {
+    padding: 10px;
+}
+.pad-box-lg {
+    padding: 20px;
+}
+
 .display-true {
 	display: block;
 }
