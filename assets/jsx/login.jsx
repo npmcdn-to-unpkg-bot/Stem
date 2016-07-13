@@ -50,7 +50,7 @@ var Login = React.createClass({
 		gapi.signin2.render('g-signin2', {
 			'scope': 'profile email',
 			'width': 250,
-			'height': 50,
+			'height': 45,
 			'longtitle': true,
 			'theme': 'light',
 			'onsuccess': this.onSignIn
@@ -101,13 +101,12 @@ var Login = React.createClass({
 	/////// BEGIN Upsert User with successful Facebook or Google sign in
 	upsertUser: function(user) {
 		var self = this,
-			api = this.props.api,
 			cleanEmail = encodeURIComponent(user.Email);
 			auth = $('#tokenType').val() + ' ' + $('#token').val();
 
         $.ajax({
             type: 'GET', // rest verb (GET, POST, PUT, DEL)
-            url: api + '/api/account/test',
+            url: this.props.baseAPI + '/api/account/test',
             headers: { 'Authorization': auth },
             dataType: 'json',
             success: function (response) {
@@ -118,8 +117,8 @@ var Login = React.createClass({
 				});
 				self.handleCommitSubmit(response);
             },
-			error: function(xhr, status, err) {
-				console.error(this.props.url, status, err.toString());
+			error: function(response) {
+				console.log(JSON.stringify(response, null, 2));
 				self.handleCommitSubmit(response);
             }
         })
@@ -128,6 +127,7 @@ var Login = React.createClass({
 	
 	/////// BEGIN Registration Form  
 	handleClick: function(currentUser) {
+		console.log('currentUser = ' + currentUser);
 		this.setState({ 
 			currentUser: currentUser
 		});
@@ -153,54 +153,30 @@ var Login = React.createClass({
 
 	handleSubmit: function(e) {
 	    e.preventDefault();
-		var currentUser = this.state.currentUser,
+		var self = this,
+			currentUser = this.state.currentUser,
 			Email = this.state.Email,
 			Password = this.state.Password,
-			ConfirmPassword = this.state.ConfirmPassword;
-		
-	   	this.handleCommitSubmit({UserName: Email, Password: Password, ConfirmPassword: ConfirmPassword});
-	},
-	
-	handleCommitSubmit: function(user) {
-		console.log('user = ' + JSON.stringify(user, null, 2));
-		var self = this,
-			api = this.props.baseAPI,
-			currentUser = this.state.currentUser,
+			ConfirmPassword = this.state.ConfirmPassword,
 			errorMessage = '';
 
+        var data = "grant_type=password&username=" + Email + "&password=" + Password;
+		
 		if(currentUser) {
-            //var data = $("#loginForm").serialize();
-            var data = "grant_type=password&username=" + user.UserName + "&password=" + user.Password;
-            $.ajax({
-                type: "POST",
-                url: api + '/token',
-				contentType: "application/x-www-form-urlencoded",
-				accept: "application/json",
-				dataType: 'json',
-                data: data,
-                success: function (response) {
-					console.log('success!');
-					console.log(JSON.stringify(response, null, 2));
-					self.updateLoginStatus(true, response.token_type + " " + response.access_token);
-                },
-                error: function (response) {
-					console.log(JSON.stringify(response, null, 2));
-                    self.setErrorMessage(response.responseJSON.error_description);
-                }
-            });	
+		   	this.handleCommitSubmit(data);
 		} else {
 			$.ajax({	
 				type: 'POST',
-				url: api + '/api/account/register',
+				url: this.props.baseAPI + '/Authentication/Register',
 				contentType: "application/json; charset=utf-8",
 				dataType: 'json',
-				data: JSON.stringify(user),
+				data: JSON.stringify({UserName: Email, Password: Password, ConfirmPassword: ConfirmPassword}),
 				success: function(response) {
 					console.log('success!');
 					console.log(JSON.stringify(response, null, 2));
-					self.updateLoginStatus(true, response.token_type + " " + response.access_token);
+		   			self.handleCommitSubmit(data);
 				},
-                error: function (response) {
+	            error: function (response) {
 					console.log(JSON.stringify(response, null, 2));
 					if(response.responseJSON.modelState["request.UserName"] != null) {
 						errorMessage = response.responseJSON.modelState["request.UserName"];
@@ -211,10 +187,35 @@ var Login = React.createClass({
 					if(response.responseJSON.modelState["request.ConfirmPassword"] != null) {
 						errorMessage += response.responseJSON.modelState["request.ConfirmPassword"];
 					}
-                    self.setErrorMessage(errorMessage);
-                }
+	                self.setErrorMessage(errorMessage);
+	            }
 			});
 		}
+	},
+	
+	handleCommitSubmit: function(data) {
+		console.log('data = ' + JSON.stringify(data, null, 2));
+		var self = this;
+
+        //var data = $("#loginForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: this.props.baseAPI + '/Authentication/Login',
+			contentType: "application/x-www-form-urlencoded",
+			accept: "application/json",
+			dataType: 'json',
+            data: data,
+            success: function (response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+				//self.updateLoginStatus(true, response.token_type + " " + response.access_token);
+				self.getAccountInfo(response.token_type + " " + response.access_token);
+            },
+            error: function (response) {
+				console.log(JSON.stringify(response, null, 2));
+                self.setErrorMessage(response.responseJSON.error_description);
+            }
+        });	
 	},
 
 	setErrorMessage: function(message) {
@@ -225,11 +226,32 @@ var Login = React.createClass({
 	},
 	/////// END Registration Form
 
-    updateLoginStatus: function(isLoggedIn, authToken) {
+	getAccountInfo: function(authToken) {
+		var self = this;
+
+        $.ajax({
+            type: "GET",
+            url: this.props.baseAPI + '/Account',
+            headers: { 'Authorization': authToken },
+			accept: "application/json",
+			dataType: 'json',
+            success: function (response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+				self.updateLoginStatus(true, authToken, 0);
+            },
+            error: function (response) {
+				console.log(JSON.stringify(response, null, 2));
+				self.updateLoginStatus(true, authToken, 8);
+            }
+        });	
+	},
+
+    updateLoginStatus: function(isLoggedIn, authToken, currentPage) {
 		//FB.logout();
         store.dispatch({
           type: 'UpdateLoginStatus',
-          data: {isLoggedIn: isLoggedIn, authToken: authToken}
+          data: {isLoggedIn: isLoggedIn, authToken: authToken, currentPage: currentPage}
         });
     },
 
@@ -240,75 +262,63 @@ var Login = React.createClass({
 		return (	
 			<div className={this.props.isLoggedIn ? "display-false" : "display-true"}>
 				<div id="bg">
-					<img src="http://images.fineartamerica.com/images-medium-large/abstract-music-pavlos-vlachos.jpg" alt="" />
+					<img src="assets/images/handandfader.jpg" alt="" />
 				</div>
 				<div className="login-form">
-					{this.state.currentUser ? 
-						<h3>Sign In</h3>
-					:
-						<h3>Sign Up</h3>
-					}
-					<span className="spacer"></span>
-
-					<form id="loginForm">							
-						<div className="login-btn abcRioButton abcRioButtonLightBlue" onClick={this.fbLoginClick}>
-							<div className="abcRioButtonContentWrapper">
-								<div className="abcRioButtonIcon">
-									<div className="icon">
-										<span className="fa fa-facebook" />
-									</div>
-								</div>
-								<span className="abcRioButtonContents">
-									<span>Sign in with Facebook</span>
-								</span>
-							</div>
-						</div>
-						<div className="login-btn" id="g-signin2" data-onsuccess={this.onSignIn} />
-						<span className="spacer" />
-						<p>or be classical...</p>							
-						<div className="input-group">
-							<span className="input-group-addon">
-								<span className="glyphicon glyphicon-envelope"></span>
-							</span>
-							<input type="email" className="form-control" value={this.state.Email} onChange={this.handleEmailChange} placeholder="Email..." />
-						</div>
-			
-						<div className="input-group">
-							<span className="input-group-addon">
-								<span className="glyphicon glyphicon-lock"></span>
-							</span>
-							<input type="password" className="form-control" value={this.state.Password} onChange={this.handlePasswordChange} placeholder="Password..." />
-						</div>
-						
-						{!this.state.currentUser ? 
-							<div className="input-group">
-							<span className="input-group-addon">
-								<span className="glyphicon glyphicon-lock"></span>
-							</span>
-							<input type="password" className="form-control" value={this.state.ConfirmPassword} onChange={this.handleConfirmPasswordChange} placeholder="Confirm Password..." />
-						</div>
-						: null }
-						
-						{ this.state.errorMessage != '' ?
-							<span className="error">{this.state.errorMessage}</span>
-						: null }
-						
-						<span className="spacer"></span>
-						<button onClick={this.handleSubmit} className="btn btn-raised btn-primary login-btn">
-							Submit
-						</button>
-						
-						<span className="spacer">
-							{this.state.currentUser ? 
-								<a onClick={this.handleClick.bind(self, false)}>Haven't signed up yet? Register here!</a>
-							:
-								<a onClick={this.handleClick.bind(self, true)}>Return to sign in form.</a>
-							}
+					<div className="form-tabs">
+						<span className={this.state.currentUser ? "active" : null}>
+							<a className="secondary" onClick={this.handleClick.bind(self, true)}>Login</a>
 						</span>
-					</form>
-					
-					<div id="fstatus"/>
-					<div id="gstatus"/>
+						<span className={this.state.currentUser ? null : "active"}>
+							<a className="secondary" onClick={this.handleClick.bind(self, false)}><i className="icon-plus"></i> Create Account</a>
+						</span>
+					</div>	
+					<div className="form-bg"></div>
+					<div className="form-content">
+						{this.state.currentUser ? 
+							<h3>Sign In</h3>
+						:
+							<h3>Sign Up</h3>
+						}
+						<span className="spacer"></span>
+
+						<form id="loginForm">						
+							<div className="btn-wide abcRioButton abcRioButtonLightBlue" onClick={this.fbLoginClick}>
+								<div className="abcRioButtonContentWrapper">
+									<div className="abcRioButtonIcon">
+										<div className="icon">
+											<span className="fa fa-facebook" />
+										</div>
+									</div>
+									<span className="abcRioButtonContents">
+										<span>Sign in with Facebook</span>
+									</span>
+								</div>
+							</div>
+							<div className="btn-wide" id="g-signin2" data-onsuccess={this.onSignIn} />
+							<span className="spacer">
+								<h4>or</h4>	
+							</span>
+							<input type="email" className="form-input" value={this.state.Email} onChange={this.handleEmailChange} placeholder="Email..." />
+						
+							<input type="password" className="form-input" value={this.state.Password} onChange={this.handlePasswordChange} placeholder="Password..." />
+							
+							{!this.state.currentUser ? 
+								<input type="password" className="form-input" value={this.state.ConfirmPassword} onChange={this.handleConfirmPasswordChange} placeholder="Confirm Password..." />
+							: null }
+							
+							{ this.state.errorMessage != '' ?
+								<span className="error">{this.state.errorMessage}</span>
+							: null }
+							
+							<button onClick={this.handleSubmit} className="btn btn-wide btn-primary">
+								Login to Stem
+							</button>
+						</form>
+						
+						<div id="fstatus"/>
+						<div id="gstatus"/>
+					</div>
 				</div>
 			</div>
 		);
