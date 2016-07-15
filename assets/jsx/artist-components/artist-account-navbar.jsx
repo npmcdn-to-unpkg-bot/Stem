@@ -14,7 +14,7 @@ var ArtistAccountNavBar = React.createClass({
   render: function() {
     return (
       <div className="row no-gutters">
-        <div className="artist-account-navbar-wrapper col-lg-2">
+        <div className="artist-account-navbar-wrapper">
           <ul className="">
             <a onClick={this.handleAccountShow}><li className="col-lg-12"><h5>Account</h5></li></a>
             <a onClick=""><li className="col-lg-12"><h5>Contact Info</h5></li></a>
@@ -22,9 +22,6 @@ var ArtistAccountNavBar = React.createClass({
             <a onClick=""><li className="col-lg-12"><h5>Notifications</h5></li></a>
             <a onClick=""><li className="col-lg-12"><h5>Password</h5></li></a>
           </ul>
-        </div>
-        <div className="artist-account-setting-header col-lg-10">
-          <ArtistAccountView />
         </div>
       </div>
     );
