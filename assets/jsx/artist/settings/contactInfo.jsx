@@ -1,19 +1,19 @@
 var ArtistContactInfo = React.createClass({
   render: function() {
     return(
-      <div className="artist-setting-contact-info-wrapper col-lg-12">
-        <div className="artist-contact-setting-header col-lg-12">
+      <div className="artist-setting-contact-info-wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div className="artist-contact-setting-header col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <h3>Contact Information</h3>
           <h5>We may contact you occasionally for opportunities</h5>
         </div>
-        <div className="artist-contact-h4 col-lg-2">
+        <div className="artist-contact-h4 col-sm-2 col-md-2 col-lg-2">
           <h4>Primary Contact</h4>
         </div>
-        <div className="artist-contact-form-input col-lg-5">
-          <input className="col-lg-12" placeholder="First Name" />
-          <input className="col-lg-12" placeholder="Mobile Number" />
-          <input className="col-lg-12" placeholder="Street Address" />
-          <select className="btn col-lg-12">
+        <div className="artist-contact-form-input col-xs-12 col-sm-8 col-md-5 col-lg-5">
+          <input className="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="First Name" />
+          <input className="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Mobile Number" />
+          <input className="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Street Address" />
+          <select className="btn col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <option value="AL">AL</option>
             <option value="AK">AK</option>
             <option value="AZ">AZ</option>
@@ -66,13 +66,13 @@ var ArtistContactInfo = React.createClass({
             <option value="WY">WY</option>
           </select>
         </div>
-        <div className="artist-contact-form-input col-lg-5">
-          <input className="col-lg-12" placeholder="Last Name" />
-          <input className="col-lg-12" placeholder="Alternate Email Address" />
-          <input className="col-lg-12" placeholder="City" />
-          <input className="col-lg-12" placeholder="Zip" />
+        <div className="artist-contact-form-input col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0  col-lg-5">
+          <input className="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Last Name" />
+          <input className="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Alternate Email Address" />
+          <input className="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="City" />
+          <input className="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Zip" />
         </div> 
-        <div className="col-lg-12">
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <button className="save-btn pull-right"><h4><span className="glyphicon glyphicon-ok-circle"> </span> Save</h4></button>
         </div> 
       </div>

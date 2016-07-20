@@ -33,13 +33,13 @@ var ArtistAccountView = React.createClass({
   render: function() {
     var self = this;
     return (
-      <div className="artist-account-form-content-wrapper col-lg-12 ">
-        <div className="artist-account-setting-header col-sm-6 col-md-12 col-lg-12">
+      <div className="artist-account-form-content-wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <div className="artist-account-setting-header col-sm-12 col-md-12 col-lg-12">
             <h3>Account</h3>
             <h5>Update your account settings</h5>
         </div>
-        <div className="artist-account-setting-upload-wrapper col-sm-6 col-md-3 col-lg-3" >
-          <div className="">
+        <div className="artist-account-setting-upload-wrapper col-sm-12 col-md-3 col-lg-3" >
+          <div className="col-sm-offset-4 col-md-offset-0 col-lg-12 col-lg-offset-0">
             <a><div className="artist-account-setting-profile-img"   ><h5 className="shape-details">UPLOAD PROFILE IMAGE</h5><p className="shape-details">Suggested Size 1000x1000</p></div></a>
           </div>  
         </div>
@@ -48,33 +48,33 @@ var ArtistAccountView = React.createClass({
             <a><div className="artist-account-setting-profile-banner-img"><h5 className="shape-details">UPLOAD BANNER IMAGE</h5><p className="shape-details">Suggested Size 1000x1000</p></div></a>
           </div>
         </div>   
-          <div className="artist-account-form-input row no-gutters">
-            <div className="">  
+          <div className="artist-account-form-input row no-gutters col-sm-8 col-md-6 col-lg-5">
+            <div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12">  
               <h5 >Profile Name</h5>
-              <input className=""  />
+              <input className=" col-xs-12 col-sm-12 col-md-12 col-lg-12"  />
             </div>
-            <div className="  ">  
+            <div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12  ">  
               <h5 >Custom Link</h5>
-              <input className=""  />
-              <p className="  ">http://stem.com/myprofile</p>
+              <input className=" col-xs-12 col-sm-12 col-md-12 col-lg-12"  />
+              <p className=" col-xs-12 col-md-12 col-lg-12  ">http://stem.com/myprofile</p>
             </div>
-            <div className="  ">
+            <div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12  ">
               <h5 >Email</h5>
-              <input className=""  />
+              <input className=" col-xs-12 col-sm-12 col-md-12 col-lg-12"  />
             </div>
-            <div className="  ">
+            <div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12  ">
               <h5 className="strike">Country</h5>
-              <input className=""  />
+              <input className="  col-xs-12 col-sm-12 col-md-12 col-lg-12"  />
             </div>
-            <div className="  ">  
+            <div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12  ">  
               <h5 className=" strike">TimeZone</h5>
-              <input className=""  />
+              <input className=" col-xs-12 col-sm-12 col-md-12 col-lg-12"  />
             </div>
           </div>
 
-          <div className="artist-account-form-bio  ">
+          <div className="artist-account-form-bio col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h5> Biography</h5>
-            <textarea className="account-setting-bio-box  " onChange={self.handleLineGrow} />
+            <textarea className="account-setting-bio-box col-xs-12 col-sm-12 col-md-12 col-lg-12 " onChange={self.handleLineGrow} />
             <div className="character-count row no-gutters ">
               <p className="">300 Characters</p>
                 <svg className="" height="20" width="400">
