@@ -444,7 +444,6 @@
     border-bottom: 1px solid #DDD;
     box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
   }
-
     .shape-details {
       position: relative;
       top: 50%;
@@ -471,6 +470,29 @@
     .artist-account-form-input h5 {
       margin: 15px 0 5px;
     }
+    .character-count  {
+      margin-top: 10px;
+      text-align: left;
+      vertical-align: bottom;
+    }
+      .character-count svg{
+        padding: 0;
+      }
+      .character-count p {
+        max-width: 120px;
+        margin-top: -6px;
+      }
+.svg-line {
+  stroke: rgba(80, 227, 194, 0.4);
+  stroke-width: 15;
+  vertical-align: bottom;
+}
+.svg-line2 {
+  stroke: grey;
+  stroke-width: 15;
+  opacity: .1;
+
+} 
     .strike {
       text-decoration: line-through;
       color: red;
@@ -487,6 +509,28 @@
     .save-btn span {
       vertical-align: bottom;
     }
+/*account mobile */
+@media (max-width: 768px) {
+  .artist-account-form-content-wrapper {
+  }
+    .artist-account-setting-header {
+      text-align: center;
+    }
+  .artist-account-setting-upload-wrapper {
+    padding: 15px 0 5px;
+  }
+
+    .artist-account-form-input input {
+      margin-bottom: 10px;
+    }  
+    .artist-account-setting-profile-img {
+      margin: 0 auto;
+    }
+    .artist-account-form-input p {
+      text-align: left;
+    }  
+}
+
 /*-- Artist Contact Info --*/
 .artist-setting-contact-info-wrapper, .artist-account-contact-info-wrapper, .artist-notification-wrapper, .artist-password-wrapper {
   background-color: white;
@@ -572,6 +616,9 @@
     text-align: right;
   }
 /*-- Artist Password --*/
+.artist-password-wrapper {
+   padding-bottom: 100px;
+}
 .artist-password-header {
   margin-bottom: 40px;
 }

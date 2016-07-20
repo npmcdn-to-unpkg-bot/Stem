@@ -17,7 +17,7 @@ var CreatorHeader = React.createClass({
               <p className="col-sm-7 col-sm-offset-4 col-lg-8 col-lg-offset-3">Laura Sanchez Lopex is a Spanish model and television actress. Internationally, she is perhaps most notable for her role in Los Hombres de Paco. In Los Hombres de Paco, Pepa is heartbroken by the death of her wife Silvia Castro.</p>
             </div> 
             <div className="col-sm-offset-4 col-lg-7 col-lg-offset-3">
-              <button className="btn col-xs-12 col-sm-5 col-md-4 col-lg-4 follow-btn"><h3><span className="creator-header-btn-icon">-</span> Follow</h3></button>
+              <button className="btn col-xs-12 col-sm-5 col-md-4 col-lg-4 follow-btn"><h3><span className="icon-user-add"></span> Follow</h3></button>
               <button className="btn col-xs-12 col-sm-5 col-md-4 col-lg-4 collab-btn"><h3><span className="creator-header-btn-icon">%</span> Collaborate</h3></button>
             </div>
           </div>  

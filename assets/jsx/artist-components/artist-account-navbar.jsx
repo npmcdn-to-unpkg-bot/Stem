@@ -16,11 +16,11 @@ var ArtistAccountNavBar = React.createClass({
       <div className="row no-gutters">
         <div className="artist-account-navbar-wrapper">
           <ul className="">
-            <a onClick={this.handleAccountShow}><li className="col-lg-12"><h5>Account</h5></li></a>
-            <a onClick=""><li className="col-lg-12"><h5>Contact Info</h5></li></a>
-            <a onClick=""><li className="col-lg-12"><h5>Connected Accounts</h5></li></a>
-            <a onClick=""><li className="col-lg-12"><h5>Notifications</h5></li></a>
-            <a onClick=""><li className="col-lg-12"><h5>Password</h5></li></a>
+            <a onClick=""><li className="col-sm-12 col-md-12 col-lg-12"><h5>Account</h5></li></a>
+            <a onClick=""><li className="col-sm-12 col-md-12 col-lg-12"><h5>Contact Info</h5></li></a>
+            <a onClick=""><li className="col-sm-12 col-md-12 col-lg-12"><h5>Connected Accounts</h5></li></a>
+            <a onClick=""><li className="col-sm-12 col-md-12 col-lg-12"><h5>Notifications</h5></li></a>
+            <a onClick=""><li className="col-sm-12 col-md-12 col-lg-12"><h5>Password</h5></li></a>
           </ul>
         </div>
       </div>
