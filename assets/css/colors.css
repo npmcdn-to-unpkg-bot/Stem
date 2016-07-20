@@ -1,0 +1,74 @@
+:root {
+	--white: #fff;
+	--black: #000;
+
+	--primary: #50E3C2;
+	--primary-lt: #96EEDA;
+	--secondary: #498FE3;
+	--secondary-lt: #91BCEE;
+
+	--grey-1: #4a4a4a;
+	--grey-2: #666;
+	--grey-3: #9b9b9b;
+	--grey-4: #c9c9c9;
+	--grey-5: #e5e5e5;
+	--grey-6: #f9f9f9;
+}
+
+/* Text */
+.white {
+    color: var(--white);
+}
+.primary {
+    color: var(--primary);
+}
+.primary-lt {
+    color: var(--primary-lt);
+}
+.secondary {
+    color: var(--secondary);
+}
+.secondary-lt {
+    color: var(--secondary-lt);
+}
+
+/* Backgrounds */
+.bg-grey-1 {
+    background-color: var(--grey-1);
+}
+.bg-grey-2 {
+    background-color: var(--grey-2);
+}
+.bg-grey-3 {
+    background-color: var(--grey-3);
+}
+.bg-grey-4 {
+    background-color: var(--grey-4);
+}
+.bg-grey-5 {
+    background-color: var(--grey-5);
+}
+.bg-grey-6 {
+    background-color: var(--grey-6);
+}
+
+.bg-primary {
+    background-color: var(--primary);
+}
+.bg-primary-lt {
+    background-color: var(--primary-lt);
+}
+
+.bg-secondary {
+    background-color: var(--secondary);
+}
+.bg-secondary-lt {
+    background-color: var(--secondary-lt);
+}
+
+.bg-grad-1 {
+	background: rgb(80,227,194); /* Old browsers */
+	background: -45deg,  rgba(80,227,194,1) 0%, rgba(163,248,255,1) 100%; /* FF3.6-15 & Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg,  rgba(80,227,194,1) 0%,rgba(163,248,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#50e3c2', endColorstr='#a3f8ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}

@@ -1,0 +1,11 @@
+:root {
+	--font-reg: 'roboto-light';
+	--font-md: 'roboto-medium';
+	--font-bold: 'roboto-bold';
+
+	--drop-1: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+
+	--space-sm: 10px;
+	--space-md: 20px;
+	--space-lg: 40px;
+}

@@ -7,19 +7,8 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
-
-
+  text-align: left;
 }
-  .playlist-header-header {
-    text-align: left;
-    color: white;
-    font-family: 'roboto-medium';
-    font-style: italic;
-    font-size: 80px;
-    margin-top: 35px;
-    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-  }
   .playlist-header-content {
     text-align: left;
     margin: 25px 0 40px;
@@ -156,13 +145,11 @@
   margin-top: 30px;
   position: relative;
   display: none;
+  text-align: left;
 }
 .playlist-mobile-view-wrapper li {
   border-bottom: 1px solid lightgrey;
   padding: 15px 0;
-}
-.playlist-mobile-view-detail {
-  text-align: left;
 }
 
 @media (max-width: 766px) {

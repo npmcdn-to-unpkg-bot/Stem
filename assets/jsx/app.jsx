@@ -10,7 +10,7 @@ const initialState = {
 	displayMenu: false,
 	displayFilterMenu: false,
 	navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
-	currentPage: 4
+	currentPage: 3
 };
 
 var reducer = function(state, action) {
@@ -130,7 +130,8 @@ var App = React.createClass({
 							<a onClick={this.navigate.bind(this, 0)} className="brand">
 								Stem
 							</a>
-							<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star"></i></a>
+							<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
+							<a href="http://d2pziso4zk2lvf.cloudfront.net/styleguide.html"><i className="icon-rocket"></i></a>
 						</div>
 								{ this.props.isLoggedIn ?  
 										<div className="nav header-nav header-right pull-right">
@@ -206,12 +207,6 @@ var App = React.createClass({
 							<ArtistInternal />
 						</div>
 					: null}
-
-					{ this.props.currentPage == 7 ?
-						<div>
-							<ArtistAccountSettings />
-						</div>
-					: null} 
 
 					{ this.props.currentPage == 100 ?
 						<div>
