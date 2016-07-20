@@ -4,7 +4,7 @@ var connect = ReactRedux.connect;
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: false,
+	isLoggedIn: true,
 	authToken: '',
 	userInfo: {},
 	displayMenu: false,
@@ -130,14 +130,16 @@ var App = React.createClass({
 							<a onClick={this.navigate.bind(this, 0)} className="brand">
 								Stem
 							</a>
+							<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star"></i></a>
 						</div>
 								{ this.props.isLoggedIn ?  
 										<div className="nav header-nav header-right pull-right">
 												<a className="glyphicon glyphicon-search"></a>
-												<a className="glyphicon glyphicon-th-list"></a>
-												<a className="glyphicon glyphicon-bell"></a>
+												<a><i className="icon-list"></i></a>
+												<a><i className="icon-up-circled"></i></a>
+												<a><i className="icon-bell"></i></a>
 												<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														<span className="glyphicon glyphicon-menu-hamburger"></span>
+													<i className="icon-menu"></i>
 												</a>                 
 										</div> 
 								: null }

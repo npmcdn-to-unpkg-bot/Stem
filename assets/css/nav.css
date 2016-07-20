@@ -47,8 +47,9 @@ a.brand {
 }
 .header .header-right a {
     color: #999;
-    padding: 14px 14px;
-    font-size: 18px;
+    padding: 10px;
+    font-size: 24px;
+    line-height: 26px;
 }
 .header .header-right a.primary, .header .primary {
     color: #50E3C2;
