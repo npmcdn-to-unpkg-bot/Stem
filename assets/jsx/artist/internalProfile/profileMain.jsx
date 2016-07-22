@@ -4,11 +4,12 @@ var ArtistInternal = React.createClass({
     return (
       <div className="artist-internal-wrapper-fluid">
         <ArtistInternalSideBar />
-        <div className="artist-internal-greeting col-sm-8 col-md-8 col-lg-8">
-          <h3>Hello, Band Name!</h3>
+        <div className="artist-internal-greeting col-sm-7 col-md-7 col-lg-8">
+          <h3>Submit Music</h3>
+          <p>Add music to your library</p>
         </div>
         <ArtistUpload />
-        <ArtistInternalLibraryTable />
+
       </div>
     )
   }
