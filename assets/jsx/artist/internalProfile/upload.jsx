@@ -85,9 +85,11 @@ var ArtistUploadForm = React.createClass({
           <div className="album-art-box col-sm-12 col-md-12 col-lg-12">
             <div className="upload-album-content col-lg-12">
               <span className="upload-album-art-icon icon-picture-1 fa-4x"></span>
-              <h3>Upload your album art</h3>
-              <p>Recommended size: 1000x1000</p>
-              <p>Full Size Limit: xMB</p>
+              <div className="upload-album-art-detail">
+                <h3>Upload your album art</h3>
+                <p>Recommended size: 1000x1000</p>
+                <p>Full Size Limit: xMB</p>
+              </div>  
             </div>
           </div>
         </div>
