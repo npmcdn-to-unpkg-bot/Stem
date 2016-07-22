@@ -5,6 +5,7 @@ var ArtistAccountView = React.createClass({
       disableButton: false
     }
   },
+
   handleLineGrow: function(e) {
      if (e.target.value.length == 0) {
       this.setState({characterCount: 0});
@@ -31,7 +32,10 @@ var ArtistAccountView = React.createClass({
   },
 
   render: function() {
-    var self = this;
+    var self = this,
+      userInfo = this.props.userInfo;
+    console.log('userInfo = ' + userInfo);
+
     return (
       <div className="artist-account-form-content-wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
         <div className="artist-account-setting-header col-sm-12 col-md-12 col-lg-12">
