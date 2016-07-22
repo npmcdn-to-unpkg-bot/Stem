@@ -153,9 +153,26 @@
   height: 300px;
   background-color: var(--grey-6);
   margin-top: var(--space-lg);
-    text-align: center;
 }
-
+  .upload-album-content {
+    text-align: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+    .upload-album-content {
+      width: 100px;
+      margin: 0 auto;
+    }
+  .upload-album-art-detail {
+    text-align: left;
+  }
+    .upload-album-art-detail p {
+      line-height: 5px;
+    }
+    .upload-album-art-detail h3 {
+      margin-bottom: var(--space-sm);
+    }
 .artist-upload-btn {
   height: 50px;
   margin: 20px 0;
@@ -256,9 +273,6 @@
   height: 280px;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
-  position: relative;
-  z-index: 99;
-  padding-left: 0;
 }  
   .bar-graph-background-wrapper::-webkit-scrollbar {
     display: none;
