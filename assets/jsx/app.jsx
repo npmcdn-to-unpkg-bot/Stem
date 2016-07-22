@@ -131,7 +131,7 @@ var App = React.createClass({
 								Stem
 							</a>
 							<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
-							<a href="http://d2pziso4zk2lvf.cloudfront.net/styleguide.html"><i className="icon-rocket"></i></a>
+							<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket"></i></a>
 						</div>
 								{ this.props.isLoggedIn ?  
 										<div className="nav header-nav header-right pull-right">
