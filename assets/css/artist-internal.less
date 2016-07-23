@@ -98,7 +98,10 @@
     margin-top: 15px;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 992px) and (max-width: 1199px) {
+  .artist-internal-library-table-header {
+    padding: 10px 0;
+  }
 }
 /*-- Artist Upload --*/
 .artist-internal-greeting {
@@ -116,7 +119,9 @@
   .artist-internal-greeting {
     margin-left: 25px;
   }
+
 }
+
 .artist-upload-wrapper {
   padding: @space-lg;
   font-family: 'roboto-light';
@@ -211,6 +216,18 @@
   position: relative;
   margin: 40px 0 50px 0;
 }
+  .library-approval-list {
+    font-family: @font-reg;
+    text-align: center;
+  }
+    .library-list-underline {
+      border-bottom: 2px solid @primary;
+    }
+    .library-img {
+      height: 300px;
+      width: 300px;
+    }
+
  .artist-internal-library-wrapper h3 {
   font-family: 'roboto-medium';
  } 
@@ -219,15 +236,14 @@
   background-color: rgba(80, 227, 194, 0.1);
   border-top: 1px solid lightgrey;
 }
+  .artist-internal-library-table th {
+    padding: 10px;
+    border-top: 1px solid lightgrey;
+  }
   .artist-internal-library-table {
     margin-bottom: 80px;
   }
-  .artist-internal-library-header {
-    margin-bottom: 40px;
-  }
-  .artist-internal-library-table-header {
-    padding: 10px 0;
-  }
+
   .artist-internal-library-table td {
     padding: 20px 10px;
     border-bottom: 1px solid lightgrey;
@@ -459,9 +475,6 @@
 
 .artist-account-setting-header {
   text-align: left;
-}
-.things {
-  text-align: center;
 }
 .artist-account-setting-upload-wrapper {
   padding: 40px 20px;
