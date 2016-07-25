@@ -11,6 +11,7 @@
     background-color: #FAFAFA;
     margin-right: 30px;
     padding-bottom: 100%;
+    max-width: 270px;
   }
 
   .artist-internal-download-count {
@@ -90,6 +91,9 @@
 }
 /*mobile  */
 @media (max-width: 768px) {
+  .artist-internal-sidebar-wrapper {
+    max-width: 100%;
+  }
   .artist-internal-sidebar-wrapper p {
     text-align: left;
     padding-bottom: 0;
@@ -218,7 +222,7 @@
 }
   .library-approval-list {
     font-family: @font-reg;
-    text-align: center;
+    /*text-align: center;*/
   }
     .library-list-underline {
       border-bottom: 2px solid @primary;
