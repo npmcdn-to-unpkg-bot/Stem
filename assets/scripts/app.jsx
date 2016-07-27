@@ -208,6 +208,12 @@ var App = React.createClass({
 						</div>
 					: null}
 
+					{ this.props.currentPage == 7 ?
+						<div>
+							<ArtistUploadSuccess />
+							</div>
+					: null}
+
 					{ this.props.currentPage == 100 ?
 						<div>
 							<WhoAreYou baseAPI={this.props.baseAPI} authToken={this.props.authToken} />
