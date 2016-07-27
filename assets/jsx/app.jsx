@@ -10,7 +10,7 @@ const initialState = {
 	displayMenu: false,
 	displayFilterMenu: false,
 	navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
-	currentPage: 6
+	currentPage: 4
 };
 
 var reducer = function(state, action) {
@@ -131,7 +131,7 @@ var App = React.createClass({
 								Stem
 							</a>
 							<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
-							<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket"></i></a>
+							<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket error"></i></a>
 						</div>
 								{ this.props.isLoggedIn ?  
 										<div className="nav header-nav header-right pull-right">

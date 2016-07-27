@@ -3,7 +3,7 @@
     color: #e55;
 }
 
-.form-input {
+.form-input, input:not([type]), input[type="email" i], input[type="number" i], input[type="password" i], input[type="tel" i], input[type="url" i], input[type="text" i] {
     display: block;
     width: 100%;
     height: 40px;
@@ -20,6 +20,10 @@
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     margin-bottom: 10px;
+}
+textarea.form-input {
+    height: 120px;
+    padding: 20px;
 }
 
 .btn {
@@ -42,6 +46,11 @@
     background-color: #61e5c8;
     border: 1px solid #50E3C2;
 }
+.btn-sm {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 6px 10px;
+}
 .btn-wide {
     width: 100%;
 }
@@ -51,6 +60,9 @@
     border-radius: 50%;
     padding: 0;
     cursor: pointer;
+}
+.btn [class^="icon-"]:before, .btn [class*=" icon-"]:before {
+    margin: 0;
 }
 /* END Form Styles */
 

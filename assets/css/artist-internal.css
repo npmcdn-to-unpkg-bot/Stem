@@ -446,6 +446,7 @@
     width: 175px;
     border-radius: 50%;
     background-color: #FAFAFA;
+    text-align: center;
   }
     .artist-account-setting-profile-img p {
       margin-top: -5px;
@@ -454,6 +455,7 @@
   .artist-account-setting-profile-banner-img {
     height: 175px;
     background-color: #FAFAFA;
+    text-align: center;
   }
   .account-setting-bio-box {
     height: 120px;
