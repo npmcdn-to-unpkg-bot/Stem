@@ -261,7 +261,7 @@ var Login = React.createClass({
 		var self = this;
 		
 		return (	
-			<div className={this.props.isLoggedIn ? "display-false" : "display-true"}>
+			<div className={this.props.isLoggedIn ? "display-false" : "display-true text-center"}>
 				<div id="bg">
 					<img src="assets/images/handandfader.jpg" alt="" />
 				</div>

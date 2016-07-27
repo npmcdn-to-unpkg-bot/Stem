@@ -10,7 +10,7 @@ const initialState = {
 	displayMenu: false,
 	displayFilterMenu: false,
 	navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
-	currentPage: 4
+	currentPage: 0
 };
 
 var reducer = function(state, action) {
@@ -160,9 +160,12 @@ var App = React.createClass({
 					{ this.props.currentPage == 0 ?
 						<div>
 							{ this.props.isLoggedIn ? 
-								<h1>
-									<span className="spacer">Thanks for logging in!</span>
-								</h1>
+								<div>
+									<FilterNav displayFilterMenu={this.props.displayFilterMenu} />	
+									<h2>
+										<span className="spacer">Thanks for logging in!</span>
+									</h2>
+								</div>
 							:
 								<Login baseAPI={this.props.baseAPI} />  
 							}

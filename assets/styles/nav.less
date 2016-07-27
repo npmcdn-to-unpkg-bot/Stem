@@ -156,10 +156,7 @@ a.brand {
     z-index: 3000;
 }
 .filter-nav-list {
-    margin-left: 20px;
-    width: 100%;
     overflow-y: hidden;
-    overflow-x: scroll;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
 }
@@ -168,7 +165,8 @@ a.brand {
 }
 .filter-nav-list li {
     display: inline-block;
-    margin-right: 40px;
+    width: 120px;
+    text-align: center;
     padding: 5px;
 }
 .filter-nav-list a {
@@ -179,11 +177,11 @@ a.brand {
     color: @grey-5;
 }
 
-a.control_prev, a.control_next {
+a.filter-nav-prev, a.filter-nav-next {
     position: absolute;
     z-index: 999;
     display: block;
-    padding: 10px;
+    padding: 5px;
     width: auto;
     height: 100%;
     background: @white;
@@ -193,15 +191,15 @@ a.control_prev, a.control_next {
     font-size: 18px;
     opacity: 0.6;
     cursor: pointer;
-    line-height: 30px;
+    line-height: 50px;
 }
-a.control_prev:hover, a.control_next:hover {
+a.filter-nav-prev:hover, a.filter-nav-next:hover {
     opacity: 1;
     -webkit-transition: all 0.2s ease;
 }
-a.control_prev {
+a.filter-nav-prev {
 }
-a.control_next {
+a.filter-nav-next {
     right: 0;
 }
 .filter-menu {

@@ -1,4 +1,51 @@
 var FilterNav = React.createClass({
+    getInitialState: function() {
+        return {
+            windowWidth: 1,
+            filterNavWidth: 0,
+            filterItemWidth: 120
+        };
+    },
+
+    componentDidMount: function() {
+        var l = $('.filter-nav ul li').length,
+            w = $('.filter-nav ul li').width(),
+            windowWidth = window.innerWidth,
+            filterNavWidth = l * w,
+            filterItemWidth = this.state.filterItemWidth;
+
+        if(windowWidth > filterNavWidth) {
+            filterItemWidth = windowWidth / l;
+            console.log('filterItemWidth = ' + filterItemWidth);
+        };
+
+        this.setState({
+            windowWidth: windowWidth,
+            filterNavWidth: filterNavWidth,
+            style: {width: filterItemWidth}
+        });
+    },
+    
+    moveLeft: function() {
+        var w = this.state.filterItemWidth;
+        $('.filter-nav ul').animate({
+            left: w
+        }, "slow", function () {
+            $('.filter-nav ul li:last-child').prependTo('.filter-nav ul');
+            $('.filter-nav ul').css('left', '');
+        });
+    },
+
+    moveRight: function() {
+        var w = this.state.filterItemWidth;
+        $('.filter-nav ul').animate({
+            left: -w
+        }, "slow", function () {
+            $('.filter-nav ul li:first-child').appendTo('.filter-nav ul');
+            $('.filter-nav ul').css('left', '');
+        });
+    },
+        
     showFilterMenu: function() {
         store.dispatch({
           type: 'ShowFilterMenu'
@@ -12,22 +59,61 @@ var FilterNav = React.createClass({
     },
     
     render: function() {
+        var self = this,
+            windowWidth = this.state.windowWidth,
+            filterNavWidth = this.state.filterNavWidth,
+            style = this.state.style;
+
         return (
             <div>
                 <div className="filter-nav">
-                    <ul className="filter-nav-list">
-                        <div className="internal col-sm-6 col-md-6 col-lg-6 row-fluid artist-navBar-icon-width">
-                            <li><a onClick={this.showFilterMenu}><i className="icon-soundcloud"></i></a></li>
-                            <li><a onClick={this.showFilterMenu}><i className="icon-heart"></i></a></li>
-                            <li><a onClick={this.showFilterMenu}><i className="icon-flow-branch"></i></a></li>
-                            <li><a onClick={this.showFilterMenu}><i className="icon-user-pair"></i></a></li>
-                        </div>
-                        <div className="internal col-sm-6 col-md-6 col-lg-6 row-fluid artist-navBar-icon-width">
-                            <li><a onClick={this.showFilterMenu}><i className="icon-note"></i></a></li>
-                            <li><a onClick={this.showFilterMenu}><i className="icon-users"></i></a></li>
-                            <li><a onClick={this.showFilterMenu}><i className="icon-user"></i></a></li>
-                            <li><a onClick={this.showFilterMenu}><i className="icon-list"></i></a></li>
-                        </div>
+                    {filterNavWidth > windowWidth ? 
+                        <span>
+                            <a onClick={this.moveRight} className="filter-nav-next icon-right-open-big"></a>
+                            <a onClick={this.moveLeft} className="filter-nav-prev icon-left-open-big"></a>
+                        </span>
+                    : null }
+                    <ul className="filter-nav-list" ref="filterNav">
+                        <li style={style}>
+                            <a onClick={this.showFilterMenu}>
+                                <i className="icon-soundcloud"></i>
+                            </a>
+                        </li>
+                        <li style={style}>
+                            <a onClick={this.showFilterMenu}>
+                                <i className="icon-heart"></i>
+                            </a>
+                        </li>
+                        <li style={style}>
+                            <a onClick={this.showFilterMenu}>
+                                <i className="icon-flow-branch"></i>
+                            </a>
+                        </li>
+                        <li style={style}>
+                            <a onClick={this.showFilterMenu}>
+                                <i className="icon-user-pair"></i>
+                            </a>
+                        </li>
+                        <li style={style}>
+                            <a onClick={this.showFilterMenu}>
+                                <i className="icon-note"></i>
+                            </a>
+                        </li>
+                        <li style={style}>
+                            <a onClick={this.showFilterMenu}>
+                                <i className="icon-users"></i>
+                            </a>
+                        </li>
+                        <li style={style}>
+                            <a onClick={this.showFilterMenu}>
+                                <i className="icon-user"></i>
+                            </a>
+                        </li>
+                        <li style={style}>
+                            <a onClick={this.showFilterMenu}>
+                                <i className="icon-list"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <FilterMenu displayFilterMenu={this.props.displayFilterMenu}>
