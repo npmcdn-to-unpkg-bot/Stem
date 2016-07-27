@@ -11,7 +11,6 @@
     background-color: #FAFAFA;
     margin-right: 30px;
     padding-bottom: 100%;
-    max-width: 270px;
   }
 
   .artist-internal-download-count {
@@ -91,9 +90,6 @@
 }
 /*mobile  */
 @media (max-width: 768px) {
-  .artist-internal-sidebar-wrapper {
-    max-width: 100%;
-  }
   .artist-internal-sidebar-wrapper p {
     text-align: left;
     padding-bottom: 0;
@@ -102,10 +98,7 @@
     margin-top: 15px;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
-  .artist-internal-library-table-header {
-    padding: 10px 0;
-  }
+@media (min-width: 768px) and (max-width: 991px) {
 }
 /*-- Artist Upload --*/
 .artist-internal-greeting {
@@ -123,9 +116,7 @@
   .artist-internal-greeting {
     margin-left: 25px;
   }
-
 }
-
 .artist-upload-wrapper {
   padding: @space-lg;
   font-family: 'roboto-light';
@@ -213,6 +204,76 @@
   width: 100px;
   content: '';
 }
+/*-- Artist Upload Success --*/
+.artist-upload-success-box {
+  text-align: center;
+  font-family: @font-reg;
+  h2 {
+    font-family: @font-md;
+  }
+}
+.artist-upload-success-bottom {
+  h3 {
+    color: @grey-2;
+  }
+}
+.artist-upload-success-tags {
+  h5, input {
+    display: inline-block;
+  }
+  .checkbox{
+    border-bottom: 1px solid @grey-4;
+  }
+  .btn{
+    border-radius: 1.5px;
+    font-family: @font-reg;
+  }
+  h4 {
+    color: @grey-2
+  }
+  input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    border-radius: none;
+  }
+}
+.artist-tag-checkbox-hidden {
+  visibility: hidden;
+}
+.artist-tag-checkbox-visible {
+  visibility: visible;
+  margin-bottom: 4%;
+}
+.artist-upload-success-slider {
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 82.5%;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    height: 5px;
+    background-color: @grey-5;
+    border: none;
+    border-radius: 2px;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance:none;
+    border: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: @primary;
+    margin-top: -10px;
+    box-shadow: 2px 1px 2px @grey-4;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+}
+.artist-upload-success-bottom {
+  .btn {
+    margin-right: 1%;
+  }
+}
 
 /*-- Artist Internal Library --*/
 .artist-internal-library-wrapper {
@@ -220,18 +281,6 @@
   position: relative;
   margin: 40px 0 50px 0;
 }
-  .library-approval-list {
-    font-family: @font-reg;
-    /*text-align: center;*/
-  }
-    .library-list-underline {
-      border-bottom: 2px solid @primary;
-    }
-    .library-img {
-      height: 300px;
-      width: 300px;
-    }
-
  .artist-internal-library-wrapper h3 {
   font-family: 'roboto-medium';
  } 
@@ -240,14 +289,15 @@
   background-color: rgba(80, 227, 194, 0.1);
   border-top: 1px solid lightgrey;
 }
-  .artist-internal-library-table th {
-    padding: 10px;
-    border-top: 1px solid lightgrey;
-  }
   .artist-internal-library-table {
     margin-bottom: 80px;
   }
-
+  .artist-internal-library-header {
+    margin-bottom: 40px;
+  }
+  .artist-internal-library-table-header {
+    padding: 10px 0;
+  }
   .artist-internal-library-table td {
     padding: 20px 10px;
     border-bottom: 1px solid lightgrey;
@@ -479,6 +529,9 @@
 
 .artist-account-setting-header {
   text-align: left;
+}
+.things {
+  text-align: center;
 }
 .artist-account-setting-upload-wrapper {
   padding: 40px 20px;
