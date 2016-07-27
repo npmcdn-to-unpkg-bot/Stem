@@ -8,7 +8,7 @@ var ArtistNotification = React.createClass({
         </div>
         <div className="artist-notification-activities row no-gutters col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <a className=" col-lg-2 col-lg-offset-10 pull-right check-uncheck">Check/UnCheck All</a>
-          <h4 className="artist-notification-updates col-xs-12 col-sm-12 col-md-12 col-lg-12">Activities <span className="icon-paper-plane pull-right notification-icon"></span><span className="icon-phone pull-right notification-icon"></span></h4>
+          <h4 className="artist-notification-updates col-xs-12 col-sm-12 col-md-12 col-lg-12">Activities <span className="icon-paper-plane pull-right notification-icon"></span><span className="icon-mobile pull-right notification-icon"></span></h4>
             <ul className="artist-notification-activities-items col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <li>
                 <span className="notification-list-item">Someone followed you </span> <span className="pull-right"><input type="checkbox" /><input type="checkbox" /></span>
