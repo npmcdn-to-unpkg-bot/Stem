@@ -5,6 +5,7 @@
   .creator-wrapper {
     margin-top: -20px;
     text-align: left;
+    width: 100%;
   }
   .creator-banner  {
     background-image: url('https://i.ytimg.com/vi/AqpzxxxrkAY/maxresdefault.jpg');
@@ -13,7 +14,7 @@
     background-size: 100%;
     overflow: hidden;
     width: 100%;
-    height: 280px;
+    height: 290px;
     position: absolute;
     z-index: -99;
 
@@ -68,7 +69,6 @@
         }
 .header-banner-collapse {
   height: 0;
-
   transition: 2s ease-in;
   -moz-transition: 2s ease-in;
   -webkit-transition: 2s ease-in;
@@ -111,27 +111,27 @@
 @media (min-width: 1200px) {
   
   .creator-stats-wrapper {
-    margin-top: -20px;
+    margin-top: 20px;
   }
   .creator-stats-wrapper h1, .creator-profile-img {
-    margin-top: 25px;
+    margin-top: 21px;
   }
 } 
 /*-- creator Stats Bar --*/
 
 .creator-stats-bar {
-  color: @grey-1;
+  background-color: @white;
 }
   .creator-stats-list {
     position: absolute;
+    width: 100%;
     line-height: 10px;
     padding: 20px;
     list-style: none;
+    margin-top: 60px;
   }
     .creator-stats-bar span {
-      font-size: 35px;
       margin-top: 20px;
-      font-family: "social shapes";
     }
 .creator-stats-bar-background {
   background-color: @white;
@@ -159,7 +159,7 @@
 /*tablet*/
 @media (min-width: 769px) and (max-width: 990px) {
   .creator-stats-bar-background {
-    margin-top: 220px;
+    margin-top: 280px;
   }
   .creator-stats-list {
     margin-top: -65px;
@@ -168,7 +168,7 @@
 /*desktop*/
 @media (min-width: 991px) and (max-width: 1199px) {
   .creator-stats-bar-background {
-    margin-top: 220px;
+    margin-top: 260px;
   }
   .creator-stats-list {
     margin-top: -65px;
@@ -177,10 +177,10 @@
 /* large desktop*/
 @media (min-width: 1200px) {
   .creator-stats-list {
-    margin-top: 215px;
+    margin-top: 220px;
   }
   .creator-stats-bar-background {
-    margin-top: 58px;
+    margin-top: 10px;
   }
 }
 .creator-social-icons {
