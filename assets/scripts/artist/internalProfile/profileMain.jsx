@@ -8,7 +8,9 @@ var ArtistInternal = React.createClass({
           <h3>Submit Music</h3>
           <p>Add music to your library</p>
         </div>
-        <ArtistUpload />
+        <div className="col-sm-7 col-md-7 col-lg-8">
+          <ArtistUploadSuccess />
+        </div>  
 
       </div>
     )
