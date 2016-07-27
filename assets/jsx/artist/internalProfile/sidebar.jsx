@@ -4,17 +4,17 @@ var ArtistInternalSideBar = React.createClass({
     return (
       <div className="artist-internal-sidebar-wrapper row no-gutters col-xs-12 col-sm-4 col-md-4 col-lg-3">
         <div className="artist-internal-download-count col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <h3>Download Count <small><span className="glyphicon glyphicon-chevron-right pull-right"></span></small></h3>
+          <h3>Download Count <small><span className=" icon-right-open pull-right"></span></small></h3>
           <p>For current month</p>
           <h2>5,062</h2>
         </div>
         <div className="artist-internal-play-count col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <h3>Play Count <small><span className="glyphicon glyphicon-chevron-right pull-right"></span></small></h3>
+          <h3>Play Count <small><span className=" icon-right-open pull-right"></span></small></h3>
           <p>For the current month</p>
           <h2>20,662</h2>
         </div>
         <div className="artist-internal-top-interest col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <h3>Top Interest <small><span className="glyphicon glyphicon-chevron-right pull-right"></span></small></h3>
+          <h3>Top Interest <small><span className=" icon-right-open pull-right"></span></small></h3>
           <ul className="">
             <li className="col-xs-12">
               <div className="col-xs-3 col-sm-4 col-md-4 col-lg-4">
@@ -37,7 +37,7 @@ var ArtistInternalSideBar = React.createClass({
           </ul>
         </div> 
         <div className="artist-internal-top-regions col-xs-12 col-sm-12 col-md-12  col-lg-12">
-          <h3>Top Regions <small><span className="glyphicon glyphicon-chevron-right pull-right"></span></small></h3>
+          <h3>Top Regions <small><span className=" icon-right-open pull-right"></span></small></h3>
           <ul className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <li className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <h4>Chicago, IL</h4>

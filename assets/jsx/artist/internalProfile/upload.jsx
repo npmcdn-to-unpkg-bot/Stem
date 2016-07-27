@@ -83,10 +83,14 @@ var ArtistUploadForm = React.createClass({
         </div>
         <div className="col-sm-12 col-lg-6 row no-gutters">
           <div className="album-art-box col-sm-12 col-md-12 col-lg-12">
-            <span className="upload-album-art-icon icon-picture-1 fa-4x"></span>
-            <h3>Upload your album art</h3>
-            <p>Recommended size: 1000x1000</p>
-            <p>Full Size Limit: xMB</p>
+            <div className="upload-album-content col-lg-12">
+              <span className="upload-album-art-icon icon-picture-1 fa-4x"></span>
+              <div className="upload-album-art-detail">
+                <h3>Upload your album art</h3>
+                <p>Recommended size: 1000x1000</p>
+                <p>Full Size Limit: xMB</p>
+              </div>  
+            </div>
           </div>
         </div>
           <div className="artist-upload col-sm-12 col-md-12 col-lg-12">
@@ -142,9 +146,8 @@ var UploadAlbum = React.createClass({
   render: function() {
     var self = this;
     return (
- <div className="col-sm-12 col-md-12 col-lg-12">
+<div className="col-sm-12 col-md-12 col-lg-12">
         <div className="artist-upload-drop col-sm-11 col-md-11 col-lg-11">
-        <h1>Album shiz</h1>
           <h4><span className="icon-folder"></span> Drag and drop audio files or <a>Browse</a> your computer</h4>
         </div>
         <div className="artist-upload col-sm-12 col-md-12 col-lg-6 row no-gutters">
@@ -166,12 +169,24 @@ var UploadAlbum = React.createClass({
             <input type="" className="artist-upload-input col-sm-12 col-md-12 col-lg-12" />
           </div>
         </div>
+        <div className="col-sm-12 col-lg-6 row no-gutters">
+          <div className="album-art-box col-sm-12 col-md-12 col-lg-12">
+            <div className="upload-album-content col-lg-12">
+              <span className="upload-album-art-icon icon-picture-1 fa-4x"></span>
+              <div className="upload-album-art-detail">
+                <h3>Upload your album art</h3>
+                <p>Recommended size: 1000x1000</p>
+                <p>Full Size Limit: xMB</p>
+              </div>  
+            </div>
+          </div>
+        </div>
           <div className="artist-upload col-sm-12 col-md-12 col-lg-12">
-            <p>Promotional Copy (you can edit this later)</p>
+            <p>Promotional Copy ( you can edit this later )</p>
             <textarea type="" className="artist-upload-textarea col-sm-12 col-md-12 col-lg-12" onChange={self.handleLineGrow} />
-            <div className="character-count row no-gutters ">
-              <p className="col-sm-5 col-md-4 col-lg-3">{this.state.characterCount}/300 Characters</p>
-                <svg className="" height="20" width="400">
+            <div className="character-count col-sm-12 row no-gutters ">
+              <p className="col-sm-4 col-md-4 col-lg-2">{this.state.characterCount}/300 Characters</p>
+                <svg className="col-sm-8 col-md-8" height="20" width="400">
                   <line className="svg-line2" x1="300" y='0' />
                   <line className="svg-line" x1={self.state.characterCount} y='0' />
                 </svg>
