@@ -1,0 +1,90 @@
+@import url("variables.less");
+
+#bg {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+}
+#bg img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+}
+
+.form, .login-form {
+    margin: 100px auto;
+    position: relative;
+    display: inline-block;
+}
+.login-form {
+    width: 400px;
+}
+.form-tabs {
+    margin: 10px 0;
+    position: absolute;
+    top: -65px;
+    width: 100%;
+}
+.form-tabs a {
+    padding: 10px 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 50%;
+    float: left;
+}
+.form-tabs .active a {
+    background: @white;
+    opacity: .9;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+}
+.form-bg {
+    background: @white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: .9;
+    border: 1px solid @grey-5;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+}
+.form-content {
+    padding: 30px 40px;
+    position: relative;
+}
+
+.abcRioButtonLightBlue {
+    color: #white !important;
+    background-color: #3B5998 !important;
+    height: 45px !important;
+    width: 100% !important;
+    margin: 10px 0;
+}
+.abcRioButtonIcon {
+    display: none;
+}
+.abcRioButtonContentWrapper {
+    height: 100%;
+    width: 100%;
+    padding: 6px;
+}
+#g-signin2 .abcRioButtonContentWrapper {
+    background: #db3236;
+}  
+.abcRioButtonContents {
+    font-size: 22px !important;
+    font-weight: normal !important;
+    line-height: 34px !important;
+}
+.abcRioButtonLightBlue {
+    width: 100% !important;
+    min-width: 250px;
+    cursor: pointer;
+    border: 0;
+}

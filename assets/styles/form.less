@@ -1,0 +1,71 @@
+@import url("variables.less");
+
+/* BEGIN Form Styles */
+.error {
+    color: #e55;
+}
+
+.form-input, input:not([type]), input[type="email"], input[type="number"], input[type="password"], input[type="tel"], input[type="url"], input[type="text"] {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0px -1px 1px 0px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    margin-bottom: 10px;
+}
+textarea.form-input {
+    height: 120px;
+    padding: 20px;
+}
+
+.btn {
+    border-radius: 0;   
+    -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,.2);
+    box-shadow: 1px 1px 2px 0px rgba(0,0,0,.2);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; 
+    font-size: 24px;
+    line-height: 30px; 
+    margin: 5px auto;
+}
+.btn-primary {
+    color: #fff;
+    background-color: @primary;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: @primary-lt;
+    border: 1px solid @primary;
+}
+.btn-sm {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 6px 10px;
+}
+.btn-wide {
+    width: 100%;
+}
+.btn-circle {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+}
+.btn [class^="icon-"]:before, .btn [class*=" icon-"]:before {
+    margin: 0;
+}
+/* END Form Styles */
+
+
