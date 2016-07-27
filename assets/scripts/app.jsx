@@ -10,7 +10,7 @@ const initialState = {
 	displayMenu: false,
 	displayFilterMenu: false,
 	navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
-	currentPage: 4
+	currentPage: 6
 };
 
 var reducer = function(state, action) {
@@ -210,7 +210,7 @@ var App = React.createClass({
 
 					{ this.props.currentPage == 7 ?
 						<div>
-							<ArtistUploadSuccess />
+							<ArtistInternal />
 							</div>
 					: null}
 
