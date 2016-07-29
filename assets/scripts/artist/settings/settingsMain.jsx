@@ -1,12 +1,14 @@
 var ArtistAccountSettings = React.createClass({
   render: function() {
+    console.log('userInfo = ' + this.props.userInfo);
+
     return (
       <div className="row no-gutters ">
-        <div className="col-sm-2 col-md-2 col-lg-2 ">
+        <div className="col-sm-2">
             <ArtistAccountNavBar />
         </div>
-        <div className="artist-account-wrapper col-xs-12 col-sm-10 col-md-10 col-lg-10">
-          <ArtistAccountView />
+        <div className="artist-account-wrapper col-xs-12 col-sm-10">
+          <ArtistAccountSettings />
           <ArtistContactInfo />
           <ArtistConnectedAccounts />
           <ArtistNotification />

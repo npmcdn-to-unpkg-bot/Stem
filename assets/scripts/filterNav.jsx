@@ -76,17 +76,17 @@ var FilterNav = React.createClass({
                     <ul className="filter-nav-list" ref="filterNav">
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
-                                <i className="icon-soundcloud"></i>
+                                <i className="icon-headphones-2"></i>
                             </a>
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
-                                <i className="icon-heart"></i>
+                                <i className="icon-chart-1"></i>
                             </a>
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
-                                <i className="icon-flow-branch"></i>
+                                <i className="icon-group"></i>
                             </a>
                         </li>
                         <li style={style}>
@@ -96,27 +96,22 @@ var FilterNav = React.createClass({
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
-                                <i className="icon-note"></i>
+                                <i className="icon-music-1"></i>
                             </a>
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
-                                <i className="icon-users"></i>
+                                <i className="icon-smiley"></i>
                             </a>
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
-                                <i className="icon-user"></i>
-                            </a>
-                        </li>
-                        <li style={style}>
-                            <a onClick={this.showFilterMenu}>
-                                <i className="icon-list"></i>
+                                <i className="icon-list-1"></i>
                             </a>
                         </li>
                     </ul>
                 </div>
-                <FilterMenu displayFilterMenu={this.props.displayFilterMenu}>
+                <FilterMenu displayFilterMenu={this.context.displayFilterMenu}>
                     <div className="filter-menu-content">
                         <div className="filter-menu-header">
                             Select Genres 
@@ -146,9 +141,9 @@ var FilterMenu = React.createClass({
     render: function() {
         return (
             <div>
-                <div onClick={this.hideFilterMenu} id="f-overlay" className={(this.props.displayFilterMenu ? "filter-page-overlay active" : "filter-page-overlay")}></div>
+                <div onClick={this.hideFilterMenu} id="f-overlay" className={(this.context.displayFilterMenu ? "filter-page-overlay active" : "filter-page-overlay")}></div>
                 <div className="filter-menu">
-                    <div className={this.props.displayFilterMenu ? "visible " : ""}>{this.props.children}</div>
+                    <div className={this.context.displayFilterMenu ? "visible " : ""}>{this.props.children}</div>
                 </div>
             </div>
         );
@@ -166,3 +161,10 @@ var FilterItem = React.createClass({
         );
     }
 });
+
+FilterNav.contextTypes = {
+    displayFilterMenu: React.PropTypes.bool
+};
+FilterMenu.contextTypes = {
+    displayFilterMenu: React.PropTypes.bool
+};

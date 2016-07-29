@@ -40,7 +40,7 @@
 }
 .header-right {
     background-color: rgba(255, 255, 255, 0.7);
-    margin: 5px 0;
+    margin: 18px 0;
 }
 a.brand {
     font-size: 40px;
@@ -102,39 +102,33 @@ a.brand {
     position: relative;
 }
 .menu .menu-header {
-    background-color: @grey-4;
+    background: url(http://i2.istockimg.com/file_thumbview_approve/77222595/5/stock-illustration-77222595-thin-white-and-grey-diagonal-stripes-for-background.jpg);
     padding: 20px 10px;
     text-align: center;
     width: 300px;
     position: relative;
     line-height: 10px;
 }
-.menu-header .user-info img {
-    width: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-    border: 1px solid @grey-2;
+.menu .menu-header a {
+    color: @black;
 }
 .menu .menu-header a.close {
-    color: white;
     display: block;
-    font-size: 20px;
+    font-size: 30px;
     position: absolute;
     right: 10px;
     top: 10px;
+    opacity: 0.6;
 }
 .menu .menu-item {
-    background-color: white;
-    border-bottom: 1px solid @grey-5;
+    background-color: @white;
     color: @grey-1;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: normal;
     line-height: 28px;
     overflow: hidden;
-    padding: 10px 15px;
+    padding: 12px 22px;
     position: relative;
     text-overflow: ellipsis;
     transition: background-color 0.2s linear 0s, color 0.2s linear 0s;
@@ -142,8 +136,10 @@ a.brand {
     width: 100%;
 }
 .menu .menu-item.active {
-    border-bottom: 2px solid @grey-2;
+    border-left: 6px solid @primary;
     font-weight: 600;
+    background: @grey-6;
+    padding-left: 14px;
 }
 
 .filter-nav {
@@ -167,11 +163,12 @@ a.brand {
     display: inline-block;
     width: 120px;
     text-align: center;
-    padding: 5px;
+    padding: 6px;
 }
 .filter-nav-list a {
     color: @white;
-    font-size: 36px;
+    font-size: 32px;
+    font-weight: normal;
 }
 .filter-nav-list a:hover {
     color: @grey-5;
