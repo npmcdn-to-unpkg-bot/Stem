@@ -98,7 +98,7 @@ var ArtistUploadSuccessSlider = React.createClass({
 var ArtistUploadSuccess = React.createClass({
 	render: function(){
 		return(
-			<div className="artist-upload-success col-lg-12">
+			<div className="artist-upload-success col-sm-12">
 				<div className="row">
 					<div className="artist-upload-success-box bg-grad-1 col-lg-11 col-lg-offset-1 mar-t-sm pad-t-lg pad-b-md">
 						<h2 className="white mar-b-md"><span className="icon-ok-circle-1 white"></span>Success!</h2>

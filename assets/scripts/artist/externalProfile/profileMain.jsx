@@ -4,7 +4,7 @@ var ArtistProfile = React.createClass({
         var self = this;
 		
 		return (
-			<div>
+			<div className="artist-main-wrapper mar-t-sm">
 				<ArtistFeatured />
 				<ArtistMainContent />
 			</div>	

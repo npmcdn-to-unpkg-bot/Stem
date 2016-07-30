@@ -69,7 +69,7 @@ var ArtistAccountView = React.createClass({
 						<h3>Account</h3>
 						<h5>Update your account settings</h5>
 					</div>
-					<div className="artist-account-setting-upload-wrapper col-sm-12 col-md-3 col-lg-3" >
+					<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-3 col-lg-3" >
 						<div className="col-sm-offset-4 col-md-offset-0 col-lg-12 col-lg-offset-0">
 							<a>
 								<div className="artist-account-setting-profile-img text-center">
@@ -79,7 +79,7 @@ var ArtistAccountView = React.createClass({
 							</a>
 						</div>  
 					</div>
-					<div className="artist-account-setting-upload-wrapper col-sm-12 col-md-9 col-lg-9">
+					<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-8 col-md-offset-1">
 						<div className="">  
 							<a>
 								<div className="artist-account-setting-profile-banner-img text-center">
