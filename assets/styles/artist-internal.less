@@ -11,6 +11,7 @@
     background-color: #FAFAFA;
     margin-right: 30px;
     padding-bottom: 100%;
+    max-width: 250px;
   }
 
   .artist-internal-download-count {
@@ -88,35 +89,7 @@
 .pull-right {
   float: right !important;
 }
-/*mobile  */
-@media (max-width: 768px) {
-  .artist-internal-sidebar-wrapper p {
-    text-align: left;
-    padding-bottom: 0;
-  }
-  .artist-internal-top-interest h4 {
-    margin-top: 15px;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-}
-/*-- Artist Upload --*/
-.artist-internal-greeting {
-  margin-left: 50px;
-}
-.upload-links {
-  margin-left: 10px;
-}
-@media (max-width: 767px) {
-  .artist-upload-wrapper {
-    display: none;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .artist-internal-greeting {
-    margin-left: 25px;
-  }
-}
+
 .artist-upload-wrapper {
   padding: @space-lg;
   font-family: 'roboto-light';
@@ -203,6 +176,9 @@
   padding-top: 30px;
   width: 100px;
   content: '';
+}
+.upload-mobile-hidden {
+  display: block;
 }
 /*-- Artist Upload Success --*/
 .artist-upload-success-box {
@@ -390,23 +366,12 @@
       line-height: 50px;
       float: right;
     }
-/*desktop*/
-@media (min-width: 993px) and (max-width: 1199px) {
-  .artist-internal-analyitics-download-wrapper {
-    padding: 40px 40px 0;
-  }
-  .graph-content-wrapper {
-    min-width: 897px;
-  }
-}
-@media (min-width: 768px) and (max-width: 992px) {
-}
+
 /*-- Plays Graph--*/
 .artist-internal-analytics-plays-wrapper {
   background-color: white;
   padding-top: 40px;
   border-bottom: 1px solid lightgrey;
-  text-align: left;
 }
   .artist-internal-analytics-plays-wrapper h4 {
     text-align: right;
@@ -505,12 +470,9 @@
   }
 
 /*-- Artist Account Setting --*/
-.artist-account-wrapper {
-}
-
 .artist-account-navbar-wrapper  {
   background-color: #FAFAFA;
-  margin-top: 15px; 
+  min-width: 180px; 
 }
   .artist-account-navbar-wrapper li {
     padding: 15px 0 15px 15px;
@@ -626,43 +588,6 @@
 .settings-mobile-nav {
   display: none;
 }    
-/*account mobile */
-@media (max-width: 768px) {
-  .settings-mobile-nav {
-    display: block;
-  }
-    .settings-mobile-nav h3 {
-      padding: @space-md 0;
-    }
-    .settings-mobile-nav ul {
-      position: absolute;
-      z-index: 999;
-    }
-  .settings-navbar {
-    display: none;
-  }
-  .artist-account-navbar-wrapper {
-    margin:0;
-  }
-  .artist-account-setting-upload-wrapper {
-    padding: 15px 0 5px;
-  }
-
-    .artist-account-form-input input {
-      margin-bottom: 10px;
-    }  
-    .artist-account-setting-profile-img {
-      margin: 0 auto;
-    }
-    .artist-account-form-input p {
-      text-align: left;
-    }  
-}
-@media (min-width: 767px) and (max-width: 990px ) {
-  .artist-account-setting-upload-wrapper {
-    padding: 15px;
-  }
-}
 
 /*-- Artist Contact Info --*/
 .artist-setting-contact-info-wrapper, .artist-account-contact-info-wrapper, .artist-notification-wrapper, .artist-password-wrapper {
@@ -724,12 +649,7 @@
         height: 60px;
       }
 /* mobile */
-@media (max-width: 768px) {
-  .artist-account-contact-header, .artist-contact-setting-header, .artist-account-setting-header {
-    text-align: center;
-  }
-
-}      
+     
 /*-- Artist Notification --*/
 .artist-notification-activities {
   padding: 30px;
@@ -756,18 +676,7 @@
     margin-bottom: 10px;
     text-align: right;
   }
-@media (max-width: 768px) {
-  .notification-icon {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .artist-notification-activities input {
-    margin-left: @space-sm;
-  }
-  .artist-notification-header {
-    text-align: center;
-  }
-}  
+ 
 /*-- Artist Password --*/
 .artist-password-wrapper {
    padding-bottom: 100px;

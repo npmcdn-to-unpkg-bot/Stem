@@ -3,7 +3,7 @@ var ArtistSearchMobileView = React.createClass({
     var self = this;
 
     return (
-      <div className="artist-search-mobile-view-wrapper col-xs-12">
+      <div className="artist-search-mobile-view-wrapper col-xs-12 row no-gutters">
         <ul className="col-xs-12">
           <li className="col-xs-12">
             <div className="artist-search-mobile-items col-xs-8">
@@ -12,15 +12,15 @@ var ArtistSearchMobileView = React.createClass({
               <p className="artist-search-mobile-view-detail">Echosmith</p>
               <p className="artist-search-mobile-view-detail">Taking Dreams</p>
               <div className="artist-search-mobile-view-rating ">
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>  
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>  
               </div>
             </div>  
             <div>
-              <a><span className="glyphicon glyphicon-heart playlist-glyph fa-2x"></span></a>
-              <a><span className="glyphicon glyphicon-plus-sign playlist-glyph fa-2x"></span></a>  
+              <a><span className="icon-heart playlist-glyph fa-2x"></span></a>
+              <a><span className="icon-plus-circle playlist-glyph fa-2x"></span></a>  
             </div>  
           </li>
           <li className="col-xs-12">
@@ -30,15 +30,15 @@ var ArtistSearchMobileView = React.createClass({
               <p className="artist-search-mobile-view-detail">Echosmith</p>
               <p className="artist-search-mobile-view-detail">Taking Dreams</p>
               <div className="artist-search-mobile-view-rating ">
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>  
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>  
               </div>
             </div>  
             <div>
-              <a><span className="glyphicon glyphicon-heart playlist-glyph fa-2x"></span></a>
-              <a><span className="glyphicon glyphicon-plus-sign playlist-glyph fa-2x"></span></a>  
+              <a><span className="icon-heart playlist-glyph fa-2x"></span></a>
+              <a><span className="icon-plus-circle playlist-glyph fa-2x"></span></a>  
             </div>  
           </li>
           <li className="col-xs-12">
@@ -48,15 +48,15 @@ var ArtistSearchMobileView = React.createClass({
               <p className="artist-search-mobile-view-detail">Echosmith</p>
               <p className="artist-search-mobile-view-detail">Taking Dreams</p>
               <div className="artist-search-mobile-view-rating ">
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>  
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>  
               </div>
             </div>  
             <div>
-              <a><span className="glyphicon glyphicon-heart playlist-glyph fa-2x"></span></a>
-              <a><span className="glyphicon glyphicon-plus-sign playlist-glyph fa-2x"></span></a>  
+              <a><span className="icon-heart playlist-glyph fa-2x"></span></a>
+              <a><span className="icon-plus-circle playlist-glyph fa-2x"></span></a>  
             </div>  
           </li>
           <li className="col-xs-12">
@@ -66,15 +66,15 @@ var ArtistSearchMobileView = React.createClass({
               <p className="artist-search-mobile-view-detail">Echosmith</p>
               <p className="artist-search-mobile-view-detail">Taking Dreams</p>
               <div className="artist-search-mobile-view-rating ">
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>             
-                <span className="glyphicon glyphicon-star star"></span>  
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>             
+                <span className="icon-star-3 star"></span>  
               </div>
             </div>  
             <div>
-              <a><span className="glyphicon glyphicon-heart playlist-glyph fa-2x"></span></a>
-              <a><span className="glyphicon glyphicon-plus-sign playlist-glyph fa-2x"></span></a>  
+              <a><span className="icon-heart playlist-glyph fa-2x"></span></a>
+              <a><span className="icon-plus-circle playlist-glyph fa-2x"></span></a>  
             </div>  
           </li>
                     
