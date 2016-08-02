@@ -179,12 +179,9 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 3 ?
 						<div>
-<<<<<<< HEAD
 							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
 							<LibraryMain />
-=======
 							<ArtistProfile />
->>>>>>> 68435701d0f938975a8b3aeeb3de1bf29e0b3a2c
 						</div>
 					: null} 
 
@@ -208,15 +205,12 @@ var App = React.createClass({
 						</div>
 					: null}
 
-<<<<<<< HEAD
-=======
 					{ this.props.currentPage == 3 ?
 						<div>
 							<CreatorProfile />
 						</div>
 					: null} 
 
->>>>>>> 68435701d0f938975a8b3aeeb3de1bf29e0b3a2c
 					{ this.props.currentPage == 100 ?
 						<div>
 							<WhoAreYou />
