@@ -4,8 +4,8 @@ var WhoAreYou = React.createClass({
 
         $.ajax({
             type: "POST",
-            url: this.props.baseAPI + '/Account',
-            headers: { 'Authorization': this.props.authToken },
+            url: this.context.baseAPI + '/Account',
+            headers: { 'Authorization': this.context.authToken },
             contentType: "application/json; charset=utf-8",
 			dataType: 'json',
 			data: JSON.stringify({AccountType: id}),
@@ -61,3 +61,8 @@ var WhoAreYou = React.createClass({
 		);
 	}
 });
+
+WhoAreYou.contextTypes = {
+	baseAPI: React.PropTypes.string,
+	authToken: React.PropTypes.string
+};

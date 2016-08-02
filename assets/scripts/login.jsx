@@ -107,7 +107,7 @@ var Login = React.createClass({
 
         $.ajax({
             type: 'GET', // rest verb (GET, POST, PUT, DEL)
-            url: this.props.baseAPI + '/api/account/test',
+            url: this.context.baseAPI + '/api/account/test',
             headers: { 'Authorization': auth },
             dataType: 'json',
             success: function (response) {
@@ -168,7 +168,7 @@ var Login = React.createClass({
 		} else {
 			$.ajax({	
 				type: 'POST',
-				url: this.props.baseAPI + '/Authentication/Register',
+				url: this.context.baseAPI + '/Authentication/Register',
 				contentType: "application/json; charset=utf-8",
 				dataType: 'json',
 				data: JSON.stringify({UserName: Email, Password: Password, ConfirmPassword: ConfirmPassword}),
@@ -201,7 +201,7 @@ var Login = React.createClass({
         //var data = $("#loginForm").serialize();
         $.ajax({
             type: "POST",
-            url: this.props.baseAPI + '/Authentication/Login',
+            url: this.context.baseAPI + '/Authentication/Login',
 			contentType: "application/x-www-form-urlencoded",
 			accept: "application/json",
 			dataType: 'json',
@@ -232,7 +232,7 @@ var Login = React.createClass({
 
         $.ajax({
             type: "GET",
-            url: this.props.baseAPI + '/Account',
+            url: this.context.baseAPI + '/Account',
             headers: { 'Authorization': authToken },
 			accept: "application/json",
 			dataType: 'json',
@@ -261,7 +261,7 @@ var Login = React.createClass({
 		var self = this;
 		
 		return (	
-			<div className={this.props.isLoggedIn ? "display-false" : "display-true"}>
+			<div className={this.props.isLoggedIn ? "display-false" : "display-true text-center"}>
 				<div id="bg">
 					<img src="assets/images/handandfader.jpg" alt="" />
 				</div>
@@ -329,3 +329,7 @@ var Login = React.createClass({
 		);
 	}
 });
+
+Login.contextTypes = {
+	baseAPI: React.PropTypes.string
+};

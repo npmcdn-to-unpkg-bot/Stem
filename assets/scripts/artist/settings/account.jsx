@@ -1,4 +1,4 @@
-var ArtistAccountView = React.createClass({
+var ArtistAccountSettings = React.createClass({
 	getInitialState: function() {
 		return {
 			characterCount: 0,
@@ -38,8 +38,8 @@ var ArtistAccountView = React.createClass({
 
 		$.ajax({
 			type: "PUT",
-			url: this.props.baseAPI + '/Account',
-			headers: { 'Authorization': this.props.authToken },
+			url: this.context.baseAPI + '/Account',
+			headers: { 'Authorization': this.context.authToken },
 			contentType: "application/json; charset=utf-8",
 			dataType: 'json',
 			data: data,
@@ -58,9 +58,7 @@ var ArtistAccountView = React.createClass({
 	},
 
 	render: function() {
-		var self = this,
-			userInfo = this.props.userInfo;
-		console.log('userInfo = ' + userInfo);
+		var self = this;
 
 		return (
 			<form id="accountSettings">
@@ -128,3 +126,8 @@ var ArtistAccountView = React.createClass({
 		)
 	}
 });
+
+ArtistAccountSettings.contextTypes = {
+	baseAPI: React.PropTypes.string,
+	authToken: React.PropTypes.string
+};
