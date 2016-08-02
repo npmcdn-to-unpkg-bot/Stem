@@ -9,13 +9,8 @@ const initialState = {
 	userInfo: {},
 	displayMenu: false,
 	displayFilterMenu: false,
-<<<<<<< HEAD
-	navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
-	currentPage: 3
-=======
 	//navItems: ['Home', 'Submit Music', 'Dashboard', 'Profile', 'Browse Music', 'Account Settings', 'Artist Search', 'Creator Profile'],
-	currentPage: 0
->>>>>>> 68435701d0f938975a8b3aeeb3de1bf29e0b3a2c
+	currentPage: 0	
 };
 
 var reducer = function(state, action) {
