@@ -9,7 +9,6 @@ const initialState = {
 	userInfo: {},
 	displayMenu: false,
 	displayFilterMenu: false,
-	//navItems: ['Home', 'Submit Music', 'Dashboard', 'Profile', 'Browse Music', 'Account Settings', 'Artist Search', 'Creator Profile'],
 	currentPage: 0
 };
 
@@ -83,7 +82,6 @@ var AppState = function(state) {
 		userInfo: state.userInfo,
 		displayMenu: state.displayMenu,
 		displayFilterMenu: state.displayFilterMenu,
-		//navItems: state.navItems,
 		currentPage: state.currentPage
 	}
 }
@@ -93,7 +91,8 @@ var App = React.createClass({
 		return {
 			baseAPI: this.props.baseAPI,
 			authToken: this.props.authToken,
-			displayFilterMenu: this.props.displayFilterMenu
+			displayFilterMenu: this.props.displayFilterMenu,
+			userInfo: this.props.userInfo
 		};
 	},
 
@@ -113,7 +112,6 @@ var App = React.createClass({
 
 	render: function() {
 		var currentPage = this.props.currentPage;
-		console.log('currentPage = ' + currentPage);
 
 		return (  
 			<div>   
@@ -192,7 +190,7 @@ var App = React.createClass({
 
 					{ this.props.currentPage == 5 ?
 						<div>
-							<ArtistAccountSettings userInfo={this.props.userInfo} />
+							<ArtistSettings />
 						</div>
 					: null} 
 
@@ -271,7 +269,6 @@ var MenuItem = React.createClass({
 	},
 
 	render: function() {
-		console.log('meunItemID = ' + this.props.meunItemID);
 		return (
 			<div onClick={this.navigate.bind(this, this.props.meunItemID)} id={this.props.meunItemID} className={this.props.meunItemID == this.props.currentPage ? "menu-item active" : "menu-item"}>{this.props.children}</div>
 		);
@@ -281,7 +278,8 @@ var MenuItem = React.createClass({
 App.childContextTypes = {
 	baseAPI: React.PropTypes.string,
 	authToken: React.PropTypes.string,
-	displayFilterMenu: React.PropTypes.bool
+	displayFilterMenu: React.PropTypes.bool,
+	userInfo: React.PropTypes.object
 };
 
 var artistMenu = [

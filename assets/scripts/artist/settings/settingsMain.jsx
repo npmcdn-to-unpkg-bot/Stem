@@ -1,7 +1,5 @@
-var ArtistAccountSettings = React.createClass({
+var ArtistSettings = React.createClass({
   render: function() {
-    console.log('userInfo = ' + this.props.userInfo);
-
     return (
       <div className="row no-gutters ">
         <div className="col-sm-2">
