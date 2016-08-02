@@ -1,17 +1,17 @@
 @import url("variables.less");
 
 /*-- Artist Internal -- */
-.artist-internal-wrapper-fluid {
+.artist-internal-wrapper {
   background-color: white;
   text-align: left;
   color: #9B9B9B;
-  position: absolute; 
 }
   .artist-internal-sidebar-wrapper {
     background-color: #FAFAFA;
+    display: inline-block;
     margin-right: 30px;
     padding-bottom: 100%;
-    max-width: 250px;
+    width: 250px;
   }
 
   .artist-internal-download-count {
@@ -94,9 +94,11 @@
   padding: @space-lg;
   font-family: 'roboto-light';
 }
-  .artist-internal-greeting h3 {
+  .artist-internal-greeting {
     font-family: 'roboto-light';
-    padding: @space-lg 0 15px;
+    // padding-top: @space-lg;
+    display: inline-block;
+    max-width: 300px;
   }
 .artist-upload-drop {
   padding: 30px;
@@ -252,6 +254,7 @@
 }
 
 /*-- Artist Internal Library --*/
+
 .artist-internal-library-wrapper {
   font-family: 'roboto-light';
   position: relative;
@@ -466,7 +469,6 @@
   .artist-internal-top-interest-detail {
     margin-top: 175px;
     margin-left: 140px;
-    /*text-align: center;*/
   }
 
 /*-- Artist Account Setting --*/
@@ -648,7 +650,6 @@
       .artist-connected-links input {
         height: 60px;
       }
-/* mobile */
      
 /*-- Artist Notification --*/
 .artist-notification-activities {

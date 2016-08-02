@@ -5,7 +5,7 @@ var ArtistFeatured = React.createClass({
     return (
       <div className="artist-featured-header ">
         <div className="artist-featured-header-bar "></div>
-        <div className="artist-featured-header-info col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div className="artist-featured-header-info col-xs-12">
             <span className="artist-featured-header-info-icon icon-play-circled2 fa-5x col-xs-1 col-sm-1 col-md-1 col-lg-1"></span>
             <ul className="col-xs-9 col-xs-offset-1 pad-t-sm col-sm-4 col-sm-offset-0 col-md-4 col-md-offset-0 col-lg-3 col-lg-offset-0">
               <li><h2>Echosmith</h2></li>
