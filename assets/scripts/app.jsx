@@ -177,6 +177,8 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 3 ?
 						<div>
+							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
+							<LibraryMain />
 							<ArtistProfile />
 						</div>
 					: null} 
