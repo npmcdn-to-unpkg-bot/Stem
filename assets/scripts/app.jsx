@@ -19,7 +19,6 @@ var reducer = function(state, action) {
 	var newState = state;
 	switch(action.type) {
 		case 'UpdateLoginStatus':
-			console.log('UpdateLoginStatus');
 			newState = Object.assign({}, state, {
 				isLoggedIn: action.data.isLoggedIn, 
 				authToken: action.data.authToken,
@@ -30,7 +29,6 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'UpdateUserRecord':
-			console.log('UpdateLoginStatus');
 			newState = Object.assign({}, state, {
 				userInfo: action.data.userInfo,
 				currentPage: action.data.currentPage
@@ -39,29 +37,24 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'ShowMenu':
-			console.log('ShowMenu');
 			newState = Object.assign({}, state, {displayMenu: true});
 			return newState;
 
 		case 'HideMenu':
-			console.log('HideMenu');
 			newState = Object.assign({}, state, {displayMenu: false});
 			return newState;
 
 		case 'GoToPage':
-			console.log('GoToPage');
 			console.log('action.data = ' + JSON.stringify(action.data));
 			newState = Object.assign({}, state, {currentPage: action.data.currentPage, displayMenu: false});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
 		case 'ShowFilterMenu':
-			console.log('ShowFilterMenu');
 			newState = Object.assign({}, state, {displayFilterMenu: true});
 			return newState;
 
 		case 'HideFilterMenu':
-			console.log('HideFilterMenu');
 			newState = Object.assign({}, state, {displayFilterMenu: false});
 			return newState;
 
@@ -103,7 +96,6 @@ var App = React.createClass({
 	},
 
 	navigate: function(id) {
-		console.log('navigate. id = ' + id);
 		store.dispatch({
 			type: 'GoToPage',
 			data: {currentPage: id}

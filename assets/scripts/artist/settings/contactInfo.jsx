@@ -1,14 +1,14 @@
 var ArtistContactInfo = React.createClass({
 	getInitialState: function() {
 		return {
-			firstName: this.context.userInfo.primaryContactInfo.firstName,
-			lastName: this.context.userInfo.primaryContactInfo.lastName,
-			email: this.context.userInfo.primaryContactInfo.email,
-			phone: this.context.userInfo.primaryContactInfo.phone,
-			address: this.context.userInfo.primaryContactInfo.address,
-			city: this.context.userInfo.primaryContactInfo.city,
-			state: this.context.userInfo.primaryContactInfo.state,
-			zip: this.context.userInfo.primaryContactInfo.zip,
+			firstName: this.context.userInfo.primaryContact.firstName,
+			lastName: this.context.userInfo.primaryContact.lastName,
+			email: this.context.userInfo.primaryContact.email,
+			phone: this.context.userInfo.primaryContact.phone,
+			address: this.context.userInfo.primaryContact.address,
+			city: this.context.userInfo.primaryContact.city,
+			state: this.context.userInfo.primaryContact.state,
+			zip: this.context.userInfo.primaryContact.zip,
 			errorMessage: ''
 		}
 	},
