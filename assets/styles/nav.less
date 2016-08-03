@@ -52,9 +52,10 @@ a.brand {
     padding: 10px;
     font-size: 24px;
     line-height: 26px;
-}
-.header .header-right a.primary, .header .primary {
-    color: @primary;
+
+    &.primary {
+        color: @primary;
+    }
 }
 .header a.login {
     background-color: @primary;
@@ -72,74 +73,78 @@ a.brand {
 .menu {
     display: block;
     position: relative;
-}
-.menu > div.right {
-    background-color: white;
-    bottom: 0;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-    font-family: "Segoe UI",Arial,Helvetica,sans-serif;
-    overflow: hidden;
-    position: fixed;
-    right: -100%;
-    top: 0;
-    margin-right: -10px;
-    width: 100%;
-    z-index: 4000 !important;
-    transition: transform 250ms ease 0s;
-}
-.menu > div.visible.right {
-    transform: translate3d(-300px, 0px, 0px);
-    margin-right: 0px;
-}
-.menu .menu-content {
-    box-sizing: border-box;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 300px;
-    z-index: 2;
-    overflow: hidden;
-    position: relative;
-}
-.menu .menu-header {
-    background: url(http://i2.istockimg.com/file_thumbview_approve/77222595/5/stock-illustration-77222595-thin-white-and-grey-diagonal-stripes-for-background.jpg);
-    padding: 20px 10px;
-    text-align: center;
-    width: 300px;
-    position: relative;
-    line-height: 10px;
-}
-.menu .menu-header a {
-    color: @black;
-}
-.menu .menu-header a.close {
-    display: block;
-    font-size: 30px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    opacity: 0.6;
-}
-.menu .menu-item {
-    background-color: @white;
-    color: @grey-1;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: normal;
-    line-height: 28px;
-    overflow: hidden;
-    padding: 12px 22px;
-    position: relative;
-    text-overflow: ellipsis;
-    transition: background-color 0.2s linear 0s, color 0.2s linear 0s;
-    white-space: nowrap;
-    width: 100%;
-}
-.menu .menu-item.active {
-    border-left: 6px solid @primary;
-    font-weight: 600;
-    background: @grey-6;
-    padding-left: 14px;
+
+        > div.right {
+        background-color: white;
+        bottom: 0;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        font-family: "Segoe UI",Arial,Helvetica,sans-serif;
+        overflow: hidden;
+        position: fixed;
+        right: -100%;
+        top: 0;
+        margin-right: -10px;
+        width: 100%;
+        z-index: 4000 !important;
+        transition: transform 250ms ease 0s;
+    }
+    > div.visible.right {
+        transform: translate3d(-300px, 0px, 0px);
+        margin-right: 0px;
+    }
+    .menu-content {
+        box-sizing: border-box;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 300px;
+        z-index: 2;
+        overflow: hidden;
+        position: relative;
+    }
+    .menu-header {
+        background: url(http://i2.istockimg.com/file_thumbview_approve/77222595/5/stock-illustration-77222595-thin-white-and-grey-diagonal-stripes-for-background.jpg);
+        padding: 20px 10px;
+        text-align: center;
+        width: 300px;
+        position: relative;
+        line-height: 10px;
+        a {
+            color: @black;
+        }
+        a.close {
+            display: block;
+            font-size: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            opacity: 0.6;
+        }
+    }
+    .menu-item {
+        background-color: @white;
+        color: @grey-1;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: normal;
+        line-height: 28px;
+        overflow: hidden;
+        padding: 12px 22px;
+        position: relative;
+        text-overflow: ellipsis;
+        transition: background-color 0.2s linear 0s, color 0.2s linear 0s;
+        white-space: nowrap;
+        width: 100%;
+        &.active {
+            border-left: 6px solid @primary;
+            font-weight: 600;
+            background: @grey-6;
+            padding-left: 14px;
+        }
+    }
+    .menu-item:hover {
+        background: @grey-6;
+    }
 }
 
 .filter-nav {
@@ -151,27 +156,28 @@ a.brand {
     position: relative;
     z-index: 3000;
 }
+.filter-nav-list::-webkit-scrollbar {
+    display: none;
+}
 .filter-nav-list {
     overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-}
-.filter-nav-list::-webkit-scrollbar {
-    display: none;
-}
-.filter-nav-list li {
-    display: inline-block;
-    width: 120px;
-    text-align: center;
-    padding: 6px;
-}
-.filter-nav-list a {
-    color: @white;
-    font-size: 32px;
-    font-weight: normal;
-}
-.filter-nav-list a:hover {
-    color: @grey-5;
+
+    li {
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+        padding: 6px;
+    }
+    a {
+        color: @white;
+        font-size: 32px;
+        font-weight: normal;
+    }
+    a:hover {
+        color: @grey-5;
+    }
 }
 
 a.filter-nav-prev, a.filter-nav-next {
@@ -204,51 +210,52 @@ a.filter-nav-next {
     position: relative;
     margin-top: -10px;
     z-index: 2000;
-}
-.filter-menu > div {
-    background-color: white;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-    font-family: "Segoe UI",Arial,Helvetica,sans-serif;
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    display: none;
-}
-.filter-menu > div.visible {
-    display: block;
-}
-.filter-menu .filter-menu-content {
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    z-index: 2;
-    overflow: hidden;
-    position: relative;
-    padding: 20px;
-    background: @grey-6;
-    font-size: 14px;
-    line-height: 28px;
-}
-.filter-menu .filter-menu-header {
-    display: block;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 0 0 10px;
-}
-.filter-menu .filter-item {
-    color: @grey-1;
-    cursor: pointer;
-    overflow: hidden;
-    padding: 10px 15px;
-    text-overflow: ellipsis;
-    display: inline;
-}
 
-.filter-menu .filter-item.active {
-    border-bottom: 2px solid @grey-2;
-    font-weight: 600;
-}
+    > div {
+        background-color: white;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        font-family: "Segoe UI",Arial,Helvetica,sans-serif;
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        display: none;
+    }
+    > div.visible {
+        display: block;
+    }
 
-.filter-menu .filter-menu-footer {  
-    display: none;
+    .filter-menu-header {
+        display: block;
+        font-weight: bold;
+        font-size: 18px;
+        padding: 0 0 10px;
+    }
+    .filter-menu-content {
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        overflow: hidden;
+        position: relative;
+        padding: 20px;
+        background: @grey-6;
+        font-size: 14px;
+        line-height: 28px;
+    }
+    .filter-item {
+        color: @grey-1;
+        cursor: pointer;
+        overflow: hidden;
+        padding: 10px 15px;
+        text-overflow: ellipsis;
+        display: inline;
+
+        &.active {
+            border-bottom: 2px solid @grey-2;
+            font-weight: 600;
+        }
+    }
+    .filter-menu-footer {  
+        display: none;
+    }
 }

@@ -20,7 +20,6 @@ var reducer = function(state, action) {
 	var newState = state;
 	switch(action.type) {
 		case 'UpdateLoginStatus':
-			console.log('UpdateLoginStatus');
 			newState = Object.assign({}, state, {
 				isLoggedIn: action.data.isLoggedIn, 
 				authToken: action.data.authToken,
@@ -31,7 +30,6 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'UpdateUserRecord':
-			console.log('UpdateLoginStatus');
 			newState = Object.assign({}, state, {
 				userInfo: action.data.userInfo,
 				currentPage: action.data.currentPage
@@ -40,29 +38,24 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'ShowMenu':
-			console.log('ShowMenu');
 			newState = Object.assign({}, state, {displayMenu: true});
 			return newState;
 
 		case 'HideMenu':
-			console.log('HideMenu');
 			newState = Object.assign({}, state, {displayMenu: false});
 			return newState;
 
 		case 'GoToPage':
-			console.log('GoToPage');
 			console.log('action.data = ' + JSON.stringify(action.data));
 			newState = Object.assign({}, state, {currentPage: action.data.currentPage, displayMenu: false});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
 		case 'ShowFilterMenu':
-			console.log('ShowFilterMenu');
 			newState = Object.assign({}, state, {displayFilterMenu: true});
 			return newState;
 
 		case 'HideFilterMenu':
-			console.log('HideFilterMenu');
 			newState = Object.assign({}, state, {displayFilterMenu: false});
 			return newState;
 
@@ -83,7 +76,6 @@ var AppState = function(state) {
 		userInfo: state.userInfo,
 		displayMenu: state.displayMenu,
 		displayFilterMenu: state.displayFilterMenu,
-		//navItems: state.navItems,
 		currentPage: state.currentPage
 	}
 }
@@ -93,7 +85,8 @@ var App = React.createClass({
 		return {
 			baseAPI: this.props.baseAPI,
 			authToken: this.props.authToken,
-			displayFilterMenu: this.props.displayFilterMenu
+			displayFilterMenu: this.props.displayFilterMenu,
+			userInfo: this.props.userInfo
 		};
 	},
 
@@ -104,7 +97,6 @@ var App = React.createClass({
 	},
 
 	navigate: function(id) {
-		console.log('navigate. id = ' + id);
 		store.dispatch({
 			type: 'GoToPage',
 			data: {currentPage: id}
@@ -113,7 +105,6 @@ var App = React.createClass({
 
 	render: function() {
 		var currentPage = this.props.currentPage;
-		console.log('currentPage = ' + currentPage);
 
 		return (  
 			<div>   
@@ -193,7 +184,7 @@ var App = React.createClass({
 
 					{ this.props.currentPage == 5 ?
 						<div>
-							<ArtistAccountSettings userInfo={this.props.userInfo} />
+							<ArtistSettings />
 						</div>
 					: null} 
 
@@ -203,6 +194,12 @@ var App = React.createClass({
 							<ArtistSearch />
 						</div>
 					: null}
+
+					{ this.props.currentPage == 7 ?
+						<div>
+							<CreatorProfile />
+						</div>
+					: null} 
 
 					{ this.props.currentPage == 100 ?
 						<div>
@@ -266,7 +263,6 @@ var MenuItem = React.createClass({
 	},
 
 	render: function() {
-		console.log('meunItemID = ' + this.props.meunItemID);
 		return (
 			<div onClick={this.navigate.bind(this, this.props.meunItemID)} id={this.props.meunItemID} className={this.props.meunItemID == this.props.currentPage ? "menu-item active" : "menu-item"}>{this.props.children}</div>
 		);
@@ -276,7 +272,8 @@ var MenuItem = React.createClass({
 App.childContextTypes = {
 	baseAPI: React.PropTypes.string,
 	authToken: React.PropTypes.string,
-	displayFilterMenu: React.PropTypes.bool
+	displayFilterMenu: React.PropTypes.bool,
+	userInfo: React.PropTypes.object
 };
 
 var artistMenu = [
