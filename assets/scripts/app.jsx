@@ -4,18 +4,13 @@ var connect = ReactRedux.connect;
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: false,
+	isLoggedIn: true,
 	authToken: '',
 	userInfo: {},
 	displayMenu: false,
 	displayFilterMenu: false,
-<<<<<<< HEAD
 	navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
 	currentPage: 3
-=======
-	//navItems: ['Home', 'Submit Music', 'Dashboard', 'Profile', 'Browse Music', 'Account Settings', 'Artist Search', 'Creator Profile'],
-	currentPage: 0
->>>>>>> 68435701d0f938975a8b3aeeb3de1bf29e0b3a2c
 };
 
 var reducer = function(state, action) {
@@ -184,12 +179,8 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 3 ?
 						<div>
-<<<<<<< HEAD
 							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
 							<LibraryMain />
-=======
-							<ArtistProfile />
->>>>>>> 68435701d0f938975a8b3aeeb3de1bf29e0b3a2c
 						</div>
 					: null} 
 
@@ -213,15 +204,6 @@ var App = React.createClass({
 						</div>
 					: null}
 
-<<<<<<< HEAD
-=======
-					{ this.props.currentPage == 3 ?
-						<div>
-							<CreatorProfile />
-						</div>
-					: null} 
-
->>>>>>> 68435701d0f938975a8b3aeeb3de1bf29e0b3a2c
 					{ this.props.currentPage == 100 ?
 						<div>
 							<WhoAreYou />
