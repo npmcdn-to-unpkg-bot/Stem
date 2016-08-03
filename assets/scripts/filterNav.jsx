@@ -77,36 +77,49 @@ var FilterNav = React.createClass({
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
                                 <i className="icon-headphones-2"></i>
+                                <h6>
+                                    Genre
+                                </h6>
                             </a>
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
                                 <i className="icon-chart-1"></i>
+                                <h6>
+                                    Trending
+                                </h6>
                             </a>
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
                                 <i className="icon-group"></i>
+                                <h6>
+                                    Community
+                                </h6>
                             </a>
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
                                 <i className="icon-user-pair"></i>
+                                <h6>
+                                    Vocal Type
+                                </h6>
                             </a>
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
                                 <i className="icon-music-1"></i>
+                                <h6>
+                                    Tempo
+                                </h6>
                             </a>
                         </li>
                         <li style={style}>
                             <a onClick={this.showFilterMenu}>
                                 <i className="icon-smiley"></i>
-                            </a>
-                        </li>
-                        <li style={style}>
-                            <a onClick={this.showFilterMenu}>
-                                <i className="icon-list-1"></i>
+                                <h6>
+                                    Mood
+                                </h6>
                             </a>
                         </li>
                     </ul>
