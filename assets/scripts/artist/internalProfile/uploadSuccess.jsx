@@ -34,13 +34,13 @@ var ArtistUploadSuccessTag = React.createClass({
 	render: function(){
 		return(
 			<div className="artist-upload-success-tags row">
-					<div className="artist-tag-genre checkbox mar-l-sm mar-r-lg pad-t-lg pad-b-md">
+					<div className="artist-tag-genre checkbox mar-l-lg mar-r-lg pad-t-lg pad-b-md">
 						<h5 className="col-sm-2">Genre</h5>
 						<label className="col-sm-2"><input type="checkbox" name="genre1" value="Alternative"/> Alternative</label>
 						<label className="col-sm-2"><input type="checkbox" name="genre2" value="Rock"/> Rock</label>
 						<label className="col-sm-2"><input type="checkbox" name="genre3" value="Country"/> Country</label>
 						<label className="col-sm-2"><input type="checkbox" name="genre4" value="Pop"/> Pop</label>
-						<h4 className="artist-tag-chevron-icon" onClick={this.tagGenreOptionsToggle} className={this.state.genreVisible ? "icon-up-open-1" : "icon-down-open-1"}></h4>
+						<h4 className="artist-tag-chevron-icon " onClick={this.tagGenreOptionsToggle} className={this.state.genreVisible ? "icon-up-open-1" : "icon-down-open-1"}></h4>
 						<div className={this.state.genreVisible ? "artist-tag-checkbox-visible mar-t-sm" : "artist-tag-checkbox-hidden"}>
 							<br />
 							<label className="col-sm-2 col-sm-offset-2"><input type="checkbox" name="genre5" value="Indie"/> Indie</label>
@@ -50,13 +50,13 @@ var ArtistUploadSuccessTag = React.createClass({
 							<label className="col-sm-2"><input type="checkbox" name="genre9" value="Other"/> Other</label>
 						</div>
 					</div>
-					<div className="artist-tag-community checkbox mar-r-lg pad-t-lg pad-b-md">
+					<div className="artist-tag-community checkbox mar-l-lg mar-r-lg pad-t-lg pad-b-md">
 						<h5 className="col-sm-2">Community</h5>
 						<label className="col-sm-2"><input type="checkbox" name="community1" value="Beauty/Lifestyle"/> Beauty / Lifestyle</label>
 						<label className="col-sm-2"><input type="checkbox" name="community2" value="HowTo"/> How To</label>
 						<label className="col-sm-2"><input type="checkbox" name="community3" value="Style"/> Style</label>
 						<label className="col-sm-2"><input type="checkbox" name="community4" value="Music"/> Music</label>
-						<h4 className="artist-tag-chevron-icon" onClick={this.tagCommunityOptionsToggle} className={this.state.communityVisible ? "icon-up-open-1" : "icon-down-open-1"}></h4>
+						<h4 className="artist-tag-chevron-icon " onClick={this.tagCommunityOptionsToggle} className={this.state.communityVisible ? "icon-up-open-1" : "icon-down-open-1"}></h4>
 						<div className={this.state.communityVisible ? "artist-tag-checkbox-visible mar-t-sm" : "artist-tag-checkbox-hidden"}>
 							<br />
 							<label className="col-sm-2 col-sm-offset-2"><input type="checkbox" name="community5" value="Art"/> Art</label>
@@ -64,13 +64,13 @@ var ArtistUploadSuccessTag = React.createClass({
 							<label className="col-sm-2"><input type="checkbox" name="community7" value="Other"/> Other</label>
 						</div>
 					</div>
-					<div className="artist-tag-vocal-type checkbox mar-r-lg pad-t-lg pad-b-md">
+					<div className="artist-tag-vocal-type checkbox mar-l-lg mar-r-lg pad-t-lg pad-b-md">
 						<h5 className="col-sm-2">Vocal Type</h5>
 						<label className="col-sm-2"><input type="checkbox" name="vocalType1" value="Female"/> Female</label>
 						<label className="col-sm-2"><input type="checkbox" name="vocalType2" value="Male"/> Male</label>
 						<label className="col-sm-2"><input type="checkbox" name="vocalType3" value="Duet"/> Duet</label>
 						<label className="col-sm-2"><input type="checkbox" name="vocalType4" value="Acapella"/> Acapella</label>
-						<h4 className="artist-tag-chevron-icon" onClick={this.tagVocalTypeOptionsToggle} className={this.state.vocalTypeVisible ? "icon-up-open-1" : "icon-down-open-1"}></h4>
+						<h4 className="artist-tag-chevron-icon " onClick={this.tagVocalTypeOptionsToggle} className={this.state.vocalTypeVisible ? "icon-up-open-1" : "icon-down-open-1"}></h4>
 						<div className={this.state.vocalTypeVisible ? "artist-tag-checkbox-visible mar-t-sm" : "artist-tag-checkbox-hidden"}>
 							<br />
 							<label className="col-sm-2 col-sm-offset-2"><input type="checkbox" name="vocalType5" value="Choir"/> Choir</label>
@@ -94,27 +94,20 @@ var ArtistUploadSuccessSlider = React.createClass({
 		)
 	}
 });
-var ArtistSuccessHeadingBox = React.createClass({
-	render: function() {
-		return(
-			<div className="artist-success-box bg-grad-1 mar-t-sm pad-t-lg pad-b-md">
-				<h2 className="white mar-b-md"><span className="icon-ok-circle-1 white"></span>Success!</h2>
-				<p className="white">Your song "SONG TITLE" has been submitted. We'll be in touch soon!</p>
-			</div>	
-		)
-	}
-});
 
 var ArtistUploadSuccess = React.createClass({
 	render: function(){
 		return(
-			<div className="artist-upload-success">
+			<div className="artist-upload-success col-sm-9">
 				<div className="row mar-b-lg">
-					<ArtistSuccessHeadingBox />
+					<div className="artist-upload-success-box bg-grad-1 col-sm-11 col-sm-offset-1 mar-t-sm pad-t-lg pad-b-md">
+						<h2 className="white mar-b-md"><span className="icon-ok-circle-1 white"></span>Success!</h2>
+						<p className="white">Your song "SONG TITLE" has been submitted. We'll be in touch soon!</p>
+					</div>
 				</div>
-				<div className="artist-upload-success-bottom">
-					<h3 className="mar-t-sm">Tag your song</h3>
-					<p className="mar-t-sm">Help us make your song easy to discover</p>
+				<div className="artist-upload-success-bottom col-sm-11 col-sm-offset-1">
+					<h3 className="mar-l-lg mar-t-sm">Tag your song</h3>
+					<p className="mar-l-lg mar-t-sm">Help us make your song easy to discover</p>
 					<ArtistUploadSuccessTag />
 					<ArtistUploadSuccessSlider />
 					<div className="artist-upload-tag-btns mar-t-lg col-sm-12">

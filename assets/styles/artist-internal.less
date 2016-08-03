@@ -2,12 +2,10 @@
 
 /*-- Artist Internal -- */
 .artist-internal-wrapper {
-  // width: 500px;
+  background-color: white;
+  text-align: left;
   color: #9B9B9B;
 }
-  .upload-form-wrapper {
-    display: inline-block;
-  }
   .artist-internal-sidebar-wrapper {
     background-color: #FAFAFA;
     display: inline-block;
@@ -94,12 +92,11 @@
 
 .artist-upload-wrapper {
   padding: @space-lg;
-  display: inline-block;
-  font-family: @font-reg;
-  // max-width: 1000px;
+  font-family: 'roboto-light';
 }
   .artist-internal-greeting {
     font-family: 'roboto-light';
+    // padding-top: @space-lg;
     display: inline-block;
     max-width: 300px;
   }
@@ -186,13 +183,7 @@
   display: block;
 }
 /*-- Artist Upload Success --*/
-.artist-upload-success {
-  width: 70%;
-  display: inline-block;
-  margin: 0 5%;
-  padding: 0 5%;
-}
-.artist-success-box {
+.artist-upload-success-box {
   text-align: center;
   font-family: @font-reg;
   h2 {
@@ -260,22 +251,6 @@
   .btn {
     margin-right: 1%;
   }
-}
-/*-- Artist Tagged Success --*/
-.artist-tag-success {
-  background: fade(black, 65%);
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 3000;
-  .tag-success-box {
-    width: 40%;
-    margin: 6% auto;
-  }
-}
-.artist-tag-success-hidden {
-  visibility: hidden;
 }
 
 /*-- Artist Internal Library --*/

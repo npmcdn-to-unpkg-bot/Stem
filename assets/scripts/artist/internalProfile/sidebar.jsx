@@ -2,7 +2,7 @@ var ArtistInternalSideBar = React.createClass({
   render: function () {
     var self = this;
     return (
-      <div className="artist-internal-sidebar-wrapper hide-mobile row no-gutters col-xs-12">
+      <div className="artist-internal-sidebar-wrapper row no-gutters col-xs-12">
         <div className="artist-internal-download-count col-xs-12">
           <h3>Download Count</h3>
           <p>For current month</p>

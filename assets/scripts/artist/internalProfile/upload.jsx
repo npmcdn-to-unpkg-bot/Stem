@@ -15,12 +15,10 @@ var ArtistUpload = React.createClass({
   render: function () {
     var self = this;
     return (
-      <div className="artist-upload-wrapper row no-gutters">
-        <div className="">
-          <h3 className="upload-links col-xs-7" onClick={this.uploadFormToggle}><span className={this.state.visible ? "upload-active-underline" : null}> Individual Song </span></h3>
-          <h3 className="upload-links col-xs-3" onClick={this.uploadFormToggle}><span className={this.state.visible ? null : "upload-active-underline" }> Album </span></h3>
-          { this.state.visible ? <ArtistUploadForm /> : <UploadAlbum />}
-        </div> 
+      <div className="artist-upload-wrapper row no-gutters col-sm-8 col-md-7 col-lg-8">
+        <h3 className="upload-links col-sm-5 col-md-5 col-lg-4" onClick={this.uploadFormToggle}><span className={this.state.visible ? "upload-active-underline" : null}> Individual Song </span></h3>
+        <h3 className="upload-links col-sm-5 col-md-5 col-lg-3" onClick={this.uploadFormToggle}><span className={this.state.visible ? null : "upload-active-underline" }> Album </span></h3>
+        { this.state.visible ? <ArtistUploadForm /> : <UploadAlbum />}
       </div>
     )
   }
@@ -60,27 +58,27 @@ var ArtistUploadForm = React.createClass({
   render: function () {
     var self = this;
     return (
-      <div className="col-sm-12">
-        <div className="artist-upload-drop col-sm-11">
+      <div className="col-sm-12 col-md-12 col-lg-12">
+        <div className="artist-upload-drop col-sm-11 col-md-11 col-lg-11">
           <h4><span className="icon-folder"></span> Drag and drop audio files or <a>Browse</a> your computer</h4>
         </div>
         <div className="artist-upload col-sm-12 col-md-12 col-lg-6 row no-gutters">
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <p>Artist Name</p>
-            <input type="" className="artist-upload-input col-sm-12" />
+            <input type="" className="artist-upload-input col-sm-12 col-md-12 col-lg-12" />
             <a><span className="artist-add-artist-link glyphicon glyphicon-plus-sign"></span> Add Additional Artists</a>
           </div> 
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <p>Song Name</p>
-            <input type="" className="artist-upload-input col-sm-12" />
+            <input type="" className="artist-upload-input col-sm-12 col-md-12 col-lg-12" />
           </div>
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <p>Album Name</p>
-            <input type="" className="artist-upload-input col-sm-12" />
+            <input type="" className="artist-upload-input col-sm-12 col-md-12 col-lg-12" />
           </div>
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <p>Promotion Link <span className="icon-help-circled"></span></p>
-            <input type="" className="artist-upload-input col-sm-12" />
+            <input type="" className="artist-upload-input col-sm-12 col-md-12 col-lg-12" />
           </div>
         </div>
         <div className="col-sm-12 col-lg-6 row no-gutters">
@@ -95,9 +93,9 @@ var ArtistUploadForm = React.createClass({
             </div>
           </div>
         </div>
-          <div className="artist-upload col-sm-12">
+          <div className="artist-upload col-sm-12 col-md-12 col-lg-12">
             <p>Promotional Copy ( you can edit this later )</p>
-            <textarea type="" className="artist-upload-textarea col-sm-12" onChange={self.handleLineGrow} />
+            <textarea type="" className="artist-upload-textarea col-sm-12 col-md-12 col-lg-12" onChange={self.handleLineGrow} />
             <div className="character-count col-sm-12 row no-gutters ">
               <p className="col-sm-4 col-md-4 col-lg-2">{this.state.characterCount}/300 Characters</p>
                 <svg className="col-sm-8 col-md-8" height="20" width="400">
@@ -106,7 +104,7 @@ var ArtistUploadForm = React.createClass({
                 </svg>
             </div>  
           </div>
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <button type="submit" className="btn artist-upload-btn pull-right"><h4><span className='icon-upload'></span> Upload</h4></button>
           </div>
       </div>  
@@ -148,31 +146,31 @@ var UploadAlbum = React.createClass({
   render: function() {
     var self = this;
     return (
-<div className="col-sm-12">
-        <div className="artist-upload-drop col-sm-11">
+<div className="col-sm-12 col-md-12 col-lg-12">
+        <div className="artist-upload-drop col-sm-11 col-md-11 col-lg-11">
           <h4><span className="icon-folder"></span> Drag and drop audio files or <a>Browse</a> your computer</h4>
         </div>
         <div className="artist-upload col-sm-12 col-md-12 col-lg-6 row no-gutters">
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <p>Artist Name</p>
-            <input type="" className="artist-upload-input col-sm-12" />
+            <input type="" className="artist-upload-input col-sm-12 col-md-12 col-lg-12" />
             <a><span className="artist-add-artist-link glyphicon glyphicon-plus-sign"></span> Add Additional Artists</a>
           </div> 
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <p>Song Name</p>
-            <input type="" className="artist-upload-input col-sm-12" />
+            <input type="" className="artist-upload-input col-sm-12 col-md-12 col-lg-12" />
           </div>
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <p>Album Name</p>
-            <input type="" className="artist-upload-input col-sm-12" />
+            <input type="" className="artist-upload-input col-sm-12 col-md-12 col-lg-12" />
           </div>
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <p>Promotion Link <span className="icon-help-circled"></span></p>
-            <input type="" className="artist-upload-input col-sm-12" />
+            <input type="" className="artist-upload-input col-sm-12 col-md-12 col-lg-12" />
           </div>
         </div>
         <div className="col-sm-12 col-lg-6 row no-gutters">
-          <div className="album-art-box col-sm-12">
+          <div className="album-art-box col-sm-12 col-md-12 col-lg-12">
             <div className="upload-album-content col-lg-12">
               <span className="upload-album-art-icon icon-picture-1 fa-4x"></span>
               <div className="upload-album-art-detail">
@@ -183,9 +181,9 @@ var UploadAlbum = React.createClass({
             </div>
           </div>
         </div>
-          <div className="artist-upload col-sm-12">
+          <div className="artist-upload col-sm-12 col-md-12 col-lg-12">
             <p>Promotional Copy ( you can edit this later )</p>
-            <textarea type="" className="artist-upload-textarea col-sm-12" onChange={self.handleLineGrow} />
+            <textarea type="" className="artist-upload-textarea col-sm-12 col-md-12 col-lg-12" onChange={self.handleLineGrow} />
             <div className="character-count col-sm-12 row no-gutters ">
               <p className="col-sm-4 col-md-4 col-lg-2">{this.state.characterCount}/300 Characters</p>
                 <svg className="col-sm-8 col-md-8" height="20" width="400">
@@ -194,7 +192,7 @@ var UploadAlbum = React.createClass({
                 </svg>
             </div>  
           </div>
-          <div className="col-sm-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <button type="submit" className="btn artist-upload-btn pull-right"><h4><span className='icon-upload'></span> Upload</h4></button>
           </div>
       </div>  
