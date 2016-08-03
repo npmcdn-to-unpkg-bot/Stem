@@ -82,9 +82,6 @@ var PlaylistTable = React.createClass({
                   <a><span className="icon-plus-circle fa-2x"></span></a>
                 </td>
               </tr>
-              
-
-              
             </tbody>
           </table>
       </div>
