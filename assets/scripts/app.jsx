@@ -1,6 +1,7 @@
 var createStore = Redux.createStore;
 var Provider = ReactRedux.Provider;
 var connect = ReactRedux.connect;
+var stemApi = new StemApi("http://52.32.255.104/api/");
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
@@ -119,7 +120,7 @@ var App = React.createClass({
 								{ this.props.isLoggedIn ?  
 										<div className="nav header-nav header-right pull-right">
 												<a><i className="icon-search"></i></a>
-												<a><i className="icon-list-1"></i></a>
+												<a><i className="icon-heart-empty"></i></a>
 												<a><i className="icon-up-circle"></i></a>
 												<a><i className="icon-bell"></i></a>
 												<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -148,6 +149,7 @@ var App = React.createClass({
 									<h2>
 										<span className="spacer">Thanks for logging in!</span>
 									</h2>
+									<Player />
 								</div>
 							:
 								<Login />  

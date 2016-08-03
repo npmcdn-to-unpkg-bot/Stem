@@ -210,7 +210,7 @@ var Login = React.createClass({
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				//self.updateLoginStatus(true, response.token_type + " " + response.access_token);
-				self.getAccountInfo(response.token_type + " " + response.access_token);
+				self.getAccountInfo(response.token_type, response.access_token);
             },
             error: function (response) {
 				console.log(JSON.stringify(response, null, 2));
@@ -227,25 +227,22 @@ var Login = React.createClass({
 	},
 	/////// END Registration Form
 
-	getAccountInfo: function(authToken) {
-		var self = this;
+	getAccountInfo: function(tokenType, token) {
+		var self = this,
+			authToken = tokenType + " " + token;
 
-        $.ajax({
-            type: "GET",
-            url: this.context.baseAPI + '/Account',
-            headers: { 'Authorization': authToken },
-			accept: "application/json",
-			dataType: 'json',
+		stemApi.setAuth(tokenType, token);
+		stemApi.getAccount({
             success: function (response) {
-				console.log('success!');
+                console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				self.updateLoginStatus(true, authToken, response, 0);
             },
-            error: function (response) {
-				console.log(JSON.stringify(response, null, 2));
+            error: function (response) { 
+            	console.log(JSON.stringify(response, null, 2));
 				self.updateLoginStatus(true, authToken, null, 100);
-            }
-        });	
+             }
+        });
 	},
 
     updateLoginStatus: function(isLoggedIn, authToken, userInfo, currentPage) {
