@@ -173,7 +173,6 @@ var App = React.createClass({
 						<div>
 							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
 							<LibraryMain />
-							<ArtistProfile />
 						</div>
 					: null} 
 
@@ -197,11 +196,11 @@ var App = React.createClass({
 						</div>
 					: null}
 
-					{ this.props.currentPage == 3 ?
+					{ this.props.currentPage == 7 ?
 						<div>
-							<CreatorProfile />
+							<ArtistTaggedSuccess />
 						</div>
-					: null} 
+					: null}
 
 					{ this.props.currentPage == 100 ?
 						<div>
