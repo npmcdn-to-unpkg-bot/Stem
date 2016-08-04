@@ -167,7 +167,7 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 3 ?
 						<div>
-							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
+							<FilterNav />
 							<LibraryMain />
 							<ArtistProfile />
 						</div>
@@ -193,9 +193,9 @@ var App = React.createClass({
 						</div>
 					: null}
 
-					{ this.props.currentPage == 3 ?
+					{ this.props.currentPage == 7 ?
 						<div>
-							<CreatorProfile />
+							<AdminDashboard />
 						</div>
 					: null} 
 
@@ -312,8 +312,8 @@ var artistMenu = [
 	},
 	{
 		pageID: 7,
-		text: "Creator Profile",
-		icon: "icon-user"
+		text: "Admin Dashboard",
+		icon: "icon-star"
 	}
 ]; 
 
