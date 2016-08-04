@@ -11,31 +11,32 @@
   background-size: 100%;
   text-align: left;
 }
-  .playlist-header-content {
-    text-align: left;
-    margin: 25px 0 40px;
-    color: white;
+  .playlist-header-banner ul {
+    max-width: 700px;
+  }
+  .artist-subhead {
     font-family: @font-reg;
-    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
   }
-  .playlist-currator-img {
-    border-radius: 50%;
-    height: 70px;
-    width: 95px;
-    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-    position: relative;
+  .currator-detail-content {
+    display: inline-block;
   }
-  .playlist-currator-detail {
-    text-align: left;
-    margin-left: -60px;
-    color: white;
-    font-family: @font-reg;
-    border-left: 50px solid transparent;
-    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-  }
+    .playlist-currator-img {
+      border-radius: 50%;
+      height: 75px;
+      width: 75px;
+      filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+      -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+      position: relative;
+    }
+    .playlist-currator-detail {
+      text-align: left;
+      margin-left: -60px;
+      color: white;
+      font-family: @font-reg;
+      border-left: 50px solid transparent;
+      filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+      -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+    }
     .playlist-currator-detail-small {
       margin: 10px 0 0 -60px;
       text-align: left;
@@ -46,46 +47,13 @@
       -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
     }
 
-/*mobile*/
-@media (max-width: 768px) {
-  .playlist-header-wrapper {
-    height: 350px;
-  }
-  .playlist-header-banner {
-    background-position: center top;
-    background-size: 100% 100%;
-  }
-    .playlist-header-header {
-    font-size: 60px;
-    margin-top: 35px;
-  }
-
-}
-
 /*-- Playlist Table --*/
 
-.playlist-table-wrapper {
-  margin-top: 30px;
-  position: relative;
-  font-family: "roboto-light";
-  padding: 0 100px;
+td {
+  padding: @space-sm 0;
 }
-.playlist-table-header {
-  text-align: left;
-}
-  .playlist-table-header-items h4 {
-    margin: 10px 0 30px;
-  }
-  .playlist-table-header td {
-    border-bottom: 1px solid lightgrey;
-  }
-
-.playlist-album-img {
-  width: 100px;
-  padding: 15px 15px 15px 0;
-}
-.playlist-album-detail {
-  margin-top: 35px;
+.playlist-table-wrapper p {
+  margin: 0;
 }
 .playlist-glyph {
   padding-right: 10px;
@@ -93,80 +61,14 @@
 .star {
   color: #f9c60c;
 }
-/*deskstop*/
-@media (min-width: 991px) and (max-width: 1199px) {
-  .playlist-album-img {
-    padding: 0;
-  }
-  .playlist-album-detail {
-    margin: 0 0 0 -15px;
-  }
-  .playlist-album-detail {
-    margin: 0 0 0 -15px;
-  }
-}
-/*tablet*/
-@media (min-width: 767px) and (max-width: 991px) {
-  .playlist-album-img {
-    padding: 0;
-  }
-  .playlist-album-detail {
-    margin: 0 0 0 -15px;
-  }
-  .playlist-glyph {
-    padding-right: 5px;
-  }
-  td {
-    vertical-align: text-top;
-  }
-}
-/*mobile*/
-@media (max-width: 766px) {
-  .playlist-table-wrapper {
-    padding: 0;
-    display: none;
-  }
-  .playlist-album-img {
-    padding: 0;
-    /*display: none;*/
-  }
-  .playlist-album-detail {
-    margin: 0 0 0 -15px;
-  }
-  .playlist-album-detail {
-    margin: 0 0 0 -15px;
-  }
-    td {
-    vertical-align: text-top;
-  }  
-}
-
-/*--Playlist Mobile View --*/
-
 .playlist-mobile-view-wrapper {
-  margin-top: 30px;
-  position: relative;
   display: none;
-  text-align: left;
 }
-.playlist-mobile-view-wrapper li {
-  border-bottom: 1px solid lightgrey;
-  padding: 15px 0;
+.playlist-table-wrapper table td[class*=col-], .playlist-table-wrapper table th[class*=col-] {
+    vertical-align: top;
+}
+.playlist-detail-info {
+  display: inline-block;  
 }
 
-@media (max-width: 766px) {
-  .playlist-mobile-view-wrapper {
-    display: block;
-  }
-  .star {
-    padding-right: 10px;
-  }
-  .playlist-mobile-view-rating {
-    text-align: left;
-    margin-left: -15px;
-  }
-  .playlist-glyph {
-    margin-top: 10px;
-  }
-}
 

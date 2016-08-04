@@ -107,7 +107,7 @@ var Login = React.createClass({
 
         $.ajax({
             type: 'GET', // rest verb (GET, POST, PUT, DEL)
-            url: this.props.baseAPI + '/api/account/test',
+            url: this.context.baseAPI + '/api/account/test',
             headers: { 'Authorization': auth },
             dataType: 'json',
             success: function (response) {
@@ -168,7 +168,7 @@ var Login = React.createClass({
 		} else {
 			$.ajax({	
 				type: 'POST',
-				url: this.props.baseAPI + '/Authentication/Register',
+				url: this.context.baseAPI + '/Authentication/Register',
 				contentType: "application/json; charset=utf-8",
 				dataType: 'json',
 				data: JSON.stringify({UserName: Email, Password: Password, ConfirmPassword: ConfirmPassword}),
@@ -201,7 +201,7 @@ var Login = React.createClass({
         //var data = $("#loginForm").serialize();
         $.ajax({
             type: "POST",
-            url: this.props.baseAPI + '/Authentication/Login',
+            url: this.context.baseAPI + '/Authentication/Login',
 			contentType: "application/x-www-form-urlencoded",
 			accept: "application/json",
 			dataType: 'json',
@@ -210,7 +210,7 @@ var Login = React.createClass({
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				//self.updateLoginStatus(true, response.token_type + " " + response.access_token);
-				self.getAccountInfo(response.token_type + " " + response.access_token);
+				self.getAccountInfo(response.token_type, response.access_token);
             },
             error: function (response) {
 				console.log(JSON.stringify(response, null, 2));
@@ -227,25 +227,22 @@ var Login = React.createClass({
 	},
 	/////// END Registration Form
 
-	getAccountInfo: function(authToken) {
-		var self = this;
+	getAccountInfo: function(tokenType, token) {
+		var self = this,
+			authToken = tokenType + " " + token;
 
-        $.ajax({
-            type: "GET",
-            url: this.props.baseAPI + '/Account',
-            headers: { 'Authorization': authToken },
-			accept: "application/json",
-			dataType: 'json',
+		stemApi.setAuth(tokenType, token);
+		stemApi.getAccount({
             success: function (response) {
-				console.log('success!');
+                console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				self.updateLoginStatus(true, authToken, response, 0);
             },
-            error: function (response) {
-				console.log(JSON.stringify(response, null, 2));
+            error: function (response) { 
+            	console.log(JSON.stringify(response, null, 2));
 				self.updateLoginStatus(true, authToken, null, 100);
-            }
-        });	
+             }
+        });
 	},
 
     updateLoginStatus: function(isLoggedIn, authToken, userInfo, currentPage) {
@@ -261,7 +258,7 @@ var Login = React.createClass({
 		var self = this;
 		
 		return (	
-			<div className={this.props.isLoggedIn ? "display-false" : "display-true"}>
+			<div className={this.props.isLoggedIn ? "display-false" : "display-true text-center"}>
 				<div id="bg">
 					<img src="assets/images/handandfader.jpg" alt="" />
 				</div>
@@ -329,3 +326,7 @@ var Login = React.createClass({
 		);
 	}
 });
+
+Login.contextTypes = {
+	baseAPI: React.PropTypes.string
+};

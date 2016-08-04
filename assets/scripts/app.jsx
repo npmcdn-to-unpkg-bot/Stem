@@ -1,16 +1,16 @@
 var createStore = Redux.createStore;
 var Provider = ReactRedux.Provider;
 var connect = ReactRedux.connect;
+var stemApi = new StemApi("http://52.32.255.104/api/");
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: true,
+	isLoggedIn: false,
 	authToken: '',
 	userInfo: {},
 	displayMenu: false,
 	displayFilterMenu: false,
-	navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
-	currentPage: 1
+	currentPage: 0
 };
 
 var reducer = function(state, action) {
@@ -20,7 +20,6 @@ var reducer = function(state, action) {
 	var newState = state;
 	switch(action.type) {
 		case 'UpdateLoginStatus':
-			console.log('UpdateLoginStatus');
 			newState = Object.assign({}, state, {
 				isLoggedIn: action.data.isLoggedIn, 
 				authToken: action.data.authToken,
@@ -31,7 +30,6 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'UpdateUserRecord':
-			console.log('UpdateLoginStatus');
 			newState = Object.assign({}, state, {
 				userInfo: action.data.userInfo,
 				currentPage: action.data.currentPage
@@ -40,34 +38,25 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'ShowMenu':
-			console.log('ShowMenu');
 			newState = Object.assign({}, state, {displayMenu: true});
-			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
 		case 'HideMenu':
-			console.log('HideMenu');
 			newState = Object.assign({}, state, {displayMenu: false});
-			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
 		case 'GoToPage':
-			console.log('GoToPage');
 			console.log('action.data = ' + JSON.stringify(action.data));
 			newState = Object.assign({}, state, {currentPage: action.data.currentPage, displayMenu: false});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
 		case 'ShowFilterMenu':
-			console.log('ShowFilterMenu');
 			newState = Object.assign({}, state, {displayFilterMenu: true});
-			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
 		case 'HideFilterMenu':
-			console.log('HideFilterMenu');
 			newState = Object.assign({}, state, {displayFilterMenu: false});
-			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
 		default: 
@@ -87,24 +76,20 @@ var AppState = function(state) {
 		userInfo: state.userInfo,
 		displayMenu: state.displayMenu,
 		displayFilterMenu: state.displayFilterMenu,
-		navItems: state.navItems,
 		currentPage: state.currentPage
 	}
 }
 
-
-//var AppDispatch = function(dispatch) {
-//return {
-//GoToPage: function(id) {
-//console.log('dispatched');
-//dispatch({
-//pageID: id
-//})
-//}
-//}
-//}
-
 var App = React.createClass({
+	getChildContext() {
+		return {
+			baseAPI: this.props.baseAPI,
+			authToken: this.props.authToken,
+			displayFilterMenu: this.props.displayFilterMenu,
+			userInfo: this.props.userInfo
+		};
+	},
+
 	showMenu: function() {
 		store.dispatch({
 			type: 'ShowMenu'
@@ -112,7 +97,6 @@ var App = React.createClass({
 	},
 
 	navigate: function(id) {
-		console.log('navigate. id = ' + id);
 		store.dispatch({
 			type: 'GoToPage',
 			data: {currentPage: id}
@@ -121,7 +105,7 @@ var App = React.createClass({
 
 	render: function() {
 		var currentPage = this.props.currentPage;
-				
+
 		return (  
 			<div>   
 				<nav className="header">
@@ -135,9 +119,9 @@ var App = React.createClass({
 						</div>
 								{ this.props.isLoggedIn ?  
 										<div className="nav header-nav header-right pull-right">
-												<a className="glyphicon glyphicon-search"></a>
-												<a><i className="icon-list"></i></a>
-												<a><i className="icon-up-circled"></i></a>
+												<a><i className="icon-search"></i></a>
+												<a><i className="icon-heart-empty"></i></a>
+												<a><i className="icon-up-circle"></i></a>
 												<a><i className="icon-bell"></i></a>
 												<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 													<i className="icon-menu"></i>
@@ -150,9 +134,9 @@ var App = React.createClass({
 				<Menu displayMenu={this.props.displayMenu} alignment="right">
 						<div className="menu-content">
 								<MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
-								{ this.props.navItems.map(function(i, index) {
-										return <MenuItem hash={i} meunItemID={index} currentPage={currentPage}>{i}</MenuItem>
-								})}   
+								{ this.props.artistMenu.map(function(i) {
+										return <MenuItem hash={i.text} meunItemID={i.pageID} currentPage={currentPage}><i className={i.icon}></i> {i.text}</MenuItem>
+								})}
 						</div>
 				</Menu>
 
@@ -160,63 +144,67 @@ var App = React.createClass({
 					{ this.props.currentPage == 0 ?
 						<div>
 							{ this.props.isLoggedIn ? 
-								<h1>
-									<span className="spacer">Thanks for logging in!</span>
-								</h1>
+								<div>
+									<FilterNav />	
+									<h2>
+										<span className="spacer">Thanks for logging in!</span>
+									</h2>
+									<Player />
+								</div>
 							:
-								<Login baseAPI={this.props.baseAPI} />  
+								<Login />  
 							}
 						</div>
 					: null}
 					
 					{ this.props.currentPage == 1 ?
 						<div>
-							<CreatorProfile />
+							<ArtistInternal />
 						</div>
 					: null} 
-					
+
 					{ this.props.currentPage == 2 ?
 						<div>
-							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
-							<ArtistProfile />
+							<ArtistInternalAnalytics />
 						</div>
 					: null} 
 					
 					{ this.props.currentPage == 3 ?
 						<div>
 							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
-							<SongList />
+							<LibraryMain />
 						</div>
 					: null} 
-					
+
 					{ this.props.currentPage == 4 ?
 						<div>
-							<ArtistAccountSettings userInfo={this.props.userInfo} />
+							<FilterNav />
+							<SongList />
 						</div>
 					: null} 
 
 					{ this.props.currentPage == 5 ?
 						<div>
-							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
-							<ArtistSearch />
+							<ArtistSettings />
 						</div>
 					: null} 
 
 					{ this.props.currentPage == 6 ?
 						<div>
-							<ArtistInternal />
+							<FilterNav />
+							<ArtistSearch />
 						</div>
 					: null}
 
 					{ this.props.currentPage == 7 ?
 						<div>
-							<ArtistInternal />
-							</div>
+							<ArtistTaggedSuccess />
+						</div>
 					: null}
 
 					{ this.props.currentPage == 100 ?
 						<div>
-							<WhoAreYou baseAPI={this.props.baseAPI} authToken={this.props.authToken} />
+							<WhoAreYou />
 						</div>
 					: null} 
 
@@ -254,11 +242,13 @@ var MenuHeader = React.createClass({
 	render: function() {
 		return (
 			<div className="menu-header">
-				<a className="close">X</a>
+				<a className="close"><i className="icon-cancel"></i></a>
 				<div className="user-info">
-					<img src={this.props.imgSrc} />
-					<h2>{this.props.name}</h2>
-					<a href={this.props.url}>stem.com/smelly</a>
+					<span className="profile-img btn-circle drop-4">
+						<img src={this.props.imgSrc} />
+					</span>
+					<h2 className="pad-t-sm pad-b-sm">{this.props.name}</h2>
+					<a href={this.props.url}>stem.com/danbrauer</a>
 				</div>
 			</div>
 		);
@@ -280,16 +270,64 @@ var MenuItem = React.createClass({
 	}
 });
 
+App.childContextTypes = {
+	baseAPI: React.PropTypes.string,
+	authToken: React.PropTypes.string,
+	displayFilterMenu: React.PropTypes.bool,
+	userInfo: React.PropTypes.object
+};
+
+var artistMenu = [
+	{
+		pageID: 0,
+		text: "Home",
+		icon: "icon-home"
+	},
+	{
+		pageID: 1,
+		text: "Submit Music",
+		icon: "icon-up-circle"
+	},
+	{
+		pageID: 2,
+		text: "Dashboard",
+		icon: "icon-gauge"
+	},
+	{
+		pageID: 3,
+		text: "Profile",
+		icon: "icon-user"
+	},
+	{
+		pageID: 4,
+		text: "Browse Music",
+		icon: "icon-headphones-2"
+	},
+	{
+		pageID: 5,
+		text: "Account Settings",
+		icon: "icon-cog-2"
+	},
+	{
+		pageID: 6,
+		text: "Artist Search",
+		icon: "icon-search"
+	},
+	{
+		pageID: 7,
+		text: "Creator Profile",
+		icon: "icon-user"
+	}
+]; 
 
 App = connect(
 	AppState
-//  AppDispatch
 )(App)
 
 ReactDOM.render(
 	<div>
 		<ReactRedux.Provider store={store}>
-			<App imgSrc="http://media.galaxant.com/000/198/679/desktop-1435085753.jpg" name="Smelly Cat" url="http://media3.giphy.com/media/FLAUgfNMvFhXa/giphy.gif" />
+			<App artistMenu={artistMenu} name="Dan Brauer" url="http://www.lechedetigremusic.com/" imgSrc="http://static1.squarespace.com/static/550f767ae4b0299913bce721/55113382e4b07c8085049dce/55126bbde4b04b58e54d3d25/1427270590627/2014_LecheDeTigre_SD-2862.jpg?format=500w" />
 		</ReactRedux.Provider>
 	</div>,
 	document.getElementById('app')
