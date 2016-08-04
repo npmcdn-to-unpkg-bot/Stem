@@ -1,16 +1,16 @@
 var createStore = Redux.createStore;
 var Provider = ReactRedux.Provider;
 var connect = ReactRedux.connect;
+var stemApi = new StemApi("http://52.32.255.104/api/");
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: true,
+	isLoggedIn: false,
 	authToken: '',
 	userInfo: {},
 	displayMenu: false,
 	displayFilterMenu: false,
-	navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
-	currentPage: 3
+	currentPage: 0
 };
 
 var reducer = function(state, action) {
@@ -120,7 +120,7 @@ var App = React.createClass({
 								{ this.props.isLoggedIn ?  
 										<div className="nav header-nav header-right pull-right">
 												<a><i className="icon-search"></i></a>
-												<a><i className="icon-list-1"></i></a>
+												<a><i className="icon-heart-empty"></i></a>
 												<a><i className="icon-up-circle"></i></a>
 												<a><i className="icon-bell"></i></a>
 												<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -145,7 +145,7 @@ var App = React.createClass({
 						<div>
 							{ this.props.isLoggedIn ? 
 								<div>
-									<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
+									<FilterNav />	
 									<LibraryMain />
 								</div>
 							:
@@ -194,9 +194,8 @@ var App = React.createClass({
 
 					{ this.props.currentPage == 7 ?
 						<div>
-							<CreatorProfile />
 						</div>
-					: null} 
+					: null}
 
 					{ this.props.currentPage == 100 ?
 						<div>
