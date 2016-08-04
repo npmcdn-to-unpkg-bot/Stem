@@ -93,7 +93,7 @@ var ArtistAccountSettings = React.createClass({
 					<h3>Account</h3>
 					<h5>Update your account settings</h5>
 				</div>
-				<div className="artist-account-setting-upload-wrapper col-sm-12 col-md-3 col-lg-3" >
+				<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-3 col-lg-3" >
 					<div className="col-sm-offset-4 col-md-offset-0 col-lg-12 col-lg-offset-0">
 						<a>
 							<div className="artist-account-setting-profile-img text-center">
@@ -103,7 +103,7 @@ var ArtistAccountSettings = React.createClass({
 						</a>
 					</div>  
 				</div>
-				<div className="artist-account-setting-upload-wrapper col-sm-12 col-md-9">
+				<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-8">
 					<div className="">  
 						<a>
 							<div className="artist-account-setting-profile-banner-img text-center">
@@ -131,12 +131,11 @@ var ArtistAccountSettings = React.createClass({
 					<h5>Biography</h5>
 					<textarea id="bio" className="form-input" onChange={self.handleLineGrow} value={this.state.bio} />
 					<div className="character-count row no-gutters ">
-						<p>300 Characters</p>
+						<p>{this.state.characterCount}/300 Characters</p>
 							<svg height="20" width="400">
 								<line className="svg-line2" x1="300" y='0' />
 								<line className="svg-line" x1={self.state.characterCount} y='0' />
 							</svg>
-						{this.state.characterCount}
 					</div>  
 				</div> 
 

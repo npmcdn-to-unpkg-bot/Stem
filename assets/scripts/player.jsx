@@ -7,19 +7,18 @@ var Player = React.createClass({
 
     componentDidMount: function() {
         var ap1 = new APlayer({
-            element: document.getElementById('player'),                 // Optional, player element
-            narrow: false,                                              // Optional, narrow style
-            autoplay: false,                                            // Optional, autoplay song(s), not supported by mobile browsers
-            showlrc: 0,                                                 // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
-            mutex: true,                                                // Optional, pause other players when this player playing
-            theme: '#fff',                                              // Optional, theme color, default: #b7daff
-            loop: true,                                                 // Optional, loop play music, default: true
-            preload: 'metadata',                                        // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'metadata' in Desktop, 'none' in mobile
-            music: {                                                    // Required, music info, see: ###With playlist
-                title: 'Preparation',                                   // Required, music title
-                author: 'Hans Zimmer/Richard Harvey',                   // Required, music author
-                url: 'http://devtest.qiniudn.com/Preparation.mp3',      // Required, music url
-                pic: 'http://devtest.qiniudn.com/Preparation.jpg'       // Optional, music picture
+            element: document.getElementById('player'),
+            narrow: false,
+            autoplay: false,
+            showlrc: false,
+            mutex: true,
+            theme: '#fff',
+            preload: 'metadata',
+            music: {
+                title: 'Preparation',
+                author: 'Hans Zimmer/Richard Harvey',
+                url: 'http://devtest.qiniudn.com/Preparation.mp3',
+                pic: 'http://devtest.qiniudn.com/Preparation.jpg'
             }
         });
         ap1.on('play', function () {
@@ -46,18 +45,12 @@ var Player = React.createClass({
         ap1.init();
     },
 
-    play: function() {
-        var ap1 = document.getElementById('player');
-        ap1.play();
-    },
-
     render: function() {
         var self = this;
 
         return (
             <div className="player-container">
-                <a onClick={this.play}>play</a>
-                <div id="player" className="aplayer"></div>
+                <div id="player" className="player"></div>
             </div>
         );
     }
