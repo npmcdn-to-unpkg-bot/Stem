@@ -5,8 +5,10 @@ var ArtistSearch = React.createClass({
 
     return (
       <div>
-        <ArtistSearchSideBar />
-        <div className="col-xs-9">
+        <div className="sidebar-hide sidebar">
+          <ArtistSearchSideBar />
+        </div>  
+        <div className="content-with-sidebar">
           <ArtistProfileTable />
         </div>
       </div>

@@ -10,7 +10,9 @@ var ArtistInternal = React.createClass({
           <h3>Submit Music</h3>
           <p>Add music to your library</p>
         </div>
+        <div className="pad-l-lg">
           <ArtistUpload />  
+        </div>  
       </div>
     )
   }

@@ -3,7 +3,9 @@ var ArtistProfile = React.createClass({
     return(
       <div>
         <Header />
-        <ArtistProfileTable />
+        <div className="col-sm-10 mar-t-;g col-sm-offset-1">
+          <ArtistProfileTable />
+        </div>  
       </div>
     )
   }

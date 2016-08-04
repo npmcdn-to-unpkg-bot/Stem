@@ -11,7 +11,7 @@ var ArtistProfileTable = React.createClass({
   },
   render: function() {
     return(
-      <div className="artist-table-wrapper mar-t-lg col-xs-12 col-sm-10 col-sm-offset-1">
+      <div className="artist-table-wrapper bg-white col-xs-12">
         <table>
           <thead>
             <tr>
