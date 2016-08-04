@@ -98,7 +98,7 @@ var ArtistSuccessHeadingBox = React.createClass({
 	render: function() {
 		return(
 			<div className="artist-success-box bg-grad-1 mar-t-sm pad-t-lg pad-b-md">
-				<h2 className="white mar-b-md"><span className="icon-ok-circle-1 white"></span>Success!</h2>
+				<h2 className="white mar-b-md"><span className="icon-ok-circled white"></span>Success!</h2>
 				<p className="white">Your song "SONG TITLE" has been submitted. We'll be in touch soon!</p>
 			</div>	
 		)
