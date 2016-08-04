@@ -166,6 +166,32 @@ var Login = React.createClass({
 		if(currentUser) {
 		   	this.handleCommitSubmit(data);
 		} else {
+            stemApi.register({
+                request: {
+                    userName: Email,
+                    password: Password,
+                    confirmPassword: ConfirmPassword},
+				success: function(response) {
+					console.log('success!');
+					console.log(JSON.stringify(response, null, 2));
+		   			self.handleCommitSubmit(data);
+				},
+	            error: function (response) {
+					console.log(JSON.stringify(response, null, 2));
+					if(response.responseJSON.modelState["request.UserName"] != null) {
+						errorMessage = response.responseJSON.modelState["request.UserName"];
+					}
+					if(response.responseJSON.modelState["request.Password"] != null) {
+						errorMessage += response.responseJSON.modelState["request.Password"];
+					}
+					if(response.responseJSON.modelState["request.ConfirmPassword"] != null) {
+						errorMessage += response.responseJSON.modelState["request.ConfirmPassword"];
+					}
+	                self.setErrorMessage(errorMessage);
+	            }
+            });
+
+			/*
 			$.ajax({	
 				type: 'POST',
 				url: this.context.baseAPI + '/Authentication/Register',
@@ -191,6 +217,7 @@ var Login = React.createClass({
 	                self.setErrorMessage(errorMessage);
 	            }
 			});
+			*/
 		}
 	},
 	
@@ -198,7 +225,23 @@ var Login = React.createClass({
 		console.log('data = ' + JSON.stringify(data, null, 2));
 		var self = this;
 
-        //var data = $("#loginForm").serialize();
+        /*
+		console.log('form = ' + $("#loginForm").serialize());
+        stemApi.login({
+            request: {
+                form: $("#loginForm")
+            },
+            success: function (response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+				self.getAccountInfo(response.token_type, response.access_token);
+            },
+            error: function (response) {
+				console.log(JSON.stringify(response, null, 2));
+                self.setErrorMessage(response.responseJSON.error_description);
+            }
+        });
+        */
         $.ajax({
             type: "POST",
             url: this.context.baseAPI + '/Authentication/Login',
@@ -210,7 +253,7 @@ var Login = React.createClass({
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				//self.updateLoginStatus(true, response.token_type + " " + response.access_token);
-				self.getAccountInfo(response.token_type + " " + response.access_token);
+				self.getAccountInfo(response.token_type, response.access_token);
             },
             error: function (response) {
 				console.log(JSON.stringify(response, null, 2));
@@ -227,25 +270,22 @@ var Login = React.createClass({
 	},
 	/////// END Registration Form
 
-	getAccountInfo: function(authToken) {
-		var self = this;
+	getAccountInfo: function(tokenType, token) {
+		var self = this,
+			authToken = tokenType + " " + token;
 
-        $.ajax({
-            type: "GET",
-            url: this.context.baseAPI + '/Account',
-            headers: { 'Authorization': authToken },
-			accept: "application/json",
-			dataType: 'json',
+		stemApi.setAuth(tokenType, token);
+		stemApi.getAccount({
             success: function (response) {
-				console.log('success!');
+                console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				self.updateLoginStatus(true, authToken, response, 0);
             },
-            error: function (response) {
-				console.log(JSON.stringify(response, null, 2));
+            error: function (response) { 
+            	console.log(JSON.stringify(response, null, 2));
 				self.updateLoginStatus(true, authToken, null, 100);
-            }
-        });	
+             }
+        });
 	},
 
     updateLoginStatus: function(isLoggedIn, authToken, userInfo, currentPage) {
@@ -300,12 +340,12 @@ var Login = React.createClass({
 							<span className="spacer">
 								<h4>or</h4>	
 							</span>
-							<input type="email" className="form-input" value={this.state.Email} onChange={this.handleEmailChange} placeholder="Email..." />
+							<input name="UserName" type="email" className="form-input" value={this.state.Email} onChange={this.handleEmailChange} placeholder="Email..." />
 						
-							<input type="password" className="form-input" value={this.state.Password} onChange={this.handlePasswordChange} placeholder="Password..." />
+							<input name="Password" type="password" className="form-input" value={this.state.Password} onChange={this.handlePasswordChange} placeholder="Password..." />
 							
 							{!this.state.currentUser ? 
-								<input type="password" className="form-input" value={this.state.ConfirmPassword} onChange={this.handleConfirmPasswordChange} placeholder="Confirm Password..." />
+								<input name="ConfirmPassword" type="password" className="form-input" value={this.state.ConfirmPassword} onChange={this.handleConfirmPasswordChange} placeholder="Confirm Password..." />
 							: null }
 							
 							{ this.state.errorMessage != '' ?
