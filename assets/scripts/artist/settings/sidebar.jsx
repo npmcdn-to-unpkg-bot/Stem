@@ -13,7 +13,7 @@ var ArtistAccountNavBar = React.createClass({
   },
   render: function() {
     return (
-      <div className="row no-gutters artist-account-navbar-wrapper">
+      <div className="row no-gutters artist-account-navbar-wrapper col-xs-12">
         <div className=" settings-navbar">
           <ul>
             <a onClick=""><li className="col-sm-12"><h5>Account</h5></li></a>

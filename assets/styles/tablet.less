@@ -276,6 +276,12 @@ h3 {
   .library-result-table table th:nth-child(4), .library-result-table table th:nth-child(7) {
     display: none;
   }
+  .header-content-detail h1 {
+    font-size: 35px;
+  }
+  .header-content-detail h4 {
+    max-width: 480px;
+  }
 }
 
 @media only screen and (max-width : 768px) {
@@ -293,7 +299,7 @@ h3 {
   }
   // -- Artist Profile --
   .header-wrapper {
-    height: 470px;
+    height: 500px;
   }
     .header-banner {
     background-position: center -100px;
@@ -306,7 +312,9 @@ h3 {
       padding: @space-md;
       text-align: center;
     }
-    .header-content-detail, .header-content-detail h1, .header-social-media li {
+    .header-content-detail, 
+    .header-content-detail h1, 
+    .header-social-media li {
       color: @grey-2;
     }
     .header-img {
@@ -330,5 +338,11 @@ h3 {
     .artist-table-wrapper table td:nth-child(5), 
     .artist-table-wrapper table td:nth-child(7) {
       display: none;
+    }
+    .sidebar-hide {
+      display: none;
+    }
+    .content-with-sidebar {
+      margin-left: 0;
     }
 }

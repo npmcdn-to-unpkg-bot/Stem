@@ -1,7 +1,7 @@
 var ArtistPassword = React.createClass({
 	render: function() {
 		return(
-			<div className="artist-password-wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div className="artist-password-wrapper col-xs-12">
 				<div className="col-xs-12 pad-b-lg">
 					<h3>Password</h3>
 					<h5>Update your password</h5>
