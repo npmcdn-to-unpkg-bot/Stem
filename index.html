@@ -25,8 +25,10 @@
         <link rel="stylesheet/less" type="text/css" href="assets/styles/playlist.less" />
         <link rel="stylesheet/less" type="text/css" href="assets/styles/artist-search.less" />
         <link rel="stylesheet/less" type="text/css" href="assets/styles/artist-internal.less">
+
         <link rel="stylesheet/less" type="text/css" href="assets/styles/library.less">
         <link rel="stylesheet/less" type="text/css" href="assets/styles/admin.less">
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/player.less">
         
         <link rel="stylesheet/less" type="text/css" href="assets/styles/tablet.less">
         <link rel="stylesheet/less" type="text/css" href="assets/styles/mobile.less">
@@ -39,6 +41,7 @@
         <script type="text/jsx" src="assets/scripts/login.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/whoareyou.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/filterNav.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/player.jsx"> </script>
 
         <!-- Artist -->
         <script type="text/jsx" src="assets/scripts/artist/externalProfile/profileMain.jsx"> </script>
@@ -49,10 +52,6 @@
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/profileMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/upload.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/uploadSuccess.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/tagSuccess.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/libraryMain.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/libraryResultTable.jsx"> </script>
-
 
         <script type="text/jsx" src="assets/scripts/artist/settings/settingsMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/settings/account.jsx"> </script>
@@ -79,7 +78,7 @@
         <script type="text/jsx" src="assets/scripts/playlist/header.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/playlist/songList.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/playlist/mobile.jsx"> </script>
-        
+
         <!-- Analytics -->
         <script type="text/jsx" src="assets/scripts/analytics/analyticsMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/analytics/downloads.jsx"> </script>
@@ -94,7 +93,9 @@
         
         <!-- Core JS Files -->
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="assets/scripts/bootstrap.min.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script type="text/javascript" src="assets/scripts/player.js"></script>
 
         <!-- React -->
         <script src="http://fb.me/react-0.14.7.js"></script>
@@ -108,5 +109,7 @@
         <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
+
+        <script type="text/javascript" src="assets/scripts/stem-api.js"></script>
     </body>
 </html>
