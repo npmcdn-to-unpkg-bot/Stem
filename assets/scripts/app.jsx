@@ -4,13 +4,13 @@ var connect = ReactRedux.connect;
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: true,
+	isLoggedIn: false,
 	authToken: '',
 	userInfo: {},
 	displayMenu: false,
 	displayFilterMenu: false,
 	navItems: ['Home', 'Creator Profile', 'Artist Profile', 'Song List', 'Profile Settings', 'Artist Search', 'Artist Internal'],
-	currentPage: 3
+	currentPage: 0
 };
 
 var reducer = function(state, action) {
@@ -145,10 +145,8 @@ var App = React.createClass({
 						<div>
 							{ this.props.isLoggedIn ? 
 								<div>
-									<FilterNav />	
-									<h2>
-										<span className="spacer">Thanks for logging in!</span>
-									</h2>
+									<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
+									<LibraryMain />
 								</div>
 							:
 								<Login />  
@@ -170,8 +168,7 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 3 ?
 						<div>
-							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
-							<LibraryMain />
+							<ArtistProfile />
 						</div>
 					: null} 
 
