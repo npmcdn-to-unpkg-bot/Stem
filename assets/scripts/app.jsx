@@ -208,6 +208,18 @@ var App = React.createClass({
 							<ArtistInternalAnalytics />
 						</div>
 					: null} 
+
+					{ this.props.currentPage == 102 ?
+						<div>
+							<ArtistTaggedSuccess />
+						</div>
+					: null}
+
+					{ this.props.currentPage == 103 ?
+						<div>
+							<AdminDashboard />
+						</div>
+					: null}
 				</div>
 			</div>
 		);
