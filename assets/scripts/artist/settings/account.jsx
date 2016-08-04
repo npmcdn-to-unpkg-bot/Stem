@@ -103,7 +103,7 @@ var ArtistAccountSettings = React.createClass({
 						</a>
 					</div>  
 				</div>
-				<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-8">
+				<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-9">
 					<div className="">  
 						<a>
 							<div className="artist-account-setting-profile-banner-img text-center">
@@ -113,7 +113,7 @@ var ArtistAccountSettings = React.createClass({
 						</a>
 					</div>
 				</div>   
-				<div className="row no-gutters col-sx-12 col-md-6 col-lg-5 pad-t-md">
+				<div className="row no-gutters col-xs-12 col-md-6 col-lg-5 pad-t-md">
 					<h5>Profile Name</h5>
 					<input id="profileName" onChange={this.handleFieldChange} value={this.state.profileName} /> 
 					<h5>Custom Link</h5>
@@ -127,15 +127,16 @@ var ArtistAccountSettings = React.createClass({
 					<input id="timeZone" onChange={this.handleFieldChange} value={this.state.timeZone} />
 				</div>
 
-				<div className="col-sx-12 col-sm-12 col-md-8 pad-t-sm pad-b-sm">
+				<div className="col-xs-12 col-sm-12 col-md-8 pad-t-sm pad-b-sm">
 					<h5>Biography</h5>
 					<textarea id="bio" className="form-input" onChange={self.handleLineGrow} value={this.state.bio} />
 					<div className="character-count row no-gutters ">
-						<p>{this.state.characterCount}/300 Characters</p>
+						<p>300 Characters</p>
 							<svg height="20" width="400">
 								<line className="svg-line2" x1="300" y='0' />
 								<line className="svg-line" x1={self.state.characterCount} y='0' />
 							</svg>
+						{this.state.characterCount}
 					</div>  
 				</div> 
 
