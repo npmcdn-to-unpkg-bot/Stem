@@ -145,11 +145,7 @@ var App = React.createClass({
 						<div>
 							{ this.props.isLoggedIn ? 
 								<div>
-									<FilterNav />	
-									<h2>
-										<span className="spacer">Thanks for logging in!</span>
-									</h2>
-									<Player />
+									<FilterNav />
 								</div>
 							:
 								<Login />  
@@ -171,8 +167,9 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 3 ?
 						<div>
-							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
+							<FilterNav />
 							<LibraryMain />
+							<ArtistProfile />
 						</div>
 					: null} 
 
@@ -198,9 +195,9 @@ var App = React.createClass({
 
 					{ this.props.currentPage == 7 ?
 						<div>
-							<ArtistTaggedSuccess />
+							<AdminDashboard />
 						</div>
-					: null}
+					: null} 
 
 					{ this.props.currentPage == 100 ?
 						<div>
@@ -315,8 +312,8 @@ var artistMenu = [
 	},
 	{
 		pageID: 7,
-		text: "Creator Profile",
-		icon: "icon-user"
+		text: "Admin Dashboard",
+		icon: "icon-star"
 	}
 ]; 
 

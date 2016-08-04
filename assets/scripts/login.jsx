@@ -166,12 +166,12 @@ var Login = React.createClass({
 		if(currentUser) {
 		   	this.handleCommitSubmit(data);
 		} else {
-			$.ajax({	
-				type: 'POST',
-				url: this.context.baseAPI + '/Authentication/Register',
-				contentType: "application/json; charset=utf-8",
-				dataType: 'json',
-				data: JSON.stringify({UserName: Email, Password: Password, ConfirmPassword: ConfirmPassword}),
+            stemApi.register({
+                request: {
+                    userName: Email,
+                    password: Password,
+                    confirmPassword: ConfirmPassword
+                },
 				success: function(response) {
 					console.log('success!');
 					console.log(JSON.stringify(response, null, 2));
@@ -190,33 +190,27 @@ var Login = React.createClass({
 					}
 	                self.setErrorMessage(errorMessage);
 	            }
-			});
+            });
 		}
 	},
 	
 	handleCommitSubmit: function(data) {
-		console.log('data = ' + JSON.stringify(data, null, 2));
 		var self = this;
 
-        //var data = $("#loginForm").serialize();
-        $.ajax({
-            type: "POST",
-            url: this.context.baseAPI + '/Authentication/Login',
-			contentType: "application/x-www-form-urlencoded",
-			accept: "application/json",
-			dataType: 'json',
-            data: data,
+        stemApi.login({
+            request: {
+                form: $("#loginForm")
+            },
             success: function (response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
-				//self.updateLoginStatus(true, response.token_type + " " + response.access_token);
 				self.getAccountInfo(response.token_type, response.access_token);
             },
             error: function (response) {
 				console.log(JSON.stringify(response, null, 2));
                 self.setErrorMessage(response.responseJSON.error_description);
             }
-        });	
+        });
 	},
 
 	setErrorMessage: function(message) {
@@ -297,12 +291,14 @@ var Login = React.createClass({
 							<span className="spacer">
 								<h4>or</h4>	
 							</span>
-							<input type="email" className="form-input" value={this.state.Email} onChange={this.handleEmailChange} placeholder="Email..." />
+							<input name="grant_type" type="hidden" value="password" />
+
+							<input name="username" type="email" className="form-input" value={this.state.Email} onChange={this.handleEmailChange} placeholder="Email..." />
 						
-							<input type="password" className="form-input" value={this.state.Password} onChange={this.handlePasswordChange} placeholder="Password..." />
+							<input name="password" type="password" className="form-input" value={this.state.Password} onChange={this.handlePasswordChange} placeholder="Password..." />
 							
 							{!this.state.currentUser ? 
-								<input type="password" className="form-input" value={this.state.ConfirmPassword} onChange={this.handleConfirmPasswordChange} placeholder="Confirm Password..." />
+								<input name="confirmPassword" type="password" className="form-input" value={this.state.ConfirmPassword} onChange={this.handleConfirmPasswordChange} placeholder="Confirm Password..." />
 							: null }
 							
 							{ this.state.errorMessage != '' ?
