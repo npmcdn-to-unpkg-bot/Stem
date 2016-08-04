@@ -145,10 +145,8 @@ var App = React.createClass({
 						<div>
 							{ this.props.isLoggedIn ? 
 								<div>
-									<FilterNav />	
-									<h2>
-										<span className="spacer">Thanks for logging in!</span>
-									</h2>
+									<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
+									<LibraryMain />
 								</div>
 							:
 								<Login />  
@@ -170,8 +168,7 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 3 ?
 						<div>
-							<FilterNav displayFilterMenu={this.props.displayFilterMenu} />
-							<LibraryMain />
+							<ArtistProfile />
 						</div>
 					: null} 
 

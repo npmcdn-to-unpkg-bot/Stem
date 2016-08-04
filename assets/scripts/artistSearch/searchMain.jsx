@@ -6,7 +6,9 @@ var ArtistSearch = React.createClass({
     return (
       <div>
         <ArtistSearchSideBar />
-        <ArtistSearchResultsTable />
+        <div className="col-xs-9">
+          <ArtistProfileTable />
+        </div>
       </div>
     )
   }
