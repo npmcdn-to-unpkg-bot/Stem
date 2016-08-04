@@ -251,6 +251,13 @@ h3 {
   .upload-greeting {
     width: 100%;
   }
+  // -- Artist Profile --
+  .header-content-detail h1 {
+    font-size: 35px;
+  }
+  .header-content-detail h4 {
+    max-width: 480px;
+  }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .artist-featured-header-info ul {
@@ -269,6 +276,12 @@ h3 {
   .library-result-table table th:nth-child(4), .library-result-table table th:nth-child(7) {
     display: none;
   }
+  .header-content-detail h1 {
+    font-size: 35px;
+  }
+  .header-content-detail h4 {
+    max-width: 480px;
+  }
 }
 
 @media only screen and (max-width : 768px) {
@@ -284,4 +297,52 @@ h3 {
     .hide-mobile {
     display: none;
   }
+  // -- Artist Profile --
+  .header-wrapper {
+    height: 500px;
+  }
+    .header-banner {
+    background-position: center -100px;
+    height: 150px;
+  }
+  .header-content-wrapper {
+    padding: @space-md 0 0;
+  }
+    .header-content-detail {
+      padding: @space-md;
+      text-align: center;
+    }
+    .header-content-detail, 
+    .header-content-detail h1, 
+    .header-social-media li {
+      color: @grey-2;
+    }
+    .header-img {
+      width: 150px;
+      height: 150px;
+      display: block;
+      margin: auto;
+    }
+    .header-content-detail button {
+      display: block;
+      margin: auto;
+    }
+    .header-social-media {
+      float: none !important;
+      text-align: center;
+    }
+    .artist-table-wrapper table th:nth-child(4),
+    .artist-table-wrapper table th:nth-child(5),
+    .artist-table-wrapper table th:nth-child(7), 
+    .artist-table-wrapper table td:nth-child(4), 
+    .artist-table-wrapper table td:nth-child(5), 
+    .artist-table-wrapper table td:nth-child(7) {
+      display: none;
+    }
+    .sidebar-hide {
+      display: none;
+    }
+    .content-with-sidebar {
+      margin-left: 0;
+    }
 }

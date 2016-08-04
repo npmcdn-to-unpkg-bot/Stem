@@ -6,7 +6,7 @@ var LibraryMain = React.createClass({
           <ArtistInternalSideBar />
         </div>
         <div className="pad-box-lg col-auto bg-white">  
-          <div className="artist-internal-greeting pad-t-lg bg-white">
+          <div className="artist-internal-greeting bg-white">
             <h3>Submit Music</h3>
             <p>Add music to your library</p>
           </div>

@@ -5,8 +5,12 @@ var ArtistSearch = React.createClass({
 
     return (
       <div>
-        <ArtistSearchSideBar />
-        <ArtistSearchResultsTable />
+        <div className="sidebar-hide sidebar">
+          <ArtistSearchSideBar />
+        </div>  
+        <div className="content-with-sidebar">
+          <ArtistProfileTable />
+        </div>
       </div>
     )
   }

@@ -11,8 +11,8 @@ var ArtistSettings = React.createClass({
 					<ArtistConnectedAccounts />
 					<ArtistNotification />
 					<ArtistPassword />
-		        </div>
-		    </div> 
-	    )
-  	}
+				</div>
+			</div> 
+		)
+	}
 });
