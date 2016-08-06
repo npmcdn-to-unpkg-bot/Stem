@@ -174,7 +174,7 @@ var App = React.createClass({
 					{ this.props.currentPage == 4 ?
 						<div>
 							<FilterNav />
-							<SongList />
+							<PlaylistMain />
 						</div>
 					: null} 
 
@@ -207,7 +207,7 @@ var App = React.createClass({
 						<div>
 							<ArtistInternalAnalytics />
 						</div>
-					: null} 
+					: null}
 				</div>
 			</div>
 		);
