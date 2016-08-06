@@ -51,25 +51,18 @@ var ArtistAccountSettings = React.createClass({
 	},
 
 	handleSave: function() {
-		var self = this,
-			data = {
+		var self = this;
+
+        stemApi.updateAccount({
+            request: {
 				"general": {
 					"profileName": this.state.profileName,
 					"customLink": this.state.customLink,
 					"email": this.state.email,
 					"bio": this.state.bio
 				}
-			};
-		console.log('data = ' + JSON.stringify(data));
-
-		$.ajax({
-			type: "PUT",
-			url: this.context.baseAPI + '/Account',
-			headers: {'Authorization': this.context.authToken},
-			contentType: "application/json; charset=utf-8",
-			dataType: 'json',
-			data: JSON.stringify(data),
-			success: function (response) {
+            },
+			success: function(response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				store.dispatch({
@@ -77,11 +70,11 @@ var ArtistAccountSettings = React.createClass({
 					data: {userInfo: response, currentPage: 5}
 				});
 			},
-			error: function(response) {
+            error: function (response) {
 				console.error(JSON.stringify(response, null, 2));
 	            self.setErrorMessage(errorMessage);	
-			}
-		}); 
+            }
+        });
 	},
 
 	render: function() {
