@@ -3,7 +3,7 @@ var ArtistSearchMobileView = React.createClass({
     var self = this;
 
     return (
-      <div className="artist-search-mobile-view-wrapper col-xs-12 row no-gutters">
+      <div className="artist-search-mobile-view-wrapper pad-b-md col-xs-12 row no-gutters">
         <ul className="col-xs-12">
           <li className="col-xs-12">
             <div className="artist-search-mobile-items col-xs-8">

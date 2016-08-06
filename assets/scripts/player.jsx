@@ -4,7 +4,7 @@ var Player = React.createClass({
             media : document.getElementsByTagName('audio')[0],
             bar : document.getElementById('progressbar'),
             text : "Echoplex by Nine Inch Nails",    
-            time : document.getElementById('time')    
+            time : document.getElementById('time')  
         });
         audio.play();
         $('.pause').css("display","inline");
@@ -42,6 +42,11 @@ var Player = React.createClass({
     volumeChange: function() {
         var audio = document.getElementsByTagName('audio')[0];
         audio.volume = volumeBar.value;
+    },
+
+    play: function() {
+        var ap1 = document.getElementById('player');
+        ap1.play();
     },
 
     render: function() {
@@ -96,5 +101,4 @@ var Player = React.createClass({
             </div>
         );
     }
-
 });

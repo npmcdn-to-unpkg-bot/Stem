@@ -3,9 +3,11 @@ var ArtistProfile = React.createClass({
     return(
       <div>
         <Header />
-        <div className="col-sm-10 mar-t-;g col-sm-offset-1">
-          <ArtistProfileTable />
-        </div>  
+        <div className="artist-profile-wrapper col-xs-12 bg-white">
+          <div className="col-sm-10 col-sm-offset-1">
+            <ArtistProfileTable />
+          </div> 
+        </div>   
       </div>
     )
   }
