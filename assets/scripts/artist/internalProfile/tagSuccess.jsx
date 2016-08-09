@@ -11,7 +11,7 @@ var ArtistTaggedSuccess = React.createClass({
 
 	render: function() {
 		return(
-			<div className={this.state.uploadSuccessful ? "artist-tag-success" : "artist-tag-success-hidden"}>
+			<div className={this.state.uploadSuccessful ? "artist-tag-success modal-background" : "artist-tag-success-hidden"}>
 				<div className="tag-success-box">
 					<div className="tag-success-box-head display-true">
 						<h3 onClick={this.close} className="icon-cancel-circled2 white mar-t-sm mar-r-sm pull-right"></h3>
