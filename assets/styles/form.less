@@ -1,10 +1,10 @@
 @import url("variables.less");
 
-/* BEGIN Form Styles */
 .error {
     color: #e55;
 }
 
+/* BEGIN Input Styles */
 .form-input, input:not([type]), input[type="email"], input[type="number"], input[type="password"], input[type="tel"], input[type="url"], input[type="text"] {
     display: block;
     width: 100%;
@@ -29,6 +29,45 @@ textarea.form-input {
     padding: 20px;
 }
 
+.upload {
+    overflow: hidden;
+    margin: auto;
+    height: 180px;
+    position: relative;
+    background: @grey-6;
+
+    .upload-label {
+        position: absolute;
+        top: 45%;
+        width: 100%;
+    }
+    input {
+        width: 100%;
+        height: 180px;
+        display: block;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+.upload.circle {
+    width: 180px;
+    -webkit-border-radius: @bd-rad-circle;
+    -moz-border-radius: @bd-rad-circle;
+    border-radius: @bd-rad-circle;
+
+    input {
+        width: 180px;
+    }
+}
+
+
+/* BEGIN Button Styles */
 .btn {
     -webkit-border-radius: @bd-rad-sm;
     -moz-border-radius: @bd-rad-sm;

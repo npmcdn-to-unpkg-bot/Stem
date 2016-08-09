@@ -3,6 +3,8 @@ var ArtistAccountSettings = React.createClass({
 		return {
 			characterCount: 0,
 			disableButton: false,
+			profileImgURL: this.context.userInfo.profileImgURL,
+			bannerImgURL: this.context.userInfo.bannerImgURL,
 			profileName: this.context.userInfo.profileName,
 			customLink: this.context.userInfo.customLink,
 			email: this.context.userInfo.email,
@@ -18,6 +20,53 @@ var ArtistAccountSettings = React.createClass({
         this.setState({
 			[id]: e.target.value
 		});
+    },
+
+ 	handleFileUpload: function(e) {
+ 		console.log(JSON.stringify(e.target.value));
+	    e.preventDefault();
+    	
+    	var id = e.target.id,
+    		reader = new FileReader(),
+			file = e.target.files[0];
+
+		reader.onloadend = () => {
+			if([id] == 'profileImg') {
+				this.setState({
+					profileImg: file,
+					profileImgURL: reader.result
+				});
+			} else {
+				this.setState({
+					bannerImg: file,
+					bannerImgURL: reader.result
+				});
+			}
+		}
+	    reader.readAsDataURL(file)
+	    this.saveFile(file);
+    },
+
+    saveFile: function(file) {
+        stemApi.upload({
+            request: {
+                file: file
+            },
+            success: function (response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+
+                stemApi.updateAccount({
+                    request: { "ProfileImageUploadId": response.url },
+                    success: function (response) { console.log(JSON.stringify(response, null, 2)); },
+                    error: function (response) { console.log("Failed to upload."); }
+                });
+            },
+            error: function (response) {
+				console.error(JSON.stringify(response, null, 2));
+	            self.setErrorMessage(errorMessage);	
+            }
+        });
     },
 
 	handleLineGrow: function(e) {
@@ -86,24 +135,24 @@ var ArtistAccountSettings = React.createClass({
 					<h3>Account</h3>
 					<h5>Update your account settings</h5>
 				</div>
-				<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-3 col-lg-3" >
-					<div className="col-sm-offset-4 col-md-offset-0 col-lg-12 col-lg-offset-0">
-						<a>
-							<div className="artist-account-setting-profile-img text-center">
-								<h5 className="shape-details">UPLOAD PROFILE IMAGE</h5>
-								<p className="shape-details">Suggested Size 1000x1000</p>
-							</div>
-						</a>
+				<div className="col-xs-12 col-md-3 pad-box-md" >
+					<div className="upload circle text-center">
+						<div className="upload-label">
+							<h5>UPLOAD PROFILE IMAGE</h5>
+							<p>Suggested Size 1000x1000</p>
+						</div>
+						<img src={this.state.profileImgURL} />
+						<input onChange={this.handleFileUpload} type="file" name="profileImg" id="profileImg" />
 					</div>  
 				</div>
-				<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-9">
-					<div className="">  
-						<a>
-							<div className="artist-account-setting-profile-banner-img text-center">
-								<h5 className="shape-details">UPLOAD BANNER IMAGE</h5>
-								<p className="shape-details">Suggested Size 1000x1000</p>
-							</div>
-						</a>
+				<div className="col-xs-12 col-md-9 pad-b-md">
+					<div className="upload text-center">
+						<div className="upload-label">
+							<h5>UPLOAD BANNER IMAGE</h5>
+							<p>Suggested Size 1000x1000</p>
+						</div>
+						<img src={this.state.bannerImgURL} />
+						<input onChange={this.handleFileUpload} type="file" name="bannerImg" id="bannerImg" />
 					</div>
 				</div>   
 				<div className="row no-gutters col-xs-12 col-md-6 col-lg-5 pad-t-md">
