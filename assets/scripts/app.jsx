@@ -194,7 +194,7 @@ var App = React.createClass({
 
 					{ this.props.currentPage == 7 ?
 						<div>
-							<AdminDashboard />
+							<AdminMain />
 						</div>
 					: null} 
 
