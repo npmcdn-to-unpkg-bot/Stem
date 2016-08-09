@@ -124,12 +124,11 @@ var ArtistAccountSettings = React.createClass({
 					<h5>Biography</h5>
 					<textarea id="bio" className="form-input" onChange={self.handleLineGrow} value={this.state.bio} />
 					<div className="character-count row no-gutters ">
-						<p>300 Characters</p>
+						<p>{this.state.characterCount}/300 Characters</p>
 							<svg height="20" width="400">
 								<line className="svg-line2" x1="300" y='0' />
 								<line className="svg-line" x1={self.state.characterCount} y='0' />
 							</svg>
-						{this.state.characterCount}
 					</div>  
 				</div> 
 

@@ -182,12 +182,32 @@
 .upload-mobile-hidden {
   display: block;
 }
+.album-list-wrapper {
+  border: 1px solid @grey-3;
+  z-index: 100px;
+  background: white;
+}
+.artist-album-wrapper {
+  position: relative;
+}
+  .artist-album-wrapper ul {
+    position: absolute;
+    top: 90px;
+    z-index: 100;
+  }
+  .album-list-wrapper li {
+    -webkit-appearance: none;
+    padding: @space-sm;
+  }
+    .album-list-wrapper li:hover {
+      background: @grey-5;
+    }
 /*-- Artist Upload Success --*/
 .artist-upload-success {
-  width: 70%;
+  width: 90%;
   display: inline-block;
-  margin: 0 5%;
-  padding: 0 5%;
+  margin: 0 0 0 5%;
+  padding: 0 5% 5%;
 }
 .artist-success-box {
   text-align: center;
@@ -218,7 +238,11 @@
   input[type=checkbox] {
     width: 20px;
     height: 20px;
-    border-radius: none;
+    border-radius: 0;
+    margin-bottom: 2%
+  }
+  .icon {
+    text-align: center;
   }
 }
 .artist-tag-checkbox-hidden {
@@ -226,7 +250,6 @@
 }
 .artist-tag-checkbox-visible {
   visibility: visible;
-  margin-bottom: 4%;
 }
 .artist-upload-success-slider {
   input[type=range] {
@@ -258,21 +281,47 @@
     margin-right: 1%;
   }
 }
-/*-- Artist Tagged Success --*/
-.artist-tag-success {
+/*-- Artist Tagged Success Modal --*/
+.modal-background {
   background: fade(black, 65%);
   height: 100vh;
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 3000;
-  .tag-success-box {
-    width: 40%;
-    margin: 6% auto;
-  }
+}
+.tag-success-box {
+  width: 40%;
+  margin: 6% auto;
 }
 .artist-tag-success-hidden {
   visibility: hidden;
+}
+
+/*-- Artist Download Notice Modal --*/
+.download-notice-box {
+  width: 43%;
+  margin: 10% auto;
+}
+.download-notice-heading {
+  text-align: center;
+}
+.heads-up-title {
+  font-size: 5rem;
+}
+.download-notice-bottom {
+  p, li {
+    font-size: 2rem;
+  }
+  h3 {
+    font-family: @font-reg;
+  }
+}
+.download-notice-links {
+  text-align: right;
+}
+.dont-download {
+  color: @grey-3
 }
 
 /*-- Artist Internal Library --*/
