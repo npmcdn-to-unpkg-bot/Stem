@@ -149,12 +149,12 @@ var App = React.createClass({
 				</nav>
 
 				<Menu displayMenu={this.props.displayMenu} alignment="right">
-						<div className="menu-content">
-								<MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
-								{ this.props.artistMenu.map(function(i) {
-										return <MenuItem hash={i.text} meunItemID={i.pageID} currentPage={currentPage}><i className={i.icon}></i> {i.text}</MenuItem>
-								})}
-						</div>
+					<div className="menu-content">
+						<MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
+						{ this.props.artistMenu.map(function(i) {
+								return <MenuItem hash={i.text} meunItemID={i.pageID} currentPage={currentPage}><i className={i.icon}></i> {i.text}</MenuItem>
+						})}
+					</div>
 				</Menu>
 				<div className={this.state.searchVisible ? "menu-page-overlay active" : null} onClick={this.collapseSearch}></div>
 				<div className="wrapper">
@@ -258,10 +258,18 @@ var Menu = React.createClass({
 });
 
 var MenuHeader = React.createClass({
+	hideMenu: function() {
+		store.dispatch({
+			type: 'HideMenu'
+		});
+	},
+	
 	render: function() {
 		return (
 			<div className="menu-header">
-				<a className="close"><i className="icon-cancel"></i></a>
+				<a onClick={this.hideMenu} className="close">
+					<i className="icon-cancel"></i>
+				</a>
 				<div className="user-info">
 					<span className="profile-img btn-circle drop-4">
 						<img src={this.props.imgSrc} />

@@ -1,4 +1,27 @@
 var PlaylistTable = React.createClass({
+	getInitialState: function() {
+		return {
+			displayPlayer: false,
+			displayNotice: false
+		}
+	},
+
+	showHidePlayer: function() {
+		if(this.state.displayPlayer) {
+			this.setState({ displayPlayer: false });
+		} else {
+			this.setState({ displayPlayer: true });
+		}
+	},
+
+	showHideNotice: function() {
+		if(this.state.displayNotice) {
+			this.setState({ displayNotice: false });
+		} else {
+			this.setState({ displayNotice: true });
+		}
+	},
+	
 	render: function() {
 		var self = this;
 
@@ -84,8 +107,13 @@ var PlaylistTable = React.createClass({
 						</tr>
 					</tbody>
 				</table>
+
+				<a onClick={this.showHidePlayer}>play test</a>
+				<br />
+				<a onClick={this.showHideNotice}>notice test</a>
+				{ this.state.displayPlayer ? <Player /> : null }
+				{ this.state.displayNotice ? <ArtistDownloadNotice showHideNotice={self.showHideNotice} /> : null }
 			</div>
 		)
 	}
-
 });

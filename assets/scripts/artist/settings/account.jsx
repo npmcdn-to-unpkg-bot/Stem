@@ -57,7 +57,7 @@ var ArtistAccountSettings = React.createClass({
 				console.log(JSON.stringify(response, null, 2));
 
                 stemApi.updateAccount({
-                    request: { "ProfileImageUploadId": response.url },
+                    request: { "ProfileImageUploadId": response.id },
                     success: function (response) { console.log(JSON.stringify(response, null, 2)); },
                     error: function (response) { console.log("Failed to upload."); }
                 });
@@ -137,10 +137,17 @@ var ArtistAccountSettings = React.createClass({
 				</div>
 				<div className="col-xs-12 col-md-3 pad-box-md" >
 					<div className="upload circle text-center">
-						<div className="upload-label">
-							<h5>UPLOAD PROFILE IMAGE</h5>
-							<p>Suggested Size 1000x1000</p>
-						</div>
+						{this.state.profileImgURL ? 
+							<div className="upload-label update">
+								<h5>UPDATE PROFILE IMAGE</h5>
+								<p>Suggested Size 1000x1000</p>
+							</div>
+						:
+							<div className="upload-label">
+								<h5>UPLOAD PROFILE IMAGE</h5>
+								<p>Suggested Size 1000x1000</p>
+							</div>
+						}
 						<img src={this.state.profileImgURL} />
 						<input onChange={this.handleFileUpload} type="file" name="profileImg" id="profileImg" />
 					</div>  
