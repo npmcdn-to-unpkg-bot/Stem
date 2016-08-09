@@ -154,10 +154,17 @@ var ArtistAccountSettings = React.createClass({
 				</div>
 				<div className="col-xs-12 col-md-9 pad-b-md">
 					<div className="upload text-center">
-						<div className="upload-label">
-							<h5>UPLOAD BANNER IMAGE</h5>
-							<p>Suggested Size 1000x1000</p>
-						</div>
+						{this.state.bannerImgURL ? 
+							<div className="upload-label update">
+								<h5>UPDATE BANNER IMAGE</h5>
+								<p>Suggested Size 1000x1000</p>
+							</div>
+						:
+							<div className="upload-label">
+								<h5>UPLOAD BANNER IMAGE</h5>
+								<p>Suggested Size 1000x1000</p>
+							</div>
+						}
 						<img src={this.state.bannerImgURL} />
 						<input onChange={this.handleFileUpload} type="file" name="bannerImg" id="bannerImg" />
 					</div>

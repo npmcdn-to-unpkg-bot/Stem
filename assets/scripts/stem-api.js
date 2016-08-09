@@ -3,6 +3,8 @@ var StemApi = (function () {
         this.baseUrl = url;
         this.authorization = null;
     }
+
+    // Login
     StemApi.prototype.setAuth = function (token_type, access_token) {
         var _this = this;
         _this.authorization = token_type + " " + access_token;
@@ -37,6 +39,8 @@ var StemApi = (function () {
             }
         });
     };
+
+    // Account
     StemApi.prototype.createAccount = function (rse) {
         var _this = this;
         $.ajax({
@@ -87,6 +91,7 @@ var StemApi = (function () {
         });
     }
 
+    // File
     StemApi.prototype.upload = function (rse) {
         var _this = this;
         $.ajax({
@@ -131,5 +136,104 @@ var StemApi = (function () {
             }
         });
     };
+
+    //Song
+    StemApi.prototype.createSong = function (rse) {
+        var _this = this;
+        $.ajax({
+            type: 'POST',
+            url: _this.baseUrl + 'song',
+            headers: { 'Authorization': _this.authorization },
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(rse.request),
+            dataType: 'json',
+            error: function (response) {
+                rse.error(response);
+            },
+            success: function (response) {
+                rse.success(response);
+            }
+        });
+    }
+    StemApi.prototype.updateSong = function (rse) {
+        var _this = this;
+        $.ajax({
+            type: 'PUT',
+            url: _this.baseUrl + 'song/' + rse.request.id,
+            headers: { 'Authorization': _this.authorization },
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(rse.request),
+            dataType: 'json',
+            error: function (response) {
+                rse.error(response);
+            },
+            success: function (response) {
+                rse.success(response);
+            }
+        });
+    }
+    StemApi.prototype.getSong = function (rse) {
+        var _this = this;
+        $.ajax({
+            type: 'GET',
+            url: _this.baseUrl + 'song/' + rse.request.id,
+            headers: { 'Authorization': _this.authorization },
+            contentType: "application/json; charset=utf-8",
+            error: function (response) {
+                rse.error(response);
+            },
+            success: function (response) {
+                rse.success(response);
+            }
+        });
+    }
+    StemApi.prototype.getSongsByArtist = function (rse) {
+        var _this = this;
+        $.ajax({
+            type: 'GET',
+            url: _this.baseUrl + 'song/artist/' + rse.request.id,
+            headers: { 'Authorization': _this.authorization },
+            contentType: "application/json; charset=utf-8",
+            error: function (response) {
+                rse.error(response);
+            },
+            success: function (response) {
+                rse.success(response);
+            }
+        });
+    }
+    StemApi.prototype.getAlbumNamesByArtist = function (rse) {
+        var _this = this;
+        $.ajax({
+            type: 'GET',
+            url: _this.baseUrl + 'song/artist/' + rse.request.id,
+            headers: { 'Authorization': _this.authorization },
+            contentType: "application/json; charset=utf-8",
+            error: function (response) {
+                rse.error(response);
+            },
+            success: function (response) {
+                rse.success(response);
+            }
+        });
+    }
+    StemApi.prototype.searchSongs = function (rse) {
+        var _this = this;
+        $.ajax({
+            type: 'POST',
+            url: _this.baseUrl + 'song/search',
+            headers: { 'Authorization': _this.authorization },
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(rse.request),
+            dataType: 'json',
+            error: function (response) {
+                rse.error(response);
+            },
+            success: function (response) {
+                rse.success(response);
+            }
+        });
+    }
+
     return StemApi;
 }());
