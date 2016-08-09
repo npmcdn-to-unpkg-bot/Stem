@@ -257,7 +257,3 @@ var UploadAlbum = React.createClass({
     )
   }
 });
-
-ArtistUploadForm.contextTypes = {
-  baseAPI: React.PropTypes.string
-};
