@@ -15,10 +15,12 @@ var ArtistUpload = React.createClass({
   render: function () {
     var self = this;
     return (
-      <div className="artist-upload-wrapper row no-gutters col-sm-8 col-md-7 col-lg-8">
-        <h3 className="upload-links col-sm-5 col-md-5 col-lg-4" onClick={this.uploadFormToggle}><span className={this.state.visible ? "upload-active-underline" : null}> Individual Song </span></h3>
-        <h3 className="upload-links col-sm-5 col-md-5 col-lg-3" onClick={this.uploadFormToggle}><span className={this.state.visible ? null : "upload-active-underline" }> Album </span></h3>
-        { this.state.visible ? <ArtistUploadForm /> : <UploadAlbum />}
+      <div className="artist-upload-wrapper row no-gutters">
+        <div className="col-xs-12">
+          <h3 className="upload-links col-xs-4" onClick={this.uploadFormToggle}><span className={this.state.visible ? "upload-active-underline" : null}> Individual Song </span></h3>
+          <h3 className="upload-links col-xs-3" onClick={this.uploadFormToggle}><span className={this.state.visible ? null : "upload-active-underline" }> Album </span></h3>
+          { this.state.visible ? <ArtistUploadForm /> : <UploadAlbum />}
+        </div> 
       </div>
     )
   }
@@ -58,7 +60,7 @@ var ArtistUploadForm = React.createClass({
   render: function () {
     var self = this;
     return (
-      <div className="col-sm-12 ">
+      <div className="col-sm-12">
         <div className="artist-upload-drop col-sm-11">
           <h4><span className="icon-folder"></span> Drag and drop audio files or <a>Browse</a> your computer</h4>
         </div>
@@ -82,7 +84,7 @@ var ArtistUploadForm = React.createClass({
           </div>
         </div>
         <div className="col-sm-12 col-lg-6 row no-gutters">
-          <div className="album-art-box col-sm-12">
+          <div className="album-art-box col-sm-12 col-md-12 col-lg-12">
             <div className="upload-album-content col-lg-12">
               <span className="upload-album-art-icon icon-picture-1 fa-4x"></span>
               <div className="upload-album-art-detail">

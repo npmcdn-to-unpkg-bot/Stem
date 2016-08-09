@@ -2,10 +2,12 @@
 
 /*-- Artist Internal -- */
 .artist-internal-wrapper {
-  background-color: white;
-  text-align: left;
+  // width: 500px;
   color: #9B9B9B;
 }
+  .upload-form-wrapper {
+    display: inline-block;
+  }
   .artist-internal-sidebar-wrapper {
     background-color: #FAFAFA;
     display: inline-block;
@@ -91,12 +93,10 @@
 }
 
 .artist-upload-wrapper {
-  padding: @space-lg;
-  font-family: 'roboto-light';
+  font-family: @font-reg;
 }
   .artist-internal-greeting {
     font-family: 'roboto-light';
-    // padding-top: @space-lg;
     display: inline-block;
     max-width: 300px;
   }
@@ -175,7 +175,7 @@
   } 
 .upload-active-underline {
   border-bottom: 2px solid @primary;
-  padding-top: 30px;
+  padding-bottom: 5px;
   width: 100px;
   content: '';
 }
@@ -496,8 +496,7 @@
 /*-- Artist Account Setting --*/
 .artist-account-navbar-wrapper  {
   background-color: #FAFAFA;
-  min-width: 180px;
-  height: 100%; 
+  min-width: 180px; 
 }
   .artist-account-navbar-wrapper li {
     padding: 15px 0 15px 15px;
@@ -514,12 +513,6 @@
   border-bottom: 1px solid lightgrey;
 }
 
-.artist-account-setting-header {
-  text-align: left;
-}
-.things {
-  text-align: center;
-}
 .artist-account-setting-upload-wrapper {
   padding: 40px 20px;
 }
