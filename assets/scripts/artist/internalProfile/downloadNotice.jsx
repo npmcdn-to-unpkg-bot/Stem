@@ -1,4 +1,8 @@
 var ArtistDownloadNotice = React.createClass({
+	handleClick: function() {
+        this.props.showHideNotice();
+	},
+
 	render: function() {
 		return(
 			<div className="download-notice-modal modal-background">
@@ -15,8 +19,8 @@ var ArtistDownloadNotice = React.createClass({
 							<li className="mar-box-md">- Let us know that you used the song in your video by visiting your downloads page</li>
 						</ul>
 						<div className="download-notice-links">
-							<h3 className="dont-download display-inlb mar-t-lg">DON'T DOWNLOAD</h3>
-							<h3 className="display-inlb primary mar-t-lg mar-l-lg">ACCEPT</h3>
+							<h3 onClick={this.handleClick} className="dont-download display-inlb mar-t-lg">DON'T DOWNLOAD</h3>
+							<h3 onClick={this.handleClick} className="display-inlb primary mar-t-lg mar-l-lg">ACCEPT</h3>
 						</div>
 					</div>
 				</div>

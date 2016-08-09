@@ -57,7 +57,7 @@ var ArtistAccountSettings = React.createClass({
 				console.log(JSON.stringify(response, null, 2));
 
                 stemApi.updateAccount({
-                    request: { "ProfileImageUploadId": response.url },
+                    request: { "ProfileImageUploadId": response.id },
                     success: function (response) { console.log(JSON.stringify(response, null, 2)); },
                     error: function (response) { console.log("Failed to upload."); }
                 });
@@ -137,20 +137,34 @@ var ArtistAccountSettings = React.createClass({
 				</div>
 				<div className="col-xs-12 col-md-3 pad-box-md" >
 					<div className="upload circle text-center">
-						<div className="upload-label">
-							<h5>UPLOAD PROFILE IMAGE</h5>
-							<p>Suggested Size 1000x1000</p>
-						</div>
+						{this.state.profileImgURL ? 
+							<div className="upload-label update">
+								<h5>UPDATE PROFILE IMAGE</h5>
+								<p>Suggested Size 1000x1000</p>
+							</div>
+						:
+							<div className="upload-label">
+								<h5>UPLOAD PROFILE IMAGE</h5>
+								<p>Suggested Size 1000x1000</p>
+							</div>
+						}
 						<img src={this.state.profileImgURL} />
 						<input onChange={this.handleFileUpload} type="file" name="profileImg" id="profileImg" />
 					</div>  
 				</div>
 				<div className="col-xs-12 col-md-9 pad-b-md">
 					<div className="upload text-center">
-						<div className="upload-label">
-							<h5>UPLOAD BANNER IMAGE</h5>
-							<p>Suggested Size 1000x1000</p>
-						</div>
+						{this.state.bannerImgURL ? 
+							<div className="upload-label update">
+								<h5>UPDATE BANNER IMAGE</h5>
+								<p>Suggested Size 1000x1000</p>
+							</div>
+						:
+							<div className="upload-label">
+								<h5>UPLOAD BANNER IMAGE</h5>
+								<p>Suggested Size 1000x1000</p>
+							</div>
+						}
 						<img src={this.state.bannerImgURL} />
 						<input onChange={this.handleFileUpload} type="file" name="bannerImg" id="bannerImg" />
 					</div>
@@ -173,12 +187,11 @@ var ArtistAccountSettings = React.createClass({
 					<h5>Biography</h5>
 					<textarea id="bio" className="form-input" onChange={self.handleLineGrow} value={this.state.bio} />
 					<div className="character-count row no-gutters ">
-						<p>300 Characters</p>
+						<p>{this.state.characterCount}/300 Characters</p>
 							<svg height="20" width="400">
 								<line className="svg-line2" x1="300" y='0' />
 								<line className="svg-line" x1={self.state.characterCount} y='0' />
 							</svg>
-						{this.state.characterCount}
 					</div>  
 				</div> 
 

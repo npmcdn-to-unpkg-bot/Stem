@@ -3,7 +3,6 @@ var Player = React.createClass({
         var p = new Progressor({
             media : document.getElementsByTagName('audio')[0],
             bar : document.getElementById('progressbar'),
-            text : "Echoplex by Nine Inch Nails",    
             time : document.getElementById('time')  
         });
         audio.play();
@@ -44,11 +43,6 @@ var Player = React.createClass({
         audio.volume = volumeBar.value;
     },
 
-    play: function() {
-        var ap1 = document.getElementById('player');
-        ap1.play();
-    },
-
     render: function() {
         var self = this;
 
@@ -57,15 +51,15 @@ var Player = React.createClass({
                 <div className="art">
                     <a onClick={this.playPauseClick}>
                         <i className="play icon-play-outline"></i>
-                        <i className="pause icon-pause-1"></i>
+                        <i className="pause icon-pause"></i>
                         <img classNamae="art" src="http://i.telegraph.co.uk/multimedia/archive/01816/king_1816055i.jpg" />
                     </a>
                 </div>
                 <div className="controls">
                     <span className="left">
                         <a onClick={this.playPauseClick}>
-                            <i className="play icon-play-1 h2"></i>
-                            <i className="pause icon-pause-1 h2"></i>
+                            <i className="play icon-play h2"></i>
+                            <i className="pause icon-pause h2"></i>
                         </a>
                     </span>
                     <span className="center">
@@ -87,7 +81,7 @@ var Player = React.createClass({
                 </div>
                 <div id="progressbar" className="controls"></div>
                 <span className="pull-right">
-                    <h6>Current song time: <span id="time"></span>.</h6>
+                    <h6><span id="time"></span></h6>
                 </span>
                 <div className="controls">
                     <span className="tag">Tag One</span>

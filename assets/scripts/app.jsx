@@ -81,6 +81,12 @@ var AppState = function(state) {
 }
 
 var App = React.createClass({
+	getInitialState: function() {
+		return {
+			searchVisible: false,
+			autofocus: true
+		}
+	},
 	getChildContext() {
 		return {
 			baseAPI: this.props.baseAPI,
@@ -102,7 +108,12 @@ var App = React.createClass({
 			data: {currentPage: id}
 		});
 	},
-
+	expandSearch: function() {
+		this.setState({searchVisible: true});
+	},
+	collapseSearch: function() {
+		this.setState({searchVisible: false});
+	},
 	render: function() {
 		var currentPage = this.props.currentPage;
 
@@ -118,8 +129,14 @@ var App = React.createClass({
 							<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket error"></i></a>
 						</div>
 								{ this.props.isLoggedIn ?  
-										<div className="nav header-nav header-right pull-right">
-												<a><i className="icon-search"></i></a>
+										<div className="nav header-nav header-right pull-right">										
+												<a onClick={this.expandSearch}>{this.state.searchVisible ? 
+													<div className="search-input-wrapper">
+														<span className="input-group-icon icon-search" id="addon-1"></span>
+														<input id="search-input" aria-describedby="addon-1" placeholder="Placeholder..."  autoFocus={this.state.autofocus} ></input> 
+													</div>	
+													: <i className="icon-search"></i>}</a>
+
 												<a><i className="icon-heart-empty"></i></a>
 												<a><i className="icon-up-circle"></i></a>
 												<a><i className="icon-bell"></i></a>
@@ -132,14 +149,14 @@ var App = React.createClass({
 				</nav>
 
 				<Menu displayMenu={this.props.displayMenu} alignment="right">
-						<div className="menu-content">
-								<MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
-								{ this.props.artistMenu.map(function(i) {
-										return <MenuItem hash={i.text} meunItemID={i.pageID} currentPage={currentPage}><i className={i.icon}></i> {i.text}</MenuItem>
-								})}
-						</div>
+					<div className="menu-content">
+						<MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
+						{ this.props.artistMenu.map(function(i) {
+								return <MenuItem hash={i.text} meunItemID={i.pageID} currentPage={currentPage}><i className={i.icon}></i> {i.text}</MenuItem>
+						})}
+					</div>
 				</Menu>
-
+				<div className={this.state.searchVisible ? "menu-page-overlay active" : null} onClick={this.collapseSearch}></div>
 				<div className="wrapper">
 					{ this.props.currentPage == 0 ?
 						<div>
@@ -156,7 +173,7 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 1 ?
 						<div>
-							<ArtistInternal />
+							<SubmitMusicMain />
 						</div>
 					: null} 
 
@@ -241,10 +258,18 @@ var Menu = React.createClass({
 });
 
 var MenuHeader = React.createClass({
+	hideMenu: function() {
+		store.dispatch({
+			type: 'HideMenu'
+		});
+	},
+	
 	render: function() {
 		return (
 			<div className="menu-header">
-				<a className="close"><i className="icon-cancel"></i></a>
+				<a onClick={this.hideMenu} className="close">
+					<i className="icon-cancel"></i>
+				</a>
 				<div className="user-info">
 					<span className="profile-img btn-circle drop-4">
 						<img src={this.props.imgSrc} />
