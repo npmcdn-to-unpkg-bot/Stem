@@ -3,8 +3,9 @@
 .player {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
-    height: 164px;
+    height: 144px;
     padding: 12px;
     overflow: hidden;
     background: @white;
@@ -21,13 +22,10 @@
         display: inline;
         float: left;
         position: relative;
-        -webkit-border-radius: @bd-rad-md;
-        -moz-border-radius: @bd-rad-md;
-        border-radius: @bd-rad-md;
 
         img {
-            width: 140px;
-            height: 140px;
+            width: 120px;
+            height: 120px;
         }
         i {
             position: absolute;
@@ -41,13 +39,14 @@
             border-radius: @bd-rad-circle;
             padding: 4px;
             background-color:rgba(255, 255, 255, 0.5);
+            opacity: .8;
         }
     }
 
     .controls {
         display: block;
         padding: 6px 0 12px;
-        margin-left: 155px;
+        margin-left: 135px;
 
         a:hover {
             cursor: pointer;
@@ -81,16 +80,14 @@
     .progressor {
         background: @grey-3;
         text-align: center;
-        font-size: 14px;
-        box-shadow: 0 0 6px #333 inset;
+        font-size: 8px;
         color: @white;
-        padding-top: 6px;
-        padding-bottom: 6px;
         margin-bottom: 5px;
+        padding-top: 0;
+        padding-bottom: 0;
     }
     .progressor-progress {
         background: @primary;
-        box-shadow: 0 0 6px @primary-dk;
     }
     .timestamp {
         font-size: 10px;
