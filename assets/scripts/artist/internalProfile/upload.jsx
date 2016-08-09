@@ -30,8 +30,16 @@ var ArtistUploadForm = React.createClass({
   getInitialState: function() {
     return {
       characterCount: 0,
-      disableButton: false
+      disableButton: false,
+      albumListVisible: false,
+      albumSelection: '',
+      albumNames: ['the first one', 'the black album', 'self titled', 'dookie']
     }
+  },
+  handleShowAlbumList: function() {
+    this.setState({
+      albumListVisible: true
+    })
   },
   handleLineGrow: function(e) {
      if (e.target.value.length == 0) {
@@ -56,7 +64,29 @@ var ArtistUploadForm = React.createClass({
           this.setState({characterCount: 0});
         }
      }
-  },  
+  },
+
+  handlePopulateAlbumName: function() {
+
+    // $.ajax({
+    //   type: 'GET', // rest verb (GET, POST, PUT, DEL)
+    //   url: this.context.baseAPI + '/song/artist/AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAArzxDmskNMEeWM8nzSfsNZQAAAAACAAAAAAAQZgAAAAEAACAAAADHNI5nQkF9G5O4P2MazMUipTjpwoIG3OL2N9FdPFHf6wAAAAAOgAAAAAIAACAAAAAHc2eP6u5H_LnInNgHFcqDjPMExAjA4-xkSiBzvY81seAAAAD4JU0N4czhXGzC5zx1UUxhZuwKn5LlSiZJZZolZ98aBLsnsEC5rLyBZ7DUfJpjig5UXGGt1Oe12LDWyTVxALQKLJS4Uprjt0hIObBGob3qgIC04C-xcgdwTtr7wVZv6mw-_vO_bzEkKTCAEzCFEMcRy9z6j_KYXSErNQyOjZlQw_UEF4h18VZa9TuWZdbsi8xIYtRVn0BassDmBagxLKIMg12ThdbO2aIm6maAawh9_K3FUgRYA-C91NbfyTPpQfV3Z9I4TMD2UNcxe-AO2FWqF5Ey3VjmlyoSXSxj-jj7F0AAAAAtnYuYzT1diW528DeOVBY5-_b-GUmiDQk9P8HgG462Hp-2lAV5vFSB5_D1EcW_qAzZPlyev6FxeUlJnkRSWKZt/albums',
+    //   headers: 
+    //     { 
+    //       'Access-Control-Allow-Origin': 
+    //       'http://52.32.255.104/api/song/artist/AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAArzxDms…BY5-_b-GUmiDQk9P8HgG462Hp-2lAV5vFSB5_D1EcW_qAzZPlyev6FxeUlJnkRSWKZt/albums'
+    //     },
+    //   dataType: 'json',
+    //   success: function (response) {
+    //     console.log(JSON.stringify(response, null, 2));
+    //   }
+    // });
+    // console.log('Album Names!');
+  }, 
+  selectAlbum: function() {
+    this.setState({ albumSelection: e.target.value});
+    console.log(this.albumSelection);
+  }, 
   render: function () {
     var self = this;
     return (
@@ -74,9 +104,14 @@ var ArtistUploadForm = React.createClass({
             <p>Song Name</p>
             <input type="" className="artist-upload-input col-sm-12" />
           </div>
-          <div className="col-sm-12">
+          <div className="artist-album-wrapper row no-gutters col-sm-12">
             <p>Album Name</p>
-            <input type="" className="artist-upload-input col-sm-12" />
+            <input type="" onChange={this.handleShowAlbumList} className="artist-upload-input col-sm-12 mar-b-sm" /> 
+            <ul className={this.state.albumListVisible ? "display-true album-list-wrapper col-sm-12" : "display-false"}>
+              {this.state.albumNames.map(function(e) {
+                return <li key={e.id} value={e.id} onClick={this.selectAlbum}>{e}</li>;
+              })}
+            </ul>  
           </div>
           <div className="col-sm-12">
             <p>Promotion Link <span className="icon-help-circled"></span></p>
@@ -113,7 +148,28 @@ var ArtistUploadForm = React.createClass({
     )
   }
 });
-
+// var ArtistAlbumList = React.createClass({
+  // getInitialState: function() {
+  //   return {
+  //     albumListVisible: true,
+  //     albumNames: ['the first one', 'the black album', 'self titled', 'dookie']
+  //   }
+  // },
+  // handleShowAlbumList: function() {
+  //   this.setState({
+  //     albumListVisible: true
+  //   })
+  // },
+//   render: function() {
+//     return (
+//       <ul className={this.state.albumListVisible ? "display-true album-list-wrapper" : "display-false"}>
+//         {this.state.albumNames.map(function(e) {
+//           return <li key={e.id}>{e}</li>;
+//         })}
+//       </ul>  
+//     )
+//   }
+// });
 var UploadAlbum = React.createClass({
   getInitialState: function() {
     return {
@@ -201,3 +257,7 @@ var UploadAlbum = React.createClass({
     )
   }
 });
+
+ArtistUploadForm.contextTypes = {
+  baseAPI: React.PropTypes.string
+};

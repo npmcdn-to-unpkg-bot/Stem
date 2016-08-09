@@ -182,6 +182,26 @@
 .upload-mobile-hidden {
   display: block;
 }
+.album-list-wrapper {
+  border: 1px solid @grey-3;
+  z-index: 100px;
+  background: white;
+}
+.artist-album-wrapper {
+  position: relative;
+}
+  .artist-album-wrapper ul {
+    position: absolute;
+    top: 90px;
+    z-index: 100;
+  }
+  .album-list-wrapper li {
+    -webkit-appearance: none;
+    padding: @space-sm;
+  }
+    .album-list-wrapper li:hover {
+      background: @grey-5;
+    }
 /*-- Artist Upload Success --*/
 .artist-upload-success {
   width: 90%;
