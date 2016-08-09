@@ -158,7 +158,7 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 1 ?
 						<div>
-							<ArtistInternal />
+							<SubmitMusicMain />
 						</div>
 					: null} 
 
