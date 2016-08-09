@@ -117,27 +117,29 @@ var App = React.createClass({
 							<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
 							<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket error"></i></a>
 						</div>
-								{ this.props.isLoggedIn ?  
-										<div className="nav header-nav header-right pull-right">
-												<a><i className="icon-search"></i></a>
-												<a><i className="icon-heart-empty"></i></a>
-												<a><i className="icon-up-circle"></i></a>
-												<a><i className="icon-bell"></i></a>
-												<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													<i className="icon-menu"></i>
-												</a>                 
-										</div> 
-								: null }
-						</div> 
+						{ this.props.isLoggedIn ?  
+							<div className="nav header-nav header-right pull-right">
+								<a><i className="icon-search"></i></a>
+								<a><i className="icon-heart-empty"></i></a>
+								<a onClick={this.navigate.bind(this, 1)}>
+									<i className="icon-up-circle"></i>
+								</a>
+								<a><i className="icon-bell"></i></a>
+								<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i className="icon-menu"></i>
+								</a>                 
+							</div> 
+						: null }
+					</div> 
 				</nav>
 
 				<Menu displayMenu={this.props.displayMenu} alignment="right">
-						<div className="menu-content">
-								<MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
-								{ this.props.artistMenu.map(function(i) {
-										return <MenuItem hash={i.text} meunItemID={i.pageID} currentPage={currentPage}><i className={i.icon}></i> {i.text}</MenuItem>
-								})}
-						</div>
+					<div className="menu-content">
+						<MenuHeader imgSrc={this.props.imgSrc} name={this.props.name} url={this.props.url} />
+						{ this.props.artistMenu.map(function(i) {
+								return <MenuItem hash={i.text} meunItemID={i.pageID} currentPage={currentPage}><i className={i.icon}></i> {i.text}</MenuItem>
+						})}
+					</div>
 				</Menu>
 
 				<div className="wrapper">
@@ -241,10 +243,18 @@ var Menu = React.createClass({
 });
 
 var MenuHeader = React.createClass({
+	hideMenu: function() {
+		store.dispatch({
+			type: 'HideMenu'
+		});
+	},
+	
 	render: function() {
 		return (
 			<div className="menu-header">
-				<a className="close"><i className="icon-cancel"></i></a>
+				<a onClick={this.hideMenu} className="close">
+					<i className="icon-cancel"></i>
+				</a>
 				<div className="user-info">
 					<span className="profile-img btn-circle drop-4">
 						<img src={this.props.imgSrc} />
