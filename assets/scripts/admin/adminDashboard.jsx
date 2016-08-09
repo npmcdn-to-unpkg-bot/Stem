@@ -9,20 +9,28 @@ var AdminHeader = React.createClass({
 	}
 });
 
+var AdminTimelineNav = React.createClass({
+	render: function() {
+		return(
+			<ul className="timeline-nav mar-t-lg mar-b-lg">
+				<li className="mar-l-md">Today</li>
+				<li className="mar-l-md">Last 7</li>
+				<li className="mar-l-md">Last 30</li>
+				<li className="mar-l-md">Last 60</li>
+				<li className="mar-l-md">Last 90</li>
+				<li className="mar-l-md">Total</li>
+			</ul>
+		)
+	}
+});
+
 var AdminDashboard = React.createClass({
 	render: function() {
 		return(
 			<div className="">
 				<AdminHeader />
-				<div className="admin-dash-bottom">
-					<ul className="timeline-nav mar-t-lg mar-b-lg">
-						<li className="mar-l-md">Today</li>
-						<li className="mar-l-md">Last 7</li>
-						<li className="mar-l-md">Last 30</li>
-						<li className="mar-l-md">Last 60</li>
-						<li className="mar-l-md">Last 90</li>
-						<li className="mar-l-md">Total</li>
-					</ul>	
+				<AdminTimelineNav />
+				<div className="admin-dash-bottom">	
 					<div className="admin-dash-toolboxes">
 						<div className="admin-dashboard-box display-inlb bg-primary pad-box-md">
 							<span className="icon icon-videocam fa-4x white pull-left mar-t-md"></span>
