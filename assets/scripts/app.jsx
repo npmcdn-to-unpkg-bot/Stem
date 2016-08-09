@@ -225,6 +225,12 @@ var App = React.createClass({
 						<div>
 							<ArtistInternalAnalytics />
 						</div>
+					: null} 
+					
+					{ this.props.currentPage == 102 ?
+						<div>
+							<ArtistDownloadNotice />
+						</div>
 					: null}
 				</div>
 			</div>
