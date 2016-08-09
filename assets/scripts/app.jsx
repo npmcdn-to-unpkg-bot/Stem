@@ -81,6 +81,12 @@ var AppState = function(state) {
 }
 
 var App = React.createClass({
+	getInitialState: function() {
+		return {
+			searchVisible: false,
+			autofocus: true
+		}
+	},
 	getChildContext() {
 		return {
 			baseAPI: this.props.baseAPI,
@@ -102,7 +108,12 @@ var App = React.createClass({
 			data: {currentPage: id}
 		});
 	},
-
+	expandSearch: function() {
+		this.setState({searchVisible: true});
+	},
+	collapseSearch: function() {
+		this.setState({searchVisible: false});
+	},
 	render: function() {
 		var currentPage = this.props.currentPage;
 
@@ -117,20 +128,24 @@ var App = React.createClass({
 							<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
 							<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket error"></i></a>
 						</div>
-						{ this.props.isLoggedIn ?  
-							<div className="nav header-nav header-right pull-right">
-								<a><i className="icon-search"></i></a>
-								<a><i className="icon-heart-empty"></i></a>
-								<a onClick={this.navigate.bind(this, 1)}>
-									<i className="icon-up-circle"></i>
-								</a>
-								<a><i className="icon-bell"></i></a>
-								<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i className="icon-menu"></i>
-								</a>                 
-							</div> 
-						: null }
-					</div> 
+								{ this.props.isLoggedIn ?  
+										<div className="nav header-nav header-right pull-right">										
+												<a onClick={this.expandSearch}>{this.state.searchVisible ? 
+													<div className="search-input-wrapper">
+														<span className="input-group-icon icon-search" id="addon-1"></span>
+														<input id="search-input" aria-describedby="addon-1" placeholder="Placeholder..."  autoFocus={this.state.autofocus} ></input> 
+													</div>	
+													: <i className="icon-search"></i>}</a>
+
+												<a><i className="icon-heart-empty"></i></a>
+												<a><i className="icon-up-circle"></i></a>
+												<a><i className="icon-bell"></i></a>
+												<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<i className="icon-menu"></i>
+												</a>                 
+										</div> 
+								: null }
+						</div> 
 				</nav>
 
 				<Menu displayMenu={this.props.displayMenu} alignment="right">
@@ -141,7 +156,7 @@ var App = React.createClass({
 						})}
 					</div>
 				</Menu>
-
+				<div className={this.state.searchVisible ? "menu-page-overlay active" : null} onClick={this.collapseSearch}></div>
 				<div className="wrapper">
 					{ this.props.currentPage == 0 ?
 						<div>
