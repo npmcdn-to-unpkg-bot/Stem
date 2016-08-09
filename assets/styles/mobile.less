@@ -105,7 +105,9 @@ h3 {
     float: left !important;
     padding-top: 10px;
   }
-
+  .artist-upload-success {
+    display: none;
+  }
   .library-filter li:nth-child(1), .library-filter li:nth-child(3), .library-filter li:nth-child(4), .library-filter li:nth-child(5) {
     display: none;
   }
@@ -115,6 +117,9 @@ h3 {
   .library-result-table table th:nth-child(5),.library-result-table table th:nth-child(7), .library-result-table table th:nth-child(8) {
     display: none;
   } 
+  .library-content-wrapper {
+  padding-left: @space-md;
+}
 }
 
 @media (min-width : 426px) and (max-width: 768px) {

@@ -1,10 +1,10 @@
 @import url("variables.less");
 
-/* BEGIN Form Styles */
 .error {
     color: #e55;
 }
 
+/* BEGIN Input Styles */
 .form-input, input:not([type]), input[type="email"], input[type="number"], input[type="password"], input[type="tel"], input[type="url"], input[type="text"] {
     display: block;
     width: 100%;
@@ -29,8 +29,57 @@ textarea.form-input {
     padding: 20px;
 }
 
+.upload {
+    overflow: hidden;
+    margin: auto;
+    height: 180px;
+    position: relative;
+    background: @grey-6;
+    cursor: pointer;
+
+    .upload-label {
+        position: absolute;
+        top: 45%;
+        width: 100%;
+    }
+    .upload-label.update {
+        color: @white;
+        display: none;
+    }
+    input {
+        width: 100%;
+        height: 180px;
+        display: block;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+.upload:hover .upload-label.update {
+    display: block;
+}
+.upload.circle {
+    width: 180px;
+    -webkit-border-radius: @bd-rad-circle;
+    -moz-border-radius: @bd-rad-circle;
+    border-radius: @bd-rad-circle;
+
+    input {
+        width: 180px;
+    }
+}
+
+
+/* BEGIN Button Styles */
 .btn {
-    border-radius: 0;   
+    -webkit-border-radius: @bd-rad-sm;
+    -moz-border-radius: @bd-rad-sm;
+    border-radius: @bd-rad-sm;   
     -moz-box-shadow: @drop-2;
     -webkit-box-shadow: @drop-2;
     box-shadow: @drop-2;
@@ -46,7 +95,6 @@ textarea.form-input {
     padding: 10px;
     background-color: @primary;
     border: none;
-    border-radius: 2px;
     -moz-box-shadow: @drop-2;
     -webkit-box-shadow: @drop-2;
     box-shadow: @drop-2;
@@ -54,9 +102,10 @@ textarea.form-input {
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: @primary-lt;
-    border: 1px solid @primary;
+    border: none;
+    outline: none;
 }
 .btn-sm {
     font-size: 18px;
@@ -67,9 +116,9 @@ textarea.form-input {
     width: 100%;
 }
 .btn-circle {
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
+    -webkit-border-radius: @bd-rad-circle;
+    -moz-border-radius: @bd-rad-circle;
+    border-radius: @bd-rad-circle;
     padding: 0;
     cursor: pointer;
 }

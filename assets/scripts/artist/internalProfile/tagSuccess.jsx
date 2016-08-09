@@ -1,20 +1,14 @@
 var ArtistTaggedSuccess = React.createClass({
-	getInitialState: function() {
-		return {
-			uploadSuccessful: true
-		};
-	},
-
-	close: function() {
-		this.setState({uploadSuccessful: false});
+	handleClick: function() {
+        this.props.showHideNotice();
 	},
 
 	render: function() {
 		return(
-			<div className={this.state.uploadSuccessful ? "artist-tag-success" : "artist-tag-success-hidden"}>
+			<div className="artist-tag-success modal-background">
 				<div className="tag-success-box">
 					<div className="tag-success-box-head display-true">
-						<h3 onClick={this.close} className="icon-cancel-circled2 white mar-t-sm mar-r-sm pull-right"></h3>
+						<h3 onClick={this.handleClick} className="icon-cancel-circled2 white mar-t-sm mar-r-sm pull-right"></h3>
 						<ArtistSuccessHeadingBox />
 					</div>
 					<div className="tag-success-body bg-white pad-box-lg">
@@ -27,7 +21,7 @@ var ArtistTaggedSuccess = React.createClass({
 						<h4>If your music is approved:</h4>
 						<br />
 						<p>We'll need some more information from you. One of our Artist Committee will reach out to you directly.</p>
-						<a onClick={this.close} className="primary mar-t-sm pull-right"><h4>CLOSE</h4></a>
+						<a onClick={this.handleClick} className="primary mar-t-sm pull-right"><h4>CLOSE</h4></a>
 						<br />
 					</div>
 				</div>

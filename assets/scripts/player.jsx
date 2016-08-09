@@ -1,65 +1,98 @@
 var Player = React.createClass({
-    getInitialState: function() {
-        return {
-            displayPlayer: false
-        };
-    },
-
     componentDidMount: function() {
-        var ap1 = new APlayer({
-            element: document.getElementById('player'),                 // Optional, player element
-            narrow: false,                                              // Optional, narrow style
-            autoplay: false,                                            // Optional, autoplay song(s), not supported by mobile browsers
-            showlrc: 0,                                                 // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
-            mutex: true,                                                // Optional, pause other players when this player playing
-            theme: '#fff',                                              // Optional, theme color, default: #b7daff
-            loop: true,                                                 // Optional, loop play music, default: true
-            preload: 'metadata',                                        // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'metadata' in Desktop, 'none' in mobile
-            music: {                                                    // Required, music info, see: ###With playlist
-                title: 'Preparation',                                   // Required, music title
-                author: 'Hans Zimmer/Richard Harvey',                   // Required, music author
-                url: 'http://devtest.qiniudn.com/Preparation.mp3',      // Required, music url
-                pic: 'http://devtest.qiniudn.com/Preparation.jpg'       // Optional, music picture
-            }
+        var p = new Progressor({
+            media : document.getElementsByTagName('audio')[0],
+            bar : document.getElementById('progressbar'),
+            time : document.getElementById('time')  
         });
-        ap1.on('play', function () {
-            console.log('play');
-        });
-        ap1.on('play', function () {
-            console.log('play play');
-        });
-        ap1.on('pause', function () {
-            console.log('pause');
-        });
-        ap1.on('canplay', function () {
-            console.log('canplay');
-        });
-        ap1.on('playing', function () {
-            console.log('playing');
-        });
-        ap1.on('ended', function () {
-            console.log('ended');
-        });
-        ap1.on('error', function () {
-            console.log('error');
-        });
-        ap1.init();
+        audio.play();
+        $('.pause').css("display","inline");
+        $('.play').css("display","none");
     },
 
-    play: function() {
-        var ap1 = document.getElementById('player');
-        ap1.play();
+    playPauseClick: function() {
+        var audio = document.getElementsByTagName('audio')[0];
+
+        if (audio.paused == true) {
+            audio.play();
+            $('.pause').css("display","inline");
+            $('.play').css("display","none");
+        } else {
+            audio.pause();
+            $('.pause').css("display","none");
+            $('.play').css("display","inline");
+        }
+    },
+
+    muteClick: function() {
+        var audio = document.getElementsByTagName('audio')[0];
+
+        if (audio.muted == false) {
+            audio.muted = true;
+            $('#muted').css("display","inline");
+            $('#unmuted').css("display","none");
+        } else {
+            audio.muted = false;
+            $('#muted').css("display","none");
+            $('#unmuted').css("display","inline");
+        }
+    },
+
+    volumeChange: function() {
+        var audio = document.getElementsByTagName('audio')[0];
+        audio.volume = volumeBar.value;
     },
 
     render: function() {
         var self = this;
 
         return (
-            <div className="player-container">
-                <a onClick={this.play}>play</a>
-                <div id="player" className="aplayer"></div>
+            <div className="player">
+                <div className="art">
+                    <a onClick={this.playPauseClick}>
+                        <i className="play icon-play-outline"></i>
+                        <i className="pause icon-pause"></i>
+                        <img classNamae="art" src="http://i.telegraph.co.uk/multimedia/archive/01816/king_1816055i.jpg" />
+                    </a>
+                </div>
+                <div className="controls">
+                    <span className="left">
+                        <a onClick={this.playPauseClick}>
+                            <i className="play icon-play h2"></i>
+                            <i className="pause icon-pause h2"></i>
+                        </a>
+                    </span>
+                    <span className="center">
+                        <h3>
+                            Song Title
+                        </h3>
+                        <h6>
+                            Artist Name
+                        </h6>
+                    </span>
+                    <span className="pull-right"> 
+                        <a onClick={this.muteClick} id="mute">
+                            <i id="unmuted" className="icon-volume-up h3"></i>
+                            <i id="muted" className="icon-volume-off h3"></i>
+                        </a>
+                        <a><i className="icon-heart-empty h3"></i></a>
+                        <a><i className="icon-up-circle h3"></i></a>
+                    </span>
+                </div>
+                <div id="progressbar" className="controls"></div>
+                <span className="pull-right">
+                    <h6><span id="time"></span></h6>
+                </span>
+                <div className="controls">
+                    <span className="tag">Tag One</span>
+                    <span className="tag">Tag Two Long</span>
+                </div>  
+
+                <audio id="audio" preload="auto" controls>
+                    <source src="http://ejb.github.io/progressor.js/demos/echoplex.ogg" type="audio/ogg" />
+                    <source src="http://ejb.github.io/progressor.js/demos/echoplex.mp3" type="audio/mp3" />
+                </audio>
             </div>
         );
     }
-
 });

@@ -15,32 +15,42 @@
 
 /* -- Admin Dashboard -- */
 .admin-dash-bottom {
+	width: 100%;
 	padding: 0 10%;
 }
 .timeline-nav {
-	margin-left: 60%; 
-	li {
-		display: inline-block;
-	}
-	li:hover {
-		color: @primary;
-	}
+	margin-left: 60%;
+} 
+.timeline-nav li {
+	display: inline-block;
+}
+.timeline-nav li:hover {
+	color: @primary;
+}
+.admin-dash-toolboxes {
+	margin: auto;
 }
 .admin-dashboard-box {
 	width: 40%;
-	height: 160px;
-	margin: 2.5% 4%;
+	height: 28%;
+	// margin: 2.5% 3%;
 	border-radius: 0.05rem;
 	box-shadow: @drop-4;
-	.stats {
-		font-size: 4rem;
-	}
-	.title {
-		font-family: @font-reg
-	}
+}
+.admin-dashboard-box .icon {
+	margin: 5%;
+}
+.admin-dashboard-box .stats {
+	font-size: 3em;
+}
+.admin-dashboard-box .title {
+	font-family: @font-reg;
+	white-space: nowrap;
+	font-size: 2em;
 }
 .large-toolbox-text {
-	font-size: 4rem;
+	font-size: 2.65em;
+	white-space: nowrap;
 	text-align: center;
-	margin-top: 9%;
+	margin: 9% 0;
 }
