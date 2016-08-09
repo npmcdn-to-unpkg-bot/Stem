@@ -1,2 +1,100 @@
 @import url("variables.less");
 
+.player {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 164px;
+    padding: 12px;
+    overflow: hidden;
+    background: @white;
+    -moz-box-shadow: @drop-5;
+    -webkit-box-shadow: @drop-5;
+    box-shadow: @drop-5;
+
+    audio {
+        display: none;
+    }
+
+    .art {
+        overflow: hidden;
+        display: inline;
+        float: left;
+        position: relative;
+        -webkit-border-radius: @bd-rad-md;
+        -moz-border-radius: @bd-rad-md;
+        border-radius: @bd-rad-md;
+
+        img {
+            width: 140px;
+            height: 140px;
+        }
+        i {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            font-size: 22px;
+            color: @white;
+            border: 4px solid @white;
+            -webkit-border-radius: @bd-rad-circle;
+            -moz-border-radius: @bd-rad-circle;
+            border-radius: @bd-rad-circle;
+            padding: 4px;
+            background-color:rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    .controls {
+        display: block;
+        padding: 6px 0 12px;
+        margin-left: 155px;
+
+        a:hover {
+            cursor: pointer;
+        }
+    }
+
+    .controls span {
+        display:  inline-block;
+        vertical-align: top;
+
+        &.tag {
+            background: @primary;
+            color: @white;
+            font-size: 12px;
+            text-align: center;
+            padding: 6px 12px;
+            margin-right: 7px;
+            margin-top: 5px;
+        }
+    }
+
+    input[type=range] {
+        padding: 4px;
+        display: inline;
+        width: auto;
+    }
+    #muted {
+        display: none;
+    }
+
+    .progressor {
+        background: @grey-3;
+        text-align: center;
+        font-size: 14px;
+        box-shadow: 0 0 6px #333 inset;
+        color: @white;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        margin-bottom: 5px;
+    }
+    .progressor-progress {
+        background: @primary;
+        box-shadow: 0 0 6px @primary-dk;
+    }
+    .timestamp {
+        font-size: 10px;
+        text-align: right;
+        margin-bottom: 5px;
+    }
+}

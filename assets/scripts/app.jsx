@@ -146,6 +146,7 @@ var App = React.createClass({
 							{ this.props.isLoggedIn ? 
 								<div>
 									<FilterNav />
+									<LibraryMain />
 								</div>
 							:
 								<Login />  
@@ -167,8 +168,6 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 3 ?
 						<div>
-							<FilterNav />
-							<LibraryMain />
 							<ArtistProfile />
 						</div>
 					: null} 
@@ -176,7 +175,7 @@ var App = React.createClass({
 					{ this.props.currentPage == 4 ?
 						<div>
 							<FilterNav />
-							<SongList />
+							<PlaylistMain />
 						</div>
 					: null} 
 

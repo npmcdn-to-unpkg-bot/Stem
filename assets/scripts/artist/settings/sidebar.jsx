@@ -13,8 +13,8 @@ var ArtistAccountNavBar = React.createClass({
   },
   render: function() {
     return (
-      <div className="row no-gutters artist-account-navbar-wrapper">
-        <div className=" settings-navbar">
+      <div className="row no-gutters artist-account-navbar-wrapper sidebar">
+        <div className="sidebar-hide">
           <ul>
             <a onClick=""><li className="col-sm-12"><h5>Account</h5></li></a>
             <a onClick=""><li className="col-sm-12"><h5>Contact Info</h5></li></a>
@@ -23,7 +23,7 @@ var ArtistAccountNavBar = React.createClass({
             <a onClick=""><li className="col-sm-12"><h5>Password</h5></li></a>
           </ul>
         </div>
-        <div className="settings-mobile-nav artist-account-navbar-wrapper col-xs-12">
+        <div className="settings-mobile-nav">
           <h3 onClick={this.handleNavBarMobile}> Account <span className={(this.state.visible ? "icon-up-open  pull-right" : "icon-down-open pull-right")}></span></h3>
           { this.state.visible ? <MobileNavBar /> : null}
          </div>

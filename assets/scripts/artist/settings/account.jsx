@@ -51,25 +51,18 @@ var ArtistAccountSettings = React.createClass({
 	},
 
 	handleSave: function() {
-		var self = this,
-			data = {
+		var self = this;
+
+        stemApi.updateAccount({
+            request: {
 				"general": {
 					"profileName": this.state.profileName,
 					"customLink": this.state.customLink,
 					"email": this.state.email,
 					"bio": this.state.bio
 				}
-			};
-		console.log('data = ' + JSON.stringify(data));
-
-		$.ajax({
-			type: "PUT",
-			url: this.context.baseAPI + '/Account',
-			headers: {'Authorization': this.context.authToken},
-			contentType: "application/json; charset=utf-8",
-			dataType: 'json',
-			data: JSON.stringify(data),
-			success: function (response) {
+            },
+			success: function(response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				store.dispatch({
@@ -77,11 +70,11 @@ var ArtistAccountSettings = React.createClass({
 					data: {userInfo: response, currentPage: 5}
 				});
 			},
-			error: function(response) {
+            error: function (response) {
 				console.error(JSON.stringify(response, null, 2));
 	            self.setErrorMessage(errorMessage);	
-			}
-		}); 
+            }
+        });
 	},
 
 	render: function() {
@@ -93,7 +86,7 @@ var ArtistAccountSettings = React.createClass({
 					<h3>Account</h3>
 					<h5>Update your account settings</h5>
 				</div>
-				<div className="artist-account-setting-upload-wrapper col-sm-12 col-md-3 col-lg-3" >
+				<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-3 col-lg-3" >
 					<div className="col-sm-offset-4 col-md-offset-0 col-lg-12 col-lg-offset-0">
 						<a>
 							<div className="artist-account-setting-profile-img text-center">
@@ -103,7 +96,7 @@ var ArtistAccountSettings = React.createClass({
 						</a>
 					</div>  
 				</div>
-				<div className="artist-account-setting-upload-wrapper col-sm-12 col-md-9">
+				<div className="artist-account-setting-upload-wrapper col-xs-12 col-md-9">
 					<div className="">  
 						<a>
 							<div className="artist-account-setting-profile-banner-img text-center">
@@ -113,7 +106,7 @@ var ArtistAccountSettings = React.createClass({
 						</a>
 					</div>
 				</div>   
-				<div className="row no-gutters col-sx-12 col-md-6 col-lg-5 pad-t-md">
+				<div className="row no-gutters col-xs-12 col-md-6 col-lg-5 pad-t-md">
 					<h5>Profile Name</h5>
 					<input id="profileName" onChange={this.handleFieldChange} value={this.state.profileName} /> 
 					<h5>Custom Link</h5>
@@ -127,7 +120,7 @@ var ArtistAccountSettings = React.createClass({
 					<input id="timeZone" onChange={this.handleFieldChange} value={this.state.timeZone} />
 				</div>
 
-				<div className="col-sx-12 col-sm-12 col-md-8 pad-t-sm pad-b-sm">
+				<div className="col-xs-12 col-sm-12 col-md-8 pad-t-sm pad-b-sm">
 					<h5>Biography</h5>
 					<textarea id="bio" className="form-input" onChange={self.handleLineGrow} value={this.state.bio} />
 					<div className="character-count row no-gutters ">
