@@ -11,7 +11,10 @@ var ArtistAccountSettings = React.createClass({
 			country: this.context.userInfo.country,
 			timeZone: this.context.userInfo.timeZone,
 			bio: this.context.userInfo.bio,
-			errorMessage: ''
+			errorMessage: '',
+
+			profileImgId: '',
+			bannerImgId: ''
 		}
 	},
 
@@ -20,53 +23,6 @@ var ArtistAccountSettings = React.createClass({
         this.setState({
 			[id]: e.target.value
 		});
-    },
-
- 	handleFileUpload: function(e) {
- 		console.log(JSON.stringify(e.target.value));
-	    e.preventDefault();
-    	
-    	var id = e.target.id,
-    		reader = new FileReader(),
-			file = e.target.files[0];
-
-		reader.onloadend = () => {
-			if([id] == 'profileImg') {
-				this.setState({
-					profileImg: file,
-					profileImgURL: reader.result
-				});
-			} else {
-				this.setState({
-					bannerImg: file,
-					bannerImgURL: reader.result
-				});
-			}
-		}
-	    reader.readAsDataURL(file)
-	    this.saveFile(file);
-    },
-
-    saveFile: function(file) {
-        stemApi.upload({
-            request: {
-                file: file
-            },
-            success: function (response) {
-				console.log('success!');
-				console.log(JSON.stringify(response, null, 2));
-
-                stemApi.updateAccount({
-                    request: { "ProfileImageUploadId": response.id },
-                    success: function (response) { console.log(JSON.stringify(response, null, 2)); },
-                    error: function (response) { console.log("Failed to upload."); }
-                });
-            },
-            error: function (response) {
-				console.error(JSON.stringify(response, null, 2));
-	            self.setErrorMessage(errorMessage);	
-            }
-        });
     },
 
 	handleLineGrow: function(e) {
@@ -99,7 +55,73 @@ var ArtistAccountSettings = React.createClass({
 		}
 	},
 
-	handleSave: function() {
+ 	handleFileUpload: function(e) {
+ 		console.log(JSON.stringify(e.target.value));
+	    e.preventDefault();
+    	
+    	var id = e.target.id,
+    		reader = new FileReader(),
+			file = e.target.files[0];
+
+		reader.onloadend = () => {
+			if([id] == 'profileImg') {
+				this.setState({
+					profileImg: file,
+					profileImgURL: reader.result
+				});
+			} else {
+				this.setState({
+					bannerImg: file,
+					bannerImgURL: reader.result
+				});
+			}
+		}
+	    reader.readAsDataURL(file)
+	    //this.saveFile(file);
+    },
+
+    handleSave: function() {
+    	if(this.state.profileImg) {
+    		this.saveImg(profileImg, 'profileImg');
+    	} else if(this.state.bannerImg) {
+    		this.saveImg(bannerImg, 'bannerImg');
+    	} else {
+			this.updateAcct();
+    	}
+    },
+
+    saveImg: function(file, type) {
+    	var self = this;
+
+        stemApi.upload({
+            request: {
+                file: file
+            },
+            success: function (response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+				if(type == 'profileImg') {
+					self.setState({profileImgId: response.id});
+					if(self.state.bannerImg) {
+			    		self.saveImg(bannerImg, 'bannerImg');
+			    	} else {
+						self.updateAcct(response.id, self.state.bannerImgId);
+			    	}
+				} else {
+					self.setState({bannerImgId: response.id});
+					self.updateAcct(self.state.profileImgId, response.id);	
+				}
+            },
+            error: function (response) {
+				console.error(JSON.stringify(response, null, 2));
+	            self.setErrorMessage(errorMessage);	
+            }
+        });
+    },
+
+	updateAcct: function(pId, bId) {
+		console.log('pId = ' + pId);
+		console.log('bId = ' + bId);
 		var self = this;
 
         stemApi.updateAccount({
@@ -109,7 +131,9 @@ var ArtistAccountSettings = React.createClass({
 					"customLink": this.state.customLink,
 					"email": this.state.email,
 					"bio": this.state.bio
-				}
+				},
+				"profileImageFileId": pId,
+				"bannerImageFileId": bId
             },
 			success: function(response) {
 				console.log('success!');
@@ -135,7 +159,7 @@ var ArtistAccountSettings = React.createClass({
 					<h3>Account</h3>
 					<h5>Update your account settings</h5>
 				</div>
-				<div className="col-xs-12 col-md-3 pad-box-md" >
+				<div className="col-xs-12 col-lg-3 pad-box-md" >
 					<div className="upload circle text-center">
 						{this.state.profileImgURL ? 
 							<div className="upload-label update">
@@ -152,7 +176,7 @@ var ArtistAccountSettings = React.createClass({
 						<input onChange={this.handleFileUpload} type="file" name="profileImg" id="profileImg" />
 					</div>  
 				</div>
-				<div className="col-xs-12 col-md-9 pad-b-md">
+				<div className="col-xs-12 col-lg-9 pad-box-md">
 					<div className="upload text-center">
 						{this.state.bannerImgURL ? 
 							<div className="upload-label update">
