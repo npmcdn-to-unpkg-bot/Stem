@@ -71,8 +71,8 @@ var AdminNewSubmissions = React.createClass({
 		return(
 			<div className="">
 				<h3 className="admin-new-submissions-title top-title primary">Submissions</h3>
-				<div className="admin-new-submissions-table">
-
+				<div className="admin-new-submissions-chart">
+					<AdminChart />
 				</div>
 				<h3 className="admin-new-submissions-title display-inlb primary">Songs</h3>
 				<h4 className="admin-new-submissions-export-link display-inlb secondary">Export All</h4>
