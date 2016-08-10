@@ -28,8 +28,6 @@ var AdminDashboard = React.createClass({
 	render: function() {
 		return(
 			<div className="">
-				<AdminHeader />
-				<AdminTimelineNav />
 				<div className="admin-dash-bottom">	
 					<div className="admin-dash-toolboxes">
 						<div className="admin-dashboard-box display-inlb bg-primary pad-box-md">
