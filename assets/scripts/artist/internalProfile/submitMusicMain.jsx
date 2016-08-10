@@ -16,7 +16,7 @@ var SubmitMusicMain = React.createClass({
                         <h3>Submit Music</h3>
                         <p>Add music to your library</p>
                     </div>
-                    { this.state.uploadSuccessful ? <ArtistUploadSuccessTag /> : <UploadForm /> }
+                    { this.state.uploadSuccessful ? <ArtistUploadSuccess /> : <UploadForm /> }
                 </div>     
             </div>
         )
