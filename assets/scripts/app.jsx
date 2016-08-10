@@ -164,9 +164,10 @@ var App = React.createClass({
 								<div>
 									<FilterNav />
 									<LibraryMain />
+									<Footer />
 								</div>
 							:
-								<Login />  
+								<Login /> 
 							}
 						</div>
 					: null}
@@ -174,18 +175,21 @@ var App = React.createClass({
 					{ this.props.currentPage == 1 ?
 						<div>
 							<SubmitMusicMain />
+							<Footer />
 						</div>
 					: null} 
 
 					{ this.props.currentPage == 2 ?
 						<div>
 							<ArtistInternalAnalytics />
+							<Footer />
 						</div>
 					: null} 
 					
 					{ this.props.currentPage == 3 ?
 						<div>
 							<ArtistProfile />
+							<Footer />
 						</div>
 					: null} 
 
@@ -193,12 +197,14 @@ var App = React.createClass({
 						<div>
 							<FilterNav />
 							<PlaylistMain />
+							<Footer />
 						</div>
 					: null} 
 
 					{ this.props.currentPage == 5 ?
 						<div>
 							<ArtistSettings />
+							<Footer />
 						</div>
 					: null} 
 
@@ -206,6 +212,7 @@ var App = React.createClass({
 						<div>
 							<FilterNav />
 							<ArtistSearch />
+							<Footer />
 						</div>
 					: null}
 
