@@ -4,45 +4,40 @@ var AdminChart = React.createClass({
 			bindto: '.admin-chart',
 		  data: {
 		    json: [{
-		      date: '2014-08-25',
-		      'Can juggle many balls': 34.259,
-		      'Delivers results': 57.56,
-		      'Execution': 41.75734438,
-		      'Focused and disciplined': 37.462
+		       day: 0,
+		      'Song Submissions': 45,
 		    }, {
-		      date: '2014-12-01',
-		      'Can juggle many balls': 50.83314049,
-		      'Delivers results': 60.69339285,
-		      'Execution': 50.70495327,
-		      'Focused and disciplined': 44.90770428      
+		      day: 1,
+		      'Song Submissions': 210,      
 		    }, {
-		      date: '2015-05-04',
-		      'Can juggle many balls': 52.86413524,
-		      'Delivers results': 60.38042642,
-		      'Execution': 50.46746163,
-		      'Focused and disciplined': 41.09005214
+		      day: 2,
+		      'Song Submissions': 100,
 		    }, {
-		      date: '2015-09-02',
-		      'Can juggle many balls': 52.56221495,
-		      'Delivers results': 57.55962224,
-		      'Execution': 49.63739982,
-		      'Focused and disciplined': 40.90062401
+		      day: 3,
+		      'Song Submissions': 400,
+		    }, {
+		    	day: 4,
+		      'Song Submissions': 160,
+		    }, {
+		    	day: 5,
+		      'Song Submissions': 250,
+		    }, {
+		    	day: 6,
+		      'Song Submissions': 70,
+		    }, {
+		    	day: 7,
+		      'Song Submissions': 140,
+		    }, {
+		    	day: 8,
+		      'Song Submissions': 300,
 		    }],
 		    keys: {
-		      x: 'date',
-		      value: ['Can juggle many balls', 'Delivers results', 'Execution', 'Focused and disciplined']
+		      x: 'day',
+		      value: ['Song Submissions']
 		    }
 		  },
 		  axis: {
 		    x: {
-		      type: 'timeseries',
-		      tick: {
-		        format: function(x) {
-
-		          return x.toLocaleDateString();
-		          
-		        }
-		      }
 		    }
 		  }
 		});

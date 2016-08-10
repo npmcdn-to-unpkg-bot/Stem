@@ -4,11 +4,11 @@ var ArtistSearch = React.createClass({
     var self = this;
 
     return (
-      <div>
+      <div className="">
         <div className="sidebar search-sidebar-tablet">
           <ArtistSearchSideBar />
         </div>
-        <div className="content-with-sidebar-settings">  
+        <div className="content-with-sidebar ">  
           <ArtistProfileTable />
         </div>  
       </div>
