@@ -54,3 +54,7 @@ reduxtest.html
 test.html
 test3.html
 assets/jsx/login-test.jsx
+
+# Sublime Files
+*.sublime-project
+*.sublime-workspace
