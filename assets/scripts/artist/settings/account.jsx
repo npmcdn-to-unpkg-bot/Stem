@@ -81,9 +81,9 @@ var ArtistAccountSettings = React.createClass({
     },
 
     handleSave: function() {
-    	if(this.state.profileImgId) {
+    	if(this.state.profileImg) {
     		this.saveImg(profileImg, 'profileImg');
-    	} else if(this.state.bannerImgId) {
+    	} else if(this.state.bannerImg) {
     		this.saveImg(bannerImg, 'bannerImg');
     	} else {
 			this.updateAcct();
@@ -102,14 +102,14 @@ var ArtistAccountSettings = React.createClass({
 				console.log(JSON.stringify(response, null, 2));
 				if(type == 'profileImg') {
 					self.setState({profileImgId: response.id});
-					if(this.state.bannerImgId) {
-			    		this.saveImg(bannerImg, 'bannerImg');
+					if(self.state.bannerImg) {
+			    		self.saveImg(bannerImg, 'bannerImg');
 			    	} else {
-						this.updateAcct(response.id, this.state.bannerImgId);
+						self.updateAcct(response.id, self.state.bannerImgId);
 			    	}
 				} else {
 					self.setState({bannerImgId: response.id});
-					this.updateAcct(this.state.profileImgId, response.id);	
+					self.updateAcct(self.state.profileImgId, response.id);	
 				}
             },
             error: function (response) {
@@ -131,7 +131,9 @@ var ArtistAccountSettings = React.createClass({
 					"customLink": this.state.customLink,
 					"email": this.state.email,
 					"bio": this.state.bio
-				}
+				},
+				"profileImageFileId": pId,
+				"bannerImageFileId": bId
             },
 			success: function(response) {
 				console.log('success!');
