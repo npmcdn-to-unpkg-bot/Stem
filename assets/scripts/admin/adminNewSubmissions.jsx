@@ -1,4 +1,4 @@
-var AdminTable = React.createClass({
+var AdminNewSubmissionsTable = React.createClass({
 	render: function() {
 		return(
 			<div className="admin-table row pad-b-lg">
@@ -72,11 +72,11 @@ var AdminNewSubmissions = React.createClass({
 			<div className="">
 				<h3 className="admin-new-submissions-title top-title primary">Submissions</h3>
 				<div className="admin-new-submissions-chart">
-					<AdminChart />
+					<AdminNewSubmissionsChart />
 				</div>
 				<h3 className="admin-new-submissions-title display-inlb primary">Songs</h3>
 				<h4 className="admin-new-submissions-export-link display-inlb secondary">Export All</h4>
-				<AdminTable />
+				<AdminNewSubmissionsTable />
 			</div>
 		)
 	}

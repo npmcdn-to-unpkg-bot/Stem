@@ -4,7 +4,7 @@ var AdminMain = React.createClass({
 			<div className="">
 				<AdminHeader />
 				<AdminTimelineNav />
-				<AdminNewSubmissions />
+				<AdminNewCreators />
 			</div>
 		)
 	}
