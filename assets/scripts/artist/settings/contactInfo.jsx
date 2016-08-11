@@ -1,6 +1,7 @@
 var ArtistContactInfo = React.createClass({
 	getInitialState: function() {
 		return {
+			saveSuccessful: false,
 			firstName: this.context.userInfo.primaryContact.firstName,
 			lastName: this.context.userInfo.primaryContact.lastName,
 			email: this.context.userInfo.primaryContact.email,
@@ -16,7 +17,8 @@ var ArtistContactInfo = React.createClass({
     handleFieldChange: function(e) {
     	var id = e.target.id;
         this.setState({
-			[id]: e.target.value
+			[id]: e.target.value,
+			saveSuccessful: false
 		});
     },
 
@@ -39,6 +41,7 @@ var ArtistContactInfo = React.createClass({
 			success: function(response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
+				self.setState({saveSuccessful: true});
 				store.dispatch({
 					type: 'UpdateUserRecord',
 					data: {userInfo: response, currentPage: 5}
@@ -131,9 +134,15 @@ var ArtistContactInfo = React.createClass({
 
 				<div className="col-xs-12"> 
 					<div className="pull-right">
-						<button type="button" onClick={this.handleSave} className="btn btn-sm btn-primary">
-							<span className="icon-ok-circle"> </span> Save
-						</button>
+						{ this.state.saveSuccessful ?
+							<button type="button" onClick={this.handleSave} className="btn btn-sm btn-primary-lt">
+								<span className="icon-ok-circled2"> </span> Save
+							</button>
+						:
+							<button type="button" onClick={this.handleSave} className="btn btn-sm btn-primary" disabled={this.state.disableButton}>
+								<span className="icon-ok-circled"> </span> Save
+							</button>
+						}
 					</div>
 				</div>
 			</div>
