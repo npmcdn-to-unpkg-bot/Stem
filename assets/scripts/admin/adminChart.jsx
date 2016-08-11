@@ -1,4 +1,4 @@
-var AdminChart = React.createClass({
+var AdminNewSubmissionsChart = React.createClass({
 	componentDidMount: function() {
 		var chart = c3.generate({
 			bindto: '.admin-chart',
@@ -37,7 +37,11 @@ var AdminChart = React.createClass({
 		    }
 		  },
 		  axis: {
-		    x: {
+		    y: {
+		    	label: {
+		    		text:'# of users',
+		    		position: 'outer-middle'
+		    	}
 		    }
 		  }
 		});
