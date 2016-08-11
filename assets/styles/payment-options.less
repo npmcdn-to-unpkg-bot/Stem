@@ -1,0 +1,53 @@
+@import url("variables.less");
+
+.payment-options-page {
+	padding: 9% 5% 0;
+	height: 100vh;
+	background-image: url("/assets/images/handandfader.jpg");
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+.payment-options-content {
+	width: 795px;
+	margin: 0 auto
+}
+.payment-options {
+	width: 260px;
+	height: 400px;
+	display: inline-block;
+	background-color: white;
+	border: 1px solid @grey-5;
+	padding: @space-md @space-lg;
+	margin: 0 2.5px;
+	text-align: center;
+	box-shadow: @drop-2;
+	-webkit-transition: all 0.35s ease-in;
+	-moz-transition: all 0.35s ease-in;
+	transition: all 0.35s ease-in;
+}
+.payment-options:hover {
+	-webkit-transform: scale(1.2);
+	-moz-tranfrom: scale(1.2);
+	transform: scale(1.2);
+	.payment-options-btn {
+		padding: @space-md;
+		margin: 10px 0;
+		background-color: @primary;
+		color: white;
+		cursor: pointer;
+	}
+}
+.payment-options-price {
+	font-family: @font-reg;
+	font-size: 4.5em;
+	color: @grey-2;
+	padding-top: @space-md;
+}
+.payment-options ul {
+	color: @grey-3;
+	text-align: left;
+	padding: @space-md @space-sm @space-md @space-md;
+	line-height: 25px;
+}
