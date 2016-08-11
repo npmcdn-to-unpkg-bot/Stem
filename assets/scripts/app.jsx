@@ -162,7 +162,6 @@ var App = React.createClass({
 						<div>
 							{ this.props.isLoggedIn ? 
 								<div>
-									<FilterNav />
 									<LibraryMain />
 									<Footer />
 								</div>

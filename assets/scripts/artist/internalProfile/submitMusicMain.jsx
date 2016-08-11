@@ -10,7 +10,6 @@ var SubmitMusicMain = React.createClass({
 
         return (
             <div className="artist-internal-wrapper-fluid">
-                <ArtistInternalSideBar />
                 <div className="content-with-sidebar bg-white">  
                     <div className="pad-box-md">
                         <h3>Submit Music</h3>

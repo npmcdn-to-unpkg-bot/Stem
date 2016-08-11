@@ -16,7 +16,7 @@ var ArtistUpload = React.createClass({
     var self = this;
     return (
       <div className="artist-upload-wrapper row no-gutters">
-        <div className="col-xs-12">
+        <div className="bg-white col-xs-12">
           <h3 className="upload-links col-xs-4" onClick={this.uploadFormToggle}><span className={this.state.visible ? "upload-active-underline" : null}> Individual Song </span></h3>
           <h3 className="upload-links col-xs-3" onClick={this.uploadFormToggle}><span className={this.state.visible ? null : "upload-active-underline" }> Album </span></h3>
           { this.state.visible ? <ArtistUploadForm /> : <UploadAlbum />}
