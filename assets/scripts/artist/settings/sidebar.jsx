@@ -15,7 +15,7 @@ var ArtistAccountNavBar = React.createClass({
 
 	render: function() {
 		return (
-			<div className="sidebar hide-mobile row no-gutters">
+			<div className="sidebar-nav hide-mobile row no-gutters">
 				<div className="sidebar-hide">
 					<ul>
 						<a onClick=""><li className="col-sm-12"><h5>Account</h5></li></a>
