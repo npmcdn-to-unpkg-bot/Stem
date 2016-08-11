@@ -168,7 +168,7 @@ var UploadForm = React.createClass({
 	render: function () {
 		var self = this;
 		return (
-			<div className="col-sm-12">
+			<div className="bg-white col-sm-12">
 				<a className="h3 upload-links col-xs-4" onClick={this.uploadFormToggle}>
 					<span className={this.state.singleTrack ? "upload-active-underline" : null}> Individual Song </span>
 				</a>

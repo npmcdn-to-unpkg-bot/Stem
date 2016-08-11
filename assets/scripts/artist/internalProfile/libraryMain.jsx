@@ -1,12 +1,11 @@
 var LibraryMain = React.createClass({
   render: function() {
     return(
-      <div className="artist-internal-wrapper mar-t-sm">
+      <div className="artist-internal-wrapper">
         <div className="sidebar sidebar-hide">
-          <ArtistInternalSideBar />
         </div>
         <div className="library-content-wrapper pad-box-lg content-with-sidebar bg-white">  
-          <div className="artist-internal-greeting pad-t-lg bg-white">
+          <div className="artist-internal-greeting bg-white">
             <h3>Library</h3>
             <p>Manage your library of availible tracks</p>
           </div>
@@ -23,7 +22,7 @@ var LibraryMain = React.createClass({
             </ul>
           </div>
           <LibraryResultTable />
-        </div>  
+        </div> 
       </div>
     )
   }

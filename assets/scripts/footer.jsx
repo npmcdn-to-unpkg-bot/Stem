@@ -10,7 +10,7 @@ var Footer = React.createClass({
               <p>Copyright 2016 - Thematic, Inc.</p>
             </div>
           </li>
-          <li className="pull-right">
+          <li className="footer-links">
             <ul>
               <li>FAQ</li>
               <li>Terms/Conds</li>
