@@ -9,6 +9,10 @@ h1 {
 h3 {
   font-size: 18px;
 }
+.content-with-sidebar {
+    width: 100%;
+}
+
 	/* System Level Nav Menu */
     .filter-menu > div {
         height: 100%;
@@ -101,10 +105,39 @@ h3 {
   .artist-featured-header-info {
     padding-top: 0;
   }
+  .btn-wrapper {
+    float: left !important;
+    padding-top: 10px;
+  }
+  .artist-upload-success {
+    display: none;
+  }
+  .library-filter li:nth-child(1), .library-filter li:nth-child(3), .library-filter li:nth-child(4), .library-filter li:nth-child(5) {
+    display: none;
+  }
+  .library-result-table table td:nth-child(5), .library-result-table table td:nth-child(7), .library-result-table table td:nth-child(8) {
+    display: none;
+  }
+  .library-result-table table th:nth-child(5),.library-result-table table th:nth-child(7), .library-result-table table th:nth-child(8) {
+    display: none;
+  } 
+  .library-content-wrapper {
+    padding-left: @space-md;
+  }
+  .footer-wrapper li {
+    padding: 0 10px;
+  }
+  .footer-links {
+    float: none !important;
+    padding-left: @space-lg !important;
+  }
 }
 
-@media (min-width : 426px) and (max-width: 768px) {
- 
+@media (min-width : 481px) and (max-width: 768px) {
+  .content-with-sidebar {
+    width: 100%;
+  }
+
     /* -- Artist Profile -- */
   .artist-featured-header {
     background-position: center top;

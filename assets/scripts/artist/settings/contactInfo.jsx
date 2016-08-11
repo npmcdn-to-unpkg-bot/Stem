@@ -1,19 +1,74 @@
 var ArtistContactInfo = React.createClass({
+	getInitialState: function() {
+		return {
+			saveSuccessful: false,
+			firstName: this.context.userInfo.primaryContact.firstName,
+			lastName: this.context.userInfo.primaryContact.lastName,
+			email: this.context.userInfo.primaryContact.email,
+			phone: this.context.userInfo.primaryContact.phone,
+			address: this.context.userInfo.primaryContact.address,
+			city: this.context.userInfo.primaryContact.city,
+			state: this.context.userInfo.primaryContact.state,
+			zip: this.context.userInfo.primaryContact.zip,
+			errorMessage: ''
+		}
+	},
+
+    handleFieldChange: function(e) {
+    	var id = e.target.id;
+        this.setState({
+			[id]: e.target.value,
+			saveSuccessful: false
+		});
+    },
+
+	handleSave: function() {
+		var self = this;
+		
+        stemApi.updateAccount({
+            request: {
+				"primaryContact": {
+					"firstName": this.state.firstName,
+					"lastName": this.state.lastName,
+					"email": this.state.email,
+					"phone": this.state.phone,
+					"address": this.state.address,
+					"city": this.state.city,
+					"state": this.state.state,
+					"zip": this.state.zip,
+				}
+            },
+			success: function(response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+				self.setState({saveSuccessful: true});
+				store.dispatch({
+					type: 'UpdateUserRecord',
+					data: {userInfo: response, currentPage: 5}
+				});
+			},
+            error: function (response) {
+				console.error(JSON.stringify(response, null, 2));
+	            self.setErrorMessage(errorMessage);	
+            }
+        });
+	},
+
 	render: function() {
 		return(
-			<div className="artist-password-wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div className="artist-password-wrapper col-xs-12">
 				<div className="col-xs-12 pad-b-lg">
 					<h3>Contact Information</h3>
 					<h5>We may contact you occasionally for opportunities</h5>
 				</div>
-				<div className="col-xs-12 col-sm-12 col-md-2 col-lg-2 pad-b-md">
+				<div className="col-xs-12 col-sm-12 col-md-2 pad-b-md">
 					<h4>Primary Contact</h4>
 				</div>
-				<div className="col-xs-12 col-sm-8 col-md-5 col-lg-5 pad-b-sm">
-					<input placeholder="First Name" />
-					<input placeholder="Mobile Number" />
-					<input placeholder="Street Address" />
-					<select className="btn btn-wide">
+				<div className="col-xs-12 col-sm-8 col-md-5 pad-b-sm">
+					<input id="firstName" placeholder="First Name" onChange={this.handleFieldChange} value={this.state.firstName} /> 
+					<input id="phone" placeholder="Mobile Number" onChange={this.handleFieldChange} value={this.state.phone} /> 
+					<input id="address" placeholder="Street Address" onChange={this.handleFieldChange} value={this.state.address} /> 
+					<select id="state" className="btn btn-wide" onChange={this.handleFieldChange} value={this.state.state}> 
 						<option value="AL">AL</option>
 						<option value="AK">AK</option>
 						<option value="AZ">AZ</option>
@@ -66,20 +121,37 @@ var ArtistContactInfo = React.createClass({
 						<option value="WY">WY</option>
 					</select>
 				</div>
-				<div className="col-xs-12 col-sm-8 col-md-5 col-lg-5">
-					<input placeholder="Last Name" />
-					<input placeholder="Alternate Email Address" />
-					<input placeholder="City" />
-					<input placeholder="Zip" />
+				<div className="col-xs-12 col-sm-8 col-md-5">
+					<input id="lastName" placeholder="Last Name" onChange={this.handleFieldChange} value={this.state.lastName} /> 
+					<input id="email" placeholder="Alternate Email Address" onChange={this.handleFieldChange} value={this.state.email} /> 
+					<input id="city" placeholder="City" onChange={this.handleFieldChange} value={this.state.city} /> 
+					<input id="zip" placeholder="Zip" onChange={this.handleFieldChange} value={this.state.zip} /> 
 				</div> 
-				<div className="col-xs-12">
+
+				{ this.state.errorMessage != '' ?
+					<span className="error">{this.state.errorMessage}</span>
+				: null }
+
+				<div className="col-xs-12"> 
 					<div className="pull-right">
-						<button className="btn btn-sm btn-primary">
-							<span className="icon-ok-circle"> </span> Save
-						</button>
+						{ this.state.saveSuccessful ?
+							<button type="button" onClick={this.handleSave} className="btn btn-sm btn-primary-lt">
+								<span className="icon-ok-circled2"> </span> Save
+							</button>
+						:
+							<button type="button" onClick={this.handleSave} className="btn btn-sm btn-primary" disabled={this.state.disableButton}>
+								<span className="icon-ok-circled"> </span> Save
+							</button>
+						}
 					</div>
 				</div>
 			</div>
 		)
 	}
 });
+
+ArtistContactInfo.contextTypes = {
+	baseAPI: React.PropTypes.string,
+	authToken: React.PropTypes.string,
+	userInfo: React.PropTypes.object
+};

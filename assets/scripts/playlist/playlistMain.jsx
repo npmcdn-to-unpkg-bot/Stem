@@ -1,5 +1,4 @@
-var SongList = React.createClass({
-	
+var PlaylistMain = React.createClass({
     render: function() {
         var self = this;
 		

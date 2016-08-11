@@ -9,13 +9,19 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
-h1 {
+h1, .h1 {
     color: @white;
     font-family: @font-reg;
     font-style: italic;
     font-size: 80px;
     filter: @drop-1;
     -webkit-filter: @drop-1;
+}
+h2, .h2 {
+    font-size: 36px;
+}
+h6, .h6 {
+    font-weight: normal;
 }
 
 a {
@@ -137,11 +143,48 @@ ol, ul {
 .display-true {
 	display: block;
 }
+.display-inlb {
+    display: inline-block;
+}
 .display-false {
     display: none;
 }
+
 .mobile-img-thumbnail {
   height: 75px;
   width: 75px;
   vertical-align: top;
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    display: block;
+    margin: auto;
+    -moz-box-shadow: @drop-4;
+    -webkit-box-shadow: @drop-4;
+    box-shadow: @drop-4;
+}
+.profile-img img {
+    width: 100%;
+    height: 100%;
+}
+.sidebar {
+    width: 260px;
+    float: left;
+    padding: 20px;  
+    top:0;
+    bottom:0;
+}
+.sidebar-nav {
+    width: 260px;
+    float: left;
+    padding: 0;
+    top: 0;
+}
+.content-with-sidebar {
+    min-height: 100%;
+    margin-left: 260px;
+    width: ~"calc(100% - 260px)";
 }

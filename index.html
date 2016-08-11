@@ -11,6 +11,7 @@
         
         <!-- CSS Files -->
         <link rel="stylesheet" href="assets/styles/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/styles/c3.min.css" type="text/css">
         <link rel="stylesheet" href="assets/styles/icons.css">
 
         <link rel="stylesheet/less" type="text/css" href="assets/styles/variables.less" />
@@ -25,6 +26,15 @@
         <link rel="stylesheet/less" type="text/css" href="assets/styles/playlist.less" />
         <link rel="stylesheet/less" type="text/css" href="assets/styles/artist-search.less" />
         <link rel="stylesheet/less" type="text/css" href="assets/styles/artist-internal.less">
+
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/artist-table.less">
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/header.less">
+
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/footer.less">
+
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/library.less">
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/admin.less">
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/player.less">
         
         <link rel="stylesheet/less" type="text/css" href="assets/styles/tablet.less">
         <link rel="stylesheet/less" type="text/css" href="assets/styles/mobile.less">
@@ -37,6 +47,8 @@
         <script type="text/jsx" src="assets/scripts/login.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/whoareyou.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/filterNav.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/player.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/footer.jsx"> </script>
 
         <!-- Artist -->
         <script type="text/jsx" src="assets/scripts/artist/externalProfile/profileMain.jsx"> </script>
@@ -44,15 +56,21 @@
         <script type="text/jsx" src="assets/scripts/artist/externalProfile/content.jsx"> </script>
 
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/sidebar.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/profileMain.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/library.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/upload.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/uploadSuccess.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/libraryMain.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/libraryApproved.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/libraryPending.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/libraryDisabled.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/libraryRejected.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/libraryResultTable.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/submitMusicMain.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/uploadForm.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/uploadSuccess.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/downloadNotice.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/tagSuccess.jsx"> </script>
+
+        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTable.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/header.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/profileMain.jsx"> </script>
+
+        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTable.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/header.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/profileMain.jsx"> </script>
 
         <script type="text/jsx" src="assets/scripts/artist/settings/settingsMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/settings/account.jsx"> </script>
@@ -77,21 +95,33 @@
         <!-- Playlist -->
         <script type="text/jsx" src="assets/scripts/playlist/playlistMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/playlist/header.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/playlist/songList.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/playlist/playlistTable.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/playlist/mobile.jsx"> </script>
-        
+
         <!-- Analytics -->
         <script type="text/jsx" src="assets/scripts/analytics/analyticsMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/analytics/downloads.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/analytics/plays.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/analytics/topInterests.jsx"> </script>
 
+        <!-- Admin -->
+        <script type="text/jsx" src="assets/scripts/admin/adminMain.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/admin/adminDashboard.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/admin/adminNewSubmissions.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/admin/adminNewCreators.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/admin/adminNewArtists.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/admin/adminChart.jsx"></script>
+
+
         <script type="text/jsx" src="assets/scripts/app.jsx"> </script>
         
         <!-- Core JS Files -->
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="assets/scripts/bootstrap.min.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script type="text/javascript" src="assets/scripts/player.js"></script>
+        <script src="assets/scripts/d3.v3.min.js" charset="utf-8"></script>
+        <script src="assets/scripts/c3.min.js"></script>
 
         <!-- React -->
         <script src="http://fb.me/react-0.14.7.js"></script>
@@ -105,5 +135,7 @@
         <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
+
+        <script type="text/javascript" src="assets/scripts/stem-api.js"></script>
     </body>
 </html>
