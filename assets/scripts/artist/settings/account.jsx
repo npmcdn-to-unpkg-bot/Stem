@@ -3,6 +3,7 @@ var ArtistAccountSettings = React.createClass({
 		return {
 			characterCount: 0,
 			disableButton: false,
+			saveSuccessful: false,
 			profileImgURL: this.context.userInfo.profileImgURL,
 			bannerImgURL: this.context.userInfo.bannerImgURL,
 			profileName: this.context.userInfo.profileName,
@@ -21,14 +22,16 @@ var ArtistAccountSettings = React.createClass({
     handleFieldChange: function(e) {
     	var id = e.target.id;
         this.setState({
-			[id]: e.target.value
+			[id]: e.target.value,
+			saveSuccessful: false
 		});
     },
 
 	handleLineGrow: function(e) {
     	var id = e.target.id;
         this.setState({
-			[id]: e.target.value
+			[id]: e.target.value,
+			saveSuccessful: false
 		});
 
 		if (e.target.value.length == 0) {
@@ -77,6 +80,9 @@ var ArtistAccountSettings = React.createClass({
 			}
 		}
 	    reader.readAsDataURL(file)
+        this.setState({
+			saveSuccessful: false
+		});
 	    //this.saveFile(file);
     },
 
@@ -138,6 +144,7 @@ var ArtistAccountSettings = React.createClass({
 			success: function(response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
+				self.setState({saveSuccessful: true});
 				store.dispatch({
 					type: 'UpdateUserRecord',
 					data: {userInfo: response, currentPage: 5}
@@ -225,9 +232,15 @@ var ArtistAccountSettings = React.createClass({
 
 				<div className="col-xs-12"> 
 					<div className="pull-right">
-						<button type="button" onClick={this.handleSave} className="btn btn-sm btn-primary" disabled={this.state.disableButton}>
-							<span className="icon-ok-circle"> </span> Save
-						</button>
+						{ this.state.saveSuccessful ?
+							<button type="button" onClick={this.handleSave} className="btn btn-sm btn-primary-lt">
+								<span className="icon-ok-circled2"> </span> Save
+							</button>
+						:
+							<button type="button" onClick={this.handleSave} className="btn btn-sm btn-primary" disabled={this.state.disableButton}>
+								<span className="icon-ok-circled"> </span> Save
+							</button>
+						}
 					</div>
 				</div>
 			</div> 
