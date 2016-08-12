@@ -220,6 +220,14 @@ var App = React.createClass({
 						</div>
 					: null} 
 
+					{ this.props.currentPage == 8 ?
+						<div>
+							<FilterNav />
+							<CreatorMain />
+							<Footer />
+						</div>
+					: null} 
+
 					{ this.props.currentPage == 100 ?
 						<div>
 							<WhoAreYou />
@@ -349,6 +357,11 @@ var artistMenu = [
 		pageID: 7,
 		text: "Admin Dashboard",
 		icon: "icon-star"
+	},
+	{
+		pageID: 8,
+		text: "Creator Home",
+		icon: "icon-home"
 	}
 ]; 
 
