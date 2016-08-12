@@ -203,6 +203,7 @@ var App = React.createClass({
 					{ this.props.currentPage == 5 ?
 						<div>
 							<ArtistSettings />
+							<Footer />
 						</div>
 					: null} 
 
