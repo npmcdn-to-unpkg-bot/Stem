@@ -168,7 +168,7 @@ var UploadForm = React.createClass({
 	render: function () {
 		var self = this;
 		return (
-			<div className="bg-white col-sm-12">
+			<div className="col-xs-12">
 				<a className="h3 upload-links col-xs-4" onClick={this.uploadFormToggle}>
 					<span className={this.state.singleTrack ? "upload-active-underline" : null}> Individual Song </span>
 				</a>
@@ -213,7 +213,7 @@ var UploadForm = React.createClass({
 					</div>
 				</div>
 				<div className="col-xs-12 col-lg-6 row no-gutters">
-					<div className="album-art-box col-xs-12 col-lg-12">
+					<div className="album-art-box col-xs-12">
 						<div className="upload lg text-center">
 							{this.state.artFileURL ? 
 								<div className="upload-label update">
@@ -233,18 +233,18 @@ var UploadForm = React.createClass({
 						</div>
 					</div>
 				</div>
-				<div className="artist-upload col-sm-12">
+				<div className="artist-upload col-xs-12">
 					<p>Promotional Copy ( you can edit this later )</p>
 					<textarea id="promotionalCopy" className="form-input" onChange={self.handleLineGrow} />
 					<div className="character-count col-sm-12 row no-gutters ">
-						<p className="col-sm-4 col-md-4 col-lg-2">{this.state.characterCount}/300 Characters</p>
-						<svg className="col-sm-8 col-md-8" height="20" width="400">
+						<p className="col-xs-4 col-lg-2">{this.state.characterCount}/300 Characters</p>
+						<svg className="col-xs-8" height="20" width="400">
 							<line className="svg-line2" x1="300" y='0' />
 							<line className="svg-line" x1={self.state.characterCount} y='0' />
 						</svg>
 					</div>  
 				</div>
-				<div className="col-sm-12">
+				<div className="col-xs-12">
 					<button type="button" onClick={this.saveAudioFile} className="btn artist-upload-btn pull-right">
 						<h4><span className='icon-upload'></span> Upload</h4>
 					</button>
