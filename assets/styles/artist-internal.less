@@ -1,771 +1,764 @@
 @import url("variables.less");
 
 /*-- Artist Internal -- */
-.artist-internal-wrapper {
-  color: #9B9B9B;
+.upload-form-wrapper {
+	display: inline-block;
 }
-  .upload-form-wrapper {
-    display: inline-block;
-  }
-  .artist-internal-sidebar-wrapper {
-    background-color: #FAFAFA;
-    display: inline-block;
-    margin-right: 30px;
-    padding-bottom: 100%;
-    width: 250px;
-  }
+.artist-internal-sidebar-wrapper {
+	background-color: #FAFAFA;
+	display: inline-block;
+	margin-right: 30px;
+	padding-bottom: 100%;
+	width: 250px;
+}
 
-  .artist-internal-download-count {
-    font-family: 'roboto-light';
-    border-bottom: 1px solid lightgrey;
-    padding: 30px 0;
-  }
-  .artist-internal-download-count h3 {
-    font-family: 'roboto-medium';
-    margin-bottom: 15px;
-  }
-  .artist-internal-download-count span {
-    color: #9B9B9B;
-  }
-  .artist-internal-download-count h2 {
-    color: #50E3C2;
-    margin-top: -10px;
-  }
-  .artist-internal-play-count {
-    padding-top: 20px;
-    font-family: 'roboto-light';
-    border-bottom: 1px solid lightgrey;
-    padding-bottom: 30px;
-  }
-  .artist-internal-play-count h3 {
-    font-family: 'roboto-medium';
-    margin-bottom: 15px;
-  }
-  .artist-internal-play-count h2 {
-    color: #50E3C2;
-    margin-top: -10px;
-  }
-  .artist-internal-play-count span {
-    color: #9B9B9B;
-  }
-  .artist-internal-top-interest-img {
-    width: 60px;
-    border-radius: 50%;
-  }
-  .artist-internal-top-interest {
-    font-family: 'roboto-light';
-    padding: 20px 0;
-    border-bottom: 1px solid lightgrey;
-  }
-  .artist-internal-top-interest h3 {
-    font-family: 'roboto-medium';
-    margin-bottom: 20px;
-  }
-  .artist-internal-top-interest span {
-    color: #9B9B9B;
-  }
-    .artist-internal-top-interest li {
-      margin: 5px 0 5px -15px;
-      padding: 0;
-    }
-      .artist-internal-top-interest li h4 {
-        margin-top: 15px;
-      }
-  .artist-internal-top-regions {
-    padding-top: 20px;
-  } 
-    .artist-internal-top-regions span {
-      color: #9B9B9B;
-    } 
-    .artist-internal-top-regions h3 {
-      margin-bottom: 20px;
-    }  
-    .artist-internal-top-regions h4 {
-      font-family: 'roboto-light';
-      margin-bottom: 10px;
-    }
-    .artist-internal-top-regions li {
-      margin: 10px 0 10px -25px;
-    } 
-.pull-right {
-  float: right !important;
+.artist-internal-download-count,
+.artist-internal-play-count,
+.artist-internal-top-interest {
+	font-family: @font-reg;
+	border-bottom: 1px solid @grey-6;
+	padding: 20px 0;
+
+	h3 {
+		font-family: @font-md;
+		margin-bottom: 15px;
+	}
+	span {
+		color: @grey-3;
+	}
+	h2 {
+		color: @primary;
+		margin-top: -10px;
+	}
+}
+
+.artist-internal-top-interest-img {
+	width: 60px;
+	-webkit-border-radius: @bd-rad-circle;
+	-moz-border-radius: @bd-rad-circle;
+	border-radius: @bd-rad-circle;
+}
+.artist-internal-top-interest li {
+	margin: 5px 0 5px -15px;
+	padding: 0;
+
+	h4 {
+		margin-top: 15px;
+	}
+}
+.artist-internal-top-regions {
+	padding-top: 20px;
+
+	span {
+		color: @grey-3;
+	}
+	h3 {
+		margin-bottom: 20px;
+	}  
+	h4 {
+		font-family: @font-reg;
+		margin-bottom: 10px;
+	}
+	li {
+		margin: 10px 0 10px -25px;
+	} 
 }
 
 .artist-upload-wrapper {
-  font-family: @font-reg;
+	font-family: @font-reg;
 }
-  .artist-internal-greeting {
-    font-family: 'roboto-light';
-    display: inline-block;
-    max-width: 300px;
-  }
+.artist-internal-greeting {
+	font-family: @font-reg;
+	display: inline-block;
+	max-width: 300px;
+}
 .artist-upload-drop {
-  padding: 30px;
-  margin: 20px 15px;
-  border: 1px dashed lightgrey;
-  text-align: center;
+	padding: 30px;
+	margin: 20px 15px;
+	border: 1px dashed @grey-6;
+	text-align: center;
 }
 .artist-upload-up {
-  color: #9B9B9B;
+	color: @grey-3;
 }
 .artist-upload p {
-  margin: 20px 0 2px 0;
+	margin: 20px 0 2px 0;
 }
 .artist-add-artist-link {
-  margin-top: 8px;
+	margin-top: 8px;
 }
 .artist-upload-input {
-  height: 50px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+	height: 50px;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
 }
 .artist-upload-textarea {
-  height: 120px;
-  padding: @space-sm;
-  margin-bottom: @space-sm;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+	height: 120px;
+	padding: @space-sm;
+	margin-bottom: @space-sm;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
 }
 .album-art-box {
-  height: 300px;
-  max-width: 300px;
-  background-color: @grey-6;
-  margin-top: @space-lg;
+	height: 300px;
+	max-width: 300px;
+	background-color: @grey-6;
+	margin-top: @space-lg;
 }
-  .upload-album-content {
-    text-align: left;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-    .upload-album-content {
-      padding: 30px;
-      display: block;
-      text-align: center;
-      
-    }
-  .upload-album-art-detail {
-    text-align: left;
-    margin: 0 auto;
-  }
-  .upload-album-art-icon {
-    display: block;
-    width: 100%;
-    text-align: center;
-  }
-    .upload-album-art-detail p {
-      line-height: 5px;
-    }
-    .upload-album-art-detail h3 {
-      margin-bottom: @space-sm;
-    }
+
+.upload-album-content {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 30px;
+	display: block;
+	text-align: center;	
+}	
+.upload-album-art-detail {
+	text-align: left;
+	margin: 0 auto;
+
+	p {
+		line-height: 5px;
+	}
+	h3 {
+		margin-bottom: @space-sm;
+	}
+}
+.upload-album-art-icon {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
 .artist-upload-btn {
-  height: 50px;
-  margin: 20px 0;
-  padding: @space-sm space-lg;
-  border-radius: 0;
-  color: white;
-  background-color: #50E3C2;
-  filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
-  -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+	height: 50px;
+	margin: 20px 0;
+	padding: @space-sm;
+	border-radius: 0;
+	color: white;
+	background-color: #50E3C2;
+	filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+	-webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+
+	&:hover {
+		background-color: rgba(80, 227, 194, 0.1);
+		color: white;
+	} 
 }
-  .artist-upload-btn:hover {
-    background-color: rgba(80, 227, 194, 0.1);
-    color: white;
-  } 
 .upload-active-underline {
-  border-bottom: 2px solid @primary;
-  padding-bottom: 5px;
-  width: 100px;
-  content: '';
+	border-bottom: 2px solid @primary;
+	padding-bottom: 5px;
+	width: 100px;
+	content: '';
 }
 .upload-mobile-hidden {
-  display: block;
+	display: block;
 }
 .album-list-wrapper {
-  border: 1px solid @grey-3;
-  z-index: 100px;
-  background: white;
+	border: 1px solid @grey-3;
+	z-index: 100px;
+	background: white;
 }
 .artist-album-wrapper {
-  position: relative;
+	position: relative;
+
+	ul {
+		position: absolute;
+		top: 90px;
+		z-index: 100;
+	}
+	li {
+		-webkit-appearance: none;
+		padding: @space-sm;
+
+		&:hover {
+			background: @grey-5;
+		}
+	}
 }
-  .artist-album-wrapper ul {
-    position: absolute;
-    top: 90px;
-    z-index: 100;
-  }
-  .album-list-wrapper li {
-    -webkit-appearance: none;
-    padding: @space-sm;
-  }
-    .album-list-wrapper li:hover {
-      background: @grey-5;
-    }
+
 /*-- Artist Upload Success --*/
 .artist-upload-success {
-  width: 90%;
-  display: inline-block;
-  margin: 0 0 0 5%;
-  padding: 0 5% 5%;
+	width: 90%;
+	display: inline-block;
+	margin: 0 0 0 5%;
+	padding: 0 5% 5%;
 }
 .artist-success-box {
-  text-align: center;
-  font-family: @font-reg;
-  h2 {
-    font-family: @font-md;
-  }
+	text-align: center;
+	font-family: @font-reg;
+	h2 {
+		font-family: @font-md;
+	}
 }
 .artist-upload-success-bottom {
-  h3 {
-    color: @grey-2;
-  }
+	h3 {
+		color: @grey-2;
+	}
 }
 .artist-upload-success-tags {
-  h5, input {
-    display: inline-block;
-  }
-  .checkbox{
-    border-bottom: 1px solid @grey-4;
-  }
-  .btn{
-    border-radius: 1.5px;
-    font-family: @font-reg;
-  }
-  h4 {
-    color: @grey-2
-  }
-  input[type=checkbox] {
-    width: 20px;
-    height: 20px;
-    border-radius: 0;
-    margin-bottom: 2%
-  }
-  .icon {
-    text-align: center;
-  }
+	h5, input {
+		display: inline-block;
+	}
+	.checkbox{
+		border-bottom: 1px solid @grey-4;
+	}
+	.btn{
+		border-radius: 1.5px;
+		font-family: @font-reg;
+	}
+	h4 {
+		color: @grey-2
+	}
+	input[type=checkbox] {
+		width: 20px;
+		height: 20px;
+		border-radius: 0;
+		margin-bottom: 2%
+	}
+	.icon {
+		text-align: center;
+	}
 }
 .artist-tag-checkbox-hidden {
-  visibility: hidden;
+	visibility: hidden;
 }
 .artist-tag-checkbox-visible {
-  visibility: visible;
+	visibility: visible;
 }
 .artist-upload-success-slider {
-  input[type=range] {
-    -webkit-appearance: none;
-    width: 82.5%;
-  }
-  input[type=range]::-webkit-slider-runnable-track {
-    height: 5px;
-    background-color: @grey-5;
-    border: none;
-    border-radius: 2px;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance:none;
-    border: none;
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    background-color: @primary;
-    margin-top: -10px;
-    box-shadow: 2px 1px 2px @grey-4;
-  }
-  input[type=range]:focus {
-    outline: none;
-  }
+	input[type=range] {
+		-webkit-appearance: none;
+		width: 82.5%;
+	}
+	input[type=range]::-webkit-slider-runnable-track {
+		height: 5px;
+		background-color: @grey-5;
+		border: none;
+		border-radius: 2px;
+	}
+	input[type=range]::-webkit-slider-thumb {
+		-webkit-appearance:none;
+		border: none;
+		height: 25px;
+		width: 25px;
+		border-radius: 50%;
+		background-color: @primary;
+		margin-top: -10px;
+		box-shadow: 2px 1px 2px @grey-4;
+	}
+	input[type=range]:focus {
+		outline: none;
+	}
 }
 .artist-upload-success-bottom {
-  .btn {
-    margin-right: 1%;
-  }
+	.btn {
+		margin-right: 1%;
+	}
 }
+
 /*-- Artist Tagged Success Modal --*/
 .modal-background {
-  background: fade(black, 65%);
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 3000;
+	background: fade(black, 65%);
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 3000;
 }
 .tag-success-box {
-  width: 40%;
-  margin: 6% auto;
+	width: 40%;
+	margin: 6% auto;
 }
 .artist-tag-success-hidden {
-  visibility: hidden;
+	visibility: hidden;
 }
 
 /*-- Artist Download Notice Modal --*/
 .download-notice-box {
-  width: 43%;
-  margin: 10% auto;
+	width: 43%;
+	margin: 10% auto;
 }
 .download-notice-heading {
-  text-align: center;
+	text-align: center;
 }
 .heads-up-title {
-  font-size: 5rem;
+	font-size: 5rem;
 }
 .download-notice-bottom {
-  p, li {
-    font-size: 2rem;
-  }
-  h3 {
-    font-family: @font-reg;
-  }
+	p, li {
+		font-size: 2rem;
+	}
+	h3 {
+		font-family: @font-reg;
+	}
 }
 .download-notice-links {
-  text-align: right;
+	text-align: right;
 }
 .dont-download {
-  color: @grey-3
+	color: @grey-3
 }
 
 /*-- Artist Internal Library --*/
-
 .artist-internal-library-wrapper {
-  font-family: 'roboto-light';
-  position: relative;
-  margin: 40px 0 50px 0;
-}
- .artist-internal-library-wrapper h3 {
-  font-family: 'roboto-medium';
- } 
-.artist-internal-library-wrapper thead th {
-  padding: 10px;
-  background-color: rgba(80, 227, 194, 0.1);
-  border-top: 1px solid lightgrey;
-}
-  .artist-internal-library-table {
-    margin-bottom: 80px;
-  }
-  .artist-internal-library-header {
-    margin-bottom: 40px;
-  }
-  .artist-internal-library-table-header {
-    padding: 10px 0;
-  }
-  .artist-internal-library-table td {
-    padding: 20px 10px;
-    border-bottom: 1px solid lightgrey;
-  }
+	font-family: @font-reg;
+	position: relative;
+	margin: 40px 0 50px 0;
 
-  /*-- Artist Internal Graph --*/
-  .artist-internal-analyitics-download-wrapper {
-    font-family: 'roboto';
-    padding: 40px 0 0 0;
-    background-color: white;
-    border-bottom: 1px solid lightgrey;
+	h3 {
+		font-family: @font-md;
+	} 
+	thead th {
+		padding: 10px;
+		background-color: rgba(80, 227, 194, 0.1);
+		border-top: 1px solid @grey-6;
+	}
+}
+	.artist-internal-library-table {
+		margin-bottom: 80px;
 
-  }
-    .artist-internal-analyitics-download-wrapper p {
-      color: #9B9B9B;
-      margin-top: 15px;
-    }
-  .artist-internal-analyitics-download-header h4 {
-    text-align: right;
-  }  
-  .graph-bar {
-    stroke: rgba(80, 227, 194, 0.4);
-    stroke-width: 200;
-  }
-  .bar-svg {
-    width: 100%;
-  }
-  .bar-svg li {
-    position: relative;
-    display: inline-block;
-    height: 200px;
-    transform: rotate(180deg);
-  }
-    .bar-svg svg {
-      width: 100px;
-    }
-    .bar-labels {
-      position: absolute;
-      padding-top: 130px; 
-      z-index: 99;
-      color: white;
-    }
-      .bar-labels li {
-        display: inline-block;
-        padding: 24px;
-      }
+		td {
+			padding: 20px 10px;
+			border-bottom: 1px solid @grey-6;
+		}
+	}
+	.artist-internal-library-header {
+		margin-bottom: 40px;
+	}
+	.artist-internal-library-table-header {
+		padding: 10px 0;
+	}
+
+/*-- Artist Internal Graph --*/
+.artist-internal-analyitics-download-wrapper {
+	font-family: 'roboto';
+	padding: 40px 0 0 0;
+	background-color: white;
+	border-bottom: 1px solid @grey-6;
+
+	p {
+		color: #9B9B9B;
+		margin-top: 15px;
+	}
+	h4 {
+		text-align: right;
+	}  
+}
+.graph-bar {
+	stroke: rgba(80, 227, 194, 0.4);
+	stroke-width: 200;
+}
+.bar-svg {
+	width: 100%;
+
+	li {
+		position: relative;
+		display: inline-block;
+		height: 200px;
+		transform: rotate(180deg);
+	}
+	svg {
+		width: 100px;
+	}
+}
+.bar-labels {
+	position: absolute;
+	padding-top: 130px; 
+	z-index: 99;
+	color: white;
+
+	.bar-labels li {
+		display: inline-block;
+		padding: 24px;
+	}
+}
 .graph-content-wrapper {
-  position: relative;
-  white-space: nowrap;
+	position: relative;
+	white-space: nowrap;
 }
 .bar-graph-background-wrapper {
-  margin-top: 60px;
-  max-width: 900px;
-  height: 280px;
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
+	margin-top: 60px;
+	max-width: 900px;
+	height: 280px;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
 }  
-  .bar-graph-background-wrapper::-webkit-scrollbar {
-    display: none;
-  }
-  .bar-graph-background {
-    position: absolute;
-    width: 100%;
-    z-index: -999;
-  }
-  .bar-graph-background-panels {
-    height: 50px;
-    padding-left: 0;
-    background-color: #FAFAFA;
-    opacity: .7;
-  }
-  .bar-graph-background-panels-light {
-    height: 50px;
-    background-color: #FAFAFA;
-    opacity: .5;
-  }
-  .artist-internal-download-label {
-    transform: rotate(270deg);
-    position: relative;
-    margin-top: 120px;
+.bar-graph-background-wrapper::-webkit-scrollbar {
+	display: none;
+}
+.bar-graph-background {
+	position: absolute;
+	width: 100%;
+	z-index: -999;
+}
+.bar-graph-background-panels {
+	height: 50px;
+	padding-left: 0;
+	background-color: #FAFAFA;
+	opacity: .7;
+}
+.bar-graph-background-panels-light {
+	height: 50px;
+	background-color: #FAFAFA;
+	opacity: .5;
+}
+.artist-internal-download-label {
+	transform: rotate(270deg);
+	position: relative;
+	margin-top: 120px;
 
-  }
-  .artist-internal-analyitics-download-value-labels {
-    margin-top: 15px;
-    margin-right: 15px;
-    text-align: right;
-    color: #9B9B9B;
-  }
-    .artist-internal-analyitics-download-value-labels li {
-      line-height: 50px;
-      float: right;
-    }
+}
+.artist-internal-analyitics-download-value-labels {
+	margin-top: 15px;
+	margin-right: 15px;
+	text-align: right;
+	color: #9B9B9B;
+
+	li {
+		line-height: 50px;
+		float: right;
+	}
+}
 
 /*-- Plays Graph--*/
 .artist-internal-analytics-plays-wrapper {
-  background-color: white;
-  padding-top: 40px;
-  border-bottom: 1px solid lightgrey;
+	background-color: @white;
+	padding-top: 40px;
+	border-bottom: 1px solid @grey-6;
+
+	h4 {
+		text-align: right;
+	}
 }
-  .artist-internal-analytics-plays-wrapper h4 {
-    text-align: right;
-  }
+
 .line-chart-wrapper {
-  margin-top: 40px;
-  margin-bottom: 10px;
-  height: 100%;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	height: 100%;
 }
-  #line-chart-svg {
-    filter: FlipH;
-    transform: scaleY(-1);
-
-  }
+#line-chart-svg {
+	filter: FlipH;
+	transform: scaleY(-1);
+}
 .line-graph-grid-wrapper {
-  width: 900px;
+	width: 900px;
 }
-  .line-chart {
-    stroke: rgba(80, 227, 194, 0.4);
-    stroke-width: 3;
-    fill: none;
-  }
-  .line-graph-grid {
-    height: 58px;
-    border: 1px dashed lightgrey;
-    opacity: .5;
-  }
-  .line-graph-grid-columns-wrapper {
-    position: absolute;
-  }
-  .line-graph-grid-rows-wrapper {
-    position: absolute;
-    width: 900px;
+.line-chart {
+	stroke: rgba(80, 227, 194, 0.4);
+	stroke-width: 3;
+	fill: none;
+}
+.line-graph-grid {
+	height: 58px;
+	border: 1px dashed @grey-6;
+	opacity: .5;
+}
+.line-graph-grid-columns-wrapper {
+	position: absolute;
+}
+.line-graph-grid-rows-wrapper {
+	position: absolute;
+	width: 900px;
+}
+.line-graph-grid-columns {
+	width: 75px;
+	height: 290px;
+	border: 1px dashed @grey-6;
+	display: inline-block;
+	opacity: .5;
+}
+.line-graph-grid-months {
+	margin-left: -15px;
+	margin-top: 10px;
 
-  }
-    .line-graph-grid-columns {
-      width: 75px;
-      height: 290px;
-      border: 1px dashed lightgrey;
-      display: inline-block;
-      opacity: .5;
-    }
-    .line-graph-grid-months {
-      margin-left: -15px;
-      margin-top: 10px;
-    }
-      .line-graph-grid-months li {
-        display: inline-block;
-        color: #9B9B9B;
-        padding: 0 38px 50px 0;
-      }
-  .artist-internal-analyitics-plays-value-labels {
-    margin-top: 10px;
-    padding: 0;
-    color: #9B9B9B;
-  }
-  .artist-internal-analyitics-plays-value-labels li {
-    line-height: 60px;
-    float: right;
-  }
+	li {
+		display: inline-block;
+		color: #9B9B9B;
+		padding: 0 38px 50px 0;
+	}
+}
+.artist-internal-analyitics-plays-value-labels {
+	margin-top: 10px;
+	padding: 0;
+	color: #9B9B9B;
+
+	li {
+		line-height: 60px;
+		float: right;
+	}
+}
+
 /*-- Artist Analytics Top Interests --*/
 .artist-internal-top-interest-wrapper {
-  background-color: white;
-  padding-top: 40px;
+	background-color: white;
+	padding-top: 40px;
+
+	h4 {
+		text-align: right;
+	}
+	h3 {
+		text-align: left;
+	}
 }
-  .artist-internal-top-interest-wrapper h4 {
-    text-align: right;
-  }
-  .artist-internal-top-interest-wrapper h3 {
-    text-align: left;
-  }
+
 .artist-internal-analytics-top-interest-img {
-  width: 150px;
-  border-radius: 50%;
-  margin-left: -10px;
-  position: absolute;
+	width: 150px;
+	border-radius: 50%;
+	margin-left: -10px;
+	position: absolute;
 }
-  .artist-internal-analytics-top-interest-img:hover {
-    width: 220px;
-    margin-top: -35px;
-    margin-left: -35px;
-  }
+.artist-internal-analytics-top-interest-img:hover {
+	width: 220px;
+	margin-top: -35px;
+	margin-left: -35px;
+}
 .artist-internal-analytics-top-interest-list {
-  margin: 40px 0 80px -80px;
-  overflow: visible;
-  position: relative;
-}    
-  .artist-internal-analytics-top-interest-list li {
-    display: inline-block;
-    margin: 0 0px;
-  }
-  .artist-internal-top-interest-detail {
-    margin-top: 175px;
-    margin-left: 140px;
-  }
+	margin: 40px 0 80px -80px;
+	overflow: visible;
+	position: relative;
+
+	li {
+		display: inline-block;
+		margin: 0 0px;
+	}
+}
+.artist-internal-top-interest-detail {
+	margin-top: 175px;
+	margin-left: 140px;
+}
 
 /*-- Artist Account Setting --*/
 .artist-account-navbar-wrapper  {
-  background-color: #FAFAFA;
-  min-width: 180px; 
+	padding: 0;
+
+	li {
+		padding: 15px;
+		color: black;
+
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.6);
+			border-right: 5px inset rgb(80, 227, 194);
+		}
+	}
 }
-  .artist-account-navbar-wrapper li {
-    padding: 15px 0 15px 15px;
-    text-align: left;
-    color: black;
-  }
-    .artist-account-navbar-wrapper li:hover {
-      background-color: rgba(255, 255, 255, 0.6);
-      border-right: 5px inset rgb(80, 227, 194);
-    }
 .artist-account-form-content-wrapper {
-  background-color: white;
-  padding: 20px 25px;
-  border-bottom: 1px solid lightgrey;
+	background-color: white;
+	padding: 20px 25px;
+	border-bottom: 1px solid @grey-6;
+}
+.artist-account-setting-upload-wrapper {
+	padding: 40px 20px;
+}
+.artist-account-setting-profile-img {
+	height: 175px;
+	width: 175px;
+	border-radius: 50%;
+	background-color: #FAFAFA;
+
+	p {
+		margin-top: -5px;
+		font-size: 10px; 
+	}
+}
+.artist-account-setting-profile-banner-img {
+	height: 175px;
+	background-color: #FAFAFA;
+}
+.account-setting-bio-box {
+	height: 120px;
+	padding: 20px;
+	border: 1px solid transparent;
+	border-top: none;
+	border-bottom: 1px solid #DDD;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+}
+.shape-details {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.artist-account-form-input {
+	text-align: left;
+	margin: 20px 0;
+
+	input {
+		height: 45px;
+		border: 1px solid transparent;
+		border-top: none;
+		border-bottom: 1px solid #DDD;
+		box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+	}
+}
+.artist-account-form-bio {
+	text-align: left;
+	margin-bottom: 5px;
+
+	h5 {
+		margin-bottom: 5px;
+	}
 }
 
-.artist-account-setting-upload-wrapper {
-  padding: 40px 20px;
+.artist-account-form-input h5 {
+	margin: 15px 0 5px;
 }
-  .artist-account-setting-profile-img {
-    height: 175px;
-    width: 175px;
-    border-radius: 50%;
-    background-color: #FAFAFA;
-  }
-    .artist-account-setting-profile-img p {
-      margin-top: -5px;
-      font-size: 10px; 
-    }
-  .artist-account-setting-profile-banner-img {
-    height: 175px;
-    background-color: #FAFAFA;
-  }
-  .account-setting-bio-box {
-    height: 120px;
-    padding: 20px;
-    border: 1px solid transparent;
-    border-top: none;
-    border-bottom: 1px solid #DDD;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-  }
-    .shape-details {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  .artist-account-form-input {
-    text-align: left;
-    margin: 20px 0;
-  }  
-    .artist-account-form-input input {
-      height: 45px;
-      border: 1px solid transparent;
-      border-top: none;
-      border-bottom: 1px solid #DDD;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-    }
-    .artist-account-form-bio {
-      text-align: left;
-      margin-bottom: 5px;
-    }
-      .artist-account-form-bio h5 {
-        margin-bottom: 5px;
-      }
-    .artist-account-form-input h5 {
-      margin: 15px 0 5px;
-    }
-    .character-count  {
-      margin-top: 10px;
-      text-align: left;
-      vertical-align: bottom;
-    }
-      .character-count svg{
-        padding: 0;
-      }
-      .character-count p {
-        max-width: 120px;
-        margin-top: -6px;
-      }
+.character-count  {
+	margin-top: 10px;
+	text-align: left;
+	vertical-align: bottom;
+
+	svg{
+		padding: 0;
+	}
+	p {
+		max-width: 120px;
+		margin-top: -6px;
+	}
+}
+
 .svg-line {
-  stroke: rgba(80, 227, 194, 0.4);
-  stroke-width: 15;
-  vertical-align: bottom;
+	stroke: rgba(80, 227, 194, 0.4);
+	stroke-width: 15;
+	vertical-align: bottom;
 }
 .svg-line2 {
-  stroke: grey;
-  stroke-width: 15;
-  opacity: .1;
+	stroke: @grey-5;
+	stroke-width: 15;
+	opacity: .1;
 
 } 
-    .strike {
-      text-decoration: line-through;
-      color: red;
-    }
-  .save-btn {
-    background-color: rgb(80, 227, 194);
-    font-family: "roboto-light";
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-top: 30px;
-    box-shadow: 2px 2px 2px grey;
-  }
-    .save-btn span {
-      vertical-align: bottom;
-    }
+.strike {
+	text-decoration: line-through;
+	color: red;
+}
+.save-btn {
+	background-color: rgb(80, 227, 194);
+	font-family: @font-reg;
+	color: white;
+	border: none;
+	padding: 10px;
+	margin-top: 30px;
+	box-shadow: 2px 2px 2px @grey-5;
+
+	span {
+		vertical-align: bottom;
+	}
+}
 .settings-mobile-nav {
-  display: none;
+	display: none;
 }    
 
 /*-- Artist Contact Info --*/
-.artist-setting-contact-info-wrapper, .artist-account-contact-info-wrapper, .artist-notification-wrapper, .artist-password-wrapper {
-  background-color: white;
-  padding: 40px 20px 20px 20px;
-  border-bottom: 1px solid lightgrey;
+.artist-contact-h4 {
+	padding-top: 10px;
+	text-align: left;
+	padding-bottom: @space-sm; 
 }
-  .artist-contact-h4 {
-    padding-top: 10px;
-    text-align: left;
-    padding-bottom: @space-sm; 
-  }
-  .artist-contact-setting-header, .artist-account-contact-header {
-    text-align: left;
-    margin-bottom: 50px;
-  }
-  .artist-contact-form-input input {
-    max-width: 350px;
-    height: 45px;
-    border: 1px solid transparent;
-    border-top: none;
-    border-bottom: 1px solid #DDD;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-    margin-bottom: 20px;
-  }
-  .artist-contact-form-input select {
-    max-width: 350px;
-    height: 45px;
-    border: 1px solid lightgrey;
-    background-color: white;
-    
-  }
+.artist-contact-setting-header, .artist-account-contact-header {
+	text-align: left;
+	margin-bottom: 50px;
+}
+.artist-contact-form-input {
+	input {
+		max-width: 350px;
+		height: 45px;
+		border: 1px solid transparent;
+		border-top: none;
+		border-bottom: 1px solid @grey-5;
+		box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+		margin-bottom: 20px;
+	}
+	select {
+		max-width: 350px;
+		height: 45px;
+		border: 1px solid @grey-6;
+		background-color: white;
+		
+	}
+}
 
 /*-- Artist Connected Accounts --  */
 .artist-connected-links {
-  text-align: left;
+	text-align: left;
+
+	li {
+		font-family: "roboto-light";
+		height: 60px;
+		margin-bottom: 20px;
+		color: black;
+		background-color: @grey-6;
+		max-width: 275px;
+	}
 }
-  .artist-connected-links li {
-    font-family: "roboto-light";
-    height: 60px;
-    margin-bottom: 20px;
-    color: black;
-    background-color: lightgrey;
-    max-width: 275px;
-  }
-    #facebook {
-      background-color: #3B5998;
-      color: white;
-    }
-    .artist-connected-links h3, .artist-connected-links span {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-      .artist-connected-links span {
-        padding-right: 45px;
-      }
-      .artist-connected-links input {
-        height: 60px;
-      }
-     
+#facebook {
+	background-color: #3B5998;
+	color: white;
+}
+.artist-connected-links h3, .artist-connected-links span {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.artist-connected-links {
+	span {
+		padding-right: 45px;
+	}
+	input {
+		height: 60px;
+	}
+}
+		 
 /*-- Artist Notification --*/
 .artist-notification-activities {
-  padding: 30px;
-  text-align: left;
+	padding: 30px;
+	text-align: left;
+
+	input {
+		margin-left: 80px;
+		margin-right: 2px;
+	}
 }
-  .artist-notification-header, .artist-password-header {
-    text-align: left;
-  }
-  .artist-notification-activities-items li {
-    padding: 10px 0;
-  }
-  .artist-notification-updates {
-    margin: 20px 0 10px 0;
-  }
-  .artist-notification-activities input {
-    margin-left: 80px;
-    margin-right: 2px;
-  }
-  .notification-icon {
-    margin-left: 60px;
-    margin-right: 2px;
-  }
-  .check-uncheck {
-    margin-bottom: 10px;
-    text-align: right;
-  }
+.artist-notification-header, .artist-password-header {
+	text-align: left;
+}
+.artist-notification-activities-items li {
+	padding: 10px 0;
+}
+.artist-notification-updates {
+	margin: 20px 0 10px 0;
+}
+.notification-icon {
+	margin-left: 60px;
+	margin-right: 2px;
+}
+.check-uncheck {
+	margin-bottom: 10px;
+	text-align: right;
+}
  
 /*-- Artist Password --*/
 .artist-password-wrapper {
-   padding-bottom: 100px;
+	 padding-bottom: 100px;
 }
 .artist-password-header {
-  margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 .artist-password-content input {
-  max-width: 350px;
-  height: 45px;
-  border: 1px solid transparent;
-  border-top: none;
-  border-bottom: 1px solid #DDD;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-  margin-bottom: 20px;
+	max-width: 350px;
+	height: 45px;
+	border: 1px solid transparent;
+	border-top: none;
+	border-bottom: 1px solid #DDD;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+	margin-bottom: 20px;
 }
 .artist-password-btn {
-  max-width: 350px;
-  height: 45px;
-  background-color: rgb(80, 227, 194);
-  font-family: "roboto-light";
-  color: white;
-  border: none;
-  padding: 10px;
-  box-shadow: 2px 2px 2px grey;
+	max-width: 350px;
+	height: 45px;
+	background-color: rgb(80, 227, 194);
+	font-family: @font-reg;
+	color: white;
+	border: none;
+	padding: 10px;
+	box-shadow: 2px 2px 2px @grey-5;
 }

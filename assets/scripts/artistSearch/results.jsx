@@ -2,8 +2,8 @@ var ArtistSearchResultsTable = React.createClass({
   render: function() {
     var self = this;
     return (
-      <div className="artist-search-table-wrapper col-xs-8 col-sm-9 col-md-9 col-lg-9">
-          <table className="artist-table-header col-xs-12 col-md-12 col-lg-12">
+      <div className="col-xs-8 col-sm-9">
+          <table className="table col-xs-12 col-md-12 col-lg-12">
             <thead>
               <th className="artist-search-table-header-items col-xs-12 col-sm-2 col-md-2 col-lg-3"><h4>Track/Artist</h4></th>
               <th className="artist-search-table-header-items col-xs-12 col-sm-2 col-md-2 col-lg-1"><h4>Album</h4></th>

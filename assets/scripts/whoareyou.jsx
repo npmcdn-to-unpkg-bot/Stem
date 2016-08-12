@@ -28,7 +28,7 @@ var WhoAreYou = React.createClass({
 		var self = this;
 
 		return (	
-			<div>
+			<div className="text-center">
 				<div id="bg">
 					<img src="assets/images/handandfader.jpg" alt="" />
 				</div>

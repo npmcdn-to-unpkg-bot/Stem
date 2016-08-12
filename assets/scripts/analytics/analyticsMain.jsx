@@ -1,11 +1,11 @@
 var ArtistInternalAnalytics = React.createClass({
   render: function () {
     return (
-      <div>
+      <span>
         <ArtistInternalAnalyticsDownloads />
         <ArtistInternalAnalyticsPlays />
         <ArtistInternalAnalyticsTopInterests />
-      </div>
+      </span>
     );
   }
 });

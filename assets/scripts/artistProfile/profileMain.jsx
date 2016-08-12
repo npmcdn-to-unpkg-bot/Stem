@@ -1,14 +1,14 @@
 var ArtistProfile = React.createClass({
   render: function() {
     return(
-      <div>
+      <span>
         <Header />
-        <div className="artist-profile-wrapper col-xs-12 bg-white">
+        <div className="content col-xs-12">
           <div className="col-sm-10 col-sm-offset-1">
             <ArtistProfileTable />
           </div> 
         </div>   
-      </div>
+      </span>
     )
   }
 });

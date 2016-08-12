@@ -19,12 +19,12 @@ var ArtistInternalAnalyticsTopInterests = React.createClass({
   },
   render: function () {
     return(
-      <div className="artist-internal-top-interest-wrapper ">
-        <div className="col-lg-12">
+      <div className="artist-internal-top-interest-wrapper col-xs-12 content text-center">
+        <div className="col-xs-12">
           <h3 className="col-lg-3">Top Interest</h3>
           <h4 className="col-lg-3 pull-right"><span className="glyphicon glyphicon-eye-open"></span>View All</h4>
         </div>
-        <div className="col-lg-12">
+        <div className="col-xs-12">
           <ul className="artist-internal-analytics-top-interest-list col-lg-12">
             <li className=""  >
               <a ><img className="artist-internal-analytics-top-interest-img "  src="https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/s640x640/sh0.08/e35/11375351_691728300859406_959765053_n.jpg" /></a>
