@@ -16,7 +16,7 @@ var ArtistInternalAnalyticsDownloads = React.createClass({
 
     var self = this;
     return (
-      <div className="artist-internal-analyitics-download-wrapper row no-gutters col-sm-12 col-md-12 col-lg-12">
+      <div className="artist-internal-analyitics-download-wrapper col-xs-12 content">
         <div className="artist-internal-analyitics-download-header col-sm-11 col-md-12 col-lg-12">
           <h3 className="col-sm-3 col-md-3 col-lg-2">Downloads</h3>
           <h4 className="col-sm-9 col-md-7 col-lg-4 pull-right"><span className="glyphicon glyphicon-calendar"></span> Week of 2/21/2016 - 2/28/2016 <span className="glyphicon glyphicon-chevron-down"></span></h4>

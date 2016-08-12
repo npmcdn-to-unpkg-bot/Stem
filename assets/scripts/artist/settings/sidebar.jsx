@@ -15,14 +15,14 @@ var ArtistAccountNavBar = React.createClass({
 
 	render: function() {
 		return (
-			<div className="sidebar hide-mobile row no-gutters">
+			<div className="sidebar hide-mobile artist-account-navbar-wrapper">
 				<div className="sidebar-hide">
-					<ul>
-						<a onClick=""><li className="col-sm-12"><h5>Account</h5></li></a>
-						<a onClick=""><li className="col-sm-12"><h5>Contact Info</h5></li></a>
-						<a onClick=""><li className="col-sm-12"><h5>Connected Accounts</h5></li></a>
-						<a onClick=""><li className="col-sm-12"><h5>Notifications</h5></li></a>
-						<a onClick=""><li className="col-sm-12"><h5>Password</h5></li></a>
+					<ul className="mar-t-lg">
+						<a onClick=""><li className="col-xs-12"><h5>Account</h5></li></a>
+						<a onClick=""><li className="col-xs-12"><h5>Contact Info</h5></li></a>
+						<a onClick=""><li className="col-xs-12"><h5>Connected Accounts</h5></li></a>
+						<a onClick=""><li className="col-xs-12"><h5>Notifications</h5></li></a>
+						<a onClick=""><li className="col-xs-12"><h5>Password</h5></li></a>
 					</ul>
 				</div>
 				<div className="settings-mobile-nav">

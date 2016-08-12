@@ -26,8 +26,8 @@ var PlaylistTable = React.createClass({
 		var self = this;
 
 		return(
-			<div className="playlist-table-wrapper pad-box-md">
-				<table className="col-xs-12 col-md-12 col-lg-12">
+			<div className="content">
+				<table className="col-xs-12 table no-borders">
 					<thead>
 						<th className="col-md-3 pad-b-md"><h4>Track/Artist</h4></th>
 						<th className="col-md-2 pad-b-md"><h4>Album</h4></th>

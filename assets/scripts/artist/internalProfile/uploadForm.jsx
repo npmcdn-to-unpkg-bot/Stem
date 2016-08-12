@@ -189,7 +189,7 @@ var UploadForm = React.createClass({
 					</div>
 				</div>
 				<div className="artist-upload col-xs-12 col-lg-6 row no-gutters">
-					<div className="col-sm-12">
+					<div className="col-xs-12">
 						<p>Artist Name</p>
 						<input id="artistName" onChange={this.handleFieldChange} value={this.state.artistName} /> 
 						<a><span className="artist-add-artist-link glyphicon glyphicon-plus-sign"></span> Add Additional Artists</a>
@@ -198,7 +198,7 @@ var UploadForm = React.createClass({
 						<p>Song Name</p>
 						<input id="songName" onChange={this.handleFieldChange} value={this.state.songName} /> 
 					</div>
-					<div className="artist-album-wrapper row no-gutters col-xs-12">
+					<div className="col-xs-12">
 						<p>Album Name</p>
 						<input id="albumName" onChange={this.handleFieldChange} value={this.state.albumName} /> 
 						<ul className={this.state.albumListVisible ? "display-true album-list-wrapper col-sm-12" : "display-false"}>

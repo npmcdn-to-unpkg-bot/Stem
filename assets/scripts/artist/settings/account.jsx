@@ -4,8 +4,8 @@ var ArtistAccountSettings = React.createClass({
 			characterCount: 0,
 			disableButton: false,
 			saveSuccessful: false,
-			profileImgURL: this.context.userInfo.profileImgURL,
-			bannerImgURL: this.context.userInfo.bannerImgURL,
+			profileImgUrl: this.context.userInfo.profileImageUrl,
+			bannerImgUrl: this.context.userInfo.bannerImageUrl,
 			profileName: this.context.userInfo.profileName,
 			customLink: this.context.userInfo.customLink,
 			email: this.context.userInfo.email,
@@ -70,16 +70,16 @@ var ArtistAccountSettings = React.createClass({
 			if([id] == 'profileImg') {
 				this.setState({
 					profileImg: file,
-					profileImgURL: reader.result
+					profileImgUrl: reader.result
 				});
 			} else {
 				this.setState({
 					bannerImg: file,
-					bannerImgURL: reader.result
+					bannerImgUrl: reader.result
 				});
 			}
 		}
-	    reader.readAsDataURL(file)
+	    reader.readAsDataUrl(file)
         this.setState({
 			saveSuccessful: false
 		});
@@ -161,14 +161,14 @@ var ArtistAccountSettings = React.createClass({
 		var self = this;
 
 		return (
-			<div className="artist-password-wrapper col-xs-12">
+            <div className="content-with-sidebar"> 
 				<div className="col-xs-12">
 					<h3>Account</h3>
 					<h5>Update your account settings</h5>
 				</div>
 				<div className="col-xs-12 col-lg-3 pad-box-md" >
 					<div className="upload circle text-center">
-						{this.state.profileImgURL ? 
+						{this.state.profileImgUrl ? 
 							<div className="upload-label update">
 								<h5>UPDATE PROFILE IMAGE</h5>
 								<p>Suggested Size 1000x1000</p>
@@ -179,13 +179,13 @@ var ArtistAccountSettings = React.createClass({
 								<p>Suggested Size 1000x1000</p>
 							</div>
 						}
-						<img src={this.state.profileImgURL} />
+						<img src={this.state.profileImageUrl} />
 						<input onChange={this.handleFileUpload} type="file" name="profileImg" id="profileImg" />
 					</div>  
 				</div>
 				<div className="col-xs-12 col-lg-9 pad-box-md">
 					<div className="upload text-center">
-						{this.state.bannerImgURL ? 
+						{this.state.bannerImgUrl ? 
 							<div className="upload-label update">
 								<h5>UPDATE BANNER IMAGE</h5>
 								<p>Suggested Size 1000x1000</p>
@@ -196,11 +196,11 @@ var ArtistAccountSettings = React.createClass({
 								<p>Suggested Size 1000x1000</p>
 							</div>
 						}
-						<img src={this.state.bannerImgURL} />
+						<img src={this.state.bannerImgUrl} />
 						<input onChange={this.handleFileUpload} type="file" name="bannerImg" id="bannerImg" />
 					</div>
 				</div>   
-				<div className="row no-gutters col-xs-12 col-md-6 col-lg-5 pad-t-md">
+				<div className="col-xs-12 col-md-6 col-lg-5 pad-t-md">
 					<h5>Profile Name</h5>
 					<input id="profileName" onChange={this.handleFieldChange} value={this.state.profileName} /> 
 					<h5>Custom Link</h5>
@@ -219,10 +219,10 @@ var ArtistAccountSettings = React.createClass({
 					<textarea id="bio" className="form-input" onChange={self.handleLineGrow} value={this.state.bio} />
 					<div className="character-count row no-gutters ">
 						<p>{this.state.characterCount}/300 Characters</p>
-							<svg height="20" width="400">
-								<line className="svg-line2" x1="300" y='0' />
-								<line className="svg-line" x1={self.state.characterCount} y='0' />
-							</svg>
+						<svg height="20" width="400">
+							<line className="svg-line2" x1="300" y='0' />
+							<line className="svg-line" x1={self.state.characterCount} y='0' />
+						</svg>
 					</div>  
 				</div> 
 
