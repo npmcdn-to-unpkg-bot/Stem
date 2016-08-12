@@ -7,7 +7,7 @@ var ArtistNotification = React.createClass({
 					<h3>Notifications</h3>
 				    <h5>We want you to know when good things are happening</h5>
 		        </div>
-		        <div className="artist-notification-activities row no-gutters col-xs-12">
+		        <div className="col-xs-12">
 		            <a className=" col-lg-2 col-lg-offset-10 pull-right check-uncheck">Check/UnCheck All</a>
 		            <h4 className="artist-notification-updates col-xs-12">Activities <span className="icon-paper-plane pull-right notification-icon"></span><span className="icon-mobile pull-right notification-icon"></span></h4>
 		            <ul className="artist-notification-activities-items col-xs-12">

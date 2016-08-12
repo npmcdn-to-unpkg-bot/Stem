@@ -15,7 +15,7 @@ var ArtistAccountNavBar = React.createClass({
 
 	render: function() {
 		return (
-			<div className="sidebar hide-mobile artist-account-navbar-wrapper">
+			<div className="sidebar artist-account-navbar-wrapper">
 				<div className="sidebar-hide">
 					<ul className="mar-t-lg">
 						<a onClick=""><li className="col-xs-12"><h5>Account</h5></li></a>
