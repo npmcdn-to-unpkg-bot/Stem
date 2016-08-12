@@ -168,7 +168,7 @@ var UploadForm = React.createClass({
 	render: function () {
 		var self = this;
 		return (
-			<div className="bg-white col-sm-12">
+			<div className="col-xs-12">
 				<a className="h3 upload-links col-xs-4" onClick={this.uploadFormToggle}>
 					<span className={this.state.singleTrack ? "upload-active-underline" : null}> Individual Song </span>
 				</a>
@@ -189,7 +189,7 @@ var UploadForm = React.createClass({
 					</div>
 				</div>
 				<div className="artist-upload col-xs-12 col-lg-6 row no-gutters">
-					<div className="col-sm-12">
+					<div className="col-xs-12">
 						<p>Artist Name</p>
 						<input id="artistName" onChange={this.handleFieldChange} value={this.state.artistName} /> 
 						<a><span className="artist-add-artist-link glyphicon glyphicon-plus-sign"></span> Add Additional Artists</a>
@@ -198,7 +198,7 @@ var UploadForm = React.createClass({
 						<p>Song Name</p>
 						<input id="songName" onChange={this.handleFieldChange} value={this.state.songName} /> 
 					</div>
-					<div className="artist-album-wrapper row no-gutters col-xs-12">
+					<div className="col-xs-12">
 						<p>Album Name</p>
 						<input id="albumName" onChange={this.handleFieldChange} value={this.state.albumName} /> 
 						<ul className={this.state.albumListVisible ? "display-true album-list-wrapper col-sm-12" : "display-false"}>
@@ -213,7 +213,7 @@ var UploadForm = React.createClass({
 					</div>
 				</div>
 				<div className="col-xs-12 col-lg-6 row no-gutters">
-					<div className="album-art-box col-xs-12 col-lg-12">
+					<div className="album-art-box col-xs-12">
 						<div className="upload lg text-center">
 							{this.state.artFileURL ? 
 								<div className="upload-label update">
@@ -233,18 +233,18 @@ var UploadForm = React.createClass({
 						</div>
 					</div>
 				</div>
-				<div className="artist-upload col-sm-12">
+				<div className="artist-upload col-xs-12">
 					<p>Promotional Copy ( you can edit this later )</p>
 					<textarea id="promotionalCopy" className="form-input" onChange={self.handleLineGrow} />
 					<div className="character-count col-sm-12 row no-gutters ">
-						<p className="col-sm-4 col-md-4 col-lg-2">{this.state.characterCount}/300 Characters</p>
-						<svg className="col-sm-8 col-md-8" height="20" width="400">
+						<p className="col-xs-4 col-lg-2">{this.state.characterCount}/300 Characters</p>
+						<svg className="col-xs-8" height="20" width="400">
 							<line className="svg-line2" x1="300" y='0' />
 							<line className="svg-line" x1={self.state.characterCount} y='0' />
 						</svg>
 					</div>  
 				</div>
-				<div className="col-sm-12">
+				<div className="col-xs-12">
 					<button type="button" onClick={this.saveAudioFile} className="btn artist-upload-btn pull-right">
 						<h4><span className='icon-upload'></span> Upload</h4>
 					</button>

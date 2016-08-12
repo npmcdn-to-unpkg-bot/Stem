@@ -56,7 +56,8 @@ var ArtistContactInfo = React.createClass({
 
 	render: function() {
 		return(
-			<div className="artist-password-wrapper col-xs-12">
+            <div className="content-with-sidebar"> 
+				<div className="col-xs-12 divider"></div>
 				<div className="col-xs-12 pad-b-lg">
 					<h3>Contact Information</h3>
 					<h5>We may contact you occasionally for opportunities</h5>

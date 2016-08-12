@@ -24,7 +24,7 @@ var ArtistInternalAnalyticsPlays = React.createClass({
     console.log("butterfingers");
     console.log(this.state.valueArray);
     return (
-      <div className="artist-internal-analytics-plays-wrapper col-md-12 col-lg-12">
+      <div className="artist-internal-analytics-plays-wrapper col-xs-12 content">
         <div className=" col-lg-12">
           <h3 className="col-sm-3 col-md-3 col-lg-2">Plays</h3>
           <h4 className="col-sm-9 col-md-7 col-lg-3 pull-right"><span className="glyphicon glyphicon-file"></span> Export to Excel CSV <span className="glyphicon glyphicon-chevron-down"></span></h4>

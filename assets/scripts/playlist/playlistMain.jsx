@@ -3,11 +3,11 @@ var PlaylistMain = React.createClass({
         var self = this;
 		
 		return (
-			<div>
+			<span>
 				<PlaylistHeader />
 				<PlaylistTable />
 				<PlaylistMobileView />
-			</div>	
+			</span>	
 		);
 	}
 });
