@@ -4,436 +4,428 @@
 
 @media (max-width : 768px) {
 
-h1 {
-  font-size: 60px;
-}
-h3 {
-  font-size: 20px;
-}
+	h1 {
+		font-size: 60px;
+	}
+	h3 {
+		font-size: 18px;
+	}
+	.content-with-sidebar-settings {
+		margin-left: 0;
+	}
+	.hide-mobile {
+		display: none;
+	}
 
-.content-with-sidebar {
-  width: 100%;
-}
-
-    .upload-mobile-hidden {
-        display: none;
-    }
-    .artist-internal-sidebar-wrapper {
-        max-width: 100%;
-    }
-    /* -- Artist Profile -- */
-      .artist-featured-header {
-    background-position: center top;
-    overflow: visible;
-    height: 280px;
-  }
-  .artist-featured-header-bar {
-    display: none;
-  }
-  .artist-featured-header-info-icon {
-    margin-left: 0;
-    margin-right: 20px;
-  }
-  .artist-featured-badge-icon {
-    display: none;
-  }
-    .artist-featured-badge {
-      width: 250px;
-      margin-top: -90px;
-      border-top: 50px solid rgb(80, 227, 194);
-    }  
-  .artist-featured-header-info h2 {
-    margin-top: 10px;
-    margin-left: 20px;
-    font-size: 20px;
-  }
-  .artist-featured-header-info p {
-    margin-left: 20px;
-    text-align: left;
-  }
-  .artist-featured-header-info ul {
-    
-    padding-top: 0;
-  }
-  .artist-suggested-wrapper.row.no-gutters {
-    margin-top: 70px;
-  }
-  
-  /*-- artist playlist --*/
-  .playlist-table-wrapper {
-    display: none;
-  }
-  .playlist-mobile-view-wrapper {
-    display: block;
-  }
-  .playlist-header-banner {
-    background-position: center top;
-    background-size: 100% 100%;
-  }
-  .playlist-mobile-view-wrapper p {
-    margin: 0;
-  }
-  .playlist-mobile-view-wrapper li {
-    border-bottom: 1px solid lightgrey;
-    padding: 20px 0;
-  }
-  .playlist-mobile-detail {
-    max-width: 200px;
-    display: inline-block;
-  }
-  .playlist-mobile-list-action {
-    display: inline-block;
-    vertical-align: top;
-    max-width: 100px;
-  }
-
-  /* -- Settings -- */
-  .artist-account-navbar-wrapper {
-    width: 100%;
-  }
-  .settings-mobile-nav {
-    display: block;
-  }
-    .settings-mobile-nav h3 {
-      padding: @space-md 0;
-    }
-    .settings-mobile-nav ul {
-      position: absolute;
-      z-index: 999;
-    }
-  .settings-navbar {
-    display: none;
-  }
-  .artist-account-navbar-wrapper {
-    margin:0;
-  }
-  .artist-account-setting-upload-wrapper {
-    padding: 15px 0 5px;
-  }
-
-    .artist-account-form-input input {
-      margin-bottom: 10px;
-    }  
-    .artist-account-setting-profile-img {
-      margin: 0 auto;
-    }
-    .artist-account-form-input p {
-      text-align: left;
-    }
-  /* -- Settings --  */
-  .notification-icon {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .artist-notification-activities input {
-    margin-left: @space-sm;
-  }
-  .artist-notification-header {
-    text-align: center;
-  }
-  .artist-internal-sidebar-wrapper p {
-    padding-bottom: 0;
-  }
-  .artist-internal-top-interest h4 {
-    margin-top: 15px;
-  }
-  /*-- Artist Upload -- */
-  .artist-upload-wrapper {
-    display: none;
-  }
-  /*-- Artist Upload Success --*/
-  .artist-upload-success {
-    display: none;
-  }
-  /*-- Artist Search -- */
-  .artist-search-table-wrapper {
-    display: none;
-  }
-  .artist-search-tags h3 {
-    font-size: 10px;
-  }
-  .artist-search-tags-list li {
-    display: inline-block;
-  }
-  .artist-search-tags {
-    margin: 3px;
-  }
-  .artist-search-mobile-view-wrapper {
-    display: block;
-    background-color: white;
-  }
-  .artist-search-mobile-view-wrapper li {
-    border-bottom: 1px solid lightgrey;
-    padding: 15px 0;
-  }
-  .artist-search-mobile-view-wrapper h4{
-    margin-bottom: 8px;
-  }
-  .artist-search-mobile-items p {
-    line-height: 10px;
-  }
-  .artist-search-mobile-view-rating {
-    margin-left: -15px;
-  }
-  .artist-search-album-mobile-img  {
-    width: 100px;
-    padding: 0 15px 0 0;
-    margin-left: -15px;
-  }
-  .artist-search-side-bar-wrapper {
-    width: 100%;
-  }
-  /* -- Artist Main Content -- */
-  .artist-main-content-wrapper {
-    text-align: center;
-  }
-    .artist-main-content-wrapper h1 {
-      font-size: 40px;
-    }
-  .sidebar-hide  {
-    display: none;
-  }
-  .content-with-sidebar {
-    margin-left: 0;
-  }
-  .content-with-sidebar-settings {
-    margin-left: 0;
-  }
-  /*-- Admin table --*/    
-  .admin-table {
-    width: 95%;
-    margin: 0 2.5%;
-  }
-  /*-- Payment Options --*/ 
-  .payment-options-page {
-    padding: 9% 3%;
-    height: 100vh;
-    overflow: scroll;
-  }
-  .payment-options-content {
-    width: 280px;
-    margin: 0 auto
-  }
-  .payment-options {
-    width: 275px;
-    display: block;
-    margin-bottom: @space-sm
-  }
-  .payment-options:hover {
-    -webkit-transform: scale(1.08);
-    -moz-tranfrom: scale(1.08);
-    transform: scale(1.08);
-  }
-}
-
-@media (min-width: 769px) and (max-width: 991px) {
-  .content-with-sidebar {
-    width: 100%;
-  }
-  .artist-featured-badge-icon {
-    margin-left: -60px;
-  }
-  .artist-featured-badge-info h4 {
-    margin-left: -40px;
-  }
-  .artist-featured-header-info ul {
-    margin-left: 20px;
-  }
-  .playlist-table-wrapper td {
-    padding-right: 0;
-  }
-  /*-- Settings --*/
-    .artist-account-setting-upload-wrapper {
-    padding: 15px;
-  }
-  /* Artist Analytics -- */
-  .artist-internal-analyitics-download-wrapper {
-    padding: 40px 40px 0;
-  }
-  .graph-content-wrapper {
-    min-width: 897px;
-  }
-  /*-- Artist Upload --*/
-  .artist-internal-greeting {
-    // margin-left: 50px;
-  }
-  /*-- Atist Upload Success --*/
-  .artist-upload-success {
-    width: 100%;
-    float: right;
-  }
-  .artist-upload-success-tags {
-    h5 {
-      margin-bottom: 3%;
-    }
-  }
-  .checkbox {
-    padding: 3% 0 6% 4%;
-  }
-  .artist-tags-visible {
-    margin: 4% 0 0;
-  }
-  .artist-tag-checkbox-visible {
-  visibility: visible;
-  }
-  .artist-upload-success-slider {
-    margin-top: 4%;
-    h5 {
-      margin-bottom: 5%;
-    }
-    input {
-      margin: 0 6%;
-    }
-  }
-
-  .upload-links {
-    margin-left: 10px;
-  }
-  /* -- Artist Search --*/ 
-  .artist-search-tags h3 {
-    font-size: 15px;
-  }
-  .artist-search-album-detail {
-    margin-top: 5px;
-  }
-  /* Artist Nav List */
-  .artist-nav-list {
-    margin-top: -15px;
-    margin-left: 20px;
-    width: 1000px;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    padding: 1rem;
-  }
-    .artist-nav-list li {
-      margin-right: 70px;
-    }
-  .artist-navBar-wrapper::-webkit-scrollbar {
-        display: none;
-    }
-  .internal {
-    display: inline;
-  }
-  .library-result-table table td:nth-child(4), .library-result-table table td:nth-child(7) {
-    display: none;
-  }
-  .library-result-table table th:nth-child(4), .library-result-table table th:nth-child(7) {
-    display: none;
-  } 
-  .hide-mobile {
-    display: none;
-  }
-  .upload-greeting {
-    width: 100%;
-  }
-  .content-with-sidebar {
-    margin-left: 0;
-  }
-    // -- Artist Profile --
-  .header-content-detail h1 {
-    font-size: 35px;
-  }
-  .header-content-detail h4 {
-    max-width: 480px;
-  }
-  /*-- Payment Options --*/ 
-  .payment-options-page {
-    padding: 9% 3%
-  }
-  .payment-options-content {
-    width: 740px;
-    margin: 0 auto;
-  }
-  .payment-options {
-    width: 240px;
-  }
-  .payment-options:hover {
-    -webkit-transform: scale(1.08);
-    -moz-tranfrom: scale(1.08);
-    transform: scale(1.08);
-  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .artist-featured-header-info ul {
-    margin-left: 20px;
-  }
-  /*-- Artist Upload Success -- */
-  .artist-upload-success {
-    width: 68%;
-  }
-  /* -- Artist Search --*/ 
-  .artist-search-album-detail {
-    margin-top: 5px;
-  }
-  /* -- library -- */
-  .library-result-table table td:nth-child(4), .library-result-table table td:nth-child(7) {
-    display: none;
-  }
-  .library-result-table table th:nth-child(4), .library-result-table table th:nth-child(7) {
-    display: none;
-  }
-}
-
-@media only screen and (max-width : 768px) {
 	a.filter-nav-prev, a.filter-nav-next {
 		display: none;
 	}
-    .library-result-table table td:nth-child(4), .library-result-table table td:nth-child(7) {
-    display: none;
-  }
-  .library-result-table table th:nth-child(4), .library-result-table table th:nth-child(7) {
-    display: none;
-  }
-    .hide-mobile {
-    display: none;
-  }
-    // -- Artist Profile --
-  .header-wrapper {
-    height: 500px;
-  }
-    .header-banner {
-    background-position: center -100px;
-    height: 150px;
-  }
-  .header-content-wrapper {
-    padding: @space-md 0 0;
-  }
-    .header-content-detail {
-      padding: @space-md;
-      text-align: center;
-    }
-    .header-content-detail, 
-    .header-content-detail h1, 
-    .header-social-media li {
-      color: @grey-2;
-    }
-    .header-img {
-      width: 150px;
-      height: 150px;
-      display: block;
-      margin: auto;
-    }
-    .header-content-detail button {
-      display: block;
-      margin: auto;
-    }
-    .header-social-media {
-      float: none !important;
-      text-align: center;
-    }
-    .artist-table-wrapper table th:nth-child(4),
-    .artist-table-wrapper table th:nth-child(5),
-    .artist-table-wrapper table th:nth-child(7), 
-    .artist-table-wrapper table td:nth-child(4), 
-    .artist-table-wrapper table td:nth-child(5), 
-    .artist-table-wrapper table td:nth-child(7) {
-      display: none;
-    }
-    .search-sidebar-tablet {
-      width: 100%;
-      padding-bottom: @space-md;
-      text-align: center;
-    }
+	.library-result-table table td:nth-child(4), .library-result-table table td:nth-child(7) {
+		display: none;
+	}
+	.library-result-table table th:nth-child(4), .library-result-table table th:nth-child(7) {
+		display: none;
+	}
+
+	/* Artist Profile */
+	.header-wrapper {
+		height: 500px;
+	}
+	.header-banner {
+		background-position: center -100px;
+		height: 150px;
+	}
+	.header-content-wrapper {
+		padding: @space-md 0 0;
+	}
+	.header-content-detail {
+		padding: @space-md;
+		text-align: center;
+	}
+	.header-content-detail, 
+	.header-content-detail h1, 
+	.header-social-media li {
+		color: @grey-2;
+	}
+	.header-img {
+		width: 150px;
+		height: 150px;
+		display: block;
+		margin: auto;
+	}
+	.header-content-detail button {
+		display: block;
+		margin: auto;
+	}
+	.header-social-media {
+		float: none !important;
+		text-align: center;
+	}
+	.artist-table-wrapper table th:nth-child(4),
+	.artist-table-wrapper table th:nth-child(5),
+	.artist-table-wrapper table th:nth-child(7), 
+	.artist-table-wrapper table td:nth-child(4), 
+	.artist-table-wrapper table td:nth-child(5), 
+	.artist-table-wrapper table td:nth-child(7) {
+		display: none;
+	}
+	.search-sidebar-tablet {
+		width: 100%;
+		padding-bottom: @space-md;
+		text-align: center;
+	}
+
+	/*-- Admin table --*/    
+	.admin-table {
+		width: 95%;
+		margin: 0 2.5%;
+	}
+
+	/* -- Artist Profile -- */
+	.artist-featured-header {
+		background-position: center top;
+		overflow: visible;
+		height: 280px;
+	}
+	.artist-featured-header-bar {
+		display: none;
+	}
+	.artist-featured-header-info-icon {
+		margin-left: 0;
+		margin-right: 20px;
+	}
+	.artist-featured-badge-icon {
+		display: none;
+	}
+	.artist-featured-badge {
+		width: 250px;
+		margin-top: -90px;
+		border-top: 50px solid rgb(80, 227, 194);
+	}  
+	.artist-featured-header-info {
+		h2 {
+			margin-top: 10px;
+			margin-left: 20px;
+			font-size: 20px;
+		}
+		p {
+			margin-left: 20px;
+			text-align: left;
+		}
+		ul {
+			padding-top: 0;
+		}
+	}
+
+	.artist-suggested-wrapper.row.no-gutters {
+		margin-top: 115px;
+	}
+
+	.artist-featured-header-bar {
+		display: none;
+	}
+	.artist-featured-header-info-icon {
+		margin-left: 0;
+		margin-right: 20px;
+	}
+	.artist-featured-badge {
+		width: 250px;
+		margin-top: -90px;
+		border-top: 50px solid rgb(80, 227, 194);
+	}  
+
+	/*-- artist playlist --*/
+	.playlist-table-wrapper {
+		display: none;
+	}
+	.playlist-header-banner {
+		background-position: center top;
+		background-size: 100% 100%;
+	}
+	.playlist-mobile-view-wrapper {
+		display: block;
+
+		p {
+			margin: 0;
+		}
+		li {
+			border-bottom: 1px solid lightgrey;
+			padding: 20px 0;
+		}
+	}
+	.playlist-mobile-detail {
+		max-width: 200px;
+		display: inline-block;
+	}
+	.playlist-mobile-list-action {
+		display: inline-block;
+		vertical-align: top;
+		max-width: 100px;
+	}
+
+	/* -- Settings -- */
+	.artist-account-navbar-wrapper {
+		width: 100%;
+	}
+	.settings-mobile-nav {
+		display: block;
+
+		h3 {
+			padding: @space-md 0;
+		}
+		ul {
+			position: absolute;
+			z-index: 999;
+		}
+	}
+	.settings-navbar {
+		display: none;
+	}
+	.artist-account-navbar-wrapper {
+		margin:0;
+	}
+	.artist-account-setting-upload-wrapper {
+		padding: 15px 0 5px;
+	}
+
+	.artist-account-form-input {
+		input {
+			margin-bottom: 10px;
+		}  
+		p {
+			text-align: left;
+		}
+	}
+	.artist-account-setting-profile-img {
+		margin: 0 auto;
+	}
+
+	.notification-icon {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.artist-notification-activities input {
+		margin-left: @space-sm;
+	}
+	.artist-notification-header {
+		text-align: center;
+	}
+	.artist-internal-sidebar-wrapper p {
+		padding-bottom: 0;
+	}
+	.artist-internal-top-interest h4 {
+		margin-top: 15px;
+	}
+
+	/*-- Artist Upload -- */
+	.artist-upload-wrapper {
+		display: none;
+	}
+	.upload-mobile-hidden {
+			display: none;
+	}
+
+	/*-- Artist Upload Success --*/
+	.artist-upload-success {
+		display: none;
+	}
+
+	/*-- Artist Search -- */
+	.artist-search-table-wrapper {
+		display: none;
+	}
+	.artist-search-tags-list li {
+		display: inline-block;
+	}
+	.artist-search-tags {
+		margin: 3px;
+
+		h3 {
+			font-size: 10px;
+		}
+	}
+	.artist-search-mobile-view-wrapper {
+		display: block;
+		background-color: white;
+
+		li {
+			border-bottom: 1px solid lightgrey;
+			padding: 15px 0;
+		}
+		h4{
+			margin-bottom: 8px;
+		}
+	}
+	.artist-search-mobile-items p {
+		line-height: 10px;
+	}
+	.artist-search-mobile-view-rating {
+		margin-left: -15px;
+	}
+	.artist-search-album-mobile-img  {
+		width: 100px;
+		padding: 0 15px 0 0;
+		margin-left: -15px;
+	}
+	.artist-search-side-bar-wrapper {
+		margin-top: 50px;
+		width: 100%;
+	}
+
+	/* -- Artist Main Content -- */
+	.artist-main-content-wrapper {
+		text-align: center;
+
+		h1 {
+			font-size: 40px;
+		}
+	}
+}
+
+@media (max-width: 990px) {
+	.sidebar-hide  {
+		display: none;
+	}
+	.content-with-sidebar {
+		margin-left: 0;
+		width: 100%;
+	}
+
+	.artist-featured-badge-icon {
+		margin-left: -60px;
+	}
+	.artist-featured-badge-info {
+		h4 {
+			margin-left: -40px;
+		}
+		ul {
+			margin-left: 20px;
+		}
+	}
+	.playlist-table-wrapper td {
+		padding-right: 0;
+	}
+
+	/*-- Settings --*/
+	.artist-account-setting-upload-wrapper {
+		padding: 15px;
+	}
+	/* Artist Analytics -- */
+	.artist-internal-analyitics-download-wrapper {
+		padding: 40px 40px 0;
+	}
+	.graph-content-wrapper {
+		min-width: 897px;
+	}
+
+	/*-- Atist Upload Success --*/
+	.artist-upload-success {
+		width: 100%;
+		float: right;
+	}
+	.artist-upload-success-tags {
+		h5 {
+			margin-bottom: 3%;
+		}
+	}
+	.checkbox {
+		padding: 3% 0 6% 4%;
+	}
+	.artist-tags-visible {
+		margin: 4% 0 0;
+	}
+	.artist-tag-checkbox-visible {
+		visibility: visible;
+	}
+	.artist-upload-success-slider {
+		margin-top: 4%;
+
+		h5 {
+			margin-bottom: 5%;
+		}
+		input {
+			margin: 0 6%;
+		}
+	}
+
+	.upload-links {
+		margin-left: 10px;
+	}
+
+	/* -- Artist Search --*/ 
+	.artist-search-tags h3 {
+		font-size: 15px;
+	}
+	.artist-search-album-detail {
+		margin-top: 5px;
+	}
+
+	/* Artist Nav List */
+	.artist-nav-list {
+		margin-top: -15px;
+		margin-left: 20px;
+		width: 1000px;
+		overflow-y: hidden;
+		overflow-x: scroll;
+		white-space: nowrap;
+		-webkit-overflow-scrolling: touch;
+		padding: 1rem;
+
+		li {
+			margin-right: 70px;
+		}
+	}
+	.artist-navBar-wrapper::-webkit-scrollbar {
+		display: none;
+	}
+
+	.internal {
+		display: inline;
+	}
+	.library-result-table table td:nth-child(4), .library-result-table table td:nth-child(7) {
+		display: none;
+	}
+	.library-result-table table th:nth-child(4), .library-result-table table th:nth-child(7) {
+		display: none;
+	} 
+	.hide-mobile {
+		display: none;
+	}
+	.upload-greeting {
+		width: 100%;
+	}
+	.content-with-sidebar {
+		margin-left: 0;
+	}
+
+	/* Artist Profile */
+	.header-content-detail {
+		h1 {
+			font-size: 35px;
+		}
+		h4 {
+			max-width: 480px;
+		}
+	} 
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	.artist-featured-header-info ul {
+		margin-left: 20px;
+	}
+	/*-- Artist Upload Success -- */
+	.artist-upload-success {
+		width: 68%;
+	}
+	/* -- Artist Search --*/ 
+	.artist-search-album-detail {
+		margin-top: 5px;
+	}
+	/* -- library -- */
+	.library-result-table table td:nth-child(4), .library-result-table table td:nth-child(7) {
+		display: none;
+	}
+	.library-result-table table th:nth-child(4), .library-result-table table th:nth-child(7) {
+		display: none;
+	}
 }

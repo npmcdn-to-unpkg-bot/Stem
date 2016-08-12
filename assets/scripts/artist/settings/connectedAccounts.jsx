@@ -1,7 +1,8 @@
 var ArtistConnectedAccounts = React.createClass({
 	render: function() {
 		return(
-			<div className="artist-account-contact-info-wrapper col-xs-12">
+            <div className="content-with-sidebar"> 
+				<div className="divider col-xs-12"></div>
 				<div className="artist-account-contact-header col-xs-12">
 					<h3>Connected Accounts</h3>
 					<h5>By connecting your other accounts, we'll be able to help you track your music </h5>
