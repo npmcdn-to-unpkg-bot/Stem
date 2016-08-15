@@ -128,23 +128,23 @@ var App = React.createClass({
 							<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
 							<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket error"></i></a>
 						</div>
-								{ this.props.isLoggedIn ?  
-										<div className="nav header-nav header-right pull-right">										
-												<a onClick={this.expandSearch}>{this.state.searchVisible ? 
-													<div className="search-input-wrapper">
-														<span className="input-group-icon icon-search" id="addon-1"></span>
-														<input id="search-input" aria-describedby="addon-1" placeholder="Placeholder..."  autoFocus={this.state.autofocus} ></input> 
-													</div>	
-													: <i className="icon-search"></i>}</a>
+							{ this.props.isLoggedIn ?  
+								<div className="nav header-nav header-right pull-right">										
+									<a onClick={this.expandSearch}>{this.state.searchVisible ? 
+										<div className="search-input-wrapper">
+											<span className="input-group-icon icon-search" id="addon-1"></span>
+											<input id="search-input" aria-describedby="addon-1" placeholder="Placeholder..."  autoFocus={this.state.autofocus} ></input> 
+										</div>	
+										: <i className="icon-search"></i>}</a>
 
-												<a><i className="icon-heart-empty"></i></a>
-												<a><i className="icon-up-circle"></i></a>
-												<a><i className="icon-bell"></i></a>
-												<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													<i className="icon-menu"></i>
-												</a>                 
-										</div> 
-								: null }
+									<a><i className="icon-heart-empty"></i></a>
+									<a><i className="icon-up-circle" onClick={this.navigate.bind(this, 1)}></i></a>
+									<a><i className="icon-bell"></i></a>
+									<a onClick={this.showMenu} className="dropdown-toggle primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i className="icon-menu"></i>
+									</a>                 
+								</div> 
+							: null }
 						</div> 
 				</nav>
 
