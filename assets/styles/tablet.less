@@ -71,8 +71,9 @@
 	}
 	.search-sidebar-tablet {
 		width: 100%;
-		padding-bottom: @space-md;
+		padding: 0 @space-md @space-md;
 		text-align: center;
+    position: relative;
 	}
 
 	/*-- Admin table --*/    
@@ -218,7 +219,7 @@
 
 	/*-- Artist Search -- */
 	.artist-search-table-wrapper {
-		display: none;
+		// display: none;
 	}
 	.artist-search-tags-list li {
 		display: inline-block;
@@ -254,7 +255,7 @@
 		margin-left: -15px;
 	}
 	.artist-search-side-bar-wrapper {
-		margin-top: 50px;
+		margin-top: @space-md;
 		width: 100%;
 	}
 
@@ -287,6 +288,40 @@
       -moz-tranfrom: scale(1.08);
       transform: scale(1.08);
     }
+  .sidebar-hide  {
+    display: none;
+  }
+  .content-with-sidebar {
+    margin-left: 0;
+  }
+  .content-with-sidebar-settings {
+    margin-left: 0;
+  }
+  /*-- Admin table --*/    
+  .admin-table {
+    width: 95%;
+    margin: 0 2.5%;
+  }
+  /*creator home*/
+  .featured-wrapper {
+    background-position: top;
+  }
+  .top-album-img {
+    height: 200px;
+    width: 200px;
+  }
+  a.album-nav-prev, a.album-nav-next {
+    padding: 90px 10px 0;
+    height: 200px;
+  }
+  .play {
+    margin-top: @space-lg;
+    margin-left: 80px;
+    float: none;
+  }
+  .top-album-wrapper {
+    padding-top: @space-lg;
+  }
 }
 
 @media (max-width: 990px) {
