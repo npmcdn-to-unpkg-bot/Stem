@@ -1,201 +1,158 @@
 @import url("variables.less");
 
 /*Artist NavBar*/
-
 .artist-navBar-wrapper {
-  margin-top: -20px;
-  width: 100%;
-  height: 80px;
-  background-color: @primary;
-  position: absolute;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  z-index: -1;
+	margin-top: -20px;
+	width: 100%;
+	height: 80px;
+	background-color: @primary;
+	position: absolute;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	z-index: -1;
 }
 .artist-navBar-icons {
-  font-family: 'entypo';
-  color: white;
+	font-family: 'entypo';
+	color: white;
 }
-
 .navIcon {
-  color: white;
-  margin-top: 25px;
+	color: white;
+	margin-top: 25px;
 }
 .artist-navBar-wrapper::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 /*-- Artist Featured --*/
-
-
 .artist-featured-header {
-  padding-top: 300px; 
-  background-image: url('http://www.echosmith.com/sites/g/files/g2000002326/f/201410/Echosmith-SiteBackground-1920x1280_05_rev.jpg');
-  background-repeat: no-repeat;
-  background-position: 30% 30%;
-  background-size: 100%;
-  overflow: hidden;
-  width: 100%;
-  height: 425px;
-  position: relative;
+	padding-top: 300px; 
+	background-image: url('http://www.echosmith.com/sites/g/files/g2000002326/f/201410/Echosmith-SiteBackground-1920x1280_05_rev.jpg');
+	background-repeat: no-repeat;
+	background-position: 30% 30%;
+	background-size: 100%;
+	overflow: hidden;
+	width: 100%;
+	height: 425px;
+	position: relative;
 }
 .artist-featured-header-bar {
-  background:rgba(255,255,255, 0.6);
-  width: 100%;
-  height: 130px;
-  position: absolute;
-  z-index: 1;
-  
-  filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-  -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+	background: rgba(255,255,255, 0.6);
+	width: 100%;
+	height: 130px;
+	position: absolute;
+	z-index: 1;
+	filter: @drop-1;
+	-webkit-filter: @drop-1;
 }
 .artist-featured-header-info {
-  position: relative;
-  padding-top: @space-md;
-  color: @grey-1;
-  text-align: left;
-  line-height: 10px;
-  z-index: 2;
+	position: relative;
+	padding-top: @space-md;
+	color: @grey-1;
+	text-align: left;
+	line-height: 10px;
+	z-index: 2;
+
+	h2 {
+		margin: -10px 0 10px;
+		font-style: italic;
+	}
+	p {
+		opacity: .8;
+	}
 }
-  .artist-featured-header-info-icon {
-    margin-left: 20px;
-  }
-  .artist-featured-header-info h2 {
-    margin: -10px 0 10px;
-    font-style: italic;
-  }
-  .artist-featured-header-info p {
-    opacity: .8;
-  }
+.artist-featured-header-info-icon {
+	margin-left: 20px;
+}
+
 .artist-featured-badge {
-    border-top: 75px solid rgb(80, 227, 194);
-    border-left: 50px solid transparent;
-    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-    right: 0;
-    width: 350px;
-    position: absolute;
-    color: white;
-    z-index: 2;
+	border-top: 75px solid rgb(80, 227, 194);
+	border-left: 50px solid transparent;
+	filter: @drop-1;
+	-webkit-filter: @drop-1;
+	right: 0;
+	width: 350px;
+	position: absolute;
+	color: @white;
+	z-index: 2;
 }
-  .artist-featured-badge-icon {
-    margin-top: -55px;
-    position: absolute;
-    right: 200px;
-  }
-  .artist-featured-badge-info {
-    margin-top: -45px;
-    position: absolute;
-    right: 50px;
-  }
-  .artist-featured-badge-info h4 {
-    font-family: "roboto-light";
-    margin-top: -20px;
-  }
+.artist-featured-badge-icon {
+	margin-top: -55px;
+	position: absolute;
+	right: 200px;
+}
+.artist-featured-badge-info {
+	margin-top: -45px;
+	position: absolute;
+	right: 50px;
 
-
-
+	h4 {
+		font-family: @font-reg;
+		margin-top: -20px;
+	}
+}
 
 /*-- Artist Main Content --*/
 .artist-main-content-wrapper {
-  color: white;
-  font-family: "roboto-medium";
-  text-align: left;
+	color: @white;
+	font-family: @font-md;
+	text-align: left;
+
+	h1 {
+		font-style: italic;
+		margin-top: 30px;
+		font-size: 60px;
+		filter: @drop-1;
+		-webkit-filter: @drop-1;
+	}
+	h4 {
+		font-family: @font-reg;
+		margin-top: 20px;
+		filter: @drop-1;
+		-webkit-filter: @drop-1;
+	}
 }
-  .artist-main-content-wrapper h1 {
-    font-style: italic;
-    margin-top: 30px;
-    font-size: 60px;
-    
-    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-    -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-  }
-    .artist-main-content-wrapper h4 {
-      font-family: "roboto-light";
-      margin-top: 20px;
-      
-      filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-      -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
-    }
+
 .artist-suggested-wrapper {
-  position: relative;
-  z-index: 0;
+	position: relative;
+	z-index: 0;
 }
-
 .artist-suggested-box-wrapper {
-  background: grey;
-  height: 225px;
+	background: grey;
+	height: 225px;
 }
 
-.top-of-rock {
-  background-image: url('http://www.echosmith.com/sites/g/files/g2000002326/f/201410/Echosmith-SiteBackground-1920x1280_05_rev.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center center;
-}
-.beatmakers {
-  background-image: url('http://www.echosmith.com/sites/g/files/g2000002326/f/201410/Echosmith-SiteBackground-1920x1280_05_rev.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center center;
+.top-of-rock, .beatmakers, .open-roads, .creator-playlists {
+	background-image: url('http://www.echosmith.com/sites/g/files/g2000002326/f/201410/Echosmith-SiteBackground-1920x1280_05_rev.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center center;
 }
 .open-roads {
-  background-image: url('http://www.echosmith.com/sites/g/files/g2000002326/f/201410/Echosmith-SiteBackground-1920x1280_05_rev.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center bottom;
-}
-.creator-playlists {
-  background-image: url('http://www.echosmith.com/sites/g/files/g2000002326/f/201410/Echosmith-SiteBackground-1920x1280_05_rev.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center center;
-}
-  .rock {
-    background-color: rgb(159, 0, 255);
-    opacity: .2;
-    height: 225px;
-    width: 100%;
-    position: absolute;
-  }
-  .beat {
-    background-color: rgb(255, 238, 114);
-    opacity: .2;
-    height: 225px;
-    width: 100%;
-    position: absolute;
-  }
-  .road {
-    background-color: rgb(80, 227, 194);
-    opacity: .2;
-    height: 225px;
-    width: 100%;
-    position: absolute;
-  }
-  .creator {
-    background-color: rgb(68, 55, 252);
-    opacity: .2;
-    height: 225px;
-    width: 100%;
-    position: absolute;
-  }
-
-.row.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-}
-.row.no-gutters > [class^="col-"],
-.row.no-gutters > [class*=" col-"] {
-  padding-right: 0;
-  padding-left: 0;
+	background-position: center bottom;
 }
 
+.rock, .beat, .road, .creator {
+	background-color: rgb(159, 0, 255);
+	opacity: .2;
+	height: 225px;
+	width: 100%;
+	position: absolute;
+}
+.beat {
+	background-color: rgb(255, 238, 114);
+}
+.road {
+	background-color: rgb(80, 227, 194);
+}
+.creator {
+	background-color: rgb(68, 55, 252);
+}
 
-
-
-
-
-
-
-
-
+/*-- Artist Table --*/
+.artist-table-wrapper thead {
+	border-bottom: 1px solid @grey-4;
+}
+.artist-table-wrapper th {
+	padding-bottom: @space-md;
+	padding-top: @space-md;
+}
