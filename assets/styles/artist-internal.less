@@ -281,8 +281,16 @@
   }
 }
 /*-- Artist Tagged Success Modal --*/
-.modal-background {
+.dark-modal-bg {
   background: fade(black, 65%);
+}
+.light-modal-bg {
+  background: fade(white, 65%);
+  .modal-box {
+    box-shadow: @drop-5
+  }
+}
+.modal-background {
   height: 100vh;
   width: 100%;
   position: fixed;
@@ -290,38 +298,40 @@
   left: 0;
   z-index: 3000;
 }
-.tag-success-box {
-  width: 40%;
+.modal-box {
+  width: 43%;
   margin: 6% auto;
 }
-.artist-tag-success-hidden {
-  visibility: hidden;
-}
-
-/*-- Artist Download Notice Modal --*/
-.download-notice-box {
-  width: 43%;
-  margin: 10% auto;
-}
-.download-notice-heading {
+.modal-heading {
   text-align: center;
 }
-.heads-up-title {
+.modal-title {
   font-size: 5rem;
 }
-.download-notice-bottom {
+.modal-links {
+  text-align: right;
+  font-family: @font-reg;
+  cursor: pointer;
+}
+.modal-bottom {
   p, li {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
   h3 {
     font-family: @font-reg;
   }
 }
-.download-notice-links {
-  text-align: right;
-}
+// .artist-tag-success-hidden {
+//   visibility: hidden;
+// }
+
+/*-- Artist Download Notice Modal --*/
 .dont-download {
   color: @grey-3
+}
+.welcome-sub-heading {
+  font-family: @font-reg;
+  line-height: 30px;
 }
 
 /*-- Artist Internal Library --*/
