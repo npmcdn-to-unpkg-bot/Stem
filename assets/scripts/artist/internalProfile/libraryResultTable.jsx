@@ -2,7 +2,7 @@ var LibraryResultTable = React.createClass({
   render: function() {
     return(
       <div className="library-result-table mar-t-lg">
-        <table>
+        <table className="table no-borders">
           <thead>
             <tr>
               <th className="col-xs-1"> </th>

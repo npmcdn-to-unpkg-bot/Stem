@@ -2,18 +2,18 @@ var ArtistInternalSideBar = React.createClass({
   render: function () {
     var self = this;
     return (
-      <div className="artist-internal-sidebar-wrapper hide-mobile row no-gutters col-xs-12">
-        <div className="artist-internal-download-count col-xs-12">
+      <div className="sidebar hide-mobile">
+        <div className="col-xs-12 pad-t-md">
           <h3>Download Count</h3>
           <p>For current month</p>
           <h2>5,062</h2>
         </div>
-        <div className="artist-internal-play-count col-xs-12">
+        <div className="col-xs-12 pad-box-md">
           <h3>Play Count</h3>
           <p>For the current month</p>
           <h2>20,662</h2>
         </div>
-        <div className="artist-internal-top-interest col-xs-12">
+        <div className="col-xs-12 pad-box-md">
           <h3>Top Interest</h3>
           <ul className="">
             <li className="col-xs-12">
