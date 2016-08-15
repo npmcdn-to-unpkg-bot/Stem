@@ -258,6 +258,66 @@
 }
 
 /*-- Artist Tagged Success Modal --*/
+<<<<<<< HEAD
+.modal-background {
+	background: fade(black, 65%);
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 3000;
+}
+.tag-success-box {
+	width: 40%;
+	margin: 6% auto;
+=======
+.dark-modal-bg {
+  background: fade(black, 65%);
+}
+.light-modal-bg {
+  background: fade(white, 65%);
+  .modal-box {
+    box-shadow: @drop-5
+  }
+}
+.modal-background {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3000;
+}
+.modal-box {
+  width: 43%;
+  margin: 6% auto;
+>>>>>>> rylin
+}
+.modal-heading {
+  text-align: center;
+}
+.modal-title {
+  font-size: 5rem;
+}
+.modal-links {
+  text-align: right;
+  font-family: @font-reg;
+  cursor: pointer;
+}
+.modal-bottom {
+  p, li {
+    font-size: 1.9rem;
+  }
+  h3 {
+    font-family: @font-reg;
+  }
+}
+// .artist-tag-success-hidden {
+//   visibility: hidden;
+// }
+
+/*-- Artist Download Notice Modal --*/
 .modal-background {
 	background: fade(black, 65%);
 	height: 100vh;
@@ -299,6 +359,10 @@
 }
 .dont-download {
 	color: @grey-3
+}
+.welcome-sub-heading {
+  font-family: @font-reg;
+  line-height: 30px;
 }
 
 /*-- Artist Internal Library --*/
