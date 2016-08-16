@@ -1,6 +1,6 @@
 var LibraryMain = React.createClass({
 	render: function() {
-		return(
+		return (
 			<span>
 				<div className="sidebar sidebar-hide">
 				</div>
@@ -24,6 +24,6 @@ var LibraryMain = React.createClass({
 					<LibraryMainTable />
 				</div>  
 			</span>
-		)
+		);
 	}
 });
