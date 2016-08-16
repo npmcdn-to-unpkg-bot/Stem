@@ -78,8 +78,9 @@ var UploadForm = React.createClass({
     handleFieldChange: function(e) {
     	var id = e.target.id;
         this.setState({
-			[id]: e.target.value
-		});
+				[id]: e.target.value
+			});
+      this.handleShowAlbumList();  
     },
 
  	handleFileUpload: function(e) {
