@@ -18,12 +18,23 @@ var ArtistProfile = React.createClass({
 			}
 		});
 
+		var userInfo = this.context.userInfo;
+
+		// This is test data, keeping this for now
+		// TODO: Remove me later when we have more test data to work with
+		// var userInfo = {
+		// 	profileName: 'InMemory',
+		// 	bio: 'The best band thats ever had the pleasure of playing instruments on a stage with live people, not dead',
+		// 	profileImageUrl: 'https://a4-images.myspacecdn.com/images03/33/588cae99266a4ae2a9c49c909b02781c/300x300.jpg',
+		// 	bannerImageUrl: 'https://a4-images.myspacecdn.com/images03/33/588cae99266a4ae2a9c49c909b02781c/300x300.jpg'
+		// };
+
 		this.setState({
 			artist: {
-				// TODO: We should populate this from the API
-				artistName: 'InMemory',
-				bio: 'InMemory is pretty much the greatest band that you haven\u0027t heard of. Game of Thrones has Jon Snow. The Walking Dead has Daryl. Pokemon have Pikachu. Your ears have InMemory.',
-				headerImageUrl: 'https://a4-images.myspacecdn.com/images03/33/588cae99266a4ae2a9c49c909b02781c/300x300.jpg'
+				profileName: userInfo.profileName,
+				bio: userInfo.bio,
+				profileImageUrl: userInfo.profileImageUrl,
+				bannerImageUrl: userInfo.bannerImageUrl
 			}
 		});
 	},
@@ -40,3 +51,7 @@ var ArtistProfile = React.createClass({
 		);
 	}
 });
+
+ArtistProfile.contextTypes = {
+	userInfo: React.PropTypes.object
+};

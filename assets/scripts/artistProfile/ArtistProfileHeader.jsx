@@ -3,15 +3,18 @@ var ArtistProfileHeader = React.createClass({
 		// TODO: Do the thing where you follow this artist
 	},
 	render: function() {
-		var artist = this.props.artist;
-
+		var artist = this.props.artist,
+			bannerImageStyle = {
+      			backgroundImage: 'url(' + artist.bannerImageUrl + ')'
+    		};
 		return (
 		<div className="header-wrapper">
-			<div className="header-banner"></div>
+			<div className="header-banner" style={bannerImageStyle}>
+			</div>
 			<div className="header-content-wrapper pad-l-lg">
-				<img className="header-img" src={artist.headerImageUrl} />
+				<img className="header-img" src={artist.profileImageUrl} />
 				<div className="header-content-detail pad-l-lg">
-					<h1>{artist.artistName}</h1>
+					<h1>{artist.profileName}</h1>
 					<h4 className="pad-t-sm pad-b-md">{artist.bio}</h4>
 					<button className="btn-primary" onClick={this.follow}>
 						<h4 className="pad-l-md pad-r-md">
