@@ -7,7 +7,8 @@ const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
 	isLoggedIn: false,
 	userInfo: {},
-	currentPage: 0
+	currentPage: 0,
+	tagList: []
 };
 
 var reducer = function(state, action) {
@@ -35,7 +36,13 @@ var reducer = function(state, action) {
 
 		case 'GoToPage':
 			console.log('action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, {currentPage: action.data.currentPage, displayMenu: false});
+			newState = Object.assign({}, state, {currentPage: action.data.currentPage});
+			console.log('newState = ' + JSON.stringify(newState));
+			return newState;
+
+		case 'UpdateTagList':
+			console.log('action.data = ' + JSON.stringify(action.data));
+			newState = Object.assign({}, state, {tagList: action.data.tagList});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
@@ -53,7 +60,8 @@ var AppState = function(state) {
 		baseAPI: state.baseAPI,
 		isLoggedIn: state.isLoggedIn,
 		userInfo: state.userInfo,
-		currentPage: state.currentPage
+		currentPage: state.currentPage,
+		tagList: state.tagList
 	}
 }
 
@@ -69,7 +77,8 @@ var App = React.createClass({
 		return {
 			baseAPI: this.props.baseAPI,
 			isLoggedIn: this.props.isLoggedIn,
-			userInfo: this.props.userInfo
+			userInfo: this.props.userInfo,
+			tagList: this.props.tagList
 		};
 	},
 
@@ -81,96 +90,94 @@ var App = React.createClass({
 
 				<Header artistMenu={this.props.artistMenu} currentPage={this.props.currentPage} />
 
-				<div className="wrapper">
-					{ this.props.currentPage == 0 ?
-						<div>
-							{ this.props.isLoggedIn ? 
-								<div>
-									<LibraryMain />
-									<Footer />
-								</div>
-							:
-								<Login /> 
-							}
-						</div>
-					: null}
-					
-					{ this.props.currentPage == 1 ?
-						<div>
-							<SubmitMusicMain />
-							<Footer />
-						</div>
-					: null} 
+				{ this.props.currentPage == 0 ?
+					<div className="wrapper">
+						{ this.props.isLoggedIn ? 
+							<span>
+								<LibraryMain />
+								<Footer />
+							</span>
+						:
+							<Login /> 
+						}
+					</div>
+				: null}
+				
+				{ this.props.currentPage == 1 ?
+					<div className="wrapper">
+						<SubmitMusicMain />
+						<Footer />
+					</div>
+				: null} 
 
-					{ this.props.currentPage == 2 ?
-						<div>
-							<ArtistInternalAnalytics />
-							<Footer />
-						</div>
-					: null} 
-					
-					{ this.props.currentPage == 3 ?
-						<div>
-							<ArtistProfile />
-							<Footer />
-						</div>
-					: null} 
+				{ this.props.currentPage == 2 ?
+					<div className="wrapper">
+						<ArtistInternalAnalytics />
+						<Footer />
+					</div>
+				: null} 
+				
+				{ this.props.currentPage == 3 ?
+					<div className="wrapper">
+						<ArtistProfile />
+						<Footer />
+					</div>
+				: null} 
 
-					{ this.props.currentPage == 4 ?
-						<div>
-							<FilterNav />
-							<PlaylistMain />
-							<Footer />
-						</div>
-					: null} 
+				{ this.props.currentPage == 4 ?
+					<div className="wrapper">
+						<FilterNav />
+						<PlaylistMain />
+						<Footer />
+					</div>
+				: null} 
 
-					{ this.props.currentPage == 5 ?
-						<div>
-							<ArtistSettings />
-							<Footer />
-						</div>
-					: null} 
+				{ this.props.currentPage == 5 ?
+					<div className="wrapper">
+						<ArtistSettings />
+						<Footer />
+					</div>
+				: null} 
 
-					{ this.props.currentPage == 6 ?
-						<div>
-							<FilterNav />
-							<ArtistSearch />
-							<Footer />
-						</div>
-					: null}
+				{ this.props.currentPage == 6 ?
+					<div className="wrapper">
+						<FilterNav />
+						<ArtistSearch />
+						<Footer />
+					</div>
+				: null}
 
-					{ this.props.currentPage == 7 ?
-						<div>
-							<AdminMain />
-						</div>
-					: null} 
+				{ this.props.currentPage == 7 ?
+					<div className="wrapper">
+						<AdminMain />
+					</div>
+				: null} 
 
-					{ this.props.currentPage == 8 ?
-						<div>
-							<FilterNav />
-							<CreatorMain />
-							<Footer />
-						</div>
-					: null} 
+				{ this.props.currentPage == 8 ?
+					<div className="wrapper">
+						<FilterNav />
+						<CreatorMain />
+						<Footer />
+					</div>
+				: null} 
 
-					{ this.props.currentPage == 100 ?
-						<div>
-							<WhoAreYou />
-						</div>
-					: null} 
+				{ this.props.currentPage == 100 ?
+					<div className="wrapper">
+						<WhoAreYou />
+					</div>
+				: null} 
 
-					{ this.props.currentPage == 101 ?
-						<div>
-							<ArtistInternalAnalytics />
-						</div>
-					: null} 
-					
-					{ this.props.currentPage == 102 ?
-						<div>
-							<ArtistDownloadNotice />
-						</div>
-					: null}
-				</div>
+				{ this.props.currentPage == 101 ?
+					<div className="wrapper">
+						<ArtistInternalAnalytics />
+					</div>
+				: null} 
+				
+				{ this.props.currentPage == 102 ?
+					<div className="wrapper">
+						<ArtistDownloadNotice />
+					</div>
+				: null}
 			</div>
 		);
 	}
@@ -227,7 +234,8 @@ var artistMenu = [
 App.childContextTypes = {
 	baseAPI: React.PropTypes.string,
 	isLoggedIn: React.PropTypes.bool,
-	userInfo: React.PropTypes.object
+	userInfo: React.PropTypes.object,
+	tagList: React.PropTypes.array
 };
 
 App = connect(
