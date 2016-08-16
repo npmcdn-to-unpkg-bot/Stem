@@ -1,7 +1,9 @@
 var LibraryMain = React.createClass({
 	getInitialState: function() {
 		return { 
-			songs: []
+			songs: [],
+			displayedSongs: [],
+			filter: 'All'
 		};
 	},
 	componentDidMount: function() {
@@ -12,13 +14,46 @@ var LibraryMain = React.createClass({
 				artistId: userInfo.id
 			},
 			success: function(data) {
-				this.setState( { songs: data } );
+				this.setState({ 
+					songs: data,
+					displayedSongs: data
+				});
 			}.bind(this),
 			error: function(error) {
 				console.log('Error occured while fetching songs by artist: ' + error.responseText);
 			}
 		});
+	},
+	handleFilter: function(ev) {
+		var newFilter = ev.currentTarget.innerText.trim();
+		this.setState({
+			filter: newFilter,
+			displayedSongs: this.state.songs.filter(function(item) {
+				return item.status === newFilter 
+					|| newFilter === 'All';
+			}.bind(this))
+		});
+	},
+	getFilterList: function() {
+		var filterList = [
+			'All',
+			'Approved',
+			'Pending',
+			'Disabled',
+			'Rejected'
+		];
 
+		return filterList.map(function(filter, index) {
+			if (this.state.filter === filter) {
+				return (
+					<li onClick={this.handleFilter}><h4 className="selected">{filter}</h4></li>
+				);
+			} else {
+				return (
+					<li onClick={this.handleFilter}><h4>{filter}</h4></li>
+				);
+			}
+		}.bind(this));
 	},
 	render: function() {
 		return (
@@ -28,21 +63,17 @@ var LibraryMain = React.createClass({
 				<div className="content-with-sidebar">  
 					<div className="artist-internal-greeting">
 						<h3>Library</h3>
-						<p>Manage your library of availible tracks</p>
+						<p>Manage your library of available tracks</p>
 					</div>
 					<div className="btn-wrapper pull-right">
 						<button type="button" className="btn-primary"><h3><span className="icon-up-circled"></span> Submit Music</h3></button>
 					</div>
 					<div className="library-filter">
 						<ul className="pad-t-md">
-							<li><h4>All</h4></li>
-							<li><h4>Approved</h4></li>
-							<li><h4>Pending</h4></li>
-							<li><h4>Disabled</h4></li>
-							<li><h4>Rejected</h4></li>
+							{this.getFilterList()}
 						</ul>
 					</div>
-					<LibraryMainTable songs={this.state.songs} />
+					<LibraryMainTable songs={this.state.displayedSongs} />
 				</div>  
 			</span>
 		);
