@@ -1,4 +1,25 @@
 var LibraryMain = React.createClass({
+	getInitialState: function() {
+		return { 
+			songs: []
+		};
+	},
+	componentDidMount: function() {
+		var userInfo = this.context.userInfo;
+
+		stemApi.getSongsByArtist({
+			request: {
+				artistId: userInfo.id
+			},
+			success: function(data) {
+				this.setState( { songs: data } );
+			}.bind(this),
+			error: function(error) {
+				console.log('Error occured while fetching songs by artist: ' + error.responseText);
+			}
+		});
+
+	},
 	render: function() {
 		return (
 			<span>
@@ -21,9 +42,13 @@ var LibraryMain = React.createClass({
 							<li><h4>Rejected</h4></li>
 						</ul>
 					</div>
-					<LibraryMainTable />
+					<LibraryMainTable songs={this.state.songs} />
 				</div>  
 			</span>
 		);
 	}
 });
+
+LibraryMain.contextTypes = {
+	userInfo: React.PropTypes.object
+};

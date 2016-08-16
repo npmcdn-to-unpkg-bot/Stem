@@ -1,18 +1,21 @@
 var LibraryMainTableRow = React.createClass({
+	edit: function() {
+		// TODO: Do the thing where we edit
+	},
 	render: function() {
 		var song = this.props.song;
 		
 		return (
 			<tr>
             	<td className="img-td col-xs-1 row no-gutters">
-                	<img className="mobile-img-thumbnail mar-r-xs" src="https://yt3.ggpht.com/-5VV8GnLPUmA/AAAAAAAAAAI/AAAAAAAAAAA/DymHh0I91f0/s900-c-k-no-rj-c0xffffff/photo.jpg" />
+                	<img className="mobile-img-thumbnail mar-r-xs" src={song.albumArtUrl} />
               	</td>
-              	<td className="col-xs-1 col-md-2"><p>At Anyones Cost</p></td>
-              	<td className="col-xs-1 col-md-2"><p>Album Title Yay!</p></td>
-              	<td className="col-xs-1"><p>3:26</p></td>
-              	<td className="col-xs-1"><p>266</p></td>
+              	<td className="col-xs-1 col-md-2"><p>{song.songName}</p></td>
+              	<td className="col-xs-1 col-md-2"><p>{song.albumName}</p></td>
+              	<td className="col-xs-1"><p>{song.duration}</p></td>
+              	<td className="col-xs-1"><p>{song.playCount}</p></td>
               	<td className="col-xs-1"><p>26</p></td>
-            	<td className="col-xs-1"><p>Approved</p></td>
+            	<td className="col-xs-1"><p>{song.status}</p></td>
             	<td className="col-xs-1"><p><span className="icon-edit fa-2x"></span></p></td>
             </tr>
 		);
