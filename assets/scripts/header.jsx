@@ -5,13 +5,16 @@ var Header = React.createClass({
             displayMenu: false,
             displaySearch: false,
 			autofocus: true,
-			songList: undefined
+			songList: []
         }
     },
 
 	showHideMenu: function() {
 		if(this.state.displayMenu) {
-			this.setState({ displayMenu: false });
+			this.setState({ 
+				displayMenu: false, 
+				songList: []
+			});
 		} else {
 			this.setState({ displayMenu: true });
 		}
@@ -33,25 +36,28 @@ var Header = React.createClass({
 	},
 
 	handleSearch: function(e) {
-		var searchTerm = e.target.value;
-		console.log('>>> search term = ' + searchTerm);
+		var self = this,
+			searchTerm = e.target.value;
+
 		if(searchTerm) {
 	        stemApi.searchSongs({
 	            request: {
 	                text: searchTerm
 	            },
 	            success: function (response) {
-	                console.log(JSON.stringify(response, null, 2));
+	                self.setState({ songList: response.songs});
+
 	            },
 	            error: function (response) {
 	                console.error(JSON.stringify(response, null, 2));
 	            }
 	        });
-	    }
+	    }	
 	},
 
 	render: function() {
-		var self = this;
+		var self = this,
+			songList = this.state.songList;
 
 		return (  
 			<div>   
@@ -68,9 +74,18 @@ var Header = React.createClass({
 							<div className="nav header-nav header-right pull-right">										
 								<a onClick={this.showHideSearch}>
 									{ this.state.displaySearch ? 
-										<div className="search-input-wrapper">
+										<div className="search-input-wrapper dropdown">
 											<span className="input-group-icon icon-search" id="addon-1"></span>
 											<input id="search-input" onChange={this.handleSearch} aria-describedby="addon-1" placeholder="Placeholder..."  autoFocus={this.state.autofocus} ></input> 
+											{songList.length > 0 ? 
+												<span className="open">
+								                    <ul className="dropdown-menu"> 
+								                        { songList.map(function(i){
+															return <SongListItem songID={i.id} songName={i.songName} />;
+								                        }) }
+								                    </ul>
+							                    </span>
+						                    : null }
 										</div>	
 									: 
 										<i className="icon-search"></i>
@@ -92,7 +107,11 @@ var Header = React.createClass({
 					<div className="menu-content">
 						<MenuHeader showHideMenu={self.showHideMenu} />
 						{ this.props.artistMenu.map(function(i) {
-							return <MenuItem showHideMenu={self.showHideMenu} hash={i.text} meunItemID={i.pageID} currentPage={self.state.currentPage}><i className={i.icon}></i> {i.text}</MenuItem>
+							return (
+								<MenuItem showHideMenu={self.showHideMenu} hash={i.text} key={i.pageID} meunItemID={i.pageID}>
+									<i className={i.icon}></i> {i.text}
+								</MenuItem>
+							)
 						})}
 					</div>
 				</Menu>
@@ -153,14 +172,42 @@ var MenuItem = React.createClass({
 
 	render: function() {
 		return (
-			<div onClick={this.navigate.bind(this, this.props.meunItemID)} id={this.props.meunItemID} className={this.props.meunItemID == this.props.currentPage ? "menu-item active" : "menu-item"}>{this.props.children}</div>
+			<div onClick={this.navigate.bind(this, this.props.meunItemID)} key={this.props.meunItemID} className={this.props.meunItemID == this.context.currentPage ? "menu-item active" : "menu-item"}>{this.props.children}</div>
+		);
+	}
+});
+
+var SongListItem = React.createClass({
+	selectSong: function(id, name) {
+		var tagList = this.context.tagList,
+			tag = {id: id, name: name};
+
+		tagList.push(tag);
+		store.dispatch({
+			type: 'UpdateTagList',
+			data: {tagList: tagList}
+		});
+	}, 
+
+	render: function() {
+		return (
+			<li onClick={this.selectSong.bind(this, this.props.songID, this.props.songName)} key={this.props.songID}>
+				{this.props.songName}
+			</li>
 		);
 	}
 });
 
 Header.contextTypes = {
-    isLoggedIn: React.PropTypes.bool
+    isLoggedIn: React.PropTypes.bool,
+    tagList: React.PropTypes.array
 };
 MenuHeader.contextTypes = {
 	userInfo: React.PropTypes.object
+};
+MenuItem.contextTypes = {
+	currentPage: React.PropTypes.number
+};
+SongListItem.contextTypes = {
+	tagList: React.PropTypes.array
 };
