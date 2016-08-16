@@ -187,6 +187,39 @@
   .album-art-box {
     margin-left: 0;
   }
+  /* -- Payment Options Page -- */
+  .payment-options-content {
+    display: none;
+  }
+  .payment-options-mobile {
+    height: 160px;
+    width: 300px;
+    margin: @space-sm auto;
+    display: block;
+    background-color: white;
+    border: 1px solid @grey-5;
+    padding: @space-md @space-md;
+    box-shadow: @drop-2;
+  }
+  .payment-options-mobile h2 {
+    font-size: 2.5em;
+  }
+  .payment-mobile-left, .payment-mobile-right {
+    vertical-align: top;
+  }
+  .payment-mobile-left {
+    width: 90px;
+    padding: 15px 5px 15px 0;
+    border-right: 1px solid @grey-5
+  }
+  .payment-mobile-btn {
+    width: 145px;
+    text-align: center;
+    padding: 5px;
+    background-color: @primary;
+    color: white;
+    cursor: pointer;
+  }
 }
 
 @media (min-width : 481px) and (max-width: 768px) {
@@ -308,4 +341,42 @@
 	.library-content-wrapper {
 		padding-left: @space-md;
 	}
+  /* -- Payment Options Page -- */
+  .payment-options-content {
+    display: none;
+  }
+  .payment-options-mobile {
+    height: 180px;
+    width: 425px;
+    margin: @space-sm auto;
+    display: block;
+    background-color: white;
+    border: 1px solid @grey-5;
+    padding: @space-md @space-md;
+    box-shadow: @drop-2;
+  }
+  .payment-mobile-btn {
+    width: 185px;
+    text-align: center;
+    padding: @space-sm;
+    background-color: @primary;
+    color: white;
+    cursor: pointer;
+  }
+  .payment-mobile-left {
+    width: 170px;
+    text-align: center;
+    border-right: 1px solid @grey-5
+  }
+  .payment-mobile-right {
+    width: 195px;
+  }
+  .payment-mobile-right h4 {
+    text-align: center;
+  }
+  .payment-mobile-left, .payment-mobile-right {
+    vertical-align: top;
+  }
 }
+
+
