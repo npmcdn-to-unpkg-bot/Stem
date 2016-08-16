@@ -21,7 +21,7 @@ var LibraryMain = React.createClass({
 							<li><h4>Rejected</h4></li>
 						</ul>
 					</div>
-					<LibraryResultTable />
+					<LibraryMainTable />
 				</div>  
 			</span>
 		)
