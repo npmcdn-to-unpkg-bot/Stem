@@ -75,6 +75,7 @@ var App = React.createClass({
 
 	render: function() {
 		var currentPage = this.props.currentPage;
+		var userInfo = this.props.userInfo;
 
 		return (  
 			<div>  
@@ -111,8 +112,7 @@ var App = React.createClass({
 					
 					{ this.props.currentPage == 3 ?
 						<div>
-							{/* TODO: Pass the id of the artist here */}
-							<ArtistProfile />
+							<ArtistProfile id={userInfo.id} />
 							<Footer />
 						</div>
 					: null} 
