@@ -55,16 +55,6 @@ var Header = React.createClass({
 	    }	
 	},
 
-	selectSong: function(e) {
-		var tagList = this.context.tagList;
-		tagList.push(e.target.value);
-
-		store.dispatch({
-			type: 'UpdateTagList',
-			data: {tagList: tagList}
-		});
-	}, 
-
 	render: function() {
 		var self = this,
 			songList = this.state.songList;
@@ -91,7 +81,7 @@ var Header = React.createClass({
 												<span className="open">
 								                    <ul className="dropdown-menu"> 
 								                        { songList.map(function(i){
-															return <li key={i.id} value={i.id} onClick={self.selectSong}>{i.songName}</li>;
+															return <SongListItem songID={i.id} songName={i.songName} />;
 								                        }) }
 								                    </ul>
 							                    </span>
@@ -117,7 +107,11 @@ var Header = React.createClass({
 					<div className="menu-content">
 						<MenuHeader showHideMenu={self.showHideMenu} />
 						{ this.props.artistMenu.map(function(i) {
-							return <MenuItem showHideMenu={self.showHideMenu} hash={i.text} key={i.pageID} meunItemID={i.pageID} currentPage={self.state.currentPage}><i className={i.icon}></i> {i.text}</MenuItem>
+							return (
+								<MenuItem showHideMenu={self.showHideMenu} hash={i.text} key={i.pageID} meunItemID={i.pageID}>
+									<i className={i.icon}></i> {i.text}
+								</MenuItem>
+							)
 						})}
 					</div>
 				</Menu>
@@ -178,7 +172,28 @@ var MenuItem = React.createClass({
 
 	render: function() {
 		return (
-			<div onClick={this.navigate.bind(this, this.props.meunItemID)} key={this.props.meunItemID} className={this.props.meunItemID == this.props.currentPage ? "menu-item active" : "menu-item"}>{this.props.children}</div>
+			<div onClick={this.navigate.bind(this, this.props.meunItemID)} key={this.props.meunItemID} className={this.props.meunItemID == this.context.currentPage ? "menu-item active" : "menu-item"}>{this.props.children}</div>
+		);
+	}
+});
+
+var SongListItem = React.createClass({
+	selectSong: function(id, name) {
+		var tagList = this.context.tagList,
+			tag = {id: id, name: name};
+
+		tagList.push(tag);
+		store.dispatch({
+			type: 'UpdateTagList',
+			data: {tagList: tagList}
+		});
+	}, 
+
+	render: function() {
+		return (
+			<li onClick={this.selectSong.bind(this, this.props.songID, this.props.songName)} key={this.props.songID}>
+				{this.props.songName}
+			</li>
 		);
 	}
 });
@@ -189,4 +204,10 @@ Header.contextTypes = {
 };
 MenuHeader.contextTypes = {
 	userInfo: React.PropTypes.object
+};
+MenuItem.contextTypes = {
+	currentPage: React.PropTypes.number
+};
+SongListItem.contextTypes = {
+	tagList: React.PropTypes.array
 };

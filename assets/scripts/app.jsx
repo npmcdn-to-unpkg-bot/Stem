@@ -42,7 +42,7 @@ var reducer = function(state, action) {
 
 		case 'UpdateTagList':
 			console.log('action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, {tagList: action.data.tagList});
+			newState = Object.assign({}, state, {tagList: action.data.tagList, currentPage: 6});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
@@ -78,6 +78,7 @@ var App = React.createClass({
 			baseAPI: this.props.baseAPI,
 			isLoggedIn: this.props.isLoggedIn,
 			userInfo: this.props.userInfo,
+			currentPage: this.props.currentPage,
 			tagList: this.props.tagList
 		};
 	},
@@ -235,6 +236,7 @@ App.childContextTypes = {
 	baseAPI: React.PropTypes.string,
 	isLoggedIn: React.PropTypes.bool,
 	userInfo: React.PropTypes.object,
+	currentPage: React.PropTypes.number,
 	tagList: React.PropTypes.array
 };
 
