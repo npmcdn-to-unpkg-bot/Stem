@@ -6,19 +6,19 @@ var ArtistProfile = React.createClass({
 		};		 
 	},
 	componentDidMount: function() {
+		var userInfo = this.context.userInfo;
+
 		stemApi.getSongsByArtist({
 			request: {
-				id: this.props.id
+				artistId: userInfo.id
 			},
 			success: function(data) {
 				this.setState( { songs: data } );
 			}.bind(this),
 			error: function(error) {
-				console.log('Error occured while fetching songs by artist: ' + error);
+				console.log('Error occured while fetching songs by artist: ' + error.responseText);
 			}
 		});
-
-		var userInfo = this.context.userInfo;
 
 		// This is test data, keeping this for now
 		// TODO: Remove me later when we have more test data to work with
