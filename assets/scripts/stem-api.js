@@ -191,7 +191,7 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'GET',
-            url: _this.baseUrl + 'song/artist/' + rse.request.id,
+            url: _this.baseUrl + 'song/artist/' + rse.request.artistId,
             headers: { 'Authorization': _this.authorization },
             contentType: "application/json; charset=utf-8",
             error: function (response) {
@@ -206,7 +206,7 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'GET',
-            url: _this.baseUrl + 'song/artist/' + rse.request.id,
+            url: _this.baseUrl + 'song/artist/' + rse.request.artistId + "/albums",
             headers: { 'Authorization': _this.authorization },
             contentType: "application/json; charset=utf-8",
             error: function (response) {
