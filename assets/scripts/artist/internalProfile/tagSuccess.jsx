@@ -6,12 +6,12 @@ var ArtistTaggedSuccess = React.createClass({
 	render: function() {
 		return(
 			<div className="artist-tag-success modal-background">
-				<div className="tag-success-box">
+				<div className="modal-box">
 					<div className="tag-success-box-head display-true">
 						<h3 onClick={this.handleClick} className="icon-cancel-circled2 white mar-t-sm mar-r-sm pull-right"></h3>
 						<ArtistSuccessHeadingBox />
 					</div>
-					<div className="tag-success-body bg-white pad-box-lg">
+					<div className="modal-bottom bg-white pad-box-lg">
 						<p>Our team of Artist Commity will review your track(s) and reach out if we're picking up what you're putting down.</p>
 						<br />
 						<h4>Just FYI:</h4>
