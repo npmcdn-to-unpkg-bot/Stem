@@ -222,28 +222,27 @@ var Login = React.createClass({
 	/////// END Registration Form
 
 	getAccountInfo: function(tokenType, token) {
-		var self = this,
-			authToken = tokenType + " " + token;
+		var self = this;
 
 		stemApi.setAuth(tokenType, token);
 		stemApi.getAccount({
             success: function (response) {
                 console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
-				self.updateLoginStatus(true, authToken, response, 0);
+				self.updateLoginStatus(true, response, 0);
             },
             error: function (response) { 
             	console.log(JSON.stringify(response, null, 2));
-				self.updateLoginStatus(true, authToken, null, 100);
+				self.updateLoginStatus(true, null, 100);
              }
         });
 	},
 
-    updateLoginStatus: function(isLoggedIn, authToken, userInfo, currentPage) {
+    updateLoginStatus: function(isLoggedIn, userInfo, currentPage) {
 		//FB.logout();
         store.dispatch({
           type: 'UpdateLoginStatus',
-          data: {isLoggedIn: isLoggedIn, authToken: authToken, userInfo: userInfo, currentPage: currentPage}
+          data: {isLoggedIn: isLoggedIn, userInfo: userInfo, currentPage: currentPage}
         });
     },
 

@@ -1,4 +1,4 @@
-var Header = React.createClass({
+var ArtistProfileHeader = React.createClass({
   render: function() {
     return (
       <div className="header-wrapper">
