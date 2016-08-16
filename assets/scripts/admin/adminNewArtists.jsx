@@ -15,8 +15,8 @@ var AdminNewArtistsTable = React.createClass({
 						</tr>
 					</thead>
 					<tbody className="admin-table-body">
-						<tr className="mar-b-xs">
-							<td className="col-xs-2 img-box">
+						<tr className="">
+							<td className="col-xs-2 pad-t-sm">
 								<img className="mobile-img-thumbnail" src="http://g.purevolumecdn.com/cdnImages/crop_345x235/Artist-63512-1686734.gif"></img>
 							</td>
 							<td className="col-xs-2">InMemory</td>
@@ -26,8 +26,8 @@ var AdminNewArtistsTable = React.createClass({
 							<td className="col-xs-2">333</td>
 							<td className="col-xs-1">blahblahblah@balls.onu</td>
 						</tr>
-						<tr className="mar-b-xs">
-							<td className="col-xs-2">
+						<tr className="">
+							<td className="col-xs-2 pad-t-sm">
 								<img className="mobile-img-thumbnail" src="http://www.minxsociety.com/wp-content/uploads/2012/01/lola-blanc-music.jpg"></img>
 							</td>
 							<td className="col-xs-2">Lola Blanc</td>
@@ -37,8 +37,8 @@ var AdminNewArtistsTable = React.createClass({
 							<td className="col-xs-2">333</td>
 							<td className="col-xs-1">blahblahblah@balls.onu</td>
 						</tr>
-						<tr className="mar-b-xs">
-							<td className="col-xs-2">
+						<tr className="">
+							<td className="col-xs-2 pad-t-sm">
 								<img className="mobile-img-thumbnail" src="https://f4.bcbits.com/img/a3960757277_10.jpg"></img>
 							</td>
 							<td className="col-xs-2">Avarice</td>
@@ -48,8 +48,8 @@ var AdminNewArtistsTable = React.createClass({
 							<td className="col-xs-2">333</td>
 							<td className="col-xs-1">blahblahblah@balls.onu</td>
 						</tr>
-						<tr className="mar-b-xs">
-							<td className="col-xs-2">
+						<tr className="">
+							<td className="col-xs-2 pad-t-sm">
 								<img className="mobile-img-thumbnail" src="http://www.altpress.com/images/made/chrootimages/uploads/news/news_glassjaw_633_461_70_s_c1.jpg"></img>
 							</td>
 							<td className="col-xs-2">Glassjaw</td>
