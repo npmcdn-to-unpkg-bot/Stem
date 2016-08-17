@@ -9,17 +9,18 @@ var AutoCompleteTextBox = React.createClass({
 	componentDidMount: function() {
 		var options = this.props.options;
 
-		$('#' + this.state.id).autocomplete({
+		$('#' + this.getId()).autocomplete({
 			source: options
 		});
 	},
 
-	// onChange: function(ev) {
+	getId: function() {
+		return this.props.id ? this.props.id : this.state.id;
+	},
 
-	// },
 	render: function() {
 		return (
-			<input id={this.state.id} onChange={this.props.onChange} type="text" />
+			<input id={this.getId()} onChange={this.props.onChange} type="text" />
 		);
 	}
 });

@@ -217,7 +217,7 @@ var UploadForm = React.createClass({
 					</div>
 					<div className="col-xs-12">
 						<p>Album Name</p>
-						<AutoCompleteTextBox onChange={this.handleFieldChange} options={this.state.albumNames} />
+						<AutoCompleteTextBox id="albumName" onChange={this.handleFieldChange} options={this.state.albumNames} />
 					</div>
 					<div className="col-xs-12">
 						<p>Promotion Link <span className="icon-help-circled"></span></p>
