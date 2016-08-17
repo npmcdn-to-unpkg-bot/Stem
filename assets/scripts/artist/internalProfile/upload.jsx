@@ -31,7 +31,7 @@ var ArtistUploadForm = React.createClass({
     return {
       characterCount: 0,
       disableButton: false,
-      albumListVisible: false,
+      albumListVisible: true,
       albumSelection: '',
       albumNames: ['the first one', 'the black album', 'self titled', 'dookie']
     }
@@ -39,6 +39,7 @@ var ArtistUploadForm = React.createClass({
   handleShowAlbumList: function() {
     this.setState({
       albumListVisible: true
+      console.log(this.albumListVisible);
     })
   },
   handleLineGrow: function(e) {
@@ -66,7 +67,7 @@ var ArtistUploadForm = React.createClass({
      }
   },
 
-  handlePopulateAlbumName: function() {
+  // handlePopulateAlbumName: function() {
 
     // $.ajax({
     //   type: 'GET', // rest verb (GET, POST, PUT, DEL)
@@ -82,11 +83,11 @@ var ArtistUploadForm = React.createClass({
     //   }
     // });
     // console.log('Album Names!');
-  }, 
-  selectAlbum: function() {
-    this.setState({ albumSelection: e.target.value});
-    console.log(this.albumSelection);
-  }, 
+  // }, 
+  // selectAlbum: function() {
+  //   this.setState({ albumSelection: e.target.value});
+  //   console.log(this.albumSelection);
+  // }, 
   render: function () {
     var self = this;
     return (
@@ -109,7 +110,7 @@ var ArtistUploadForm = React.createClass({
             <input type="" onChange={this.handleShowAlbumList} className="artist-upload-input col-sm-12 mar-b-sm" /> 
             <ul className={this.state.albumListVisible ? "display-true album-list-wrapper col-sm-12" : "display-false"}>
               {this.state.albumNames.map(function(e) {
-                return <li key={e.id} value={e.id} onClick={this.selectAlbum}>{e}</li>;
+                return <li key={e.id}>{e}</li>;
               })}
             </ul>  
           </div>

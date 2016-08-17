@@ -219,7 +219,7 @@ var ArtistAccountSettings = React.createClass({
 								<p>Suggested Size 1000x1000</p>
 							</div>
 					    }
-						<img src={this.state.profileImgURL} />
+						<img id="profile-img-upload" src={this.state.profileImgURL} />
 						<input onChange={this.handleFileUpload} type="file" name="profileImg" id="profileImg" />
 					</div>
 				</div>
