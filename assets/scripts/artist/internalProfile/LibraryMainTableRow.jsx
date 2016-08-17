@@ -16,7 +16,7 @@ var LibraryMainTableRow = React.createClass({
               	<td className="col-xs-1"><p>{song.playCount}</p></td>
               	<td className="col-xs-1"><p>{song.uses}</p></td>
             	<td className="col-xs-1"><p>{song.status}</p></td>
-            	<td className="col-xs-1"><p><span className="icon-edit fa-2x"></span></p></td>
+            	<td className="col-xs-1"><p><span onClick={this.edit} className="icon-edit fa-2x"></span></p></td>
             </tr>
 		);
 	}

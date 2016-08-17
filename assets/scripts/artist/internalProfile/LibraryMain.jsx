@@ -23,6 +23,45 @@ var LibraryMain = React.createClass({
 				console.log('Error occured while fetching songs by artist: ' + error.responseText);
 			}
 		});
+		
+		// TODO: Remove me when we have more test data to work with
+		// var songs = [{
+		// 	songName: 'Kate is Approved',
+		// 	albumName: 'Bouncing Soul Cocks',
+		// 	duration: '3:25',
+		// 	playCount: 234,
+		// 	uses: 34,
+		// 	status: 'Approved'
+		// },
+		// {
+		// 	songName: 'Kate is Pending',
+		// 	albumName: 'Bouncing Pendings',
+		// 	duration: '3:25',
+		// 	playCount: 234,
+		// 	uses: 34,
+		// 	status: 'Pending'
+		// },
+		// {
+		// 	songName: 'Kate is Disabled',
+		// 	albumName: 'Bouncing Kouls',
+		// 	duration: '3:25',
+		// 	playCount: 234,
+		// 	uses: 34,
+		// 	status: 'Disabled'
+		// },
+		// {
+		// 	songName: 'The Rejected',
+		// 	albumName: 'Rancid',
+		// 	duration: '3:25',
+		// 	playCount: 234,
+		// 	uses: 34,
+		// 	status: 'Rejected'
+		// }];
+
+		// this.setState({
+		// 	songs: songs,
+		// 	displayedSongs: songs
+		// });
 	},
 	handleFilter: function(ev) {
 		var newFilter = ev.currentTarget.innerText.trim();
@@ -44,15 +83,11 @@ var LibraryMain = React.createClass({
 		];
 
 		return filterList.map(function(filter, index) {
-			if (this.state.filter === filter) {
-				return (
-					<li onClick={this.handleFilter}><h4 className="selected">{filter}</h4></li>
-				);
-			} else {
-				return (
-					<li onClick={this.handleFilter}><h4>{filter}</h4></li>
-				);
-			}
+			var selectedClass = this.state.filter === filter ? 'selected' : null;
+
+			return (
+				<li onClick={this.handleFilter}><h4 className={selectedClass}>{filter}</h4></li>
+			);
 		}.bind(this));
 	},
 	render: function() {
