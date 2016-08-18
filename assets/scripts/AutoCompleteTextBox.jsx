@@ -7,11 +7,24 @@ var AutoCompleteTextBox = React.createClass({
 		};
 	},
 	componentDidMount: function() {
-		var options = this.props.options;
+		var options = this.props.options,
+			id = this.getId();
 
-		$('#' + this.getId()).autocomplete({
-			source: options
-		});
+		if (typeof options === 'array') {
+			$('#' + id).autocomplete({
+				source: options
+			});
+
+			return;
+		}
+
+		if (typeof options === 'function') {
+			options(function(response) {
+				$('#' + id).autocomplete({
+					source: response
+				});
+			});
+		}
 	},
 
 	getId: function() {
