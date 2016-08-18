@@ -9,9 +9,15 @@
 	background-attachment: fixed;
 	background-size: cover;
 }
+.payment-options-mobile {
+	display: none;
+}
 .payment-options-content {
 	width: 847px;
 	margin: 0 auto
+}
+.payment-options-content-hidden {
+	display: none;
 }
 .payment-options {
 	width: 260px;
@@ -63,3 +69,39 @@
 	padding: @space-md @space-sm @space-md @space-md;
 	line-height: 25px;
 }
+/* -- Detailed Payment Options -- */
+.detailed-payment-option {
+	width: 850px;
+	margin: @space-lg auto;
+	background: white;
+	border: 1px solid @grey-5;
+	box-shadow: @drop-2;
+}
+.detail-payment-option-mobile {
+	display: none;
+}
+.detail-payment-left, .detail-payment-right {
+	vertical-align: top;
+}
+.detail-payment-left {
+	border-right: 1px solid @grey-5;
+}
+.detail-payment-right {
+	width: 550px;
+	text-align: center;
+}
+.detail-payment-sub-heading {
+	font-family: @font-reg;
+}
+.detail-payment-right button {
+	width: 525px;
+	border: none;
+	font-size: 2.25em;
+}
+.detail-payment-right a {
+	font-family: @font-reg;
+}
+.detail-payment-right .other-options {
+	color: @grey-3;
+}
+
