@@ -179,6 +179,13 @@ var App = React.createClass({
 						<ArtistDownloadNotice />
 					</div>
 				: null}
+
+				{ this.props.currentPage == 103 ?
+					<div className="wrapper">
+						<ArtistEditTrack />
+						<Footer />
+					</div>
+				: null}
 			</div>
 		);
 	}
