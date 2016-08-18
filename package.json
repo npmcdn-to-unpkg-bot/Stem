@@ -1,0 +1,23 @@
+{
+  "name": "stem",
+  "version": "0.0.1",
+  "description": "The stem website",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinaBell/Stem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LinaBell/Stem/issues"
+  },
+  "homepage": "https://github.com/LinaBell/Stem#readme",
+  "devDependencies": {
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

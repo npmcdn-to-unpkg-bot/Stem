@@ -1,7 +1,7 @@
 @import url("variables.less");
 
 .payment-options-page {
-	padding: 9% 5% 0;
+	padding: 10% 0;
 	height: 100vh;
 	background-image: url("/assets/images/handandfader.jpg");
 	background-position: center bottom;
@@ -9,9 +9,15 @@
 	background-attachment: fixed;
 	background-size: cover;
 }
+.payment-options-mobile {
+	display: none;
+}
 .payment-options-content {
-	width: 795px;
+	width: 847px;
 	margin: 0 auto
+}
+.payment-options-content-hidden {
+	display: none;
 }
 .payment-options {
 	width: 260px;
@@ -26,6 +32,18 @@
 	-webkit-transition: all 0.35s ease-in;
 	-moz-transition: all 0.35s ease-in;
 	transition: all 0.35s ease-in;
+}
+.gig-pack {
+	-webkit-transform: scale(1.2);
+	-moz-tranfrom: scale(1.2);
+	transform: scale(1.2);
+	.payment-options-btn {
+		padding: @space-md;
+		margin: 10px 0;
+		background-color: @primary;
+		color: white;
+		cursor: pointer;
+	}
 }
 .payment-options:hover {
 	-webkit-transform: scale(1.2);
@@ -50,4 +68,88 @@
 	text-align: left;
 	padding: @space-md @space-sm @space-md @space-md;
 	line-height: 25px;
+}
+/* -- Detailed Payment Options -- */
+.detailed-payment-option {
+	width: 850px;
+	margin: @space-lg auto;
+	background: white;
+	border: 1px solid @grey-5;
+	box-shadow: @drop-2;
+}
+.detail-payment-option-mobile {
+	display: none;
+}
+.detail-payment-left, .detail-payment-right {
+	vertical-align: top;
+}
+.detail-payment-left {
+	border-right: 1px solid @grey-5;
+}
+.detail-payment-right {
+	width: 550px;
+	text-align: center;
+}
+.detail-payment-sub-heading {
+	font-family: @font-reg;
+}
+.detail-payment-right button {
+	width: 525px;
+	border: none;
+	font-size: 2.25em;
+}
+.detail-payment-right a {
+	font-family: @font-reg;
+}
+.detail-payment-right .other-options {
+	color: @grey-3;
+}
+
+/* -- Payment Processing Page -- */
+.payment-processing-page {
+	width: 950px;
+	margin: @space-lg auto;
+	background: white;
+	box-shadow: @drop-4;
+}
+.payment-processing-page .circled-number {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	padding: 4px 7px;
+	font-size: .7em;
+	text-align: center;
+	background: black;
+	color: white;
+}
+.payment-processing-page label {
+	position: absolute;
+	color: @grey-2;
+	font-size: .9em;
+	margin: 8px 0 0 10px;
+}
+.payment-processing-page input {
+	height: 55px;
+	color: @grey-3;
+	padding-top: 22.5px;
+	border-radius: 3px;
+	box-shadow: inset 1px 1px 3px rgba(0,0,0,.35);
+}
+.cc-image {
+	width: 45px;
+	margin: -50px 20px 0 0;
+}
+.payment-processing-page button {
+	font-size: 1em;
+	font-family: @font-reg;
+}
+.payment-order-summary {
+	background: color;
+	box-shadow: @drop-4;
+}
+.dash-bottom {
+	border-bottom: 1px dashed @grey-5;
+}
+.payment-fine-print {
+	font-size: 0.5em;
 }

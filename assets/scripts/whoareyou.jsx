@@ -2,25 +2,22 @@ var WhoAreYou = React.createClass({
 	handleClick: function(id) {
 		var self = this;
 
-        $.ajax({
-            type: "POST",
-            url: this.context.baseAPI + '/Account',
-            headers: { 'Authorization': this.context.authToken },
-            contentType: "application/json; charset=utf-8",
-			dataType: 'json',
-			data: JSON.stringify({AccountType: id}),
-            success: function (response) {
+		stemApi.createAccount({
+			request: {
+				AccountType: id
+			},
+			success: function(response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
-		        store.dispatch({
+		 		store.dispatch({
 					type: 'UpdateUserRecord',
-					data: {userInfo: response, currentPage: 4}
-		        });
-            },
-			error: function(response) {
+					data: { userInfo: response, currentPage: 4 }
+		 		});
+			},
+			error: function() {
 				console.error(JSON.stringify(response, null, 2));
-            }
-        });	
+			}
+		});
 	},
 
 
@@ -61,8 +58,3 @@ var WhoAreYou = React.createClass({
 		);
 	}
 });
-
-WhoAreYou.contextTypes = {
-	baseAPI: React.PropTypes.string,
-	authToken: React.PropTypes.string
-};
