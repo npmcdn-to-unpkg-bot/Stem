@@ -127,7 +127,7 @@ var UploadForm = React.createClass({
 
 			stemApi.upload({
 					request: {
-							file: audioFile
+							file: this.state.audioFile
 					},
 					success: function (response) {
 			console.log('success!');
@@ -146,7 +146,7 @@ var UploadForm = React.createClass({
 
 			stemApi.upload({
 					request: {
-							file: artFile
+					    file: this.state.artFile
 					},
 					success: function (response) {
 			console.log('success!');
