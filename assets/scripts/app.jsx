@@ -20,7 +20,7 @@ var reducer = function(state, action) {
 		case 'UpdateLoginStatus':
 			newState = Object.assign({}, state, {
 				isLoggedIn: action.data.isLoggedIn,
-				userInfo: action.data.userInfo,
+				userInfo: action.data.userInfo || {},
 				currentPage: action.data.currentPage
 			});
 			console.log('newState = ' + JSON.stringify(newState));
@@ -177,6 +177,13 @@ var App = React.createClass({
 				{ this.props.currentPage == 102 ?
 					<div className="wrapper">
 						<ArtistDownloadNotice />
+					</div>
+				: null}
+
+				{ this.props.currentPage == 103 ?
+					<div className="wrapper">
+						<ArtistEditTrack />
+						<Footer />
 					</div>
 				: null}
 			</div>

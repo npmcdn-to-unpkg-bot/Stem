@@ -5,7 +5,7 @@ var ArtistDownloadNotice = React.createClass({
 
 	render: function() {
 		return(
-			<div className="download-notice-modal modal-background">
+			<div className="download-notice-modal modal-background dark-modal-bg">
 				<div className="modal-box">
 					<div className="modal-heading bg-grad-1 pad-box-lg">
 						<span className="icon-ok-circled white display-inlb fa-3x mar-r-sm"></span>
