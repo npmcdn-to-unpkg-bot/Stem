@@ -36,8 +36,7 @@ var Header = React.createClass({
 	},
 
 	handleSearch: function(e) {
-		var self = this,
-			searchTerm = e.target.value;
+		var searchTerm = e.target.value;
 
 		if(searchTerm) {
 	        stemApi.searchSongs({
@@ -45,9 +44,14 @@ var Header = React.createClass({
 	                text: searchTerm
 	            },
 	            success: function (response) {
-	                self.setState({ songList: response.songs});
+	            	this.setState({ songList: response.songs});
 
-	            },
+	                store.dispatch({
+	                	type: 'SearchSongs',
+	                	data: response.songs
+	                });
+
+	            }.bind(this),
 	            error: function (response) {
 	                console.error(JSON.stringify(response, null, 2));
 	            }
@@ -80,8 +84,8 @@ var Header = React.createClass({
 											{songList.length > 0 ? 
 												<span className="open">
 								                    <ul className="dropdown-menu"> 
-								                        { songList.map(function(i){
-															return <SongListItem songID={i.id} songName={i.songName} />;
+								                        { songList.map(function(item, index){
+															return <SongListItem key={index} songID={item.id} songName={item.songName} />;
 								                        }) }
 								                    </ul>
 							                    </span>
