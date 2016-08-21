@@ -8,7 +8,8 @@ const initialState = {
 	isLoggedIn: false,
 	userInfo: {},
 	currentPage: 0,
-	tagList: []
+	tagList: [],
+	songSearchResults: []
 };
 
 var reducer = function(state, action) {
@@ -27,6 +28,7 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'UpdateUserRecord':
+			// TODO:  Object.assign is not supported in IE, we may want to use lodash _.assign for compatibility
 			newState = Object.assign({}, state, {
 				userInfo: action.data.userInfo,
 				currentPage: action.data.currentPage
@@ -44,6 +46,10 @@ var reducer = function(state, action) {
 			console.log('action.data = ' + JSON.stringify(action.data));
 			newState = Object.assign({}, state, {tagList: action.data.tagList, currentPage: 6});
 			console.log('newState = ' + JSON.stringify(newState));
+			return newState;
+
+		case 'SearchSongs':
+			newState = Object.assign({}, state, { songSearchResults: action.data });
 			return newState;
 
 		default: 
