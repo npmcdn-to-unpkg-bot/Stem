@@ -8,7 +8,7 @@ var ArtistSearch = (function() {
 						<ArtistSearchSideBar />
 					</div>
 					<div className="content-with-sidebar">  
-						<ArtistProfileTable songs={this.props.searchResults} />
+						<ArtistSearchResultsTable songs={this.props.searchResults} />
 					</div>  
 				</span>
 			)
@@ -23,9 +23,7 @@ var ArtistSearch = (function() {
 
 	function mapDispatchToProps(dispatch, ownProps) {
 		return {
-			testClicker: function() {
-				//dispatch()
-			}
+			
 		};
 	}
 
