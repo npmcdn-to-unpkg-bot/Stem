@@ -29,10 +29,19 @@ textarea.form-input {
     padding: 20px;
 }
 
-.dropdown-menu {
+.dropdown-menu, .ui-menu {
     width: 100%;
     margin-top: 6px;
     padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid @grey-5;
+    border-radius: @bd-rad-sm;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
 
     li {
         padding: 5px 10px;

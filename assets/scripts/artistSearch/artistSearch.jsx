@@ -5,7 +5,7 @@ var ArtistSearch = (function() {
 			return (
 				<span>
 					<div className="sidebar search-sidebar-tablet">
-						<ArtistSearchSideBar />
+						<ArtistSearchSideBar tagList={this.props.tagList} />
 					</div>
 					<div className="content-with-sidebar">  
 						<ArtistSearchResultsTable songs={this.props.searchResults} />
@@ -17,7 +17,8 @@ var ArtistSearch = (function() {
 
 	function mapStateToProps(state) {
 		return {
-			searchResults: state.songSearchResults
+			searchResults: state.songList,
+			tagList: state.tagList
 		};
 	}
 

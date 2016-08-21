@@ -101,10 +101,10 @@ var UploadForm = React.createClass({
 	},
 
 	handleFileUpload: function(e) {
-			e.preventDefault();
-			
-			var id = e.target.id,
-				reader = new FileReader(),
+		e.preventDefault();
+		
+		var id = e.target.id,
+			reader = new FileReader(),
 			file = e.target.files[0];
 
 		reader.onloadend = () => {
@@ -120,67 +120,67 @@ var UploadForm = React.createClass({
 				});
 			}
 		}
-			reader.readAsDataURL(file);
+		reader.readAsDataURL(file);
 	},
 
 	saveAudioFile: function() {
 		var self = this;
 
-			stemApi.upload({
-					request: {
-							file: this.state.audioFile
-					},
-					success: function (response) {
-			console.log('success!');
-			console.log(JSON.stringify(response, null, 2));
-			self.saveArtFile(response.id);
-					},
-					error: function (response) {
-			console.error(JSON.stringify(response, null, 2));
-						self.setErrorMessage(errorMessage);	
-					}
-			});
+		stemApi.upload({
+			request: {
+				file: this.state.audioFile
+			},
+			success: function (response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+				self.saveArtFile(response.id);
+			},
+			error: function (response) {
+				console.error(JSON.stringify(response, null, 2));
+				self.setErrorMessage(errorMessage);	
+			}
+		});
 	},
 
 	saveArtFile: function(id) {
 		var self = this;
 
-			stemApi.upload({
-					request: {
-					    file: this.state.artFile
-					},
-					success: function (response) {
-			console.log('success!');
-			console.log(JSON.stringify(response, null, 2));
-			self.updateRecord(id, response.id);
-					},
-					error: function (response) {
-			console.error(JSON.stringify(response, null, 2));
-						self.setErrorMessage(errorMessage);	
-					}
-			});
+		stemApi.upload({
+			request: {
+			    file: this.state.artFile
+			},
+			success: function (response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+				self.updateRecord(id, response.id);
+			},
+			error: function (response) {
+				console.error(JSON.stringify(response, null, 2));
+				self.setErrorMessage(errorMessage);	
+				}
+		});
 	},
 
 	updateRecord: function(songId, artId) {
-			stemApi.createSong({
-					request: {
-					artistName: this.state.artistName,
-					songName: this.state.songName,
-					albumName: this.state.albumName,
-					promotionalLink: this.state.promotionalLink,
-					promotionalCopy: this.state.promotionalCopy,
-					albumArtFileId: artId,
-					songFileId: songId
-					},
-					success: function (response) {
-			console.log('success!');
-			console.log(JSON.stringify(response, null, 2));
-					},
-					error: function (response) {
-			console.error(JSON.stringify(response, null, 2));
-						self.setErrorMessage(errorMessage);	
-					}
-			});
+		stemApi.createSong({
+			request: {
+			artistName: this.state.artistName,
+			songName: this.state.songName,
+			albumName: this.state.albumName,
+			promotionalLink: this.state.promotionalLink,
+			promotionalCopy: this.state.promotionalCopy,
+			albumArtFileId: artId,
+			songFileId: songId
+			},
+			success: function (response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+			},
+			error: function (response) {
+				console.error(JSON.stringify(response, null, 2));
+				self.setErrorMessage(errorMessage);	
+			}
+		});
 	},
 
 	render: function () {
