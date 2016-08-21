@@ -61,3 +61,4 @@ assets/jsx/login-test.jsx
 
 # Dependency directory
 node_modules
+assets/scripts/_hold/uploadForm.jsx
