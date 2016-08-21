@@ -9,7 +9,7 @@ const initialState = {
 	userInfo: {},
 	currentPage: 0,
 	tagList: [],
-	songSearchResults: []
+	songList: []
 };
 
 var reducer = function(state, action) {
@@ -37,19 +37,21 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'GoToPage':
-			console.log('action.data = ' + JSON.stringify(action.data));
+			console.log('GoToPage action.data = ' + JSON.stringify(action.data));
 			newState = Object.assign({}, state, {currentPage: action.data.currentPage});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
 		case 'UpdateTagList':
-			console.log('action.data = ' + JSON.stringify(action.data));
+			console.log('UpdateTagList action.data = ' + JSON.stringify(action.data));
 			newState = Object.assign({}, state, {tagList: action.data.tagList, currentPage: 6});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
-		case 'SearchSongs':
-			newState = Object.assign({}, state, { songSearchResults: action.data });
+		case 'UpdateSongList':
+			console.log('UpdateSongList action.data = ' + JSON.stringify(action.data));
+			newState = Object.assign({}, state, { songList: action.data });
+			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
 		default: 
@@ -67,7 +69,8 @@ var AppState = function(state) {
 		isLoggedIn: state.isLoggedIn,
 		userInfo: state.userInfo,
 		currentPage: state.currentPage,
-		tagList: state.tagList
+		tagList: state.tagList,
+		songList: state.songList
 	}
 }
 
@@ -84,8 +87,7 @@ var App = React.createClass({
 			baseAPI: this.props.baseAPI,
 			isLoggedIn: this.props.isLoggedIn,
 			userInfo: this.props.userInfo,
-			currentPage: this.props.currentPage,
-			tagList: this.props.tagList
+			currentPage: this.props.currentPage
 		};
 	},
 
@@ -249,8 +251,7 @@ App.childContextTypes = {
 	baseAPI: React.PropTypes.string,
 	isLoggedIn: React.PropTypes.bool,
 	userInfo: React.PropTypes.object,
-	currentPage: React.PropTypes.number,
-	tagList: React.PropTypes.array
+	currentPage: React.PropTypes.number
 };
 
 App = connect(

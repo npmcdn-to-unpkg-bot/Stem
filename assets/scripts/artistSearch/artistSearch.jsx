@@ -5,10 +5,10 @@ var ArtistSearch = (function() {
 			return (
 				<span>
 					<div className="sidebar search-sidebar-tablet">
-						<ArtistSearchSideBar />
+						<ArtistSearchSideBar tagList={this.props.tagList} />
 					</div>
 					<div className="content-with-sidebar">  
-						<ArtistProfileTable songs={this.props.searchResults} />
+						<ArtistSearchResultsTable songs={this.props.searchResults} />
 					</div>  
 				</span>
 			)
@@ -17,15 +17,14 @@ var ArtistSearch = (function() {
 
 	function mapStateToProps(state) {
 		return {
-			searchResults: state.songSearchResults
+			searchResults: state.songList,
+			tagList: state.tagList
 		};
 	}
 
 	function mapDispatchToProps(dispatch, ownProps) {
 		return {
-			testClicker: function() {
-				//dispatch()
-			}
+			
 		};
 	}
 
