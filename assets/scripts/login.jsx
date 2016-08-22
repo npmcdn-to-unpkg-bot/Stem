@@ -12,7 +12,7 @@ var Login = React.createClass({
 	componentDidMount: function() {
 		var self = this;
 		
-		this.oauthInit();
+		//this.oauthInit();
 		
 		window.fbAsyncInit = function() {
 			FB.init({
@@ -47,26 +47,26 @@ var Login = React.createClass({
 	
 	
 	/////// BEGIN Google+ login
-	oauthInit: function() {		
-		gapi.signin2.render('g-signin2', {
-			'scope': 'profile email',
-			'width': 250,
-			'height': 45,
-			'longtitle': true,
-			'theme': 'light',
-			'onsuccess': this.onSignIn
-		});		
-	},
+	//oauthInit: function() {		
+	//	gapi.signin2.render('g-signin2', {
+	//		'scope': 'profile email',
+	//		'width': 250,
+	//		'height': 45,
+	//		'longtitle': true,
+	//		'theme': 'light',
+	//		'onsuccess': this.onSignIn
+	//	});		
+	//},
 	
-	onSignIn: function(googleUser) {
-		let profile = googleUser.getBasicProfile();
-		console.log('Successful login for: ' + profile.getName);
-		console.log(JSON.stringify(profile, null, 2));
-		
-		this.upsertUser({ 
-			UserName: profile.getEmail()
-		});
-	},
+	//onSignIn: function(googleUser) {
+	//	let profile = googleUser.getBasicProfile();
+	//	console.log('Successful login for: ' + profile.getName);
+	//	console.log(JSON.stringify(profile, null, 2));
+	//	
+	//	this.upsertUser({ 
+	//		UserName: profile.getEmail()
+	//	});
+	//},
 	/////// END Google+ login
 	
 	/////// BEGIN Facebook login 
@@ -98,6 +98,30 @@ var Login = React.createClass({
 		} 
 	},
 	/////// END Facebook login  
+
+	loginGoogle: function() {
+//		var self = this;
+
+//	    $.ajax({
+//            type: 'GET', // rest verb (GET, POST, PUT, DEL)
+//            url:
+	    window.location = this.context.baseAPI + '/authentication/externallogin';
+//            ,
+//            dataType: 'json',
+//            success: function (response) {
+//				console.log('success!');
+//				console.log(JSON.stringify(response, null, 2));
+//				this.setState({ 
+//					currentUser: true
+//				});
+//				self.handleCommitSubmit(response);
+//            },
+//			error: function(response) {
+//				console.log(JSON.stringify(response, null, 2));
+//				self.handleCommitSubmit(response);
+//            }
+//	    });
+	},
 	
 	/////// BEGIN Upsert User with successful Facebook or Google sign in
 	upsertUser: function(user) {
@@ -286,7 +310,7 @@ var Login = React.createClass({
 									</span>
 								</div>
 							</div>
-							<div className="btn-wide" id="g-signin2" data-onsuccess={this.onSignIn} />
+                            <button type="button" onClick={this.loginGoogle}>Sign in to Google</button>
 							<span className="spacer">
 								<h4>or</h4>	
 							</span>

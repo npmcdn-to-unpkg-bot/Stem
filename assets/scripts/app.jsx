@@ -1,10 +1,10 @@
 var createStore = Redux.createStore;
 var Provider = ReactRedux.Provider;
 var connect = ReactRedux.connect;
-var stemApi = new StemApi("http://52.32.255.104/api/");
+var stemApi = new StemApi("http://localhost:9001/api/");
 
 const initialState = {
-	baseAPI: 'http://52.32.255.104/api',
+	baseAPI: 'http://localhost:9001/api',
 	isLoggedIn: false,
 	userInfo: {},
 	currentPage: 0,
