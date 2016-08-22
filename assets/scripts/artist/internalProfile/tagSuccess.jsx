@@ -5,7 +5,7 @@ var ArtistTaggedSuccess = React.createClass({
 
 	render: function() {
 		return(
-			<div className="artist-tag-success modal-background">
+			<div className="artist-tag-success modal-background dark-modal-bg">
 				<div className="modal-box">
 					<div className="tag-success-box-head display-true">
 						<h3 onClick={this.handleClick} className="icon-cancel-circled2 white mar-t-sm mar-r-sm pull-right"></h3>

@@ -86,7 +86,7 @@ var LibraryMain = React.createClass({
 			var selectedClass = this.state.filter === filter ? 'selected' : null;
 
 			return (
-				<li onClick={this.handleFilter}><h4 className={selectedClass}>{filter}</h4></li>
+				<li key={index} onClick={this.handleFilter}><h4 className={selectedClass}>{filter}</h4></li>
 			);
 		}.bind(this));
 	},

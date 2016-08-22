@@ -1,13 +1,18 @@
 var ArtistSearchSideBar = React.createClass({
+		getInitialState: function() {
+			return {
+				tagList: this.props.tagList
+			}
+		},
 
-	removeTag: function(tag) {
-		var tagList = this.context.tagList;
-		console.log(tag);
+		removeTag: function(tag) {
+			var tagList = this.state.tagList;
+			console.log(tag);
 	}, 
 
 	render: function() {
 		var self = this,
-			tagList = this.context.tagList;
+			tagList = this.state.tagList;
 
 		return (
 			<span>
@@ -17,7 +22,7 @@ var ArtistSearchSideBar = React.createClass({
 							return (
 								<li key={i.id} value={i.id}>
 									<button onClick={self.removeTag.bind(self, i)} className="btn artist-search-tags">
-										<h4>{i.name}  <span className="icon-cancel-circled"></span></h4>
+										<h4>{i.name} <span className="icon-cancel-circled"></span></h4>
 									</button>
 								</li>
 							)
@@ -29,7 +34,3 @@ var ArtistSearchSideBar = React.createClass({
 		)
 	}
 });
-
-ArtistSearchSideBar.contextTypes = {
-    tagList: React.PropTypes.array
-};
