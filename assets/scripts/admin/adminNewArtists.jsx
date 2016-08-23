@@ -131,7 +131,7 @@ var AdminNewArtists = React.createClass({
 				<div className="admin-data-pages-chart">
 					<AdminNewArtistsChart />
 				</div>
-				<h3 className="admin-data-pages-title display-inlb primary">Artists</h3>
+				<h3 className="admin-data-pages-title mar-b-lg display-inlb primary">Artists</h3>
 				<h4 className="admin-data-pages-export-link display-inlb secondary">Export All</h4>
 				<AdminNewArtistsTable />
 			</div>
