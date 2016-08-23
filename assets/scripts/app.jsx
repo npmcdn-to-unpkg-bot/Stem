@@ -5,7 +5,12 @@ var stemApi = new StemApi("http://localhost:9001/api/");
 
 const initialState = {
 	baseAPI: 'http://localhost:9001/api',
-	isLoggedIn: false,
+    // FIXME i'm sure there's a better way to do this in react
+	isLoggedIn: (function () {
+                                                           // matches a guid
+	    var uriLoginCookie = location.search.match(/cookie=([a-z0-9]{8}-(?:[a-z0-9]{4}-){3}[a-z0-9]{12})/i);
+	    return uriLoginCookie !== null && uriLoginCookie.length === 2;
+	})(),
 	userInfo: {},
 	currentPage: 0,
 	tagList: [],
