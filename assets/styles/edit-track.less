@@ -1,0 +1,103 @@
+@import url("variables.less");
+
+.edit-track-wrapper {
+  margin-top: -18px;
+  width: 100%;
+}
+.edit-header-detail p {
+  margin-bottom: 0;
+}
+.edit-album-img {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+}
+.edit-content-wrapper {
+  display: inline-block;
+  width: 300px;
+}
+.edit-album-content {
+  display: inline-block;
+  padding-left: 0;
+  padding-right: 0;
+}
+  .edit-list-wrapper {
+	background-color: @grey-6;
+	width: 100%;
+	height: 100%;
+	padding-bottom: @space-md;
+  }
+	.edit-list-wrapper li {
+	  padding: @space-md 0;
+	  width: 100%;
+	}
+		.edit-list-active {
+			background-color: @white;
+		}
+  .edit-album-content ul {
+	width: 100%;
+	background-color: @grey-6;
+  }
+.edit-album-content img {
+  vertical-align: top;
+}
+.edit-track-title h3, .edit-album-content ul, .edit-album-detail, .edit-track-detail, a{
+  display: inline-block;
+}
+  .cancel-function {
+	display: inline-block;
+	color: @grey-3;
+	padding-top: 45px;
+  }
+.edit-track-detail p {
+  line-height: @space-sm;
+  color: @grey-3;
+}
+
+// -- artist album edit --
+.edit-album-detail-wrapper, .edit-song-detail-wrapper {
+  display: inline-block;
+  vertical-align: top;
+}
+	.edit-album-item-active {
+		background-color: @white;
+	}
+.edit-album-form h4, .edit-song-form h4 {
+  font-family: @font-reg;
+}
+.album-edit-img {
+  width: 430px;
+  height: 430px;
+  display: block;
+}
+.edit-album-form input, .edit-song-form input, .edit-song-form select {
+  margin-bottom: @space-md;
+  max-width: 100%;
+}
+span.lyric-link {
+    font-size: 10px;
+}
+.edit-song-form textarea {
+	width: 100%;
+	height: 200px;
+}
+.explicit-check {
+	display: inline;
+	width: 100%;
+	text-align: right;
+}
+	.explicit-check h5 {
+		padding-left: @space-sm;
+	}
+	.explicit-check h5, .explicit-check input{
+		display: inline-block;
+	}
+.edit-song-form button {
+	display: inline;
+}
+.edit-song-form select {
+	width: 100%;
+	color: @grey-3;
+	font-family: @font-reg;
+	display: inline;
+}
