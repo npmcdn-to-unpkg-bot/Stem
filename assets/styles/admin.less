@@ -1,8 +1,5 @@
 @import url("variables.less");
 
-// .header {
-// 	display: none;
-// }
 /* -- Admin Header -- */
 .admin-header {
 	z-index: 3000;
@@ -17,6 +14,41 @@
 	font-family: fancyfont;
 }
 
+/* -- Admin Nav -- */
+.admin-side-nav-main-hidden {
+	display: none;
+}
+.admin-side-nav {
+	width: 340px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	box-shadow: @drop-6;
+	background: white;
+	color: @grey-2;
+	z-index: 4000;
+}
+.admin-cancel {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+.admin-side-nav-image {
+	width: 340px;
+}
+.admin-nav-items li:hover {
+	background: @grey-6;
+	border-left: 5px solid @primary;
+	cursor: pointer;
+}
+.admin-nav-items span {
+	width: 20px;
+	height: 100%;
+}
+.admin-nav-sub-items {
+	padding-left: 65px;
+}
 /* -- Admin Dashboard -- */
 .admin-dash-bottom {
 	width: 100%;
@@ -62,10 +94,10 @@
 }
 /*-- Admin data pages (new submissions, creators, artists) --*/
 .admin-data-pages-title {
-	margin: 0 0 2% 10%;
+	margin-left: 150px;
 }
 .top-title {
-	margin-top: -4%;
+	margin-top: -30px;
 }
 .admin-data-pages-export-link {
 	float: right;

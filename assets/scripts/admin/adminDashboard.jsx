@@ -1,14 +1,3 @@
-var AdminHeader = React.createClass({
-	render: function() {
-		return(
-			<div className="admin-header bg-primary pad-box-sm">
-				<h2 className="thematic-title white mar-l-sm">Thematic</h2>
-				<h2 className="icon-menu pull-right"></h2>
-			</div>
-		)
-	}
-});
-
 var AdminTimelineNav = React.createClass({
 	render: function() {
 		return(
