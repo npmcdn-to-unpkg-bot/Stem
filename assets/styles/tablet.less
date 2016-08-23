@@ -325,7 +325,7 @@
   }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 991px) {
 	.sidebar-hide  {
 		display: none;
 	}
@@ -485,23 +485,24 @@
     .edit-album-detail {
     	padding-left: @space-lg;
   	}
-  .payment-options-page {
-    padding: 9% 3%
-  }
-  .payment-options-content {
-    width: 740px;
-    margin: 0 auto;
-  }
-  .payment-options {
-    width: 240px;
-  }
-  .payment-options:hover {
-    -webkit-transform: scale(1.08);
-    -moz-tranfrom: scale(1.08);
-    transform: scale(1.08);
-  }
-  /* -- Detailed Payment Options -- */
-  .detailed-payment-option {
+	.payment-options-page {
+	    padding: 9% 3%
+    }
+	.payment-options-content {
+	    width: 740px;
+	    margin: 0 auto;
+	}
+	.payment-options {
+	    width: 240px;
+	}
+	.payment-options:hover {
+	    -webkit-transform: scale(1.08);
+	    -moz-tranfrom: scale(1.08);
+	    transform: scale(1.08);
+	}
+
+    /* -- Detailed Payment Options -- */
+    .detailed-payment-option {
 		width: 750px;
 	}
 	.detail-payment-right {
@@ -510,9 +511,45 @@
 	.detail-payment-right button {
 		width: 425px;
 	}
+
 	/* -- Payment Processing Page -- */
 	.payment-processing-page {
 		width: 740px;
+	}
+
+	/* -- Creator Downloads -- */
+	.creator-downloads {
+		width: 760px;
+	}
+	.creator-downloads-songs {
+		width: 360px;
+		height: 180px;
+		margin: 15px 10px;
+	}
+	.creator-downloads-song-img {
+		width: 180px;
+	}
+	.creator-downloads-song-info {
+		width: 180px;
+		padding-left: 10px;
+		h2 {font-size: 1.75em;
+			margin-top: -12px;
+		}
+		h3 {font-size: 1.35em;
+			margin-top: -10px;
+		}
+		h5 {font-size: 0.8em;
+			margin-top: -5px;
+			font-family: @font-reg;
+		}
+		p {
+			font-size: 0.69em;
+			margin-top: -10px;
+			font-family: @font-reg;
+		}
+		.icon-down-circled {
+			margin-left: 8px;
+		}
 	}
 }
 
@@ -538,5 +575,27 @@
 	// -- edit album --
 	.edit-album-content {
 		padding-left: 0;
+	}
+	/* -- Creator Downloads -- */
+	.creator-downloads {
+		width: 980px;
+	}
+	.creator-downloads-songs {
+	width: 450px;
+	height: 225px;
+	}
+	.creator-downloads-song-img {
+	width: 225px;
+	height: 100%;
+	}
+	.creator-downloads-song-info {
+		width: 225px;
+		h2 {font-size: 2em;}
+		h3 {font-size: 1.5em;}
+		h5 {font-size: 1.05em;}
+		p {
+			font-size: 0.8em;
+			margin-top: -10px;
+		}
 	}
 }
