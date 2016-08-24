@@ -75,6 +75,13 @@ var PlaylistTable = React.createClass({
 			this.setState({ displayWelcomeModal: true });
 		}
 	},
+	showHideCreatorDownloads: function() {
+		if(this.state.displayCreatorDownloads) {
+			this.setState({ displayCreatorDownloads: false });
+		} else {
+			this.setState({ displayCreatorDownloads: true });
+		}
+	},
 	handleLike: function (event) {
 		if (event.currentTarget.className == "icon-heart-empty fa-2x" ) {
 	  		event.currentTarget.className = "icon-heart red fa-2x";
@@ -276,6 +283,9 @@ var PlaylistTable = React.createClass({
 				<br />
 				<a onClick={this.showHideWelcomeModal}>show welcome</a>
 				{ this.state.displayWelcomeModal ? <WelcomeModal showHideWelcomeModal={self.showHideWelcomeModal} /> : null }
+				<br />
+				<a onClick={this.showHideCreatorDownloads}>show creator downloads</a>
+				{ this.state.displayCreatorDownloads ? <CreatorDownloads showHideCreatorDownloads={self.showHideCreatorDownloads} /> : null }
 			</div>
 		)
 	}
