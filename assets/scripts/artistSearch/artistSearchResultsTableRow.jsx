@@ -17,7 +17,7 @@ var ArtistSearchResultsTableRow = React.createClass({
                 <td className="col-sm-3 col-md-3 col-lg-3">
                 	<img className="artist-search-album-img col-md-3 col-lg-3" src={song.albumArtUrl} />
                   	<div className="artist-search-album-detail col-xs-12 col-sm-12 col-md-12 col-lg-5">
-                    	<h4>{song.songName}</h4>
+                    	<h4>{song.name}</h4>
                     	<p><a title="navigate to artist's profile" onClick={this.navigateToArtist.bind(this, song)}>{song.artistName}</a></p>
                   	</div>  
                 </td>
