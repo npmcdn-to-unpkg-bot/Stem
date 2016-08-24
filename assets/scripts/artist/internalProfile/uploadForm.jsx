@@ -43,7 +43,9 @@ var UploadForm = React.createClass({
 			promotionalLink: '',
 			promotionalCopy: '',
 			albumArtFileId: 0,
-			songFileId: 0
+			songFileId: 0,
+
+			displayAdditional: false
 		}
 	},
 
@@ -202,7 +204,13 @@ var UploadForm = React.createClass({
 			}.bind(this)
 		});
 	},
-
+	showAdditionalArtist: function() {
+		if (this.state.displayAdditional == false) {
+			this.setState({ displayAdditional: true });
+		} else {
+			this.setState({ displayAdditional: false });
+		}
+	},
 	render: function () {
 		var self = this;
 		return (
@@ -230,7 +238,15 @@ var UploadForm = React.createClass({
 					<div className="col-xs-12">
 						<p>Artist Name</p>
 						<input id="artistName" onChange={this.handleFieldChange} value={this.state.artistName} /> 
-						<a><span className="artist-add-artist-link glyphicon glyphicon-plus-sign"></span> Add Additional Artists</a>
+						<div className={this.state.displayAdditional ? "additional-artist display-true" : "display-false"}>
+							<ul>
+								<li><p>Stevie Wonder<i className="icon-cancel pull-right"></i></p></li>
+								<li><p>Randy Newman<i className="icon-cancel pull-right"></i></p></li>
+								<li><p>Paul Blart<i className="icon-cancel pull-right"></i></p></li>
+								<input placeholder="Add Artist..." />
+							</ul>
+						</div>
+						<a onClick={this.showAdditionalArtist}><span className="artist-add-artist-link glyphicon glyphicon-plus-sign"></span> Add Additional Artists</a>
 					</div> 
 					<div className="col-xs-12">
 						<p>Song Name</p>

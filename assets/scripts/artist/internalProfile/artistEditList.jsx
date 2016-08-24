@@ -12,9 +12,9 @@ var ArtistEditList = React.createClass({
   },
   render: function() {
     return(
-      <div className="edit-album-content col-xs-6">
-          <div onClick={this.albumSelect} className={this.state.activeAlbum ? "edit-list-active pad-t-lg" : "edit-album-item pad-t-lg"}>
-            <img className="edit-album-img mar-r-md mar-l-lg" src="https://i.ytimg.com/vi/ypX5RiWRPIQ/maxresdefault.jpg" />
+      <div className="edit-album-content col-xs-12 col-md-6">
+          <div onClick={this.albumSelect} className={this.state.activeAlbum ? "edit-list-active pad-t-lg pad-b-md" : "edit-album-item pad-t-lg pad-b-md"}>
+            <img className="edit-album-img mar-r-md mar-l-lg mar-b-sm" src="https://i.ytimg.com/vi/ypX5RiWRPIQ/maxresdefault.jpg" />
             <div className="edit-album-detail pad-b-lg">
               <h2>Album Titles Yo!</h2>
               <h3>By: InMemory</h3>
