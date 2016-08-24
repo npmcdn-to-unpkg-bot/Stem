@@ -8,16 +8,17 @@ const initialState = {
 	isLoggedIn: false,
 	userInfo: {},
 	currentPage: 0,
+	pageParams: {},
 	tagList: [],
 	songList: []
 };
 
 var reducer = function(state, action) {
-	if(state === undefined) {
+	if (state === undefined) {
 		return initialState;
 	}
 	var newState = state;
-	switch(action.type) {
+	switch (action.type) {
 		case 'UpdateLoginStatus':
 			newState = Object.assign({}, state, {
 				isLoggedIn: action.data.isLoggedIn,
@@ -38,7 +39,10 @@ var reducer = function(state, action) {
 
 		case 'GoToPage':
 			console.log('GoToPage action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, {currentPage: action.data.currentPage});
+			newState = Object.assign({}, state, {
+				currentPage: action.data.currentPage,
+				pageParams: action.data.pageParams || {}
+			});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
@@ -69,6 +73,7 @@ var AppState = function(state) {
 		isLoggedIn: state.isLoggedIn,
 		userInfo: state.userInfo,
 		currentPage: state.currentPage,
+		pageParams: state.pageParams,
 		tagList: state.tagList,
 		songList: state.songList
 	}
@@ -93,7 +98,8 @@ var App = React.createClass({
 
 	render: function() {
 		var currentPage = this.props.currentPage;
-
+		debugger;
+		
 		return (  
 			<div>  
 
@@ -198,6 +204,13 @@ var App = React.createClass({
 				{ this.props.currentPage == 103 ?
 					<div className="wrapper">
 						<ArtistEditTrack />
+						<Footer />
+					</div>
+				: null}
+
+				{ this.props.currentPage === 110 ? 
+					<div className="wrapper">
+						<ArtistProfile artistId={this.props.pageParams.artistId} />
 						<Footer />
 					</div>
 				: null}

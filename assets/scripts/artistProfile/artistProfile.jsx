@@ -6,11 +6,12 @@ var ArtistProfile = React.createClass({
 		};		 
 	},
 	componentDidMount: function() {
-		var userInfo = this.context.userInfo;
+		var userInfo = this.context.userInfo,
+			artistId = this.props.artistId || this.context.userInfo.id;
 
 		stemApi.getSongsByArtist({
 			request: {
-				artistId: userInfo.id
+				artistId: artistId
 			},
 			success: function(data) {
 				this.setState( { songs: data } );
@@ -19,15 +20,6 @@ var ArtistProfile = React.createClass({
 				console.log('Error occured while fetching songs by artist: ' + error.responseText);
 			}
 		});
-
-		// This is test data, keeping this for now
-		// TODO: Remove me later when we have more test data to work with
-		// var userInfo = {
-		// 	profileName: 'InMemory',
-		// 	bio: 'The best band thats ever had the pleasure of playing instruments on a stage with live people, not dead',
-		// 	profileImageUrl: 'https://a4-images.myspacecdn.com/images03/33/588cae99266a4ae2a9c49c909b02781c/300x300.jpg',
-		// 	bannerImageUrl: 'https://a4-images.myspacecdn.com/images03/33/588cae99266a4ae2a9c49c909b02781c/300x300.jpg'
-		// };
 
 		this.setState({
 			artist: {
