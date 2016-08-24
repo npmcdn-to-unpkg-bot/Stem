@@ -3,12 +3,12 @@ var ArtistProfileTableRow = React.createClass({
 		return {
 	  		red: false
 		};
-  },
+	},
 	handleLike: function (event) {
 		if (event.currentTarget.className == "icon-heart-empty fa-2x" ) {
 	  		event.currentTarget.className = "icon-heart red fa-2x";
 		}
-  },
+  	},
 	render: function() {
 		var song = this.props.song;
 

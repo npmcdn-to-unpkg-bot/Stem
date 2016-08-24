@@ -23,45 +23,6 @@ var LibraryMain = React.createClass({
 				console.log('Error occured while fetching songs by artist: ' + error.responseText);
 			}
 		});
-		
-		// TODO: Remove me when we have more test data to work with
-		// var songs = [{
-		// 	songName: 'Kate is Approved',
-		// 	albumName: 'Bouncing Soul Cocks',
-		// 	duration: '3:25',
-		// 	playCount: 234,
-		// 	uses: 34,
-		// 	status: 'Approved'
-		// },
-		// {
-		// 	songName: 'Kate is Pending',
-		// 	albumName: 'Bouncing Pendings',
-		// 	duration: '3:25',
-		// 	playCount: 234,
-		// 	uses: 34,
-		// 	status: 'Pending'
-		// },
-		// {
-		// 	songName: 'Kate is Disabled',
-		// 	albumName: 'Bouncing Kouls',
-		// 	duration: '3:25',
-		// 	playCount: 234,
-		// 	uses: 34,
-		// 	status: 'Disabled'
-		// },
-		// {
-		// 	songName: 'The Rejected',
-		// 	albumName: 'Rancid',
-		// 	duration: '3:25',
-		// 	playCount: 234,
-		// 	uses: 34,
-		// 	status: 'Rejected'
-		// }];
-
-		// this.setState({
-		// 	songs: songs,
-		// 	displayedSongs: songs
-		// });
 	},
 	handleFilter: function(ev) {
 		var newFilter = ev.currentTarget.innerText.trim();
