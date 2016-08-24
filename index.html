@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -28,6 +28,7 @@
         <link rel="stylesheet/less" type="text/css" href="assets/styles/artist-search.less" />
         <link rel="stylesheet/less" type="text/css" href="assets/styles/artist-internal.less">
         <link rel="stylesheet/less" type="text/css" href="assets/styles/creatorMain.less">
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/creator-profile.less">
         <link rel="stylesheet/less" type="text/css" href="assets/styles/edit-track.less">
 
         <link rel="stylesheet/less" type="text/css" href="assets/styles/banner.less">
@@ -46,7 +47,7 @@
     <body>
         <div id="app" class="content-wrapper"></div> 
 
-        <script type="text/jsx" src="assets/scripts/AutoCompleteTextBox.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/autoCompleteTextBox.jsx"></script>
         
         <!-- JSX Component Files -->
         <script type="text/jsx" src="assets/scripts/header.jsx"> </script>
@@ -81,11 +82,11 @@
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/artistEditAlbum.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/artistEditSong.jsx"> </script>
 
-        <script type="text/jsx" src="assets/scripts/ArtistProfile/ArtistProfileTableHeader.jsx"></script>
-        <script type="text/jsx" src="assets/scripts/ArtistProfile/ArtistProfileTableRow.jsx"></script>
-        <script type="text/jsx" src="assets/scripts/ArtistProfile/ArtistProfileTable.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/ArtistProfile/ArtistProfileHeader.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/ArtistProfile/ArtistProfile.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTableHeader.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTableRow.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTable.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileHeader.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfile.jsx"> </script>
 
         <script type="text/jsx" src="assets/scripts/artist/settings/settingsMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/settings/account.jsx"> </script>
@@ -101,14 +102,23 @@
         <script type="text/jsx" src="assets/scripts/creator/stats.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/creator/timeline.jsx"> </script>
 
+        <!-- Creator Internal -->
         <script type="text/jsx" src="assets/scripts/creator/internalProfile/creatorMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/creator/internalProfile/featuredArtist.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/creator/internalProfile/topAlbums.jsx"> </script>
 
+        <!-- Creator External -->
+        <script type="text/jsx" src="assets/scripts/creator/externalProfile/creatorProfileMain.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/creator/externalProfile/creatorProfileHeader.jsx"> </script> 
+        <script type="text/jsx" src="assets/scripts/creator/externalProfile/creatorProfileYouTube.jsx"> </script> 
+        <script type="text/jsx" src="assets/scripts/creator/externalProfile/creatorProfileTags.jsx"> </script> 
+
         <!-- Artist Search -->
-        <script type="text/jsx" src="assets/scripts/artistSearch/searchMain.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistSearch/artistSearchResultsTableHeader.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/artistSearch/artistSearchResultsTableRow.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/artistSearch/artistSearchResultsTable.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistSearch/artistSearch.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artistSearch/searchSidebar.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artistSearch/searchResults.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artistSearch/searchMobile.jsx"> </script>
 
         <!-- Playlist -->
