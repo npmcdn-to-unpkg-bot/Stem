@@ -3,7 +3,7 @@ var Footer = React.createClass({
     return (
       <div className="footer-wrapper pad-box-sm">
         <ul>
-          <li><a className="brand">Stem</a></li>
+          <li><a className="brand">Thematic</a></li>
           <li>  
             <div>
               <h5>Made with love in Santa Monica, CA</h5>

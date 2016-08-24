@@ -34,6 +34,7 @@ var ArtistProfileHeader = React.createClass({
 					<li><span className="icon-facebook fa-2x"></span></li>
 				</ul>
 			</div>
-		</div>)
+		</div>
+		)
 	}
 });

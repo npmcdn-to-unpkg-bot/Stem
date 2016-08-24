@@ -206,7 +206,7 @@ a.control_next {
     display: block;
     position: relative;
     margin-top: -10px;
-    z-index: 2000;
+    z-index: 3000;
 }
 .filter-menu > div {
     background-color: white;
