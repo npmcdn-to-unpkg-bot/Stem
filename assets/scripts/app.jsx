@@ -98,7 +98,6 @@ var App = React.createClass({
 
 	render: function() {
 		var currentPage = this.props.currentPage;
-		debugger;
 		
 		return (  
 			<div>  
