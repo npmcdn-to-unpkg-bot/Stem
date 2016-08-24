@@ -100,7 +100,6 @@ var Header = (function() {
 								</a>
 								<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
 								<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket error"></i></a>
-								<a href="http://d2pziso4zk2lvf.cloudfront.net/quickLink.html"><i className="icon-guidedog brown"></i></a>
 							</div>
 							{ this.props.isLoggedIn ?  
 								<div className="nav header-nav header-right pull-right">										
