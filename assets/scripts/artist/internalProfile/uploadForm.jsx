@@ -3,13 +3,16 @@ var UploadForm = React.createClass({
 	getInitialState: function() {
 		// Although I'm calling this a Promise, it most certainly is not and should be replaced by an actual one later
 		var albumNamesPromise = function(success, fail) {
-			stemApi.getAlbumNamesByArtist({
+			stemApi.getAlbumsByArtist({
 				request: {
 					artistId: this.context.userInfo.id
 				},
 				success: function (response) {
-					success(response);
-				},
+					this.setState({ albums: response });
+					success(response.map(function(item) {
+						return item.name; 
+					}));
+				}.bind(this),
 
 				error: function (response) {
 					console.error(JSON.stringify(response, null, 2));
@@ -162,24 +165,41 @@ var UploadForm = React.createClass({
 	},
 
 	updateRecord: function(songId, artId) {
-		stemApi.createSong({
+
+		stemApi.createAlbum({
 			request: {
-			artistName: this.state.artistName,
-			songName: this.state.songName,
-			albumName: this.state.albumName,
-			promotionalLink: this.state.promotionalLink,
-			promotionalCopy: this.state.promotionalCopy,
-			albumArtFileId: artId,
-			songFileId: songId
+				name: this.state.albumName,
+				artFileId: artId,
+				releaseDate: new Date()
 			},
 			success: function (response) {
 				console.log('success!');
+
+				stemApi.createSong({
+					request: {
+						albumId: response.id,
+						artistName: this.state.artistName,
+						name: this.state.songName,
+						trackNumber: 1, // TODO: Update this to actually calculate the correct track number
+						songFileId: songId
+					},
+					success: function (response) {
+						console.log('success!');
+						console.log(JSON.stringify(response, null, 2));
+					},
+					error: function (response) {
+						console.error(JSON.stringify(response, null, 2));
+						this.setErrorMessage(errorMessage);	
+					}.bind(this)
+				});
+
 				console.log(JSON.stringify(response, null, 2));
-			},
+			
+			}.bind(this),
 			error: function (response) {
 				console.error(JSON.stringify(response, null, 2));
-				self.setErrorMessage(errorMessage);	
-			}
+				this.setErrorMessage(errorMessage);	
+			}.bind(this)
 		});
 	},
 
