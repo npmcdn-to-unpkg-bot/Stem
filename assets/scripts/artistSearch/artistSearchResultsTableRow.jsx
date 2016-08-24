@@ -31,7 +31,7 @@ var ArtistSearchResultsTableRow = React.createClass({
                 </td>
 
                 <td className="col-lg-2">
-                	<h4>{song.playCount}</h4>              
+                	<h4>{song.downloadCount}</h4>              
                 </td>
 
                 <td className="col-lg-2">
