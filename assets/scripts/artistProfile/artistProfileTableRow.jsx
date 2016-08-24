@@ -11,7 +11,6 @@ var ArtistProfileTableRow = React.createClass({
   },
 	render: function() {
 		var song = this.props.song;
-		debugger;
 
 		return (
 			<tr>
