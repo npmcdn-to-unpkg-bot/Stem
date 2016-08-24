@@ -170,6 +170,13 @@ var App = React.createClass({
 					</div>
 				: null} 
 
+				{ this.props.currentPage == 9 ?
+					<div className="wrapper">
+						<CreatorProfileMain />
+						<Footer />
+					</div>
+				: null} 
+
 				{ this.props.currentPage == 100 ?
 					<div className="wrapper">
 						<WhoAreYou />
@@ -243,6 +250,11 @@ var artistMenu = [
 	{
 		pageID: 8,
 		text: "Creator Home",
+		icon: "icon-home"
+	},
+	{
+		pageID: 9,
+		text: "Creator Profile",
 		icon: "icon-home"
 	}
 ]; 

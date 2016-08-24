@@ -96,7 +96,7 @@ var Header = (function() {
 						<div className="header-content">
 							<div className="header-brand pull-left">         
 								<a onClick={this.navigate.bind(this, 0)} className="brand">
-									Stem
+									Thematic
 								</a>
 								<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
 								<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket error"></i></a>
