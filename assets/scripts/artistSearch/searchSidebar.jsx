@@ -29,7 +29,6 @@ var ArtistSearchSideBar = React.createClass({
                         }) }
                     </ul>
                 : null }
-				<ArtistSearchMobileView />
 			</span>  
 		)
 	}

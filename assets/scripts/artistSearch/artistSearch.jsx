@@ -7,13 +7,17 @@ var ArtistSearch = (function() {
 					<div className="sidebar search-sidebar-tablet">
 						<ArtistSearchSideBar tagList={this.props.tagList} />
 					</div>
-					<div className="content-with-sidebar">  
+					<div className="content-with-sidebar">
+						<ArtistSearchNoResultsHeader /> 
 						<ArtistSearchResultsTable songs={this.props.searchResults} />
+						<ArtistSearchMobileView />
 					</div>  
 				</span>
 			)
 		}
 	});
+
+	//Make function to display top 10 bookmarked songs if search results come back empty
 
 	function mapStateToProps(state) {
 		return {
