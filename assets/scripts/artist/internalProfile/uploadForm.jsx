@@ -139,6 +139,7 @@ var UploadForm = React.createClass({
 		reader.readAsDataURL(file);
 	},
 
+	// TODO: This is for the image upload control
 	handleImageChange: function(imageURL) {
 		this.setState({
 			artFile: imageURL
@@ -291,7 +292,26 @@ var UploadForm = React.createClass({
 					</div>
 				</div>
 				<div className="col-xs-12 col-lg-6 row no-gutters">
-					<ImageUpload onImageChange={this.handleImageChange} />
+					<div className="album-art-box col-xs-12">
+						<div className="upload lg text-center">
+							{this.state.artFileURL ? 
+								<div className="upload-label update">
+									<h3>Upload your album art</h3>
+									<p>Recommended size: 1000x1000</p>
+									<p>Full Size Limit: xMB</p>
+								</div>
+							:
+								<div className="upload-label">
+									<h3>Upload your album art</h3>
+									<p>Recommended size: 1000x1000</p>
+									<p>Full Size Limit: xMB</p>
+								</div>
+							}
+							<img src={this.state.artFileURL} />
+							<input onChange={this.handleFileUpload} disabled={this.state.selectedAlbum.id} type="file" name="artFileURL" id="artFile" />
+							
+						</div>
+					</div>
 				</div>
 				<div className="artist-upload col-xs-12">
 					<p>Promotional Copy ( you can edit this later )</p>
