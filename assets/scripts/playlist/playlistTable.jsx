@@ -7,6 +7,7 @@ var PlaylistTable = React.createClass({
 			displayAdmin: false,
 			displayArtistTaggedSuccess: false,
 			displayUploadSuccess: false,
+			displaySongDetail: false,
 			red: false
 		}
 	},
@@ -80,6 +81,13 @@ var PlaylistTable = React.createClass({
 			this.setState({ displayCreatorDownloads: false });
 		} else {
 			this.setState({ displayCreatorDownloads: true });
+		}
+	},
+	showHideSongDetail: function() {
+		if(this.state.displaySongDetail) {
+			this.setState({ displaySongDetail: false });
+		} else {
+			this.setState({ displaySongDetail: true });
 		}
 	},
 	handleLike: function (event) {
@@ -286,6 +294,9 @@ var PlaylistTable = React.createClass({
 				<br />
 				<a onClick={this.showHideCreatorDownloads}>show creator downloads</a>
 				{ this.state.displayCreatorDownloads ? <CreatorDownloads showHideCreatorDownloads={self.showHideCreatorDownloads} /> : null }
+				<br />
+				<a onClick={this.showHideSongDetail}>show song detail</a>
+				{ this.state.displaySongDetail ? <ArtistSongDetail showHideSongDetail={self.showHideSongDetail} /> : null }
 			</div>
 		)
 	}

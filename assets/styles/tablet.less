@@ -332,6 +332,11 @@
   .top-album-wrapper {
     padding-top: @space-lg;
   }
+  .creator-love-img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+	}
 }
 
 @media (max-width: 991px) {
@@ -560,6 +565,15 @@
 			margin-left: 8px;
 		}
 	}
+	.creator-love-wrapper ul li:nth-child(7), .creator-love-wrapper ul li:nth-child(8), {
+		display: none;
+	}	
+	 .creator-love-wrapper ul li:nth-child(4), .creator-love-wrapper ul li:nth-child(5), 
+	 .creator-love-wrapper ul li:nth-child(6), .creator-love-wrapper ul li:nth-child(7), 
+	 .creator-love-wrapper ul li:nth-child(8), {
+    display: none;
+  }
+
 	/* -- Artist Search No Results -- */
 	.artist-search-no-results-header {
 		width: 700px;
@@ -623,6 +637,7 @@
 			margin-top: -10px;
 		}
 	}
+
 	/* -- Artist Search Results -- */
 	.artist-search-no-results-header {
 		width: 650px;
@@ -631,8 +646,8 @@
 		font-size: 1.1em;
 	}
 	.artist-search-album-img  {
-	width: 85px;
-	height: 85px;
-	margin-top: @space-sm;
-}
+		width: 85px;
+		height: 85px;
+		margin-top: @space-sm;
+	}
 }

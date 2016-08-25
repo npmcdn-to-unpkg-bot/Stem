@@ -18,6 +18,7 @@ var ArtistSongDetail = React.createClass({
         <div className="pad-box-lg">
           <SongDetailChart />
           <CreatorLove />
+          <CreatorProfileYouTube />
         </div>  
       </div> 
     )

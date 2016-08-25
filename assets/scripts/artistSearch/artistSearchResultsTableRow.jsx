@@ -29,11 +29,9 @@ var ArtistSearchResultsTableRow = React.createClass({
                 <td className="artist-search-table-stats col-s-1">
                 	<h4>{song.duration}</h4>              
                 </td>
-
-                <td className="artist-search-table-stats col-s-1">
-                	<h4>{song.playcount}</h4>             
+                <td className="col-lg-2">
+                	<h4>{song.playcount}</h4>              
                 </td>
-
                 <td className="col-s-1 table-icons">
 					<a><span className="icon-heart-empty fa-2x"></span></a>             
                 </td>
