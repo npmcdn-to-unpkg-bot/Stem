@@ -154,7 +154,26 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    }
+    },
+
+    StemApi.prototype.createAlbum = function (rse) {
+        var _this = this;
+        $.ajax({
+            type: 'POST',
+            url: _this.baseUrl + 'album',
+            headers: { 'Authorization': _this.authorization },
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(rse.request),
+            dataType: 'json',
+            error: function (response) {
+                rse.error(response);
+            },
+            success: function (response) {
+                rse.success(response);
+            }
+        });
+    },
+
     StemApi.prototype.updateSong = function (rse) {
         var _this = this;
         $.ajax({
@@ -171,7 +190,8 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    }
+    },
+
     StemApi.prototype.getSong = function (rse) {
         var _this = this;
         $.ajax({
@@ -191,7 +211,7 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'GET',
-            url: _this.baseUrl + 'song/artist/' + rse.request.artistId,
+            url: _this.baseUrl + 'song/byartist/' + rse.request.artistId,
             headers: { 'Authorization': _this.authorization },
             contentType: "application/json; charset=utf-8",
             error: function (response) {
@@ -202,11 +222,11 @@ var StemApi = (function () {
             }
         });
     }
-    StemApi.prototype.getAlbumNamesByArtist = function (rse) {
+    StemApi.prototype.getAlbumsByArtist = function (rse) {
         var _this = this;
         $.ajax({
             type: 'GET',
-            url: _this.baseUrl + 'song/artist/' + rse.request.artistId + "/albums",
+            url: _this.baseUrl + 'album/byartist/' + rse.request.artistId,
             headers: { 'Authorization': _this.authorization },
             contentType: "application/json; charset=utf-8",
             error: function (response) {

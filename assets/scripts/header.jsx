@@ -84,9 +84,9 @@ var Header = (function() {
 				filteredSongList = [],
             	searchString = this.state.searchString.trim().toLowerCase();
 
-	        if(searchString.length > 0){
-	            filteredSongList = songList.filter(function(l){
-	                return l.songName.toLowerCase().match( searchString );
+	        if (searchString.length > 0) {
+	            filteredSongList = songList.filter(function(song) {
+	                return song.name.toLowerCase().match( searchString );
 	            });
 	        }
 
@@ -100,7 +100,6 @@ var Header = (function() {
 								</a>
 								<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
 								<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket error"></i></a>
-								<a href="http://d2pziso4zk2lvf.cloudfront.net/quickLink.html"><i className="icon-guidedog brown"></i></a>
 							</div>
 							{ this.props.isLoggedIn ?  
 								<div className="nav header-nav header-right pull-right">										
@@ -113,7 +112,7 @@ var Header = (function() {
 													<span className="open">
 									                    <ul className="dropdown-menu"> 
 									                        { filteredSongList.map(function(item, index){
-																return <SongListItem key={index} songID={item.id} songName={item.songName} selectSong={self.selectSong} />;
+																return <SongListItem key={index} songID={item.id} songName={item.name} selectSong={self.selectSong} />;
 									                        }) }
 									                    </ul>
 								                    </span>
