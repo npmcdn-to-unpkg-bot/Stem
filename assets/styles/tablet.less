@@ -226,7 +226,7 @@
 
 	/*-- Artist Search -- */
 	.artist-search-table-wrapper {
-		// display: none;
+		display: none;
 	}
 	.artist-search-tags-list li {
 		display: inline-block;
@@ -241,6 +241,8 @@
 	.artist-search-mobile-view-wrapper {
 		display: block;
 		background-color: white;
+		position: relative;
+		margin: 0 auto;
 
 		li {
 			border-bottom: 1px solid lightgrey;
@@ -558,6 +560,22 @@
 			margin-left: 8px;
 		}
 	}
+	/* -- Artist Search No Results -- */
+	.artist-search-no-results-header {
+		width: 700px;
+	}
+	.artist-search-no-results-suggestions img {
+		width: 90px;
+		height: 90px;
+	}
+	.artist-search-table-track-artist {
+		h3 {
+			font-size: 1.35em;
+		}
+		h5 {
+			font-size: 0.9em;
+		}
+	}
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -603,6 +621,22 @@
 		p {
 			font-size: 0.8em;
 			margin-top: -10px;
+		}
+	}
+	/* -- Artist Search No Results -- */
+	.artist-search-no-results-header {
+		width: 650px;
+	}
+	.artist-search-no-results-suggestions img {
+		width: 80px;
+		height: 80px;
+	}
+	.artist-search-table-track-artist {
+		h3 {
+			font-size: 1.35em;
+		}
+		h5 {
+			font-size: 0.9em;
 		}
 	}
 }
