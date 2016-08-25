@@ -13,37 +13,33 @@ var ArtistSearchResultsTableRow = React.createClass({
 	render: function() {
 		var song = this.props.song;
 		return (
-			<tr>
-                <td className="col-sm-3 col-md-3 col-lg-2">
-                	<img className="artist-search-album-img col-md-3 col-lg-3" src={song.albumArtUrl} />
-                  	<div className="artist-search-album-detail col-xs-12 col-sm-12 col-md-12 col-lg-5">
+			<tr className="artist-search-table-row">
+                <td className="artist-search-track-artist col-sm-4">
+                	<img className="artist-search-album-img display-inlb" src={song.albumArtUrl} />
+                  	<div className="artist-search-album-detail display-inlb">
                     	<h4>{song.name}</h4>
                     	<p><a title="navigate to artist's profile" onClick={this.navigateToArtist.bind(this, song)}>{song.artistName}</a></p>
                   	</div>  
                 </td>
 
-                <td className="col-lg-2">
+                <td className="artist-search-table-stats col-s-3">
                 	<h4>{song.albumName}</h4>              
                 </td>
 
-                <td className="col-lg-2">
+                <td className="artist-search-table-stats col-s-1">
                 	<h4>{song.duration}</h4>              
                 </td>
 
-                <td className="col-lg-2">
-<<<<<<< HEAD
-                	<h4>{song.playcount}</h4>              
-=======
-                	<h4>{song.downloadCount}</h4>              
->>>>>>> stage
+                <td className="artist-search-table-stats col-s-1">
+                	<h4>{song.playcount}</h4>             
                 </td>
 
-                <td className="col-lg-2">
-					<a><span className="icon-heart-empty"></span></a>             
+                <td className="col-s-1 table-icons">
+					<a><span className="icon-heart-empty fa-2x"></span></a>             
                 </td>
 
-                <td className="col-lg-2">
-					<a><span className="glyphicon icon-download-circled"></span></a>
+                <td className="col-s-1 table-icons">
+					<a><span className="icon-down-circled fa-2x"></span></a>
                 </td>
             </tr> );
 	}

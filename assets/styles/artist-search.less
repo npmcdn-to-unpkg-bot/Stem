@@ -18,18 +18,37 @@
 	border: none;
 	padding: 0;
 }
-.artist-search-album-detail {
-	margin-top: 25px;
-	margin-left: 20px;
+.artist-search-table-row {
+	color: @grey-2;
+	font-family: @font-reg;
+}
+.artist-search-track-artist {
 	padding-left: 0;
+}
+.artist-search-album-detail {
+	width: 130px;
+	white-space: normal;
+	vertical-align: middle;
+	margin-left: @space-sm;
+	padding-left: 0;
+	h4 {
+		font-size: 1.3em;
+		font-family: @font-md
+	}
 }
 .artist-search-album-img  {
 	width: 100px;
-	padding: 0 15px 0 0;
-	margin-left: 15px;
+	height: 100px;
+	margin-top: @space-sm;
 }
 .artist-search-table-header-items {
 	padding-left: 0;
+}
+.table-icons {
+	text-align: center;
+	a {
+		color: @grey-2;
+	}
 }
 .artist-search-mobile-view-wrapper {
 	margin-top: 40px;
@@ -79,14 +98,4 @@
     margin: 0;
     padding: 0; 
   }
-}
-.artist-search-no-results-suggestions img {
-	width: 100px;
-	height: 100px;
-}
-.artist-search-no-results-suggestions td, .artist-search-no-results-suggestions th {
-	padding: @space-sm;
-}
-.table-icons {
-	text-align: center
 }
