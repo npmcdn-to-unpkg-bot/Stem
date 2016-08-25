@@ -8,7 +8,7 @@ var ImageUpload = React.createClass({
 		};
 	}, 
 	componentDidMount: function() {
-		$('#' + this.getId()).cropper({
+		$('#' + this.state.imgTagId).cropper({
 			guides: false,
 			center: true,
 			background: false,
@@ -24,8 +24,6 @@ var ImageUpload = React.createClass({
 		}.bind(this));
 	},
 	
-		return this.props.id ? this.props.id : this.state.id;
-	},
 	handleChangeFile: function(ev) {
 		var fileReader = new FileReader(),
 			file = ev.target.files[0];
@@ -49,30 +47,10 @@ var ImageUpload = React.createClass({
 		};
 
 		return (
-			<div className="album-art-box col-xs-12">
-				<div>
-					<input 
-					<input onChange={this.handleChangeFile} type="file" />
-				</div>
-				<div className="upload lg text-center">
-					{ this.state.imageLoaded ? 
-						<div className="upload-label update">
-							<h3>Upload your album art</h3>
-							<p>Recommended size: 1000x1000</p>
-							<p>Full Size Limit: xMB</p>
-						</div>
-					:
-						<div className="upload-label">
-							<h3>Upload your album art</h3>
-							<p>Recommended size: 1000x1000</p>
-							<p>Full Size Limit: xMB</p>
-						</div>
-					}
-					<img id={this.state.imgTagId} style={imageStyles} />
-				</div>
-				
-			</div>
-		);
+			<div>
+				<img id={this.state.imgTagId} style={imageStyles} />
+				<input onChange={this.handleChangeFile} type="file" />
+			</div>);
 	}
 });
 
