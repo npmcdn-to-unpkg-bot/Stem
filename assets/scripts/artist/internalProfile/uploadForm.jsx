@@ -139,6 +139,12 @@ var UploadForm = React.createClass({
 		reader.readAsDataURL(file);
 	},
 
+	handleImageChange: function(imageURL) {
+		this.setState({
+			artFile: imageURL
+		});
+	},
+
 	saveAudioFile: function() {
 		stemApi.upload({
 			request: {
@@ -285,8 +291,7 @@ var UploadForm = React.createClass({
 					</div>
 				</div>
 				<div className="col-xs-12 col-lg-6 row no-gutters">
-					<div className="album-art-box col-xs-12">
-					<ImageUpload />
+					<ImageUpload onImageChange={this.handleImageChange} />
 				</div>
 				<div className="artist-upload col-xs-12">
 					<p>Promotional Copy ( you can edit this later )</p>
