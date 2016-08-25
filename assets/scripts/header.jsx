@@ -84,9 +84,9 @@ var Header = (function() {
 				filteredSongList = [],
             	searchString = this.state.searchString.trim().toLowerCase();
 
-	        if(searchString.length > 0){
-	            filteredSongList = songList.filter(function(l){
-	                return l.songName.toLowerCase().match( searchString );
+	        if (searchString.length > 0) {
+	            filteredSongList = songList.filter(function(song) {
+	                return song.name.toLowerCase().match( searchString );
 	            });
 	        }
 
@@ -112,7 +112,7 @@ var Header = (function() {
 													<span className="open">
 									                    <ul className="dropdown-menu"> 
 									                        { filteredSongList.map(function(item, index){
-																return <SongListItem key={index} songID={item.id} songName={item.songName} selectSong={self.selectSong} />;
+																return <SongListItem key={index} songID={item.id} songName={item.name} selectSong={self.selectSong} />;
 									                        }) }
 									                    </ul>
 								                    </span>
