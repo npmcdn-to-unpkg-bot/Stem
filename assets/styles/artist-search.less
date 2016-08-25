@@ -8,26 +8,94 @@
 	margin: 10px;
 	border-radius: 0px;
 }
+.artist-search-results-table-header {
+	color: @grey-3;
+	padding-left: @space-md;
+	border-bottom: 2px solid @grey-5;
+}
 .artist-search-tags-list li {
 	text-align: left;
 	border: none;
 	padding: 0;
 }
-.artist-search-album-detail {
-	margin-top: 25px;
-	margin-left: 20px;
+.artist-search-table-row {
+	color: @grey-2;
+	font-family: @font-reg;
+}
+.artist-search-track-artist {
 	padding-left: 0;
+}
+.artist-search-album-detail {
+	width: 130px;
+	white-space: normal;
+	vertical-align: middle;
+	margin-left: @space-sm;
+	padding-left: 0;
+	h4 {
+		font-size: 1.3em;
+		font-family: @font-md
+	}
 }
 .artist-search-album-img  {
 	width: 100px;
-	padding: 0 15px 0 0;
-	margin-left: 15px;
+	height: 100px;
+	margin-top: @space-sm;
 }
-.artist-search-table-header-items h4 {
-	margin: 10px 0 30px;
+.artist-search-table-header-items {
+	padding-left: 0;
+}
+.table-icons {
+	text-align: center;
+	a {
+		color: @grey-2;
+	}
 }
 .artist-search-mobile-view-wrapper {
 	margin-top: 40px;
 	position: absolute;
 	display: none;
+}
+.artist-search-no-results-header {
+	width: 775px;
+	margin: @space-sm auto;
+	text-align: center;
+	color: @white;
+	h4 {
+		font-family: @font-reg
+	}
+}
+#hide-me {
+  -webkit-animation: hide 1.0s forwards;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 7s;
+  animation: hide 1.0s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 7s;
+  position: relative;
+}
+@-webkit-keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0; 
+  }
+}
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0; 
+  }
 }

@@ -322,6 +322,24 @@
       display: none;
     }
   }
+
+  /* -- Artist Search No Results -- */
+  .artist-search-no-results {
+    padding: 0;
+  }
+  .artist-search-no-results-header {
+    width: 300px;
+    h2 {
+      font-size: 2em;
+    }
+    h4 {
+      font-size: 1em;
+    }
+  }
+  .artist-search-no-results-suggestions img {
+    width: 70px;
+    height: 70px;
+
   // -- song detail --
   .song-detail-img {
     width: 80px;
@@ -331,8 +349,16 @@
     font-size: 25px;
     padding-right: @space-md;
   }
-  .song-detail-icons {
-    // padding-right: @space-md;
+  .creator-love-wrapper ul li:nth-child(4), .creator-love-wrapper ul li:nth-child(5), .creator-love-wrapper ul li:nth-child(6), .creator-love-wrapper ul li:nth-child(7), .creator-love-wrapper ul li:nth-child(8), {
+    display: none;
+  }
+  .creator-love-img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+  }
+  .creator-love-wrapper ul li {
+    padding: 10px;
   }
 }
 
@@ -549,6 +575,16 @@
       margin-top: @space-md;
     }
   }
+
+  /* -- Artist Search No Results -- */
+  .artist-search-no-results-header {
+    width: 400px;
+    h2 {
+      font-size: 2em;
+    }
+    h4 {
+      font-size: 1em;
+    }
+  }
 }
-
-
+}
