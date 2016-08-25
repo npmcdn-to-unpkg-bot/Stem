@@ -21,9 +21,10 @@ var AutoCompleteTextBox = React.createClass({
 		if (typeof options === 'function') {
 			options(function(response) {
 				$('#' + id).autocomplete({
-					source: response
+					source: response,
+					change: this.props.onChange
 				});
-			});
+			}.bind(this));
 		}
 	},
 
@@ -33,7 +34,7 @@ var AutoCompleteTextBox = React.createClass({
 
 	render: function() {
 		return (
-			<input id={this.getId()} onChange={this.props.onChange} type="text" />
+			<input id={this.getId()} type="text" />
 		);
 	}
 });

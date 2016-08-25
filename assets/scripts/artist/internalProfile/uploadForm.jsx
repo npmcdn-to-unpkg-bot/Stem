@@ -31,7 +31,9 @@ var UploadForm = React.createClass({
 			errorMessage: '',
 			albumListVisible: false,
 			albumSelection: '',
+			albums: [],
 			albumNamesPromise: albumNamesPromise.bind(this),
+			selectedAlbum: {},
 			
 			audioFile: undefined,
 			audioFileName: '',
@@ -98,10 +100,19 @@ var UploadForm = React.createClass({
 
 	handleFieldChange: function(e) {
 		var id = e.target.id;
-			this.setState({
-				[id]: e.target.value
-			});
 		
+		this.setState({
+			[id]: e.target.value
+		});
+
+		if (id === 'albumName') {
+			this.setState({ 
+				selectedAlbum: this.state.albums.find(function(item) {
+					return item.name === e.target.value;
+				}) || {}
+			});
+		}
+
 		console.log(id); 
 	},
 
@@ -129,8 +140,6 @@ var UploadForm = React.createClass({
 	},
 
 	saveAudioFile: function() {
-		var self = this;
-
 		stemApi.upload({
 			request: {
 				file: this.state.audioFile
@@ -138,12 +147,17 @@ var UploadForm = React.createClass({
 			success: function (response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
-				self.saveArtFile(response.id);
-			},
+
+				if (!this.state.selectedAlbum.id) { 
+					this.saveArtFile(response.id);
+				} else {
+					this.updateRecord(response.id, undefined);
+				}
+			}.bind(this),
 			error: function (response) {
 				console.error(JSON.stringify(response, null, 2));
-				self.setErrorMessage(errorMessage);	
-			}
+				this.setErrorMessage(errorMessage);	
+			}.bind(this)
 		});
 	},
 
@@ -166,7 +180,32 @@ var UploadForm = React.createClass({
 		});
 	},
 
-	updateRecord: function(songId, artId) {
+	createSong: function(albumId, songFileId) {
+		stemApi.createSong({
+			request: {
+				albumId: albumId,
+				artistName: this.state.artistName,
+				name: this.state.songName,
+				trackNumber: 1, // TODO: Update this to actually calculate the correct track number
+				songFileId: songFileId
+			},
+			success: function (response) {
+				console.log('success!');
+				console.log(JSON.stringify(response, null, 2));
+			},
+			error: function (response) {
+				console.error(JSON.stringify(response, null, 2));
+				this.setErrorMessage(errorMessage);	
+			}.bind(this)
+		});
+	},
+
+	updateRecord: function(songFileId, artId) {
+
+		if (this.state.selectedAlbum.id) {
+			this.createSong(this.state.selectedAlbum.id, songFileId);
+			return;
+		}
 
 		stemApi.createAlbum({
 			request: {
@@ -177,23 +216,7 @@ var UploadForm = React.createClass({
 			success: function (response) {
 				console.log('success!');
 
-				stemApi.createSong({
-					request: {
-						albumId: response.id,
-						artistName: this.state.artistName,
-						name: this.state.songName,
-						trackNumber: 1, // TODO: Update this to actually calculate the correct track number
-						songFileId: songId
-					},
-					success: function (response) {
-						console.log('success!');
-						console.log(JSON.stringify(response, null, 2));
-					},
-					error: function (response) {
-						console.error(JSON.stringify(response, null, 2));
-						this.setErrorMessage(errorMessage);	
-					}.bind(this)
-				});
+				this.createSong(response.id, songFileId);
 
 				console.log(JSON.stringify(response, null, 2));
 			
@@ -277,8 +300,8 @@ var UploadForm = React.createClass({
 									<p>Full Size Limit: xMB</p>
 								</div>
 							}
-							<img src={this.state.artFileURL} />
-							<input onChange={this.handleFileUpload} type="file" name="artFileURL" id="artFile" />
+							<img src={this.state.selectedAlbum.albumArtUrl} />
+							<input onChange={this.handleFileUpload} disabled={this.state.selectedAlbum.id} type="file" name="artFileURL" id="artFile" />
 						</div>
 					</div>
 				</div>
