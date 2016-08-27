@@ -8,9 +8,10 @@ var ArtistSearch = (function() {
 						<ArtistSearchSideBar tagList={this.props.tagList} />
 					</div>
 					<div className="content-with-sidebar">
-						<ArtistSearchNoResultsHeader /> 
-						<ArtistSearchResultsTable songs={this.props.searchResults} />
-						<ArtistSearchMobileView />
+						{ this.props.searchResults.length === 0 ? 
+							<ArtistSearchNoResultsHeader /> : 
+							<ArtistSearchResultsTable songs={this.props.searchResults} />
+						}
 					</div>  
 				</span>
 			)
@@ -21,7 +22,7 @@ var ArtistSearch = (function() {
 
 	function mapStateToProps(state) {
 		return {
-			searchResults: state.songList,
+			searchResults: state.searchResults,
 			tagList: state.tagList
 		};
 	}

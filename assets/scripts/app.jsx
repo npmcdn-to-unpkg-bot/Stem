@@ -10,7 +10,7 @@ const initialState = {
 	currentPage: 0,
 	pageParams: {},
 	tagList: [],
-	songList: []
+	searchResults: []
 };
 
 var reducer = function(state, action) {
@@ -48,13 +48,13 @@ var reducer = function(state, action) {
 
 		case 'UpdateTagList':
 			console.log('UpdateTagList action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, {tagList: action.data.tagList, currentPage: 6});
+			newState = Object.assign({}, state, {tagList: action.data, currentPage: 6});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
-		case 'UpdateSongList':
-			console.log('UpdateSongList action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, { songList: action.data });
+		case 'UpdateSearchResults':
+			console.log('UpdateSearchResults action.data = ' + JSON.stringify(action.data));
+			newState = Object.assign({}, state, { searchResults: action.data });
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
@@ -75,7 +75,7 @@ var AppState = function(state) {
 		currentPage: state.currentPage,
 		pageParams: state.pageParams,
 		tagList: state.tagList,
-		songList: state.songList
+		searchResults: state.searchResults
 	}
 }
 
