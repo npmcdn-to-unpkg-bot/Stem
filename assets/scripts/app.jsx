@@ -1,7 +1,9 @@
-var createStore = Redux.createStore;
-var Provider = ReactRedux.Provider;
-var connect = ReactRedux.connect;
-var stemApi = new StemApi("http://52.32.255.104/api/");
+var createStore = Redux.createStore,
+	applyMiddleware = Redux.applyMiddleware,
+	Provider = ReactRedux.Provider,
+	connect = ReactRedux.connect,
+	stemApi = new StemApi("http://52.32.255.104/api/"),
+	thunk = ReduxThunk.default;
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
@@ -9,9 +11,33 @@ const initialState = {
 	userInfo: {},
 	currentPage: 0,
 	pageParams: {},
-	tagList: [],
+	searchTerms: '',
 	searchResults: []
 };
+
+// Thunk Action Creator, for having actions that have side effects such as AJAX calls
+function beginSearch(searchTerms) {
+	return function(dispatch) {
+		stemApi.searchSongs({
+            request: {
+                text: searchTerms
+            }
+        })
+		.then(function(response) {
+			dispatch({
+            	type: 'UpdateSearch',
+            	data: {
+            		results: response.songs,
+            		terms: response.terms.join(' '),
+            		// We automatically navigate to the artist search page when a search is initiated
+            		currentPage: 6
+            	}
+	        });
+		}, function(error) {
+			console.error(JSON.stringify(response, null, 2));
+		});
+	};
+}
 
 var reducer = function(state, action) {
 	if (state === undefined) {
@@ -46,16 +72,12 @@ var reducer = function(state, action) {
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
-		case 'UpdateTagList':
-			console.log('UpdateTagList action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, {tagList: action.data, currentPage: 6});
-			console.log('newState = ' + JSON.stringify(newState));
-			return newState;
-
-		case 'UpdateSearchResults':
-			console.log('UpdateSearchResults action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, { searchResults: action.data });
-			console.log('newState = ' + JSON.stringify(newState));
+		case 'UpdateSearch':
+			newState = Object.assign({}, state, { 
+				searchResults: action.data.results,
+				searchTerms: action.data.terms,
+				currentPage: action.data.currentPage
+			});
 			return newState;
 
 		default: 
@@ -65,7 +87,9 @@ var reducer = function(state, action) {
 	return newState;
 }
 
-var store = createStore(reducer, initialState);
+var store = createStore(reducer,
+	initialState,
+	applyMiddleware(thunk));
 
 var AppState = function(state) {
 	return {

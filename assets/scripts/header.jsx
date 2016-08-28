@@ -10,17 +10,7 @@ var Header = (function() {
 	    },
 
 	    search: function() {
-	    	stemApi.searchSongs({
-	            request: {
-	                text: this.state.searchInput
-	            },
-	            success: function (response) {
-	            	this.props.updateSearchResults(response);
-	            }.bind(this),
-	            error: function (response) {
-	                console.error(JSON.stringify(response, null, 2));
-	            }
-	        });
+	    	this.props.search(this.state.searchInput);
 	    },
 
 		showHideMenu: function() {
@@ -160,7 +150,7 @@ var Header = (function() {
 	        this.props.showHideMenu();
 			store.dispatch({
 				type: 'GoToPage',
-				data: {currentPage: id}
+				data: { currentPage: id }
 			});
 		},
 
@@ -181,23 +171,14 @@ var Header = (function() {
 	function mapStateToProps(state) {
 		return {
 			isLoggedIn: state.isLoggedIn,
-			tagList: state.tagList,
 			currentPage: state.currentPage
 		};
 	}
 
 	function mapDispatchToProps(dispatch, ownProps) {
 		return {
-			updateSearchResults: function(response) {
-				dispatch({
-	            	type: 'UpdateSearchResults',
-	            	data: response.songs
-	            });
-
-	            dispatch({
-	            	type: 'UpdateTagList',
-	            	data: response.terms
-	            });
+			search: function(terms) {
+				dispatch(beginSearch(terms));
 			}
 		};
 	}

@@ -1,20 +1,20 @@
 var ArtistSearchSideBar = ReactRedux.connect(function(state) {
+		var searchTerms = state.searchTerms.length > 0 ? state.searchTerms.split(' ') : [];
+		
 		return {
-			tagList: state.tagList
+			tagList: searchTerms
 		};
 	}, function(dispatch, ownProps) {
 		return {
 			removeTag: function(tag) {
-				dispatch({
-					type: 'UpdateTagList',
-					data: this.props.tagList.filter(function(item) {
-						return item !== tag;
-					})
+				var newTagList = this.tagList.filter(function(item) {
+					return item !== tag;
 				});
+
+				dispatch(beginSearch(newTagList.join(' ')));
 			}
 		};
-	})(
-	React.createClass({
+	})(React.createClass({
 		render: function() {
 			var tagList = this.props.tagList;
 
@@ -25,7 +25,7 @@ var ArtistSearchSideBar = ReactRedux.connect(function(state) {
 	                        { tagList.map(function(item, index) {
 								return (
 									<li key={index} value={index}>
-										<button onClick={this.props.removeTag.bind(this, item)} className="btn artist-search-tags">
+										<button onClick={this.props.removeTag.bind(this.props, item)} className="btn artist-search-tags">
 											<h4>{ item } <span className="icon-cancel-circled"></span></h4>
 										</button>
 									</li>
