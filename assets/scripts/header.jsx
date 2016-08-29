@@ -92,16 +92,16 @@ var Header = (function() {
 						</div> 
 					</nav>
 
-					<Menu displayMenu={this.state.displayMenu} showHideMenu={self.showHideMenu} alignment="right">
+					<Menu displayMenu={this.state.displayMenu} showHideMenu={this.showHideMenu} alignment="right">
 						<div className="menu-content">
-							<MenuHeader showHideMenu={self.showHideMenu} />
-							{ this.props.artistMenu.map(function(i) {
+							<MenuHeader showHideMenu={this.showHideMenu} />
+							{ this.props.artistMenu.map(function(item) {
 								return (
-									<MenuItem showHideMenu={self.showHideMenu} hash={i.text} key={i.pageID} meunItemID={i.pageID}>
-										<i className={i.icon}></i> {i.text}
+									<MenuItem showHideMenu={this.showHideMenu} hash={item.text} key={item.pageID} meunItemID={item.pageID}>
+										<i className={item.icon}></i> {item.text}
 									</MenuItem>
 								)
-							})}
+							}.bind(this))}
 						</div>
 					</Menu>
 					<div className={this.state.displaySearch ? "filter-page-overlay active" : null} onClick={this.showHideSearch}></div>
