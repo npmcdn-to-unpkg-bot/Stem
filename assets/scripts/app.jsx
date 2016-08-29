@@ -97,9 +97,6 @@ var AppState = function(state) {
 		isLoggedIn: state.isLoggedIn,
 		userInfo: state.userInfo,
 		currentPage: state.currentPage,
-		pageParams: state.pageParams,
-		tagList: state.tagList,
-		searchResults: state.searchResults
 	}
 }
 

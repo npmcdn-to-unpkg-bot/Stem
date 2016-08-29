@@ -6,7 +6,7 @@ var Header = (function() {
 	            displaySearch: false,
 				autofocus: true,
 				searchInput: '',
-	        }
+	        };
 	    },
 
 	    search: function() {
@@ -40,7 +40,6 @@ var Header = (function() {
 		},
 
 		searchInputChange: function( ev ) {
-			var searchInput = ev.target.value;
         	this.setState({ searchInput: ev.target.value });	
 		},
 
@@ -68,8 +67,14 @@ var Header = (function() {
 										{ this.state.displaySearch ? 
 											<div className="search-input-wrapper dropdown">
 												<span onClick={this.search} className="input-group-icon icon-search" id="addon-1"></span>
-												<input id="search-input" onChange={this.searchInputChange} onKeyPress={this.searchInputKeyPress}
-													aria-describedby="addon-1" placeholder="Search..."  autoFocus={this.state.autofocus} ></input>
+												<input 
+													id="search-input" 
+													onChange={this.searchInputChange}
+													value={this.state.searchInput}
+													onKeyPress={this.searchInputKeyPress}
+													aria-describedby="addon-1" 
+													placeholder="Search..."  
+													autoFocus={this.state.autofocus} ></input>
 											</div>	
 										: 
 											<i className="icon-search"></i>
