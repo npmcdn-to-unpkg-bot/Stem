@@ -10,12 +10,15 @@ var SubmitMusicMain = React.createClass({
 
         return (
             <div className="artist-internal-wrapper-fluid">
-                <div className="content-with-sidebar bg-white">  
-                    <div className="pad-box-md">
-                        <h3>Submit Music</h3>
-                        <p>Add music to your library</p>
-                    </div>
-                    { this.state.uploadSuccessful ? <ArtistUploadSuccess /> : <UploadForm /> }
+                <div className="bg-white">  
+                    <div>
+                        <div className="pad-box-lg">
+                            <h3>Submit Music</h3>
+                            <p>Add music to your library</p>
+                        </div>    
+                            <SubmitMusicAlbum />
+                            <SubmitMusicTrack />
+                    </div>    
                 </div>     
             </div>
         )
