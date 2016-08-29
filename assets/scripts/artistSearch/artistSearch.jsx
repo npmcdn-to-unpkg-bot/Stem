@@ -1,6 +1,7 @@
 var ArtistSearch = ReactRedux.connect(function(state) {
 	return {
-		searchResults: state.searchResults
+		searchResults: state.searchResults,
+		searchTerms: state.searchTerms
 	};
 })(React.createClass({
 	render: function() {
@@ -10,7 +11,7 @@ var ArtistSearch = ReactRedux.connect(function(state) {
 					<ArtistSearchSideBar />
 				</div>
 				<div className="content-with-sidebar">
-					{ this.props.searchResults.length === 0 ? 
+					{ this.props.searchResults.length === 0 && this.props.searchTerms.length > 0 ? 
 						<ArtistSearchNoResultsHeader /> : 
 						<ArtistSearchResultsTable songs={this.props.searchResults} />
 					}
