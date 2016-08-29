@@ -237,21 +237,16 @@ var StemApi = (function () {
             }
         });
     }
+
+    // Promisified this method
     StemApi.prototype.searchSongs = function (rse) {
-        var _this = this;
-        $.ajax({
+        return $.ajax({
             type: 'POST',
-            url: _this.baseUrl + 'song/search',
-            headers: { 'Authorization': _this.authorization },
+            url: this.baseUrl + 'song/search',
+            headers: { 'Authorization': this.authorization },
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(rse.request),
-            dataType: 'json',
-            error: function (response) {
-                rse.error(response);
-            },
-            success: function (response) {
-                rse.success(response);
-            }
+            dataType: 'json'
         });
     }
 

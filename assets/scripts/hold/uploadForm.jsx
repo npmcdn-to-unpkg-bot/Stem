@@ -139,6 +139,13 @@ var UploadForm = React.createClass({
 		reader.readAsDataURL(file);
 	},
 
+	// TODO: This is for the image upload control
+	handleImageChange: function(imageURL) {
+		this.setState({
+			artFile: imageURL
+		});
+	},
+
 	saveAudioFile: function() {
 		stemApi.upload({
 			request: {
@@ -300,8 +307,9 @@ var UploadForm = React.createClass({
 									<p>Full Size Limit: xMB</p>
 								</div>
 							}
-							<img src={this.state.selectedAlbum.albumArtUrl} />
+							<img src={this.state.artFileURL} />
 							<input onChange={this.handleFileUpload} disabled={this.state.selectedAlbum.id} type="file" name="artFileURL" id="artFile" />
+							
 						</div>
 					</div>
 				</div>
