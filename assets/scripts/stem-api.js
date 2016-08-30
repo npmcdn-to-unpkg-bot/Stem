@@ -7,14 +7,14 @@ var StemApi = (function () {
     // Login
     StemApi.prototype.setAuth = function (token_type, access_token) {
         var _this = this;
-        _this.authorization = token_type + " " + access_token;
+        _this.authorization = token_type + ' ' + access_token;
     };
     StemApi.prototype.register = function (rse) {
         var _this = this;
         $.ajax({
             type: 'POST',
             url: _this.baseUrl + 'authentication/register',
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(rse.request),
             dataType: 'json',
             success: function (response) {
@@ -28,7 +28,7 @@ var StemApi = (function () {
     StemApi.prototype.login = function (rse) {
         var _this = this;
         $.ajax({
-            type: "POST",
+            type: 'POST',
             url: _this.baseUrl + 'authentication/login',
             data: rse.request.form.serialize(),
             success: function (response) {
@@ -47,7 +47,7 @@ var StemApi = (function () {
             type: 'POST',
             url: _this.baseUrl + 'account',
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(rse.request),
             dataType: 'json',
             error: function (response) {
@@ -64,7 +64,7 @@ var StemApi = (function () {
             type: 'PUT',
             url: _this.baseUrl + 'account',
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(rse.request),
             dataType: 'json',
             error: function (response) {
@@ -81,7 +81,7 @@ var StemApi = (function () {
             type: 'GET',
             url: _this.baseUrl + 'account',
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             error: function (response) {
                 rse.error(response);
             },
@@ -96,9 +96,9 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'POST',
-            url: _this.baseUrl + 'file/upload',
+            url: _this.baseUrl + 'files/upload',
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({ fileName: rse.request.file.name }),
             dataType: 'json',
             error: function (uploadResponse) {
@@ -117,12 +117,13 @@ var StemApi = (function () {
                     error: function (s3Response) {
                         rse.error(s3Response);
                     },
-                    success: function (s3Response) {
+                    success: function (s3Response) {                        
                         $.ajax({
                             type: 'PUT',
-                            url: _this.baseUrl + 'file/upload/' + uploadResponse.id,
+                            url: _this.baseUrl + 'files/upload/' + uploadResponse.id,
                             headers: { 'Authorization': _this.authorization },
-                            contentType: "application/json; charset=utf-8",
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify({ isComplete: true }),
                             dataType: 'json',
                             success: function (confirmResponse) {
                                 rse.success(confirmResponse);
@@ -142,9 +143,9 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'POST',
-            url: _this.baseUrl + 'song',
+            url: _this.baseUrl + 'songs',
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(rse.request),
             dataType: 'json',
             error: function (response) {
@@ -160,9 +161,9 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'POST',
-            url: _this.baseUrl + 'album',
+            url: _this.baseUrl + 'albums',
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(rse.request),
             dataType: 'json',
             error: function (response) {
@@ -178,9 +179,9 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'PUT',
-            url: _this.baseUrl + 'song/' + rse.request.id,
+            url: _this.baseUrl + 'songs/' + rse.request.id,
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(rse.request),
             dataType: 'json',
             error: function (response) {
@@ -196,9 +197,9 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'GET',
-            url: _this.baseUrl + 'song/' + rse.request.id,
+            url: _this.baseUrl + 'songs/' + rse.request.id,
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             error: function (response) {
                 rse.error(response);
             },
@@ -211,9 +212,9 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'GET',
-            url: _this.baseUrl + 'song/byartist/' + rse.request.artistId,
+            url: _this.baseUrl + 'artists/' + rse.request.artistId + '/songs',
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             error: function (response) {
                 rse.error(response);
             },
@@ -226,9 +227,9 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'GET',
-            url: _this.baseUrl + 'album/byartist/' + rse.request.artistId,
+            url: _this.baseUrl + 'artists/' + rse.request.artistId + '/albums',
             headers: { 'Authorization': _this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             error: function (response) {
                 rse.error(response);
             },
@@ -242,9 +243,9 @@ var StemApi = (function () {
     StemApi.prototype.searchSongs = function (rse) {
         return $.ajax({
             type: 'POST',
-            url: this.baseUrl + 'song/search',
+            url: this.baseUrl + 'songs/search',
             headers: { 'Authorization': this.authorization },
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(rse.request),
             dataType: 'json'
         });

@@ -3,7 +3,8 @@ var SubmitMusicTrack = React.createClass({
     return {
       browseButtonVisible: true,
       loaderVisible: false,
-      loadedItemVisible: false
+      loadedItemVisible: false,
+      adminState: false
     }
   },
   handleBrowse: function() {
@@ -20,6 +21,13 @@ var SubmitMusicTrack = React.createClass({
   buttonReset: function() {
     this.setState({ loadedItemVisible: false});
     this.setState({ browseButtonVisible: true});
+  },
+  handleAdminState: function() {
+    if (this.state.playerStateVisible) {
+      this.setState({ playerStateVisible: false });
+    } else {
+      this.setState({ playerStateVisible:true });
+    }
   },
   render: function() {
     return(
@@ -70,23 +78,47 @@ var SubmitMusicTrack = React.createClass({
         <div className="explicit-checkbox pad-b-lg col-xs-12 red">
           <input type="checkbox" />
           <h5 className="pad-l-sm">EXPLICIT</h5>
+          <a className="pad-l-lg" onClick={this.handleAdminState}>Admin State</a>
         </div> 
-        <div className="submit-btns">
-          <button className="additional-track-btn mar-r-md"><i className="icon-plus-circled"></i> Add Additional Tracks</button>
-          <button className="btn-primary"><i className="icon-ok-circled2"></i> Submit</button>
-        </div>
+        {this.state.playerStateVisible ? <AdminButtons /> : <SubmitButtons /> }
       </div>
     )
   }
 });
 
-// var BrowseButton = React.createClass({
-//   render: function(props) {
-//     return(
-//       <button className="btn-primary pull-right" onClick={this.handleBrowse}>Browse for file</button>
-//     )
-//   }
-// });
+var AdminButtons = React.createClass({
+  render: function() {
+    return(
+      <div className="admin-state-btn-wrapper">
+        <ul>
+          <li>
+            <div className="pending-state">Pending</div>
+          </li>
+          <li>
+            <div className="approved-state">Approved</div>
+          </li>
+          <li>
+            <div className="live-state">Live</div>
+          </li>
+          <li>
+            <div className="save-state">Save & Close</div>
+          </li>
+        </ul>
+      </div>
+    )
+  }
+}); 
+
+var SubmitButtons = React.createClass({
+  render: function() {
+    return(
+      <div className="submit-btns">
+        <button className="additional-track-btn mar-r-md"><i className="icon-plus-circled"></i> Add Additional Tracks</button>
+        <button className="btn-primary"><i className="icon-ok-circled2"></i> Submit</button>
+      </div>
+    )
+  }
+}); 
 
 var LoadingAnimation = React.createClass({
   render: function() {
@@ -97,7 +129,7 @@ var LoadingAnimation = React.createClass({
         <div className="loader__bar"></div>
         <div className="loader__bar"></div>
         <div className="loader__bar"></div>
-        <div className="loader__ball"></div>
+        <div className="loader__ball"></div>    
       </div>
     )
   }
