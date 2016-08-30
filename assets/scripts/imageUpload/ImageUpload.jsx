@@ -9,6 +9,7 @@ var ImageUpload = React.createClass({
 	}, 
 	componentDidMount: function() {
 		$('#' + this.state.imgTagId).cropper({
+			viewMode: 3,
 			guides: false,
 			center: true,
 			background: false,
@@ -41,16 +42,21 @@ var ImageUpload = React.createClass({
 		}
 	},
 	render: function() {
-		// This is important for the image cropper control, remove at your own risk
+		// The maxWidth style is important for the image cropper control, remove at your own risk
 		var imageStyles = {
-			maxWidth: '100%'
+			maxWidth: '100%',
+			height: 'auto',
+			width: this.props.width + 'px',
+			display: this.state.imageLoaded ? 'initial' : 'none'
 		};
 
 		return (
 			<div>
 				<img id={this.state.imgTagId} style={imageStyles} />
+				{ !this.state.imageLoaded ? this.props.children : null }
 				<input onChange={this.handleChangeFile} type="file" />
-			</div>);
+			</div>
+		);
 	}
 });
 
