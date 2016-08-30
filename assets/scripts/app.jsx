@@ -7,7 +7,7 @@ var createStore = Redux.createStore,
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: true,
+	isLoggedIn: false,
 	userInfo: {},
 	currentPage: 0,
 	pageParams: {},
