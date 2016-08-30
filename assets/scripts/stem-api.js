@@ -9,6 +9,7 @@ var StemApi = (function () {
         var _this = this;
         _this.authorization = token_type + ' ' + access_token;
     };
+
     StemApi.prototype.register = function (rse) {
         var _this = this;
         $.ajax({
@@ -25,6 +26,7 @@ var StemApi = (function () {
             }
         });
     };
+
     StemApi.prototype.login = function (rse) {
         var _this = this;
         $.ajax({
@@ -57,7 +59,8 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    }
+    };
+
     StemApi.prototype.updateAccount = function (rse) {
         var _this = this;
         $.ajax({
@@ -74,7 +77,8 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    }
+    };
+
     StemApi.prototype.getAccount = function (rse) {
         var _this = this;
         $.ajax({
@@ -89,7 +93,7 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    }
+    };
 
     // File
     StemApi.prototype.upload = function (rse) {
@@ -155,7 +159,7 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    },
+    };
 
     StemApi.prototype.createAlbum = function (rse) {
         var _this = this;
@@ -173,7 +177,7 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    },
+    };
 
     StemApi.prototype.updateSong = function (rse) {
         var _this = this;
@@ -191,7 +195,7 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    },
+    };
 
     StemApi.prototype.getSong = function (rse) {
         var _this = this;
@@ -207,7 +211,8 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    }
+    };
+
     StemApi.prototype.getSongsByArtist = function (rse) {
         var _this = this;
         $.ajax({
@@ -222,7 +227,8 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    }
+    };
+
     StemApi.prototype.getAlbumsByArtist = function (rse) {
         var _this = this;
         $.ajax({
@@ -237,7 +243,7 @@ var StemApi = (function () {
                 rse.success(response);
             }
         });
-    }
+    };
 
     // Promisified this method
     StemApi.prototype.searchSongs = function (rse) {
@@ -249,7 +255,16 @@ var StemApi = (function () {
             data: JSON.stringify(rse.request),
             dataType: 'json'
         });
-    }
+    };
+
+    StemApi.prototype.getTagValues = function(req) {
+    	return $.ajax({
+    		type: 'GET',
+    		url: this.baseUrl + 'tagtypes/' + req.tagTypeId + '/tags',
+    		headers: { Authorization: this.authorization },
+    		contentType: 'application/json; charset=utf-8'
+    	});
+    };
 
     StemApi.prototype.getCreatorDownloads = function (rse) {
     	return $.ajax({

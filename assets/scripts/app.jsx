@@ -12,7 +12,8 @@ const initialState = {
 	currentPage: 0,
 	pageParams: {},
 	searchTerms: '',
-	searchResults: []
+	searchResults: [],
+	tagList: []
 };
 
 // Thunk Action Creator, for having actions that have side effects such as AJAX calls
