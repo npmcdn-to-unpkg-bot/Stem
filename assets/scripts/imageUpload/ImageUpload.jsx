@@ -54,7 +54,7 @@ var ImageUpload = React.createClass({
 			<div>
 				<img id={this.state.imgTagId} style={imageStyles} />
 				{ !this.state.imageLoaded ? this.props.children : null }
-				<input onChange={this.handleChangeFile} type="file" />
+				<input onChange={this.handleChangeFile} type="file" accept="image/*" />
 			</div>
 		);
 	}
