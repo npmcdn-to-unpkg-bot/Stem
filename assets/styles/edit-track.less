@@ -110,9 +110,8 @@ span.lyric-link {
     border-bottom: 1px solid @grey-4;
     box-shadow: @drop-2;
 }
-.song-detail-chart-wrapper {
+.song-detail-chart-wrapper, .creator-love-wrapper {
     border-bottom: 1px solid @grey-4;
-    box-shadow: 0px 0px 2px 0px rgba(0,0,0,.2);
 }
 .song-detail-artist-detail {
     display: inline-block;
@@ -133,5 +132,31 @@ span.lyric-link {
   display: inline-block;
 }
 .song-detail-chart {
-    transform: scale(.95);
+    transform: scale(.90);
 }
+.creator-love-wrapper ul {
+    text-align: center;
+    padding-bottom: @space-lg;
+}
+.creator-love-wrapper ul li {
+    display: inline-block;
+    padding: 15px;
+    height: 130px;
+    vertical-align: bottom;
+}
+.creator-love-img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+.creator-love-img-wrapper {
+    transition: transform 100ms ease-in;
+    -moz-transition: transform 100ms ease-in;
+    -webkit-transition: transform 100ms ease-in;
+}
+    .creator-love-img-wrapper:hover {
+        transform: scale(1.5);
+        height: 125px;
+        width: 125px;
+        margin: 0 auto;
+    }
