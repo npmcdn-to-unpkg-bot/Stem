@@ -24,6 +24,9 @@ var ImageUpload = React.createClass({
 			this.props.onImageChange(imageData);
 		}.bind(this));
 	},
+	componentWillUnmount: function() {
+		$('#' + this.state.imgTagId).cropper('destroy');
+	},
 	
 	handleChangeFile: function(ev) {
 		var fileReader = new FileReader(),
