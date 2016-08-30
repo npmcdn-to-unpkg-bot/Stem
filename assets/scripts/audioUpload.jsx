@@ -29,8 +29,8 @@ var AudioUpload = React.createClass({
 					file: ev.target.files[0]
 				});
 				
-				if (this.props.onAudioUploaded) {
-					this.props.onAudioUploaded(response);
+				if (this.props.onAudioChanged) {
+					this.props.onAudioChanged(response);
 				}
 			}.bind(this),
 			error: function(error) {
@@ -46,7 +46,11 @@ var AudioUpload = React.createClass({
 		this.setState({
 			isUploading: false,
 			file: null
-		})
+		});
+
+		if (this.props.onAudioChanged) {
+			this.props.onAudioChanged(null);
+		}
 	},
 	render: function() {
 		// This hides the input without removing it from the page
