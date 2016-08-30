@@ -54,7 +54,8 @@ var LibraryMain = React.createClass({
 	render: function() {
 		return (
 			<span>
-				<div className="sidebar sidebar-hide">
+				<div className="sidebar artist-internal-sidebar-wrapper sidebar-hide">
+					<ArtistInternalSideBar />
 				</div>
 				<div className="content-with-sidebar">  
 					<div className="artist-internal-greeting">
