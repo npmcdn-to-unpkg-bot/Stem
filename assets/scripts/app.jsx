@@ -7,7 +7,7 @@ var createStore = Redux.createStore,
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: false,
+	isLoggedIn: true,
 	userInfo: {},
 	currentPage: 0,
 	pageParams: {},
@@ -231,6 +231,14 @@ var App = React.createClass({
 				{ this.props.currentPage == 104 ?
 					<div className="wrapper">
 						<ArtistSongDetail />
+						<Footer />
+					</div>
+				: null}
+
+				{ this.props.currentPage == 105 ?
+					<div className="wrapper">
+						<AdminHeader />
+						<AdminSubmitMusic />
 						<Footer />
 					</div>
 				: null}

@@ -303,6 +303,34 @@
   border: none;
   margin-left: @space-sm;
 }
+.approved-state {
+	color: @white;
+  padding: 10px;
+  background-color: #3E8FDE;
+  border: none;
+  text-align: center;
+}
+.live-state {
+	color: @white;
+  padding: 10px;
+  background-color: @primary;
+  border: none;
+  text-align: center;
+}
+.pending-state {
+	color: @white;
+  padding: 10px;
+  background-color: #D80325;
+  border: none;
+  text-align: center;
+}
+.save-state {
+	color: @white;
+  padding: 10px;
+  background-color: @grey-4;
+  border: none;
+  text-align: center;
+}
 .order-track {
 	width: 120px;
 }
@@ -315,6 +343,16 @@
 }
 .submit-edit-icon {
 	margin-right: 0 !important;
+}
+.admin-state-btn-wrapper {
+	ul{
+		text-align: center;
+		li {
+			display: inline-block;
+			width: 175px;
+			padding: @space-sm;
+		}
+	}
 }
 /*-- Artist Upload Success --*/
 .artist-upload-success {
@@ -395,7 +433,9 @@
 		margin-right: 1%;
 	}
 }
-
+.submit-track-state {
+	width: 100px;
+}
 /*-- Artist Tagged Success Modal --*/
 .dark-modal-bg {
   background: fade(black, 45%);
@@ -403,7 +443,7 @@
 .light-modal-bg {
   background: fade(white, 65%);
   .modal-box {
-    box-shadow: @drop-5
+    box-shadow: @drop-5;
   }
 }
 .modal-background {

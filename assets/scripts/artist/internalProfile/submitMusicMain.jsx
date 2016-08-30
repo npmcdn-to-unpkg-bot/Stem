@@ -1,15 +1,9 @@
 var SubmitMusicMain = React.createClass({
-    getInitialState: function() {
-        return {
-            uploadSuccessful: false
-        };
-    },
-
     render: function () {
         var self = this;
 
         return (
-            <div className="artist-internal-wrapper-fluid">
+            <div className="artist-internal-wrapper-fluid pad-b-lg">
                 <div className="bg-white">  
                     <div>
                         <div className="pad-box-lg">
