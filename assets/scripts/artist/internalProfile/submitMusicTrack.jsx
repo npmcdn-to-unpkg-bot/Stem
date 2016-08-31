@@ -87,9 +87,6 @@ var SubmitMusicTrack = React.createClass({
 			<div className="col-lg-6">
 				<TagSelector tag={this.state.genreTag} tagList={this.state.genreTagValues} onSelectionChange={this.genreChanged} />
 			</div>
-			<div className="submit-add-genre pad-t-md pad-b-md col-xs-12">
-				<a onClick={this.addGenre}><i className="icon-plus-circled fa-2x"></i>Add Genre</a>
-			</div>
 			<div className=" pad-b-sm col-xs-12">
 				<p>Lyrics<a>Why upload lyrics?</a></p>
 				<textarea onChange={this.handleInputChanged} placeholder="Paste your lyrics here.." />
