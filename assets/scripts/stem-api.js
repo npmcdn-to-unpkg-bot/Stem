@@ -95,6 +95,17 @@ var StemApi = (function () {
         });
     };
 
+    StemApi.prototype.cancelUpload = function(req) {
+    	return $.ajax({
+	        type: 'PUT',
+	        url: this.baseUrl + 'files/upload/' + req.id,
+	        headers: { 'Authorization': this.authorization },
+	        contentType: 'application/json; charset=utf-8',
+	        data: JSON.stringify({ isCanceled: true }),
+	        dataType: 'json'
+	    });
+    };
+
     // File
     StemApi.prototype.upload = function (rse) {
         var _this = this;
@@ -135,7 +146,7 @@ var StemApi = (function () {
                             error: function (confirmResponse) {
                                 rse.error(confirmResponse)
                             }
-                        })
+                        });
                     }
                 });
             }

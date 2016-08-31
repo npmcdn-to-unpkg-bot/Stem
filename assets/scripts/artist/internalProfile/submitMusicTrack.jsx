@@ -11,6 +11,9 @@ var SubmitMusicTrack = React.createClass({
 		  	selectedGenre: null
 		}
 	},
+	componentDidMount: function() {
+		
+	},
 	handleAdminState: function() {
 		if (this.state.playerStateVisible) {
 		  this.setState({ playerStateVisible: false });
@@ -50,7 +53,7 @@ var SubmitMusicTrack = React.createClass({
 			</div> 
 			<div className="col-lg-6">
 				<p>Release Date - MM/DD/YY</p>
-				<input name="isrc" onChange={this.handleInputChanged} placeholder="( optional )" />
+				<input name="releaseDate" onChange={this.handleInputChanged} placeholder="( optional )" />
 			</div>
 			<div className="col-lg-6">
 				<p>Additionl Credits</p>
