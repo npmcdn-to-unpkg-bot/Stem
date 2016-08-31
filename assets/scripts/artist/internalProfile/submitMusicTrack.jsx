@@ -8,7 +8,7 @@ var SubmitMusicTrack = React.createClass({
 		  	isrc: null,
 		  	releaseDate: null,
 		  	audioFile: null,
-		  	selectedGenre: null,
+		  	selectedGenres: null,
 		  	genreTag: null,
 		  	genreTagValues: []
 		}
@@ -57,11 +57,10 @@ var SubmitMusicTrack = React.createClass({
 		newState[ev.target.name] = ev.target.value;
 		this.setState(newState);
 	},
-	addGenre: function() {
-
-	},
-	genreChanged: function() {
-
+	genreTagsUpdated: function(selections) {
+		this.setState({
+			selectedGenres: selections
+		});
 	},
 	render: function() {
 		return (
@@ -85,7 +84,7 @@ var SubmitMusicTrack = React.createClass({
 				<input name="additionalCredits" onChange={this.handleInputChanged} placeholder="( optional )" />
 			</div>
 			<div className="col-lg-6">
-				<TagSelector tag={this.state.genreTag} tagList={this.state.genreTagValues} onSelectionChange={this.genreChanged} />
+				<TagSelector tag={this.state.genreTag} tagList={this.state.genreTagValues} onSelectionsChange={this.genreTagsUpdated} />
 			</div>
 			<div className=" pad-b-sm col-xs-12">
 				<p>Lyrics<a>Why upload lyrics?</a></p>

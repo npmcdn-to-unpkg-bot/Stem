@@ -30,6 +30,10 @@ var TagSelector = React.createClass({
 			this.setState({
 				selectedValues: newState
 			});
+
+			if (this.props.onSelectionsChange) {
+				this.props.onSelectionsChange(newState);
+			}
 		}
 	},
 	render: function() {
