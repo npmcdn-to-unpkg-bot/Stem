@@ -16,6 +16,13 @@ const initialState = {
 	tagList: []
 };
 
+// This should be moved to it's own file at some point
+var Tag = {
+	SystemType: {
+		Genre: 1
+	}
+};
+
 // Thunk Action Creator, for having actions that have side effects such as AJAX calls
 function beginSearch(searchTerms) {
 	return function(dispatch) {
@@ -47,6 +54,7 @@ var reducer = function(state, action) {
 	var newState = state;
 	switch (action.type) {
 		case 'UpdateLoginStatus':
+			console.log('UpdateLoginStatus Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
 			newState = Object.assign({}, state, {
 				isLoggedIn: action.data.isLoggedIn,
 				userInfo: action.data.userInfo || {},
@@ -56,6 +64,7 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'UpdateUserRecord':
+			console.log('UpdateUserRecord Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
 			// TODO:  Object.assign is not supported in IE, we may want to use lodash _.assign for compatibility
 			newState = Object.assign({}, state, {
 				userInfo: action.data.userInfo,
@@ -74,6 +83,7 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'UpdateSearch':
+			console.log('Equality Check (searchResults): ' + (action.data.results === state.searchResults));
 			newState = Object.assign({}, state, { 
 				searchResults: action.data.results,
 				searchTerms: action.data.terms,

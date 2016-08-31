@@ -8,17 +8,42 @@ var SubmitMusicTrack = React.createClass({
 		  	isrc: null,
 		  	releaseDate: null,
 		  	audioFile: null,
-		  	selectedGenre: null
+		  	selectedGenre: null,
+		  	genreTag: null,
+		  	genreTagValues: []
 		}
 	},
 	componentDidMount: function() {
-		
+		stemApi.getAllTagTypes()
+			.then(function(res) {
+				var genreTag = res.find(function(item) {
+					return item.systemType === Tag.SystemType.Genre;
+				});
+
+				this.setState({
+					genreTag: genreTag
+				});
+
+				return stemApi.getTagValues({
+					tagTypeId: genreTag.id
+				});
+
+			}.bind(this))
+			.then(function(res) {
+				this.setState({
+					genreTagValues: res
+				});
+
+			}.bind(this), function(reason) {
+				console.log('Error fetching all tag types: ' + JSON.stringify(reason));
+			});
+
 	},
 	handleAdminState: function() {
 		if (this.state.playerStateVisible) {
-		  this.setState({ playerStateVisible: false });
+			this.setState({ playerStateVisible: false });
 		} else {
-		  this.setState({ playerStateVisible: true });
+			this.setState({ playerStateVisible: true });
 		}
 	},
 	onAudioChanged: function(file) {
@@ -60,7 +85,7 @@ var SubmitMusicTrack = React.createClass({
 				<input name="additionalCredits" onChange={this.handleInputChanged} placeholder="( optional )" />
 			</div>
 			<div className="col-lg-6">
-				<TagSelector tagTypeId="1" onSelectionChange={this.genreChanged} />
+				<TagSelector tag={this.state.genreTag} tagList={this.state.genreTagValues} onSelectionChange={this.genreChanged} />
 			</div>
 			<div className="submit-add-genre pad-t-md pad-b-md col-xs-12">
 				<a onClick={this.addGenre}><i className="icon-plus-circled fa-2x"></i>Add Genre</a>

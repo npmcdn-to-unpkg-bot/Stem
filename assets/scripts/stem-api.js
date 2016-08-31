@@ -268,6 +268,15 @@ var StemApi = (function () {
         });
     };
 
+    StemApi.prototype.getAllTagTypes = function(req) {
+    	return $.ajax({
+    		type: 'GET',
+    		url: this.baseUrl + 'tagtypes',
+    		headers: { 'Authorization': this.authorization },
+            contentType: 'application/json; charset=utf-8'
+    	});
+    };
+
     StemApi.prototype.getTagValues = function(req) {
     	return $.ajax({
     		type: 'GET',
