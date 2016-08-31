@@ -251,5 +251,14 @@ var StemApi = (function () {
         });
     }
 
+    StemApi.prototype.getCreatorDownloads = function (rse) {
+    	return $.ajax({
+    		type: 'POST',
+    		url: this.baseUrl + 'creators/' + rse.creatorId + '/downloads',
+    		headers: { 'Authorization': this.authorization },
+    		contentType: 'application/json; charset=utf-8',
+    	});
+    }
+
     return StemApi;
 }());

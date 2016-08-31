@@ -8,6 +8,7 @@ var PlaylistTable = React.createClass({
 			displayArtistTaggedSuccess: false,
 			displayUploadSuccess: false,
 			displaySongDetail: false,
+			displayCreatorDownloadsMain: false,
 			red: false
 		}
 	},
@@ -76,12 +77,10 @@ var PlaylistTable = React.createClass({
 			this.setState({ displayWelcomeModal: true });
 		}
 	},
-	showHideCreatorDownloads: function() {
-		if(this.state.displayCreatorDownloads) {
-			this.setState({ displayCreatorDownloads: false });
-		} else {
-			this.setState({ displayCreatorDownloads: true });
-		}
+	showHideCreatorDownloadsMain: function() {
+		this.setState({
+			displayCreatorDownloadsMain: !this.state.displayCreatorDownloadsMain
+		});
 	},
 	showHideSongDetail: function() {
 		if(this.state.displaySongDetail) {
@@ -292,8 +291,8 @@ var PlaylistTable = React.createClass({
 				<a onClick={this.showHideWelcomeModal}>show welcome</a>
 				{ this.state.displayWelcomeModal ? <WelcomeModal showHideWelcomeModal={self.showHideWelcomeModal} /> : null }
 				<br />
-				<a onClick={this.showHideCreatorDownloads}>show creator downloads</a>
-				{ this.state.displayCreatorDownloads ? <CreatorDownloads showHideCreatorDownloads={self.showHideCreatorDownloads} /> : null }
+				<a onClick={this.showHideCreatorDownloadsMain}>show creator downloads</a>
+				{ this.state.displayCreatorDownloadsMain ? <CreatorDownloadsMain /> : null }
 				<br />
 				<a onClick={this.showHideSongDetail}>show song detail</a>
 				{ this.state.displaySongDetail ? <ArtistSongDetail showHideSongDetail={self.showHideSongDetail} /> : null }
