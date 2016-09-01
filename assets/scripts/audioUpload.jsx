@@ -24,7 +24,10 @@ var AudioUpload = React.createClass({
 		}).then(function(response) {
 			this.setState({
 				isUploading: false,
-				file: ev.target.files[0]
+				file: {
+					data: ev.target.files[0],
+					response: response
+				}
 			});
 			
 			if (this.props.onAudioChanged) {
@@ -39,6 +42,13 @@ var AudioUpload = React.createClass({
 		}.bind(this));
 	},
 	reset: function() {
+
+		stemApi.cancelUpload({
+			id: this.state.file.response.id
+		}).fail(function(error) {
+			console.error('Error occurred while canceling upload: ' + JSON.stringify(error));
+		});
+
 		this.setState({
 			isUploading: false,
 			file: null
@@ -59,12 +69,12 @@ var AudioUpload = React.createClass({
 			zIndex: '-1'
 		};
 
-		var file = this.state.file,
-			element = <label htmlFor={ this.getId() } className="btn-primary pull-right">Browse for file</label>;
+		var element = <label htmlFor={ this.getId() } className="btn-primary pull-right">Browse for file</label>;
 
 		if (this.state.isUploading) {
 			element = <LoadingButton />;
-		} else if (file) {
+		} else if (this.state.file) {
+			var file = this.state.file.data;
 			var fileSize = (file.size / (1000000)).toFixed(2) + ' MB';
 			element = <div className="loaded-track pull-right"><p>{file.name} ({fileSize})</p> 
         			  <i onClick={this.reset} className="icon-cancel pull-right"></i></div> ;
