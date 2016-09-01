@@ -1,27 +1,16 @@
 var SubmitTrackEdit = React.createClass({
-  getInitialState: function() {
-    return{
-      playerStateVisible: false
-    }
-  },
-  handleAdminState: function() {
-    if (this.state.playerStateVisible) {
-      this.setState({ playerStateVisible: false });
-    } else {
-      this.setState({ playerStateVisible:true });
-    }
-  },
   render: function() {
     return(
       <div className="submit-track-edit-wrapper col-xs-12">
-        <p className="order-track">{this.state.playerStateVisible ? "Order" : null }</p>
+        <p className="order-track">{ this.props.playerStateVisible ? "Order" : null }</p>
         <p>Track Name</p>
-        <a onClick={this.handleAdminState} className="pad-l-lg"><p>Admin State</p></a>
         <ul>
           <li className="pad-b-sm">
-            {this.state.playerStateVisible ? <i className="icon-down-open fa-2x"></i> : null }
-            {this.state.playerStateVisible ? null : <i className="icon-play-2 primary fa-2x"></i> }
-            <input />
+            { this.props.playerStateVisible ? <i className="icon-down-open fa-2x"></i> : null }
+            { this.props.playerStateVisible ? null : <i className="icon-play-2 primary fa-2x"></i> }
+            
+            <span>{ this.props.track.trackName }</span>
+
             <div className="loaded-track mar-l-md">satori.aiff(50mb) </div>
             <ul className="song-edit-tags">
               <li className="submit-edit-tag-item">Rock & Roll</li>

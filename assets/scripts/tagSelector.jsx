@@ -6,7 +6,7 @@ var TagSelector = React.createClass({
 		};
 	},
 	componentWillReceiveProps: function(nextProps) {
-		if (nextProps.tagList.length > 0) {
+		if (nextProps.tagList.length > 0 && !this.state.selectedValue) {
 			this.setState({
 				selectedValue: nextProps.tagList[0]
 			});
@@ -37,10 +37,6 @@ var TagSelector = React.createClass({
 		}
 	},
 	render: function() {
-		var selectStyles = {
-			color: 'pink'
-		};
-
 		var tagName = this.props.tag ? this.props.tag.name : null;
 
 		return (
@@ -52,7 +48,7 @@ var TagSelector = React.createClass({
 					})}
 				</ul>
 				
-				<select onChange={ this.onChange } className="btn col-xs-12" style={ selectStyles }>
+				<select onChange={ this.onChange } className="btn col-xs-12">
 					{ this.props.tagList.map(function(item) {
 						return (<option key={ item.id } value={ item.id }>{ item.name }</option>);
 					})}

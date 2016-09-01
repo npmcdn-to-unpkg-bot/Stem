@@ -36,6 +36,45 @@ var SubmitMusicAlbum = React.createClass({
 			this.state.albumName && this.state.albumName.length > 0 &&
 			this.state.albumArt;
 	},
+	createAlbum: function(releaseDate) {
+		var deferred = $.Deferred();
+
+		if (this.state.id) {
+			deferred.resolve({
+				id: this.state.id,
+				artistName: this.state.artistName,
+				albumName: this.state.albumName,
+				upc: this.state.upc,
+				albumArt: this.state.albumArt
+			});
+
+			return deferred.promise();
+		}
+
+		if (this.validate()) {
+			return stemApi.upload({
+				file: this.state.albumArt
+			}).then(function(res) {
+				return stemApi.createAlbum({
+					name: this.state.albumName,
+					releaseDate: releaseDate || new Date(),
+					artFileId: res.id
+				}).then(function(res) {
+					this.setState({
+						id: res.id
+					});
+
+					return res;
+				}.bind(this));
+
+				// TODO: Here we should lock down the album fields so that they cannot be changed, otherwise
+				// the information passed back above could be out of sync
+			}.bind(this));
+		} else {
+			deferred.reject('The album is not valid, please add/fix fields before continuing');
+			return deferred.promise();
+		}
+	},
 	render: function() {
 		return (
 			<div className="submit-album-form pad-box-lg">

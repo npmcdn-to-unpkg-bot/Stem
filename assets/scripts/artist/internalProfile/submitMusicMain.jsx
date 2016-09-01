@@ -1,50 +1,30 @@
 var SubmitMusicMain = React.createClass({
-	createTrack: function(album, trackState, artistName) {
-		// NOTE: artistName is set at the album level
-		return stemApi.createSong({
-			artistName: artistName,
-			name: trackState.trackName,
-			trackNumber: trackState.trackNumber,
-			albumId: album.id,
-			songFileId: trackState.audioFile.id,
-			// NOTE: This doesn't get set on our url
-			bpm: 0,
-			tagIds: trackState.selectedGenres.map(function(item) {
-				return item.id;
-			})
-		}).then(function(res) {
-			alert('The song was created successfully: ' + JSON.stringify(res));
-		}, function(error) {
-			console.error('Error occurred while creating the song: ' + JSON.stringify(error));
-		});
-	},
 
 	submitClicked: function() {
-		var albumState = this.refs.submitMusicAlbum.state;
-		var trackState = this.refs.submitMusicTrack.state;
+		var album = this.refs.submitMusicAlbum;
+		var track = this.refs.submitMusicTrack;
 		
-		if (!albumState.id) {
-			if (this.refs.submitMusicAlbum.validate() && 
-				this.refs.submitMusicTrack.validate()) {
-				stemApi.upload({
-					file: albumState.albumArt
-				}).then(function(res) {
-					return stemApi.createAlbum({
-						name: albumState.albumName,
-						releaseDate: trackState.releaseDate || new Date(),
-						artFileId: res.id
-					});
-				}).then(function(res) {
-					return this.createTrack(res, trackState, albumState.artistName);
-				}.bind(this));
+		track.setState({
+			isSubmitting: true
+		});
 
-				
-			} else {
-				alert('The album or track is not valid, please fix the fields, or add stuff');
-			}
-		} 
-
-		// Delegate to track
+		// TODO: The releaseDate and artist names should not have to be passed in; however, there's a discrepancy between
+		// the API and the UI design, revisit this later
+		return album.createAlbum(track.state.track.releaseDate)
+			.then(function(res) {
+				return track.createTrack(res, album.state.artistName);
+			})
+			.then(function(res) {
+				console.log('Album/Track created successfully: ' + JSON.stringify(res));
+				track.setState({
+					isSubmitting: false
+				});
+			}, function(reason) {
+				console.error('Error while creating album/track: ' + JSON.stringify(reason));
+				track.setState({
+					isSubmitting: false
+				});
+			});
 	},
     render: function () {
         return (
