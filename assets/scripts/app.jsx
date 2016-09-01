@@ -185,6 +185,7 @@ var App = React.createClass({
 				{ this.props.currentPage == 7 ?
 					<div className="wrapper">
 						<AdminMain />
+						<Footer />
 					</div>
 				: null} 
 
