@@ -20,27 +20,23 @@ var AudioUpload = React.createClass({
 		});
 
 		stemApi.upload({
-			request: {
+			file: ev.target.files[0]
+		}).then(function(response) {
+			this.setState({
+				isUploading: false,
 				file: ev.target.files[0]
-			},
-			success: function(response) {
-				this.setState({
-					isUploading: false,
-					file: ev.target.files[0]
-				});
-				
-				if (this.props.onAudioChanged) {
-					this.props.onAudioChanged(response);
-				}
-			}.bind(this),
-			error: function(error) {
-				this.setState({
-					isUploading: false
-				});
-				console.log('Audio Upload Error: ' + error);
+			});
+			
+			if (this.props.onAudioChanged) {
+				this.props.onAudioChanged(response);
+			}
+		}.bind(this), function(error) {
+			this.setState({
+				isUploading: false
+			});
+			console.log('Audio Upload Error: ' + JSON.stringify(error));
 
-			}.bind(this)
-		});
+		}.bind(this));
 	},
 	reset: function() {
 		this.setState({

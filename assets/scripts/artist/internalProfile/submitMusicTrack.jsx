@@ -1,12 +1,12 @@
 var SubmitMusicTrack = React.createClass({
 	getInitialState: function() {
 		return {
+			trackNumber: 0,
 			isExplicit: false,
-		  	adminState: false,
-		  	playerStateVisible: false,
 		  	trackName: null,
 		  	isrc: null,
 		  	releaseDate: null,
+		  	additionalCredits: null,
 		  	audioFile: null,
 		  	selectedGenres: null,
 		  	genreTag: null,
@@ -39,13 +39,6 @@ var SubmitMusicTrack = React.createClass({
 			});
 
 	},
-	handleAdminState: function() {
-		if (this.state.playerStateVisible) {
-			this.setState({ playerStateVisible: false });
-		} else {
-			this.setState({ playerStateVisible: true });
-		}
-	},
 	onAudioChanged: function(file) {
 		this.setState({
 			audioFile: file
@@ -62,40 +55,50 @@ var SubmitMusicTrack = React.createClass({
 			selectedGenres: selections
 		});
 	},
+	onAddClicked: function() {
+
+	},
+	validate: function() {
+		// TODO: Implement visual validation later
+		return this.state.trackName && this.state.trackName.length > 0 && 
+		  	this.state.audioFile && 
+		  	this.state.selectedGenres && this.state.selectedGenres.length > 0;
+	},
 	render: function() {
 		return (
 		  <div className="submit-track-wrapper">
 			<SubmitTrackEdit />
 			<div className="submit-track-name col-lg-6">
 				<p>Track Name</p>
-				<input name="trackName" onChange={this.handleInputChanged} />
-				<AudioUpload onAudioUploaded={this.onAudioUploaded} />
+				<input name="trackName" onChange={ this.handleInputChanged } />
+				<AudioUpload onAudioChanged={ this.onAudioChanged } />
 			</div>
 			<div className="col-lg-6">
 				<p>ISRC # <a>Whats an ISRC#?</a></p>
-				<input name="isrc" onChange={this.handleInputChanged} placeholder="( optional )" />
+				<input name="isrc" onChange={ this.handleInputChanged } placeholder="( optional )" />
 			</div> 
 			<div className="col-lg-6">
 				<p>Release Date - MM/DD/YY</p>
-				<input name="releaseDate" onChange={this.handleInputChanged} placeholder="( optional )" />
+				<input name="releaseDate" onChange={ this.handleInputChanged } placeholder="( optional )" />
 			</div>
 			<div className="col-lg-6">
 				<p>Additionl Credits</p>
-				<input name="additionalCredits" onChange={this.handleInputChanged} placeholder="( optional )" />
+				<input name="additionalCredits" onChange={ this.handleInputChanged } placeholder="( optional )" />
 			</div>
 			<div className="col-lg-6">
-				<TagSelector tag={this.state.genreTag} tagList={this.state.genreTagValues} onSelectionsChange={this.genreTagsUpdated} />
+				<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } onSelectionsChange={ this.genreTagsUpdated } />
 			</div>
 			<div className=" pad-b-sm col-xs-12">
 				<p>Lyrics<a>Why upload lyrics?</a></p>
-				<textarea onChange={this.handleInputChanged} placeholder="Paste your lyrics here.." />
+				<textarea onChange={ this.handleInputChanged } placeholder="Paste your lyrics here.." />
 			</div>
 			<div className="explicit-checkbox pad-b-lg col-xs-12 red">
-				<input type="checkbox" name="explicit" onChange={this.handleInputChanged} />
+				<input type="checkbox" name="explicit" onChange={ this.handleInputChanged } />
 			  	<h5 className="pad-l-sm">EXPLICIT</h5>
-				<a className="pad-l-lg" onClick={this.handleAdminState}>Admin State</a>
 			</div> 
-			{this.state.playerStateVisible ? <AdminButtons /> : <SubmitButtons /> }
+			{ this.props.isAdmin ? <AdminButtons /> : 
+				<SubmitButtons onSubmitClicked={ this.props.onSubmitClicked } onAddClicked={ this.addClicked } /> 
+			}
 		  </div>
 		)
 	}
@@ -128,8 +131,8 @@ var SubmitButtons = React.createClass({
   render: function() {
     return(
       <div className="submit-btns">
-        <button className="additional-track-btn mar-r-md"><i className="icon-plus-circled"></i> Add Additional Tracks</button>
-        <button className="btn-primary"><i className="icon-ok-circled2"></i> Submit</button>
+        <button className="additional-track-btn mar-r-md" onClick={ this.props.onAddClicked }><i className="icon-plus-circled"></i> Add Additional Tracks</button>
+        <button className="btn-primary" onClick={ this.props.onSubmitClicked }><i className="icon-ok-circled2"></i> Submit</button>
       </div>
     )
   }

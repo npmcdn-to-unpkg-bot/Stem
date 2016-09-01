@@ -1,9 +1,11 @@
 var SubmitMusicAlbum = React.createClass({
 	getInitialState: function() {
 		return {
+			id: null,
 			artistName: '',
 			albumName: '',
-			upc: ''
+			upc: '',
+			albumArt: null
 		};
 	},
 	handleUpcChange: function(ev) {
@@ -21,6 +23,19 @@ var SubmitMusicAlbum = React.createClass({
 			albumName: ev.target.value
 		});
 	},
+	albumArtChange: function(image, origImage) {
+		// TODO: Use the updated image and not the origImage
+		this.setState({
+			albumArt: origImage
+		});
+	},
+	validate: function() {
+		// TODO: Implement visual validation of controls
+		
+		return this.state.artistName && this.state.artistName.length > 0 &&
+			this.state.albumName && this.state.albumName.length > 0 &&
+			this.state.albumArt;
+	},
 	render: function() {
 		return (
 			<div className="submit-album-form pad-box-lg">
@@ -33,7 +48,7 @@ var SubmitMusicAlbum = React.createClass({
 					<input value={this.state.upc} onChange={this.handleUpcChange} placeholder="( optional )" />
 				</div>
 				<div className="submit-album-img mar-l-lg">
-					<ImageUpload width="240">
+					<ImageUpload width="240" onImageChange={ this.albumArtChange }>
 						<div className="upload-album-content">
 					  		<i className="icon-picture-1 fa-5x"></i>
 					  		<h4 className="pad-b-sm">Upload your album art</h4>

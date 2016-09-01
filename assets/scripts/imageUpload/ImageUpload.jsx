@@ -4,7 +4,8 @@ var ImageUpload = React.createClass({
 	getInitialState: function() {
 		return {
 			imgTagId: 'imgTag-' + lastImgTagId++,
-			imageLoaded: false
+			imageLoaded: false,
+			originalImage: null
 		};
 	}, 
 	componentDidMount: function() {
@@ -21,7 +22,7 @@ var ImageUpload = React.createClass({
 				.cropper('getCroppedCanvas')
 				.toDataURL();
 
-			this.props.onImageChange(imageData);
+			this.props.onImageChange(imageData, this.state.originalImage);
 		}.bind(this));
 	},
 	componentWillUnmount: function() {
@@ -38,7 +39,8 @@ var ImageUpload = React.createClass({
 				var cropperEl = $('#' + this.state.imgTagId);
 				cropperEl.cropper('replace', fileReader.result);
 				this.setState({
-					imageLoaded: true
+					imageLoaded: true,
+					originalImage: file
 				});
 
 			}.bind(this);
