@@ -23,6 +23,16 @@ var Tag = {
 	}
 };
 
+// This should be moved to it's own file or use a third party library
+var Formatter = {
+	formatFileLabel: function(file) {
+		if (file) {
+			var size =  (file.size / (1000000)).toFixed(2) + ' MB';
+			return file.name + ' ' + '(' + size + ')';
+		}
+	}
+}
+
 // Thunk Action Creator, for having actions that have side effects such as AJAX calls
 function beginSearch(searchTerms) {
 	return function(dispatch) {

@@ -10,9 +10,9 @@ var SubmitMusicMain = React.createClass({
 
 		// TODO: The releaseDate and artist names should not have to be passed in; however, there's a discrepancy between
 		// the API and the UI design, revisit this later
-		return album.createAlbum(track.state.track.releaseDate)
+		return album.createAlbum(track.state.releaseDate)
 			.then(function(res) {
-				return track.createTrack(res, album.state.artistName);
+				return track.createTracks(res, album.state.artistName);
 			})
 			.then(function(res) {
 				console.log('Album/Track created successfully: ' + JSON.stringify(res));

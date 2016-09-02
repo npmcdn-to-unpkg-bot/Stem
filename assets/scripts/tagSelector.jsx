@@ -36,6 +36,11 @@ var TagSelector = React.createClass({
 			}
 		}
 	},
+	reset: function() {
+		this.setState({
+			selectedValues: []
+		});
+	},
 	render: function() {
 		var tagName = this.props.tag ? this.props.tag.name : null;
 

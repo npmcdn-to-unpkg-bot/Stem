@@ -6,18 +6,32 @@ var SubmitMusicTrack = React.createClass({
 		  	addedTracks: [],
 		  	isSubmitting: false,
 
-			track: {
-				trackName: null,
-				trackNumber: 0,
-				isExplicit: false,
-		  		isrc: null,
-		  		releaseDate: null,
-		  		additionalCredits: null,
-		  		audioFile: null,
-		  		selectedGenres: null
-		  	}
-		  	
+			id: null,
+			trackName: '',
+			trackNumber: 0,
+			isExplicit: false,
+	  		isrc: '',
+	  		releaseDate: '',
+	  		additionalCredits: '',
+	  		audioFile: null,
+	  		selectedGenres: null,
+	  		lyrics: ''
 		}
+	},
+	getTrackState: function() {
+		return {
+			id: this.state.id,
+			trackName: this.state.trackName,
+			trackNumber: this.state.trackNumber,
+			isExplicit: this.state.isExplicit,
+	  		isrc: this.state.isrc,
+	  		releaseDate: this.state.releaseDate,
+	  		additionalCredits: this.state.additionalCredits,
+	  		audioFile: this.state.audioFile,
+	  		selectedGenres: this.state.selectedGenres ? 
+	  			[].concat(this.state.selectedGenres) : null,
+	  		lyrics: this.state.selectedGenres
+		};
 	},
 	componentDidMount: function() {
 		stemApi.getAllTagTypes()
@@ -46,88 +60,152 @@ var SubmitMusicTrack = React.createClass({
 
 	},
 	onAudioChanged: function(file) {
-		var newState = { track: this.state.track };
-		newState.track.audioFile = file;
-
-		this.setState(newState);
+		this.setState({
+			audioFile: file
+		});
 	},
 	handleInputChanged(ev) {
-		var newState = { track: this.state.track };
+		var newState = {};
 
-		newState.track[ev.target.name] = ev.target.value;
+		newState[ev.target.name] = ev.target.value;
 		this.setState(newState);
 	},
 	genreTagsUpdated: function(selections) {
-		var newState = {
-			track: this.state.track
-		};
-
-		newState.track.selectedGenres = selections;
-
-		this.setState(newState);
+		this.setState({
+			selectedGenres: selections
+		});
 	},
 	onAddClicked: function() {
-		this.addedTracks.push(this.state.track);
+		// Make a deep copy of our state
+		var trackCopy = this.getTrackState();
+		
+		this.setState({	
+			addedTracks: this.state.addedTracks.concat(trackCopy),
+			id: null,
+			trackName: '',
+			trackNumber: 0,
+			isExplicit: false,
+	  		isrc: '',
+	  		releaseDate: '',
+	  		additionalCredits: '',
+	  		audioFile: null,
+	  		selectedGenres: null,
+	  		lyrics: ''
+		});
+
+		this.refs.audioUpload.reset(false);
+		this.refs.tagSelector.reset();
+	},
+	onEditTrack: function(track) {
+		this.setState({
+			id: track.id,
+			trackName: track.trackName,
+			trackNumber: track.trackNumber,
+			isExplicit: track.isExplicit,
+	  		isrc: track.isrc,
+	  		releaseDate: track.releaseDate,
+	  		additionalCredits: track.additionalCredits,
+	  		audioFile: track.audioFile,
+	  		selectedGenres: track.selectedGenres,
+	  		lyrics: track.lyrics
+		});
 	},
 	validate: function() {
 		// TODO: Implement visual validation later
-		return this.state.track.trackName && this.state.track.trackName.length > 0 && 
-		  	this.state.track.audioFile && 
-		  	this.state.track.selectedGenres && this.state.track.selectedGenres.length > 0;
+		return this.state.trackName && this.state.trackName.length > 0 && 
+		  	this.state.audioFile && 
+		  	this.state.selectedGenres && this.state.selectedGenres.length > 0;
 	},
-	createTrack: function(album, artistName) {
-		var track = this.state.track;
+	createTracks: function(album, artistName) {
 		var deferred = $.Deferred();
 
 		if (this.validate()) {
+			for (var i = 0; i < this.state.addedTracks.length; i++) {
+				var item = this.state.addedTracks[i];
+
+				if (!item.id) {
+					stemApi.createSong({
+						artistName: artistName,
+						name: item.trackName,
+						trackNumber: item.trackNumber,
+						albumId: album.id,
+						songFileId: item.audioFile.response.id,
+						// NOTE: We currently don't have a field for this
+						bpm: 0,
+						tagIds: item.selectedGenres.map(function(genreItem) {
+							return genreItem.id;
+						})
+					})
+					.then(function(res) {
+						item.id = res.id;
+
+						console.log('Track Created: ' + JSON.stringify(res));
+						
+						return res;
+					}.bind(this), function(reason) {
+						deferred.reject(reason);
+					});
+				}
+
+				if (deferred.state() === 'rejected') {
+					return deferred.promise();
+				}
+			}
+
 			// NOTE: artistName is set at the album level
 			return stemApi.createSong({
 				artistName: artistName,
-				name: track.trackName,
-				trackNumber: track.trackNumber,
+				name: this.state.trackName,
+				trackNumber: this.state.trackNumber,
 				albumId: album.id,
-				songFileId: track.audioFile.id,
+				songFileId: this.state.audioFile.response.id,
 				// NOTE: We currently don't have a field for this
 				bpm: 0,
-				tagIds: track.selectedGenres.map(function(item) {
+				tagIds: this.state.selectedGenres.map(function(item) {
 					return item.id;
 				})
-			});
+			})
+			.then(function(res) {
+				this.setState({
+					id: res.id
+				});
+
+				return res;
+			}.bind(this));
 		} else {
 			deferred.reject('The track is not valid, please add/fix fields before continuing');
 			return deferred.promise();
 		}
 	},
 	render: function() {
+
 		return (
 			<div className="submit-track-wrapper">
-				{ this.state.addedTracks.map(function(item) {
-					return (<SubmitTrackEdit playerStateVisible="true" track={item} />);
-				})}
+				<SubmitTrackEdit playerStateVisible="true" tracks={ this.state.addedTracks } onEditTrack={ this.onEditTrack } />
 
 				<div className="submit-track-name col-lg-6">
 					<p>Track Name</p>
-					<input name="trackName" onChange={ this.handleInputChanged } />
-					<AudioUpload onAudioChanged={ this.onAudioChanged } />
+					<input name="trackName" value={ this.state.trackName } onChange={ this.handleInputChanged } />
+					<AudioUpload ref="audioUpload" onAudioChanged={ this.onAudioChanged } />
 				</div>
 				<div className="col-lg-6">
 					<p>ISRC # <a>Whats an ISRC#?</a></p>
-					<input name="isrc" onChange={ this.handleInputChanged } placeholder="( optional )" />
+					<input name="isrc" value={ this.state.isrc } onChange={ this.handleInputChanged } placeholder="( optional )" />
 				</div> 
 				<div className="col-lg-6">
 					<p>Release Date - MM/DD/YY</p>
-					<input name="releaseDate" onChange={ this.handleInputChanged } placeholder="( optional )" />
+					<input name="releaseDate" value={ this.state.releaseDate } onChange={ this.handleInputChanged } placeholder="( optional )" />
 				</div>
 				<div className="col-lg-6">
 					<p>Additionl Credits</p>
-					<input name="additionalCredits" onChange={ this.handleInputChanged } placeholder="( optional )" />
+					<input name="additionalCredits" value={ this.state.additionalCredits } onChange={ this.handleInputChanged } placeholder="( optional )" />
 				</div>
 				<div className="col-lg-6">
-					<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } onSelectionsChange={ this.genreTagsUpdated } />
+					<TagSelector ref="tagSelector" tag={ this.state.genreTag } tagList={ this.state.genreTagValues } onSelectionsChange={ this.genreTagsUpdated } />
 				</div>
 				<div className=" pad-b-sm col-xs-12">
 					<p>Lyrics<a>Why upload lyrics?</a></p>
-					<textarea onChange={ this.handleInputChanged } placeholder="Paste your lyrics here.." />
+					<textarea name="lyrics" value={ this.state.lyrics } onChange={ this.handleInputChanged } placeholder="Paste your lyrics here.." />
 				</div>
 				<div className="explicit-checkbox pad-b-lg col-xs-12 red">
 					<input type="checkbox" name="explicit" onChange={ this.handleInputChanged } />
@@ -152,7 +230,7 @@ var SubmitMusicTrack = React.createClass({
 				    </div> : 
 					<div className="submit-btns">
 						<div className="submit-btns">
-					        <button className="additional-track-btn mar-r-md" onClick={ this.props.onAddClicked }>
+					        <button className="additional-track-btn mar-r-md" onClick={ this.onAddClicked }>
 					        	<i className="icon-plus-circled"></i> Add Additional Tracks
 					        </button>
 

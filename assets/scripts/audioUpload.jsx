@@ -22,16 +22,21 @@ var AudioUpload = React.createClass({
 		stemApi.upload({
 			file: ev.target.files[0]
 		}).then(function(response) {
+			var fileInfo = {
+				data: { 
+					name: ev.target.files[0].name,
+					size: ev.target.files[0].size
+				},
+				response: response
+			};
+
 			this.setState({
 				isUploading: false,
-				file: {
-					data: ev.target.files[0],
-					response: response
-				}
+				file: fileInfo
 			});
 			
 			if (this.props.onAudioChanged) {
-				this.props.onAudioChanged(response);
+				this.props.onAudioChanged(fileInfo);
 			}
 		}.bind(this), function(error) {
 			this.setState({
@@ -41,13 +46,15 @@ var AudioUpload = React.createClass({
 
 		}.bind(this));
 	},
-	reset: function() {
+	reset: function(deleteFile) {
 
-		stemApi.cancelUpload({
-			id: this.state.file.response.id
-		}).fail(function(error) {
-			console.error('Error occurred while canceling upload: ' + JSON.stringify(error));
-		});
+		if (deleteFile) {
+			stemApi.cancelUpload({
+				id: this.state.file.response.id
+			}).fail(function(error) {
+				console.error('Error occurred while canceling upload: ' + JSON.stringify(error));
+			});
+		}
 
 		this.setState({
 			isUploading: false,
@@ -75,9 +82,9 @@ var AudioUpload = React.createClass({
 			element = <LoadingButton />;
 		} else if (this.state.file) {
 			var file = this.state.file.data;
-			var fileSize = (file.size / (1000000)).toFixed(2) + ' MB';
-			element = <div className="loaded-track pull-right"><p>{file.name} ({fileSize})</p> 
-        			  <i onClick={this.reset} className="icon-cancel pull-right"></i></div> ;
+			var fileLabel = Formatter.formatFileLabel(file);
+			element = <div className="loaded-track pull-right"><p>{ fileLabel }</p> 
+        			  <i onClick={this.reset.bind(this, true)} className="icon-cancel pull-right"></i></div> ;
 		}
 
 		return (
