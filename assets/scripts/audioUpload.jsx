@@ -4,8 +4,7 @@ var AudioUpload = React.createClass({
 	getInitialState: function() {
 		return {
 			audioInputId: 'audioInputId-' + lastAudioInputId++,
-			isUploading: false,
-			file: null
+			isUploading: false
 		};
 	},
 	getId: function() {
@@ -21,7 +20,8 @@ var AudioUpload = React.createClass({
 
 		stemApi.upload({
 			file: ev.target.files[0]
-		}).then(function(response) {
+		})
+		.then(function(response) {
 			var fileInfo = {
 				data: { 
 					name: ev.target.files[0].name,
@@ -29,37 +29,30 @@ var AudioUpload = React.createClass({
 				},
 				response: response
 			};
-
-			this.setState({
-				isUploading: false,
-				file: fileInfo
-			});
 			
 			if (this.props.onAudioChanged) {
 				this.props.onAudioChanged(fileInfo);
 			}
 		}.bind(this), function(error) {
+			console.log('Audio Upload Error: ' + JSON.stringify(error));
+		})
+		.always(function() {
 			this.setState({
 				isUploading: false
 			});
-			console.log('Audio Upload Error: ' + JSON.stringify(error));
-
 		}.bind(this));
 	},
 	reset: function(deleteFile) {
 
 		if (deleteFile) {
 			stemApi.cancelUpload({
-				id: this.state.file.response.id
+				id: this.props.value.response.id
 			}).fail(function(error) {
 				console.error('Error occurred while canceling upload: ' + JSON.stringify(error));
 			});
 		}
 
-		this.setState({
-			isUploading: false,
-			file: null
-		});
+		this.refs.fileInput.value = '';
 
 		if (this.props.onAudioChanged) {
 			this.props.onAudioChanged(null);
@@ -80,19 +73,20 @@ var AudioUpload = React.createClass({
 
 		if (this.state.isUploading) {
 			element = <LoadingButton />;
-		} else if (this.state.file) {
-			var file = this.state.file.data;
+		} else if (this.props.value) {
+			var file = this.props.value.data;
 			var fileLabel = Formatter.formatFileLabel(file);
 			element = <div className="loaded-track pull-right"><p>{ fileLabel }</p> 
-        			  <i onClick={this.reset.bind(this, true)} className="icon-cancel pull-right"></i></div> ;
+        			  <i onClick={ this.reset.bind(this, true) } className="icon-cancel pull-right"></i></div> ;
 		}
 
 		return (
 			<div>
 				{ /* This element is always hidden */ }
-				<input id={ this.getId() } type="file" style={fileInputStyles} accept="audio/*" 
-					onChange={this.handleFileSelect} />
-				{element}
+				<input ref="fileInput" id={ this.getId() } type="file" style={ fileInputStyles } accept="audio/*"
+					onChange={ this.handleFileSelect } />
+				
+				{ element }
         	</div>
 		);
 	}

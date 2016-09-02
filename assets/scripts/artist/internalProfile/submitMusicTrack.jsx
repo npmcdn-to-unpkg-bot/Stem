@@ -30,7 +30,7 @@ var SubmitMusicTrack = React.createClass({
 	  		audioFile: this.state.audioFile,
 	  		selectedGenres: this.state.selectedGenres ? 
 	  			[].concat(this.state.selectedGenres) : null,
-	  		lyrics: this.state.selectedGenres
+	  		lyrics: this.state.lyrics
 		};
 	},
 	componentDidMount: function() {
@@ -92,9 +92,6 @@ var SubmitMusicTrack = React.createClass({
 	  		selectedGenres: null,
 	  		lyrics: ''
 		});
-
-		this.refs.audioUpload.reset(false);
-		this.refs.tagSelector.reset();
 	},
 	onEditTrack: function(track) {
 		this.setState({
@@ -186,7 +183,7 @@ var SubmitMusicTrack = React.createClass({
 				<div className="submit-track-name col-lg-6">
 					<p>Track Name</p>
 					<input name="trackName" value={ this.state.trackName } onChange={ this.handleInputChanged } />
-					<AudioUpload ref="audioUpload" onAudioChanged={ this.onAudioChanged } />
+					<AudioUpload value={ this.state.audioFile } onAudioChanged={ this.onAudioChanged } />
 				</div>
 				<div className="col-lg-6">
 					<p>ISRC # <a>Whats an ISRC#?</a></p>
@@ -201,7 +198,7 @@ var SubmitMusicTrack = React.createClass({
 					<input name="additionalCredits" value={ this.state.additionalCredits } onChange={ this.handleInputChanged } placeholder="( optional )" />
 				</div>
 				<div className="col-lg-6">
-					<TagSelector ref="tagSelector" tag={ this.state.genreTag } tagList={ this.state.genreTagValues } onSelectionsChange={ this.genreTagsUpdated } />
+					<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } value={ this.state.selectedGenres } onSelectionsChange={ this.genreTagsUpdated } />
 				</div>
 				<div className=" pad-b-sm col-xs-12">
 					<p>Lyrics<a>Why upload lyrics?</a></p>

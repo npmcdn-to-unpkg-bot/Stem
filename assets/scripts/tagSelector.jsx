@@ -10,6 +10,22 @@ var TagSelector = React.createClass({
 			this.setState({
 				selectedValue: nextProps.tagList[0]
 			});
+
+			return;
+		}
+
+		if (nextProps.value && !this.value) {
+			this.setState({
+				selectedValues: nextProps.value
+			});
+
+			return;
+		}
+
+		if (!nextProps.value) {
+			this.setState({
+				selectedValues: []
+			});
 		}
 	},
 	onChange: function(ev) {
@@ -25,7 +41,7 @@ var TagSelector = React.createClass({
 		var selectedValues = this.state.selectedValues;
 
 		if (selectedValues.indexOf(this.state.selectedValue) === -1) {
-			newState = [].concat(selectedValues, this.state.selectedValue);
+			newState = selectedValues.concat(this.state.selectedValue);
 
 			this.setState({
 				selectedValues: newState
