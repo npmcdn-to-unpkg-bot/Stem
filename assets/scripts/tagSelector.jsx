@@ -10,8 +10,6 @@ var TagSelector = React.createClass({
 			this.setState({
 				selectedValue: nextProps.tagList[0]
 			});
-
-			return;
 		}
 
 		if (nextProps.value && !this.value) {

@@ -7,6 +7,11 @@ var AudioUpload = React.createClass({
 			isUploading: false
 		};
 	},
+	componentWillReceiveProps: function(nextProps) {
+		if (this.props.value && !nextProps.value) {
+			this.refs.fileInput.value = '';
+		}
+	},
 	getId: function() {
 		return this.props.audioInputId || this.state.audioInputId;
 	},
@@ -51,8 +56,6 @@ var AudioUpload = React.createClass({
 				console.error('Error occurred while canceling upload: ' + JSON.stringify(error));
 			});
 		}
-
-		this.refs.fileInput.value = '';
 
 		if (this.props.onAudioChanged) {
 			this.props.onAudioChanged(null);

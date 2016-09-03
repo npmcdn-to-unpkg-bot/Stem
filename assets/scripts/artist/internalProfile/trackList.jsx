@@ -1,4 +1,4 @@
-var SubmitTrackEdit = React.createClass({
+var TrackList = React.createClass({
 	// This function exists to be a handoff between this component and whomever is consuming this component so that
 	// we deal with the 'this' pointer properly
 	onEditTrack: function(item) {

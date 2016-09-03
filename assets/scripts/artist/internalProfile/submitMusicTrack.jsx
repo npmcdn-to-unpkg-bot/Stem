@@ -78,6 +78,9 @@ var SubmitMusicTrack = React.createClass({
 	onAddClicked: function() {
 		// Make a deep copy of our state
 		var trackCopy = this.getTrackState();
+		var numTracks = this.state.addedTracks.length - 1;
+		trackCopy.trackNumber = this.state.addedTracks.length > 0 ? 
+			this.state.addedTracks[numTracks].trackNumber + 1 : 1;
 		
 		this.setState({	
 			addedTracks: this.state.addedTracks.concat(trackCopy),
@@ -94,6 +97,7 @@ var SubmitMusicTrack = React.createClass({
 		});
 	},
 	onEditTrack: function(track) {
+
 		this.setState({
 			id: track.id,
 			trackName: track.trackName,
@@ -106,79 +110,71 @@ var SubmitMusicTrack = React.createClass({
 	  		selectedGenres: track.selectedGenres,
 	  		lyrics: track.lyrics
 		});
+
+		var index = this.state.addedTracks.indexOf(track);
+		this.state.addedTracks.splice(index, 1);
+
+		this.setState({
+			addedTracks: [].concat(this.state.addedTracks)
+		});
 	},
-	validate: function() {
+	validate: function(track) {
 		// TODO: Implement visual validation later
-		return this.state.trackName && this.state.trackName.length > 0 && 
-		  	this.state.audioFile && 
-		  	this.state.selectedGenres && this.state.selectedGenres.length > 0;
+		return track.trackName && track.trackName.length > 0 && 
+		  	track.audioFile && 
+		  	track.selectedGenres && track.selectedGenres.length > 0;
 	},
 	createTracks: function(album, artistName) {
 		var deferred = $.Deferred();
+		var responses = [];
 
-		if (this.validate()) {
-			for (var i = 0; i < this.state.addedTracks.length; i++) {
-				var item = this.state.addedTracks[i];
+		for (var i = 0; i < this.state.addedTracks.length; i++) {
+			var item = this.state.addedTracks[i];
 
-				if (!item.id) {
-					stemApi.createSong({
-						artistName: artistName,
-						name: item.trackName,
-						trackNumber: item.trackNumber,
-						albumId: album.id,
-						songFileId: item.audioFile.response.id,
-						// NOTE: We currently don't have a field for this
-						bpm: 0,
-						tagIds: item.selectedGenres.map(function(genreItem) {
-							return genreItem.id;
-						})
-					})
-					.then(function(res) {
-						item.id = res.id;
-
-						console.log('Track Created: ' + JSON.stringify(res));
-						
-						return res;
-					}.bind(this), function(reason) {
-						deferred.reject(reason);
-					});
-				}
-
-				if (deferred.state() === 'rejected') {
-					return deferred.promise();
-				}
+			if (!this.validate(item)) {
+				deferred.reject('The track: ' + JSON.stringify(item) + ' is not valid.  Please correct and resubmit');
+				return deferred.promise();
 			}
 
-			// NOTE: artistName is set at the album level
-			return stemApi.createSong({
-				artistName: artistName,
-				name: this.state.trackName,
-				trackNumber: this.state.trackNumber,
-				albumId: album.id,
-				songFileId: this.state.audioFile.response.id,
-				// NOTE: We currently don't have a field for this
-				bpm: 0,
-				tagIds: this.state.selectedGenres.map(function(item) {
-					return item.id;
+			if (!item.id) {
+				stemApi.createSong({
+					artistName: artistName,
+					name: item.trackName,
+					trackNumber: item.trackNumber,
+					albumId: album.id,
+					songFileId: item.audioFile.response.id,
+					// NOTE: We currently don't have a field for this
+					bpm: 0,
+					tagIds: item.selectedGenres.map(function(genreItem) {
+						return genreItem.id;
+					})
 				})
-			})
-			.then(function(res) {
-				this.setState({
-					id: res.id
-				});
+				.then(function(res) {
+					item.id = res.id;
 
-				return res;
-			}.bind(this));
-		} else {
-			deferred.reject('The track is not valid, please add/fix fields before continuing');
-			return deferred.promise();
+					console.log('Track Created: ' + JSON.stringify(res));
+					responses.push(res);
+					
+					return res;
+				}.bind(this), function(reason) {
+					deferred.reject(reason);
+				});
+			}
+
+			if (deferred.state() === 'rejected') {
+				return deferred.promise();
+			}
 		}
+
+		deferred.resolve(responses);
+
+		return deferred.promise();
 	},
 	render: function() {
 
 		return (
 			<div className="submit-track-wrapper">
-				<SubmitTrackEdit playerStateVisible="true" tracks={ this.state.addedTracks } onEditTrack={ this.onEditTrack } />
+				<TrackList playerStateVisible="true" tracks={ this.state.addedTracks } onEditTrack={ this.onEditTrack } />
 
 				<div className="submit-track-name col-lg-6">
 					<p>Track Name</p>
@@ -239,6 +235,10 @@ var SubmitMusicTrack = React.createClass({
 				      	</div>
 					</div>
 				}
+
+				<p className="bg-danger">
+					{ this.state.statusMessage }
+				</p>
 			</div>
 		);
 	}

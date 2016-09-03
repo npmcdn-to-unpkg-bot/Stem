@@ -1,5 +1,16 @@
-var SubmitMusicMain = React.createClass({
-
+var SubmitMusicMain = ReactRedux.connect(null, function(dispatch) { 
+	return {
+		navigateTagsPage: function() {
+				dispatch({
+					type: 'GoToPage',
+					data: {
+						currentPage: 9
+					}
+				});
+			}
+		};
+	})
+(React.createClass({
 	submitClicked: function() {
 		var album = this.refs.submitMusicAlbum;
 		var track = this.refs.submitMusicTrack;
@@ -17,12 +28,16 @@ var SubmitMusicMain = React.createClass({
 			.then(function(res) {
 				console.log('Album/Track created successfully: ' + JSON.stringify(res));
 				track.setState({
-					isSubmitting: false
+					isSubmitting: false,
+					statusMessage: ''
 				});
-			}, function(reason) {
+
+				this.props.navigateTagsPage();
+			}.bind(this), function(reason) {
 				console.error('Error while creating album/track: ' + JSON.stringify(reason));
 				track.setState({
-					isSubmitting: false
+					isSubmitting: false,
+					statusMessage: reason
 				});
 			});
 	},
@@ -36,10 +51,10 @@ var SubmitMusicMain = React.createClass({
                             <p>Add music to your library</p>
                         </div>    
                         <SubmitMusicAlbum ref="submitMusicAlbum" />
-                        <SubmitMusicTrack ref="submitMusicTrack" onSubmitClicked={this.submitClicked} />
+                        <SubmitMusicTrack ref="submitMusicTrack" onSubmitClicked={ this.submitClicked } />
                     </div>    
                 </div>     
             </div>
         );
     }
-});
+}));
