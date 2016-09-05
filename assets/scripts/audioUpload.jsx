@@ -38,10 +38,11 @@ var AudioUpload = React.createClass({
 			if (this.props.onAudioChanged) {
 				this.props.onAudioChanged(fileInfo);
 			}
-		}.bind(this), function(error) {
+		}.bind(this))
+		.catch(function(error) {
 			console.log('Audio Upload Error: ' + JSON.stringify(error));
 		})
-		.always(function() {
+		.finally(function() {
 			this.setState({
 				isUploading: false
 			});
@@ -52,7 +53,8 @@ var AudioUpload = React.createClass({
 		if (deleteFile) {
 			stemApi.cancelUpload({
 				id: this.props.value.response.id
-			}).fail(function(error) {
+			})
+			.catch(function(error) {
 				console.error('Error occurred while canceling upload: ' + JSON.stringify(error));
 			});
 		}

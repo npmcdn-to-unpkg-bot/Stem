@@ -95,7 +95,7 @@ var StemApi = (function () {
         });
     };
 
-    StemApi.prototype.cancelUpload = function(req) {
+    StemApi.prototype.cancelUpload = Promise.method(function(req) {
     	return $.ajax({
 	        type: 'PUT',
 	        url: this.baseUrl + 'files/upload/' + req.id,
@@ -104,10 +104,10 @@ var StemApi = (function () {
 	        data: JSON.stringify({ isCanceled: true }),
 	        dataType: 'json'
 	    });
-    };
+    });
 
     // File
-    StemApi.prototype.upload = function (req) {
+    StemApi.prototype.upload = Promise.method(function (req) {
     	var uploadResponse = null;
 
         return $.ajax({
@@ -140,10 +140,10 @@ var StemApi = (function () {
 	            dataType: 'json'
 	        });
         }.bind(this));
-    };
+    });
 
     //Song
-    StemApi.prototype.createSong = function (req) {
+    StemApi.prototype.createSong = Promise.method(function (req) {
         return $.ajax({
             type: 'POST',
             url: this.baseUrl + 'songs',
@@ -152,9 +152,9 @@ var StemApi = (function () {
             data: JSON.stringify(req),
             dataType: 'json'
         });
-    };
+    });
 
-    StemApi.prototype.createAlbum = function (req) {
+    StemApi.prototype.createAlbum = Promise.method(function (req) {
         return $.ajax({
             type: 'POST',
             url: this.baseUrl + 'albums',
@@ -163,7 +163,7 @@ var StemApi = (function () {
             data: JSON.stringify(req),
             dataType: 'json'
         });
-    };
+    });
 
     StemApi.prototype.updateSong = function (rse) {
         var _this = this;
@@ -243,23 +243,23 @@ var StemApi = (function () {
         });
     };
 
-    StemApi.prototype.getAllTagTypes = function(req) {
+    StemApi.prototype.getAllTagTypes = Promise.method(function(req) {
     	return $.ajax({
     		type: 'GET',
     		url: this.baseUrl + 'tagtypes',
     		headers: { 'Authorization': this.authorization },
             contentType: 'application/json; charset=utf-8'
     	});
-    };
+    });
 
-    StemApi.prototype.getTagValues = function(req) {
+    StemApi.prototype.getTagValues = Promise.method(function(req) {
     	return $.ajax({
     		type: 'GET',
     		url: this.baseUrl + 'tagtypes/' + req.tagTypeId + '/tags',
     		headers: { Authorization: this.authorization },
     		contentType: 'application/json; charset=utf-8'
     	});
-    };
+    });
 
     StemApi.prototype.getCreatorDownloads = function (rse) {
     	return $.ajax({

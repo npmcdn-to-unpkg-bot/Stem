@@ -31,7 +31,20 @@ var Formatter = {
 			return file.name + ' ' + '(' + size + ')';
 		}
 	}
-}
+};
+
+// This should be moved to it's own file at some point
+var Utilities = {
+	normalizeError: function(error) {
+		if (typeof error === 'string') {
+			return error;
+		}
+
+		if (typeof error === 'object' && error.hasOwnProperty('responseJSON')) {
+			return error.responseJSON.message;
+		}
+	}
+};
 
 // Thunk Action Creator, for having actions that have side effects such as AJAX calls
 function beginSearch(searchTerms) {

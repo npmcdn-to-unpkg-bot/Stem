@@ -8,7 +8,6 @@ var SubmitMusicTrack = React.createClass({
 
 			id: null,
 			trackName: '',
-			trackNumber: 0,
 			isExplicit: false,
 	  		isrc: '',
 	  		releaseDate: '',
@@ -22,7 +21,6 @@ var SubmitMusicTrack = React.createClass({
 		return {
 			id: this.state.id,
 			trackName: this.state.trackName,
-			trackNumber: this.state.trackNumber,
 			isExplicit: this.state.isExplicit,
 	  		isrc: this.state.isrc,
 	  		releaseDate: this.state.releaseDate,
@@ -54,7 +52,8 @@ var SubmitMusicTrack = React.createClass({
 					genreTagValues: res
 				});
 
-			}.bind(this), function(reason) {
+			}.bind(this))
+			.catch(function(reason) {
 				console.log('Error fetching all tag types: ' + JSON.stringify(reason));
 			});
 
@@ -78,9 +77,6 @@ var SubmitMusicTrack = React.createClass({
 	onAddClicked: function() {
 		// Make a deep copy of our state
 		var trackCopy = this.getTrackState();
-		var numTracks = this.state.addedTracks.length - 1;
-		trackCopy.trackNumber = this.state.addedTracks.length > 0 ? 
-			this.state.addedTracks[numTracks].trackNumber + 1 : 1;
 		
 		this.setState({	
 			addedTracks: this.state.addedTracks.concat(trackCopy),
@@ -101,7 +97,6 @@ var SubmitMusicTrack = React.createClass({
 		this.setState({
 			id: track.id,
 			trackName: track.trackName,
-			trackNumber: track.trackNumber,
 			isExplicit: track.isExplicit,
 	  		isrc: track.isrc,
 	  		releaseDate: track.releaseDate,
@@ -125,22 +120,16 @@ var SubmitMusicTrack = React.createClass({
 		  	track.selectedGenres && track.selectedGenres.length > 0;
 	},
 	createTracks: function(album, artistName) {
-		var deferred = $.Deferred();
-		var responses = [];
-
-		for (var i = 0; i < this.state.addedTracks.length; i++) {
-			var item = this.state.addedTracks[i];
-
+		return Promise.map(this.state.addedTracks, function(track, index) {
 			if (!this.validate(item)) {
-				deferred.reject('The track: ' + JSON.stringify(item) + ' is not valid.  Please correct and resubmit');
-				return deferred.promise();
+				return Promise.reject('The track: ' + JSON.stringify(item) + ' is not valid.  Please correct and resubmit');
 			}
 
 			if (!item.id) {
-				stemApi.createSong({
+				return stemApi.createSong({
 					artistName: artistName,
 					name: item.trackName,
-					trackNumber: item.trackNumber,
+					trackNumber: index + 1,
 					albumId: album.id,
 					songFileId: item.audioFile.response.id,
 					// NOTE: We currently don't have a field for this
@@ -153,22 +142,13 @@ var SubmitMusicTrack = React.createClass({
 					item.id = res.id;
 
 					console.log('Track Created: ' + JSON.stringify(res));
-					responses.push(res);
 					
 					return res;
-				}.bind(this), function(reason) {
-					deferred.reject(reason);
-				});
+				}.bind(this));
+			} else {
+				return Promise.resolve();
 			}
-
-			if (deferred.state() === 'rejected') {
-				return deferred.promise();
-			}
-		}
-
-		deferred.resolve(responses);
-
-		return deferred.promise();
+		});
 	},
 	render: function() {
 

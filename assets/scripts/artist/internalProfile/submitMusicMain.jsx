@@ -26,18 +26,21 @@ var SubmitMusicMain = ReactRedux.connect(null, function(dispatch) {
 				return track.createTracks(res, album.state.artistName);
 			})
 			.then(function(res) {
-				console.log('Album/Track created successfully: ' + JSON.stringify(res));
+				console.log('Album created successfully: ' + JSON.stringify(res));
 				track.setState({
 					isSubmitting: false,
 					statusMessage: ''
 				});
 
 				this.props.navigateTagsPage();
-			}.bind(this), function(reason) {
-				console.error('Error while creating album/track: ' + JSON.stringify(reason));
+			}.bind(this))
+			.catch(function(reason) {
+				var errorMessage = Utilities.normalizeError(reason);
+
+				console.error('Error while creating album/track: ' + errorMessage);
 				track.setState({
 					isSubmitting: false,
-					statusMessage: reason
+					statusMessage: errorMessage
 				});
 			});
 	},
