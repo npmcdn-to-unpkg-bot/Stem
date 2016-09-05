@@ -121,25 +121,25 @@ var SubmitMusicTrack = React.createClass({
 	},
 	createTracks: function(album, artistName) {
 		return Promise.map(this.state.addedTracks, function(track, index) {
-			if (!this.validate(item)) {
-				return Promise.reject('The track: ' + JSON.stringify(item) + ' is not valid.  Please correct and resubmit');
+			if (!this.validate(track)) {
+				return Promise.reject('The track: ' + JSON.stringify(track) + ' is not valid.  Please correct and resubmit');
 			}
 
-			if (!item.id) {
+			if (!track.id) {
 				return stemApi.createSong({
 					artistName: artistName,
-					name: item.trackName,
+					name: track.trackName,
 					trackNumber: index + 1,
 					albumId: album.id,
-					songFileId: item.audioFile.response.id,
+					songFileId: track.audioFile.response.id,
 					// NOTE: We currently don't have a field for this
 					bpm: 0,
-					tagIds: item.selectedGenres.map(function(genreItem) {
+					tagIds: track.selectedGenres.map(function(genreItem) {
 						return genreItem.id;
 					})
 				})
 				.then(function(res) {
-					item.id = res.id;
+					track.id = res.id;
 
 					console.log('Track Created: ' + JSON.stringify(res));
 					
@@ -148,7 +148,7 @@ var SubmitMusicTrack = React.createClass({
 			} else {
 				return Promise.resolve();
 			}
-		});
+		}.bind(this));
 	},
 	render: function() {
 
