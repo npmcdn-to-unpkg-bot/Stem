@@ -1,5 +1,26 @@
 var UploadForm = React.createClass({
+	
 	getInitialState: function() {
+		// Although I'm calling this a Promise, it most certainly is not and should be replaced by an actual one later
+		var albumNamesPromise = function(success, fail) {
+			stemApi.getAlbumNamesByArtist({
+				request: {
+					artistId: this.context.userInfo.id
+				},
+				success: function (response) {
+					success(response);
+				},
+
+				error: function (response) {
+					console.error(JSON.stringify(response, null, 2));
+
+					if (fail) {
+						fail(response);
+					}
+				}
+			});
+		};
+
 		return {
 			singleTrack: true,
 			characterCount: 0,
@@ -7,7 +28,7 @@ var UploadForm = React.createClass({
 			errorMessage: '',
 			albumListVisible: false,
 			albumSelection: '',
-			albumNames: [],
+			albumNamesPromise: albumNamesPromise.bind(this),
 			
 			audioFile: undefined,
 			audioFileName: '',
@@ -21,26 +42,6 @@ var UploadForm = React.createClass({
 			albumArtFileId: 0,
 			songFileId: 0
 		}
-	},
-	componentDidMount: function() {
-
-       
-		stemApi.getAlbumNamesByArtist({
-		request: {
-			artistId: this.context.userInfo.id
-		},
-		success: function (response) {
-			this.setState({
-				albumNames: response
-			});
-		}.bind(this),
-
-		error: function (response) {
-		console.error(JSON.stringify(response, null, 2));
-					self.setErrorMessage(errorMessage);	
-				}
-		});
-
 	},
 
 	uploadFormToggle: function() {
@@ -82,11 +83,6 @@ var UploadForm = React.createClass({
 		 }
 	},
 
-	// selectAlbum: function() {
-	// 	this.setState({ albumSelection: e.target.value});
-	// 	console.log(this.albumSelection);
-	// },   
-
 	showHideNotice: function() {
 		if(this.state.displayNotice) {
 			this.setState({ displayNotice: false });
@@ -95,19 +91,20 @@ var UploadForm = React.createClass({
 		}
 	},
 
-		handleFieldChange: function(e) {
-			var id = e.target.id;
-				this.setState({
+	handleFieldChange: function(e) {
+		var id = e.target.id;
+			this.setState({
 				[id]: e.target.value
-			}); 
-			console.log(id); 
-		},
+			});
+		
+		console.log(id); 
+	},
 
 	handleFileUpload: function(e) {
-			e.preventDefault();
-			
-			var id = e.target.id,
-				reader = new FileReader(),
+		e.preventDefault();
+		
+		var id = e.target.id,
+			reader = new FileReader(),
 			file = e.target.files[0];
 
 		reader.onloadend = () => {
@@ -123,68 +120,68 @@ var UploadForm = React.createClass({
 				});
 			}
 		}
-			reader.readAsDataURL(file);
-		},
+		reader.readAsDataURL(file);
+	},
 
-		saveAudioFile: function() {
-			var self = this;
+	saveAudioFile: function() {
+		var self = this;
 
-				stemApi.upload({
-						request: {
-								file: audioFile
-						},
-						success: function (response) {
+		stemApi.upload({
+			request: {
+				file: this.state.audioFile
+			},
+			success: function (response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				self.saveArtFile(response.id);
-						},
-						error: function (response) {
+			},
+			error: function (response) {
 				console.error(JSON.stringify(response, null, 2));
-							self.setErrorMessage(errorMessage);	
-						}
-				});
-		},
+				self.setErrorMessage(errorMessage);	
+			}
+		});
+	},
 
-		saveArtFile: function(id) {
-			var self = this;
+	saveArtFile: function(id) {
+		var self = this;
 
-				stemApi.upload({
-						request: {
-								file: artFile
-						},
-						success: function (response) {
+		stemApi.upload({
+			request: {
+			    file: this.state.artFile
+			},
+			success: function (response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
 				self.updateRecord(id, response.id);
-						},
-						error: function (response) {
+			},
+			error: function (response) {
 				console.error(JSON.stringify(response, null, 2));
-							self.setErrorMessage(errorMessage);	
-						}
-				});
-		},
+				self.setErrorMessage(errorMessage);	
+				}
+		});
+	},
 
-		updateRecord: function(songId, artId) {
-				stemApi.createSong({
-						request: {
-						artistName: this.state.artistName,
-						songName: this.state.songName,
-						albumName: this.state.albumName,
-						promotionalLink: this.state.promotionalLink,
-						promotionalCopy: this.state.promotionalCopy,
-						albumArtFileId: artId,
-						songFileId: songId
-						},
-						success: function (response) {
+	updateRecord: function(songId, artId) {
+		stemApi.createSong({
+			request: {
+			artistName: this.state.artistName,
+			songName: this.state.songName,
+			albumName: this.state.albumName,
+			promotionalLink: this.state.promotionalLink,
+			promotionalCopy: this.state.promotionalCopy,
+			albumArtFileId: artId,
+			songFileId: songId
+			},
+			success: function (response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
-						},
-						error: function (response) {
+			},
+			error: function (response) {
 				console.error(JSON.stringify(response, null, 2));
-							self.setErrorMessage(errorMessage);	
-						}
-				});
-		},
+				self.setErrorMessage(errorMessage);	
+			}
+		});
+	},
 
 	render: function () {
 		var self = this;
@@ -221,12 +218,7 @@ var UploadForm = React.createClass({
 					</div>
 					<div className="col-xs-12">
 						<p>Album Name</p>
-						<input id="albumName" onChange={this.handleFieldChange} onFocus={this.handleShowAlbumList} value={this.state.albumName} /> 
-						<ul className={this.state.albumListVisible ? "display-true album-list-wrapper col-sm-12" : "display-false"}>
-							{this.state.albumNames.map(function(e) {
-								return <li key={e.id} value={e.id} onClick={this.selectAlbum}>{e}</li>;
-							})}
-						</ul>  
+						<AutoCompleteTextBox id="albumName" onChange={this.handleFieldChange} options={this.state.albumNamesPromise} />
 					</div>
 					<div className="col-xs-12">
 						<p>Promotion Link <span className="icon-help-circled"></span></p>
