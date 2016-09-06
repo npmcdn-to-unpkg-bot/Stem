@@ -1,24 +1,83 @@
-var createStore = Redux.createStore;
-var Provider = ReactRedux.Provider;
-var connect = ReactRedux.connect;
-var stemApi = new StemApi("http://52.32.255.104/api/");
+var createStore = Redux.createStore,
+	applyMiddleware = Redux.applyMiddleware,
+	Provider = ReactRedux.Provider,
+	connect = ReactRedux.connect,
+	stemApi = new StemApi("http://52.32.255.104/api/"),
+	thunk = ReduxThunk.default;
 
 const initialState = {
 	baseAPI: 'http://52.32.255.104/api',
 	isLoggedIn: false,
 	userInfo: {},
 	currentPage: 0,
-	tagList: [],
-	songList: []
+	pageParams: {},
+	searchTerms: '',
+	searchResults: [],
+	tagList: []
 };
 
+// This should be moved to it's own file at some point
+var Tag = {
+	SystemType: {
+		Genre: 1
+	}
+};
+
+// This should be moved to it's own file or use a third party library
+var Formatter = {
+	formatFileLabel: function(file) {
+		if (file) {
+			var size =  (file.size / (1000000)).toFixed(2) + ' MB';
+			return file.name + ' ' + '(' + size + ')';
+		}
+	}
+};
+
+// This should be moved to it's own file at some point
+var Utilities = {
+	normalizeError: function(error) {
+		if (typeof error === 'string') {
+			return error;
+		}
+
+		if (typeof error === 'object' && error.hasOwnProperty('responseJSON')) {
+			return error.responseJSON.message;
+		}
+	}
+};
+
+// Thunk Action Creator, for having actions that have side effects such as AJAX calls
+function beginSearch(searchTerms) {
+	return function(dispatch) {
+		stemApi.searchSongs({
+            request: {
+                text: searchTerms
+            }
+        })
+		.then(function(response) {
+			dispatch({
+            	type: 'UpdateSearch',
+            	data: {
+            		results: response.songs,
+            		terms: response.terms.join(' '),
+            		// We automatically navigate to the artist search page when a search is initiated
+            		currentPage: 6
+            	}
+	        });
+		}, function(error) {
+			console.error(JSON.stringify(response, null, 2));
+		});
+	};
+}
+
 var reducer = function(state, action) {
-	if(state === undefined) {
+	if (state === undefined) {
 		return initialState;
 	}
 	var newState = state;
-	switch(action.type) {
+	switch (action.type) {
 		case 'UpdateLoginStatus':
+			console.log('UpdateLoginStatus Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
 			newState = Object.assign({}, state, {
 				isLoggedIn: action.data.isLoggedIn,
 				userInfo: action.data.userInfo || {},
@@ -28,6 +87,7 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'UpdateUserRecord':
+			console.log('UpdateUserRecord Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
 			// TODO:  Object.assign is not supported in IE, we may want to use lodash _.assign for compatibility
 			newState = Object.assign({}, state, {
 				userInfo: action.data.userInfo,
@@ -38,20 +98,20 @@ var reducer = function(state, action) {
 
 		case 'GoToPage':
 			console.log('GoToPage action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, {currentPage: action.data.currentPage});
+			newState = Object.assign({}, state, {
+				currentPage: action.data.currentPage,
+				pageParams: action.data.pageParams || {}
+			});
 			console.log('newState = ' + JSON.stringify(newState));
 			return newState;
 
-		case 'UpdateTagList':
-			console.log('UpdateTagList action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, {tagList: action.data.tagList, currentPage: 6});
-			console.log('newState = ' + JSON.stringify(newState));
-			return newState;
-
-		case 'UpdateSongList':
-			console.log('UpdateSongList action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, { songList: action.data });
-			console.log('newState = ' + JSON.stringify(newState));
+		case 'UpdateSearch':
+			console.log('Equality Check (searchResults): ' + (action.data.results === state.searchResults));
+			newState = Object.assign({}, state, { 
+				searchResults: action.data.results,
+				searchTerms: action.data.terms,
+				currentPage: action.data.currentPage
+			});
 			return newState;
 
 		default: 
@@ -61,7 +121,9 @@ var reducer = function(state, action) {
 	return newState;
 }
 
-var store = createStore(reducer, initialState);
+var store = createStore(reducer,
+	initialState,
+	applyMiddleware(thunk));
 
 var AppState = function(state) {
 	return {
@@ -69,8 +131,6 @@ var AppState = function(state) {
 		isLoggedIn: state.isLoggedIn,
 		userInfo: state.userInfo,
 		currentPage: state.currentPage,
-		tagList: state.tagList,
-		songList: state.songList
 	}
 }
 
@@ -93,7 +153,7 @@ var App = React.createClass({
 
 	render: function() {
 		var currentPage = this.props.currentPage;
-
+		
 		return (  
 			<div>  
 
@@ -159,6 +219,7 @@ var App = React.createClass({
 				{ this.props.currentPage == 7 ?
 					<div className="wrapper">
 						<AdminMain />
+						<Footer />
 					</div>
 				: null} 
 
@@ -166,6 +227,13 @@ var App = React.createClass({
 					<div className="wrapper">
 						<FilterNav />
 						<CreatorMain />
+						<Footer />
+					</div>
+				: null} 
+
+				{ this.props.currentPage == 9 ?
+					<div className="wrapper">
+						<CreatorProfileMain />
 						<Footer />
 					</div>
 				: null} 
@@ -191,6 +259,28 @@ var App = React.createClass({
 				{ this.props.currentPage == 103 ?
 					<div className="wrapper">
 						<ArtistEditTrack />
+						<Footer />
+					</div>
+				: null}
+
+				{ this.props.currentPage == 104 ?
+					<div className="wrapper">
+						<ArtistSongDetail />
+						<Footer />
+					</div>
+				: null}
+
+				{ this.props.currentPage == 105 ?
+					<div className="wrapper">
+						<AdminHeader />
+						<AdminSubmitMusic />
+						<Footer />
+					</div>
+				: null}
+
+				{ this.props.currentPage === 110 ? 
+					<div className="wrapper">
+						<ArtistProfile artistId={this.props.pageParams.artistId} />
 						<Footer />
 					</div>
 				: null}
@@ -243,6 +333,11 @@ var artistMenu = [
 	{
 		pageID: 8,
 		text: "Creator Home",
+		icon: "icon-home"
+	},
+	{
+		pageID: 9,
+		text: "Creator Profile",
 		icon: "icon-home"
 	}
 ]; 

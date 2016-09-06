@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="assets/styles/bootstrap.min.css" />
         <link rel="stylesheet" href="assets/styles/c3.min.css" type="text/css">
         <link rel="stylesheet" href="assets/styles/icons.css">
+        <link rel="stylesheet" href="assets/scripts/imageUpload/cropper.css" />
 
         <link rel="stylesheet/less" type="text/css" href="assets/styles/variables.less" />
         <link rel="stylesheet/less" type="text/css" href="assets/styles/colors.less" />
@@ -28,6 +29,10 @@
         <link rel="stylesheet/less" type="text/css" href="assets/styles/artist-search.less" />
         <link rel="stylesheet/less" type="text/css" href="assets/styles/artist-internal.less">
         <link rel="stylesheet/less" type="text/css" href="assets/styles/creatorMain.less">
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/creatorDownloads.less" />
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/creator-profile.less" />
+        <link rel="stylesheet/less" type="text/css" href="assets/styles/ipsy-main.less" />
+
         <link rel="stylesheet/less" type="text/css" href="assets/styles/edit-track.less">
 
         <link rel="stylesheet/less" type="text/css" href="assets/styles/banner.less">
@@ -47,6 +52,10 @@
         <div id="app" class="content-wrapper"></div> 
 
         <script type="text/jsx" src="assets/scripts/autoCompleteTextBox.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/imageUpload/ImageUpload.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/loadingButton.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/audioUpload.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/tagSelector.jsx"></script>
         
         <!-- JSX Component Files -->
         <script type="text/jsx" src="assets/scripts/header.jsx"> </script>
@@ -55,11 +64,19 @@
         <script type="text/jsx" src="assets/scripts/filterNav.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/player.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/footer.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/paymentOptions.jsx"></script>
-        <script type="text/jsx" src="assets/scripts/detailedPaymentOptions.jsx"></script>
-        <script type="text/jsx" src="assets/scripts/paymentProcessingPage.jsx"></script>
         <script type="text/jsx" src="assets/scripts/welcomeModal.jsx"></script>
 
+        <!-- Payment -->
+        <script type="text/jsx" src="assets/scripts/payment/paymentOptions.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/payment/detailedPaymentOptions.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/payment/paymentProcessingPage.jsx"> </script>
+
+        <!-- Ipsy -->
+        <script type="text/jsx" src="assets/scripts/ipsy/ipsyMain.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/ipsy/ipsySignUp.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/ipsy/ipsyWelcome.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/ipsy/ipsySignUpOops.jsx"> </script>
+        
         <!-- Artist -->
         <script type="text/jsx" src="assets/scripts/artist/externalProfile/profileMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/externalProfile/featured.jsx"> </script>
@@ -68,10 +85,13 @@
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/sidebar.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/LibraryMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/LibraryMainTableRow.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/LibraryMainTableHeader.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/LibraryMainTableHeader.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/LibraryMainTable.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/submitMusicMain.jsx"> </script>
-        <script type="text/jsx" src="assets/scripts/artist/internalProfile/uploadForm.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/submitMusicAlbum.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/submitMusicTrack.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/trackList.jsx"> </script>
+    
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/uploadSuccess.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/downloadNotice.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/tagSuccess.jsx"> </script>
@@ -80,9 +100,13 @@
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/artistEditList.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/artistEditAlbum.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artist/internalProfile/artistEditSong.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/artistSongDetail.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/artistSongDetailHeader.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/songDetailChart.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artist/internalProfile/creatorLove.jsx"> </script>
 
-        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTableHeader.jsx"></script>
-        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTableRow.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTableHeader.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTableRow.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileTable.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artistProfile/artistProfileHeader.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artistProfile/artistProfile.jsx"> </script>
@@ -101,17 +125,27 @@
         <script type="text/jsx" src="assets/scripts/creator/stats.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/creator/timeline.jsx"> </script>
 
+        <!-- Creator Internal -->
         <script type="text/jsx" src="assets/scripts/creator/internalProfile/creatorMain.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/creator/internalProfile/creatorDownloadsMain.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/creator/internalProfile/creatorDownloadsCard.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/creator/internalProfile/featuredArtist.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/creator/internalProfile/topAlbums.jsx"> </script>
 
+        <!-- Creator External -->
+        <script type="text/jsx" src="assets/scripts/creator/externalProfile/creatorProfileMain.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/creator/externalProfile/creatorProfileHeader.jsx"> </script> 
+        <script type="text/jsx" src="assets/scripts/creator/externalProfile/creatorProfileYouTube.jsx"> </script> 
+        <script type="text/jsx" src="assets/scripts/creator/externalProfile/creatorProfileTags.jsx"> </script> 
+
         <!-- Artist Search -->
         <script type="text/jsx" src="assets/scripts/artistSearch/artistSearchResultsTableHeader.jsx"></script>
-        <script type="text/jsx" src="assets/scripts/artistSearch/artistSearchResultsTableRow.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/artistSearch/artistSearchResultsTableRow.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artistSearch/artistSearchResultsTable.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artistSearch/artistSearch.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artistSearch/searchSidebar.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/artistSearch/searchMobile.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/artistSearch/artistSearchNoResultsHeader.jsx"> </script>
 
         <!-- Playlist -->
         <script type="text/jsx" src="assets/scripts/playlist/playlistMain.jsx"> </script>
@@ -128,18 +162,22 @@
         <!-- Admin -->
         <script type="text/jsx" src="assets/scripts/admin/adminMain.jsx"> </script>
         <script type="text/jsx" src="assets/scripts/admin/adminDashboard.jsx"> </script>
+        <script type="text/jsx" src="assets/scripts/admin/adminSideNav.jsx"></script>
+        <script type="text/jsx" src="assets/scripts/admin/adminHeader.jsx"></script>
         <script type="text/jsx" src="assets/scripts/admin/adminNewSubmissions.jsx"></script>
         <script type="text/jsx" src="assets/scripts/admin/adminNewCreators.jsx"></script>
         <script type="text/jsx" src="assets/scripts/admin/adminNewArtists.jsx"></script>
         <script type="text/jsx" src="assets/scripts/admin/adminChart.jsx"></script>
-
+        <script type="text/jsx" src="assets/scripts/admin/adminSubmitMusic.jsx"></script>
 
         <script type="text/jsx" src="assets/scripts/app.jsx"> </script>
         
         <!-- Core JS Files -->
+        <script src="https://npmcdn.com/bluebird@3.4.6/js/browser/bluebird.min.js" type="text/javascript"></script>
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" 
         	integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+        <script src="assets/scripts/imageUpload/cropper.js" type="text/javascript"></script>
         <script type="text/javascript" src="assets/scripts/bootstrap.min.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script type="text/javascript" src="assets/scripts/player.js"></script>
@@ -147,12 +185,13 @@
         <script src="assets/scripts/c3.min.js"></script>
 
         <!-- React -->
-        <script src="http://fb.me/react-0.14.7.js"></script>
-        <script src="https://fb.me/react-dom-0.14.7.js"></script>
+        <script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+		<script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
 
         <!-- Redux -->
-        <script src="https://npmcdn.com/redux@3.0.4/dist/redux.js"></script>
+        <script src="https://npmcdn.com/redux@3.5.2/dist/redux.js"></script>
         <script src="https://npmcdn.com/react-redux@4.0.0/dist/react-redux.js"></script>
+        <script src="https://npmcdn.com/redux-thunk@2.1.0/dist/redux-thunk.js"></script>
 
         <!-- In-browser JSX transformer, remove when pre-compiling JSX. -->
         <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>

@@ -2,36 +2,15 @@ var Header = (function() {
 	var NavBar = React.createClass({
 	    getInitialState: function () {
 	        return {
-				currentPage: this.props.currentPage,
 	            displayMenu: false,
 	            displaySearch: false,
 				autofocus: true,
-				searchString: '',
-				songList: this.props.songList,
-				tagList: this.props.tagList
-	        }
+				searchInput: '',
+	        };
 	    },
 
-	    getSongList: function() {
-	    	stemApi.searchSongs({
-	            request: {
-	                text: ""
-	            },
-	            success: function (response) {
-	            	this.setState({ 
-	            		songList: response.songs
-	            	});
-
-	                store.dispatch({
-	                	type: 'UpdateSongList',
-	                	data: response.songs
-	                });
-
-	            }.bind(this),
-	            error: function (response) {
-	                console.error(JSON.stringify(response, null, 2));
-	            }
-	        });
+	    search: function() {
+	    	this.props.search(this.state.searchInput);
 	    },
 
 		showHideMenu: function() {
@@ -46,11 +25,9 @@ var Header = (function() {
 			if(this.state.displaySearch) {
 				this.setState({ 
 					displaySearch: false,
-					filteredSongList: [],
-					searchString: ''
+					searchInput: ''
 				});
 			} else {
-				this.getSongList();
 		        this.setState({ displaySearch: true });
 			}
 		},
@@ -58,45 +35,28 @@ var Header = (function() {
 		navigate: function(id) {
 			store.dispatch({
 				type: 'GoToPage',
-				data: {currentPage: id}
+				data: { currentPage: id }
 			});
 		},
 
-		handleSearch: function(e) {
-			var searchString = e.target.value;
-        	this.setState({ searchString: e.target.value });	
+		searchInputChange: function( ev ) {
+        	this.setState({ searchInput: ev.target.value });	
 		},
 
-		selectSong: function(id, name) {
-			var tagList = this.state.tagList,
-				tag = {id: id, name: name};
-
-			tagList.push(tag);
-			store.dispatch({
-				type: 'UpdateTagList',
-				data: {tagList: tagList}
-			});
-		}, 
+		searchInputKeyPress: function( ev ) {
+			if (ev.which === 13) {
+				this.search();
+			}
+		},
 
 		render: function() {
-			var self = this,
-				songList = this.state.songList,
-				filteredSongList = [],
-            	searchString = this.state.searchString.trim().toLowerCase();
-
-	        if(searchString.length > 0){
-	            filteredSongList = songList.filter(function(l){
-	                return l.songName.toLowerCase().match( searchString );
-	            });
-	        }
-
 			return (  
 				<div>   
 					<nav className="header">
 						<div className="header-content">
 							<div className="header-brand pull-left">         
 								<a onClick={this.navigate.bind(this, 0)} className="brand">
-									Stem
+									Thematic
 								</a>
 								<a href="http://d2pziso4zk2lvf.cloudfront.net/fontdemo.html"><i className="icon-star pad-l-sm"></i></a>
 								<a href="http://d2pziso4zk2lvf.cloudfront.net/stylesheet.html"><i className="icon-rocket error"></i></a>
@@ -106,17 +66,15 @@ var Header = (function() {
 									<a onClick={this.showHideSearch}>
 										{ this.state.displaySearch ? 
 											<div className="search-input-wrapper dropdown">
-												<span className="input-group-icon icon-search" id="addon-1"></span>
-												<input id="search-input" onChange={this.handleSearch} aria-describedby="addon-1" placeholder="Placeholder..."  autoFocus={this.state.autofocus} ></input> 
-												{ searchString.length > 0 ? 
-													<span className="open">
-									                    <ul className="dropdown-menu"> 
-									                        { filteredSongList.map(function(item, index){
-																return <SongListItem key={index} songID={item.id} songName={item.songName} selectSong={self.selectSong} />;
-									                        }) }
-									                    </ul>
-								                    </span>
-							                    : null }
+												<span onClick={this.search} className="input-group-icon icon-search" id="addon-1"></span>
+												<input 
+													id="search-input" 
+													onChange={this.searchInputChange}
+													value={this.state.searchInput}
+													onKeyPress={this.searchInputKeyPress}
+													aria-describedby="addon-1" 
+													placeholder="Search..."  
+													autoFocus={this.state.autofocus} ></input>
 											</div>	
 										: 
 											<i className="icon-search"></i>
@@ -134,16 +92,16 @@ var Header = (function() {
 						</div> 
 					</nav>
 
-					<Menu displayMenu={this.state.displayMenu} showHideMenu={self.showHideMenu} alignment="right">
+					<Menu displayMenu={this.state.displayMenu} showHideMenu={this.showHideMenu} alignment="right">
 						<div className="menu-content">
-							<MenuHeader showHideMenu={self.showHideMenu} />
-							{ this.props.artistMenu.map(function(i) {
+							<MenuHeader showHideMenu={this.showHideMenu} />
+							{ this.props.artistMenu.map(function(item) {
 								return (
-									<MenuItem showHideMenu={self.showHideMenu} hash={i.text} key={i.pageID} meunItemID={i.pageID}>
-										<i className={i.icon}></i> {i.text}
+									<MenuItem showHideMenu={this.showHideMenu} hash={item.text} key={item.pageID} meunItemID={item.pageID}>
+										<i className={item.icon}></i> {item.text}
 									</MenuItem>
 								)
-							})}
+							}.bind(this))}
 						</div>
 					</Menu>
 					<div className={this.state.displaySearch ? "filter-page-overlay active" : null} onClick={this.showHideSearch}></div>
@@ -197,27 +155,13 @@ var Header = (function() {
 	        this.props.showHideMenu();
 			store.dispatch({
 				type: 'GoToPage',
-				data: {currentPage: id}
+				data: { currentPage: id }
 			});
 		},
 
 		render: function() {
 			return (
 				<div onClick={this.navigate.bind(this, this.props.meunItemID)} key={this.props.meunItemID} className={this.props.meunItemID == this.context.currentPage ? "menu-item active" : "menu-item"}>{this.props.children}</div>
-			);
-		}
-	});
-
-	var SongListItem = React.createClass({
-		selectSong: function(id, name) {
-	        this.props.selectSong(id, name);
-		}, 
-
-		render: function() {
-			return (
-				<li onClick={this.selectSong.bind(this, this.props.songID, this.props.songName)} key={this.props.songID}>
-					{this.props.songName}
-				</li>
 			);
 		}
 	});
@@ -232,14 +176,15 @@ var Header = (function() {
 	function mapStateToProps(state) {
 		return {
 			isLoggedIn: state.isLoggedIn,
-			searchResults: state.songList,
-			tagList: state.tagList
+			currentPage: state.currentPage
 		};
 	}
 
 	function mapDispatchToProps(dispatch, ownProps) {
 		return {
-			
+			search: function(terms) {
+				dispatch(beginSearch(terms));
+			}
 		};
 	}
 

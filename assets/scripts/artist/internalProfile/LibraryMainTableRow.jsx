@@ -10,7 +10,7 @@ var LibraryMainTableRow = React.createClass({
             	<td className="img-td col-xs-1 row no-gutters">
                 	<img className="mobile-img-thumbnail mar-r-xs" src={song.albumArtUrl} />
               	</td>
-              	<td className="col-xs-1 col-md-2"><p>{song.songName}</p></td>
+              	<td className="col-xs-1 col-md-2"><p>{song.name}</p></td>
               	<td className="col-xs-1 col-md-2"><p>{song.albumName}</p></td>
               	<td className="col-xs-1"><p>{song.duration}</p></td>
               	<td className="col-xs-1"><p>{song.playCount}</p></td>

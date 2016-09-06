@@ -3,13 +3,16 @@ var UploadForm = React.createClass({
 	getInitialState: function() {
 		// Although I'm calling this a Promise, it most certainly is not and should be replaced by an actual one later
 		var albumNamesPromise = function(success, fail) {
-			stemApi.getAlbumNamesByArtist({
+			stemApi.getAlbumsByArtist({
 				request: {
 					artistId: this.context.userInfo.id
 				},
 				success: function (response) {
-					success(response);
-				},
+					this.setState({ albums: response });
+					success(response.map(function(item) {
+						return item.name; 
+					}));
+				}.bind(this),
 
 				error: function (response) {
 					console.error(JSON.stringify(response, null, 2));
@@ -28,7 +31,9 @@ var UploadForm = React.createClass({
 			errorMessage: '',
 			albumListVisible: false,
 			albumSelection: '',
+			albums: [],
 			albumNamesPromise: albumNamesPromise.bind(this),
+			selectedAlbum: {},
 			
 			audioFile: undefined,
 			audioFileName: '',
@@ -40,7 +45,9 @@ var UploadForm = React.createClass({
 			promotionalLink: '',
 			promotionalCopy: '',
 			albumArtFileId: 0,
-			songFileId: 0
+			songFileId: 0,
+
+			displayAdditional: false
 		}
 	},
 
@@ -93,10 +100,19 @@ var UploadForm = React.createClass({
 
 	handleFieldChange: function(e) {
 		var id = e.target.id;
-			this.setState({
-				[id]: e.target.value
-			});
 		
+		this.setState({
+			[id]: e.target.value
+		});
+
+		if (id === 'albumName') {
+			this.setState({ 
+				selectedAlbum: this.state.albums.find(function(item) {
+					return item.name === e.target.value;
+				}) || {}
+			});
+		}
+
 		console.log(id); 
 	},
 
@@ -123,9 +139,14 @@ var UploadForm = React.createClass({
 		reader.readAsDataURL(file);
 	},
 
-	saveAudioFile: function() {
-		var self = this;
+	// TODO: This is for the image upload control
+	handleImageChange: function(imageURL) {
+		this.setState({
+			artFile: imageURL
+		});
+	},
 
+	saveAudioFile: function() {
 		stemApi.upload({
 			request: {
 				file: this.state.audioFile
@@ -133,12 +154,17 @@ var UploadForm = React.createClass({
 			success: function (response) {
 				console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
-				self.saveArtFile(response.id);
-			},
+
+				if (!this.state.selectedAlbum.id) { 
+					this.saveArtFile(response.id);
+				} else {
+					this.updateRecord(response.id, undefined);
+				}
+			}.bind(this),
 			error: function (response) {
 				console.error(JSON.stringify(response, null, 2));
-				self.setErrorMessage(errorMessage);	
-			}
+				this.setErrorMessage(errorMessage);	
+			}.bind(this)
 		});
 	},
 
@@ -161,16 +187,14 @@ var UploadForm = React.createClass({
 		});
 	},
 
-	updateRecord: function(songId, artId) {
+	createSong: function(albumId, songFileId) {
 		stemApi.createSong({
 			request: {
-			artistName: this.state.artistName,
-			songName: this.state.songName,
-			albumName: this.state.albumName,
-			promotionalLink: this.state.promotionalLink,
-			promotionalCopy: this.state.promotionalCopy,
-			albumArtFileId: artId,
-			songFileId: songId
+				albumId: albumId,
+				artistName: this.state.artistName,
+				name: this.state.songName,
+				trackNumber: 1, // TODO: Update this to actually calculate the correct track number
+				songFileId: songFileId
 			},
 			success: function (response) {
 				console.log('success!');
@@ -178,11 +202,45 @@ var UploadForm = React.createClass({
 			},
 			error: function (response) {
 				console.error(JSON.stringify(response, null, 2));
-				self.setErrorMessage(errorMessage);	
-			}
+				this.setErrorMessage(errorMessage);	
+			}.bind(this)
 		});
 	},
 
+	updateRecord: function(songFileId, artId) {
+
+		if (this.state.selectedAlbum.id) {
+			this.createSong(this.state.selectedAlbum.id, songFileId);
+			return;
+		}
+
+		stemApi.createAlbum({
+			request: {
+				name: this.state.albumName,
+				artFileId: artId,
+				releaseDate: new Date()
+			},
+			success: function (response) {
+				console.log('success!');
+
+				this.createSong(response.id, songFileId);
+
+				console.log(JSON.stringify(response, null, 2));
+			
+			}.bind(this),
+			error: function (response) {
+				console.error(JSON.stringify(response, null, 2));
+				this.setErrorMessage(errorMessage);	
+			}.bind(this)
+		});
+	},
+	showAdditionalArtist: function() {
+		if (this.state.displayAdditional == false) {
+			this.setState({ displayAdditional: true });
+		} else {
+			this.setState({ displayAdditional: false });
+		}
+	},
 	render: function () {
 		var self = this;
 		return (
@@ -210,7 +268,15 @@ var UploadForm = React.createClass({
 					<div className="col-xs-12">
 						<p>Artist Name</p>
 						<input id="artistName" onChange={this.handleFieldChange} value={this.state.artistName} /> 
-						<a><span className="artist-add-artist-link glyphicon glyphicon-plus-sign"></span> Add Additional Artists</a>
+						<div className={this.state.displayAdditional ? "additional-artist display-true" : "display-false"}>
+							<ul>
+								<li><p>Stevie Wonder<i className="icon-cancel pull-right"></i></p></li>
+								<li><p>Randy Newman<i className="icon-cancel pull-right"></i></p></li>
+								<li><p>Paul Blart<i className="icon-cancel pull-right"></i></p></li>
+								<input placeholder="Add Artist..." />
+							</ul>
+						</div>
+						<a onClick={this.showAdditionalArtist}><span className="artist-add-artist-link glyphicon glyphicon-plus-sign"></span> Add Additional Artists</a>
 					</div> 
 					<div className="col-xs-12">
 						<p>Song Name</p>
@@ -242,7 +308,8 @@ var UploadForm = React.createClass({
 								</div>
 							}
 							<img src={this.state.artFileURL} />
-							<input onChange={this.handleFileUpload} type="file" name="artFileURL" id="artFile" />
+							<input onChange={this.handleFileUpload} disabled={this.state.selectedAlbum.id} type="file" name="artFileURL" id="artFile" />
+							
 						</div>
 					</div>
 				</div>

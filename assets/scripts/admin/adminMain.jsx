@@ -3,8 +3,8 @@ var AdminMain = React.createClass({
 		return(
 			<div className="">
 				<AdminHeader />
-				<AdminTimelineNav />
-				<AdminNewArtists />
+		        <AdminSideNav />
+				<AdminDashboard />
 			</div>
 		)
 	}

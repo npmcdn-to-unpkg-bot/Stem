@@ -1,32 +1,22 @@
-var ArtistSearch = (function() {
-	var ArtistSearchComp = React.createClass({
-
-		render: function() {
-			return (
-				<span>
-					<div className="sidebar search-sidebar-tablet">
-						<ArtistSearchSideBar tagList={this.props.tagList} />
-					</div>
-					<div className="content-with-sidebar">  
+var ArtistSearch = ReactRedux.connect(function(state) {
+	return {
+		searchResults: state.searchResults,
+		searchTerms: state.searchTerms
+	};
+})(React.createClass({
+	render: function() {
+		return (
+			<span>
+				<div className="sidebar search-sidebar-tablet">
+					<ArtistSearchSideBar />
+				</div>
+				<div className="content-with-sidebar">
+					{ this.props.searchResults.length === 0 && this.props.searchTerms.length > 0 ? 
+						<ArtistSearchNoResultsHeader /> : 
 						<ArtistSearchResultsTable songs={this.props.searchResults} />
-					</div>  
-				</span>
-			)
-		}
-	});
-
-	function mapStateToProps(state) {
-		return {
-			searchResults: state.songList,
-			tagList: state.tagList
-		};
+					}
+				</div>  
+			</span>
+		)
 	}
-
-	function mapDispatchToProps(dispatch, ownProps) {
-		return {
-			
-		};
-	}
-
-	return ReactRedux.connect(mapStateToProps, mapDispatchToProps)(ArtistSearchComp);
-})();
+}));

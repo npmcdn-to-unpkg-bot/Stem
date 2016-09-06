@@ -1,42 +1,44 @@
 var ArtistSearchResultsTableRow = React.createClass({
-	navigateToArtist: function(ev) {
-
+	navigateToArtist: function(song) {
+		store.dispatch({
+			type: 'GoToPage',
+			data: {
+				currentPage: 110,
+				pageParams: {
+					artistId: song.artistId
+				}
+			}
+		});
 	},
 	render: function() {
 		var song = this.props.song;
 		return (
-			<tr>
-                <td className="col-sm-3 col-md-3 col-lg-3">
-                  <img className="artist-search-album-img col-md-3 col-lg-3" src={song.albumArtUrl} />
-                  <div className="artist-search-album-detail col-xs-12 col-sm-12 col-md-12 col-lg-5">
-                    <h4>{song.songName}</h4>
-                    <p><a onClick={this.navigateToArtist}>{song.artistName}</a></p>
-                  </div>  
+			<tr className="artist-search-table-row">
+                <td className="artist-search-track-artist col-sm-4">
+                	<img className="artist-search-album-img display-inlb" src={song.albumArtUrl} />
+                  	<div className="artist-search-album-detail display-inlb">
+                    	<h4>{song.name}</h4>
+                    	<p><a title="navigate to artist's profile" onClick={this.navigateToArtist.bind(this, song)}>{song.artistName}</a></p>
+                  	</div>  
                 </td>
 
-                <td className="col-lg-2">
-                  <h4>{song.albumName}</h4>              
+                <td className="artist-search-table-stats col-s-3">
+                	<h4>{song.albumName}</h4>              
                 </td>
 
+                <td className="artist-search-table-stats col-s-1">
+                	<h4>{song.duration}</h4>              
+                </td>
                 <td className="col-lg-2">
-                  <h4>{song.duration}</h4>              
+                	<h4>{song.playcount}</h4>              
+                </td>
+                <td className="col-s-1 table-icons">
+					<a><span className="icon-heart-empty fa-2x"></span></a>             
                 </td>
 
-                <td className="col-lg-2">
-                  <h4>{song.playCount}</h4>              
+                <td className="col-s-1 table-icons">
+					<a><span className="icon-down-circled fa-2x"></span></a>
                 </td>
-
-                <td className="col-lg-2">
-                  <span className="glyphicon glyphicon-star playlist-glyph star"></span>             
-                  <span className="glyphicon glyphicon-star playlist-glyph star"></span>             
-                  <span className="glyphicon glyphicon-star playlist-glyph star"></span>             
-                  <span className="glyphicon glyphicon-star playlist-glyph star"></span>             
-                </td>
-
-                <td className="col-lg-2">
-                  <a><span className="glyphicon glyphicon-heart playlist-glyph fa-lg"></span></a>
-                  <a><span className="glyphicon glyphicon-plus-sign playlist-glyph fa-lg"></span></a>
-                </td>
-              </tr> );
+            </tr> );
 	}
 });

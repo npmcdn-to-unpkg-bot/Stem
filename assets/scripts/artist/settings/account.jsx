@@ -107,38 +107,31 @@ var ArtistAccountSettings = React.createClass({
         // Upload profile image if needed
         if (this.state.profileImg) {
             stemApi.upload({
-                request: {
-                    file: this.state.profileImg
-                },
-                success: function (response) {
-                    self.setState({
-                        profileImg: null,
-                        profileImgId: response.id
-                    });
-                    self.updateAccount();
-                },
-                error: function (response) {
-                    console.error(JSON.stringify(response, null, 2));
-                }
+                file: this.state.profileImg
+            }).then(function (response) {
+	            self.setState({
+	                profileImg: null,
+	                profileImgId: response.id
+	            });
+
+	            self.updateAccount();
+	        }, function (error) {
+            	console.error(JSON.stringify(error, null, 2));
             });
         };
 
         // Upload banner image if needed
         if (this.state.bannerImg) {
             stemApi.upload({
-                request: {
-                    file: this.state.bannerImg
-                },
-                success: function (response) {
-                    self.setState({
-                        bannerImg: null,
-                        bannerImgId: response.id
-                    });
-                    self.updateAccount();
-                },
-                error: function (response) {
-                    console.error(JSON.stringify(response, null, 2));
-                }
+            	file: this.state.bannerImg
+            }).then(function (response) {
+	            self.setState({
+	                bannerImg: null,
+	                bannerImgId: response.id
+	            });
+	            self.updateAccount();
+	        }, function (error) {
+	            console.error(JSON.stringify(error, null, 2));
             });
         };
 
