@@ -203,7 +203,7 @@ var StemApi = (function () {
         var _this = this;
         $.ajax({
             type: 'GET',
-            url: _this.baseUrl + 'artists/' + rse.request.artistId + '/songs',
+            url: _this.baseUrl + 'artist/' + rse.request.artistId + '/songs',
             headers: { 'Authorization': _this.authorization },
             contentType: 'application/json; charset=utf-8',
             error: function (response) {
@@ -269,6 +269,13 @@ var StemApi = (function () {
     		contentType: 'application/json; charset=utf-8',
     	});
     }
-
+    StemApi.prototype.getArtistsPopular = function (rse) {
+        return $.ajax({
+            type: 'GET',
+            url: this.baseUrl + 'artists/popular',
+            headers: { 'Authorization': this.authorization },
+            contentType: 'application/json; charset=utf-8',
+        });
+    }
     return StemApi;
 }());
