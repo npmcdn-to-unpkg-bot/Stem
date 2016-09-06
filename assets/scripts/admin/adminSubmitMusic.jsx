@@ -9,7 +9,7 @@ var AdminSubmitMusic = React.createClass({
                     <p>Submit music to be promoted to our creators</p>
                   </div>    
                     <SubmitMusicAlbum />
-                    <SubmitMusicTrack />
+                    <SubmitMusicTrack isAdmin="true" />
               </div>    
           </div>     
       </div>

@@ -12,7 +12,38 @@ const initialState = {
 	currentPage: 0,
 	pageParams: {},
 	searchTerms: '',
-	searchResults: []
+	searchResults: [],
+	tagList: []
+};
+
+// This should be moved to it's own file at some point
+var Tag = {
+	SystemType: {
+		Genre: 1
+	}
+};
+
+// This should be moved to it's own file or use a third party library
+var Formatter = {
+	formatFileLabel: function(file) {
+		if (file) {
+			var size =  (file.size / (1000000)).toFixed(2) + ' MB';
+			return file.name + ' ' + '(' + size + ')';
+		}
+	}
+};
+
+// This should be moved to it's own file at some point
+var Utilities = {
+	normalizeError: function(error) {
+		if (typeof error === 'string') {
+			return error;
+		}
+
+		if (typeof error === 'object' && error.hasOwnProperty('responseJSON')) {
+			return error.responseJSON.message;
+		}
+	}
 };
 
 // Thunk Action Creator, for having actions that have side effects such as AJAX calls
@@ -46,6 +77,7 @@ var reducer = function(state, action) {
 	var newState = state;
 	switch (action.type) {
 		case 'UpdateLoginStatus':
+			console.log('UpdateLoginStatus Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
 			newState = Object.assign({}, state, {
 				isLoggedIn: action.data.isLoggedIn,
 				userInfo: action.data.userInfo || {},
@@ -55,6 +87,7 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'UpdateUserRecord':
+			console.log('UpdateUserRecord Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
 			// TODO:  Object.assign is not supported in IE, we may want to use lodash _.assign for compatibility
 			newState = Object.assign({}, state, {
 				userInfo: action.data.userInfo,
@@ -73,6 +106,7 @@ var reducer = function(state, action) {
 			return newState;
 
 		case 'UpdateSearch':
+			console.log('Equality Check (searchResults): ' + (action.data.results === state.searchResults));
 			newState = Object.assign({}, state, { 
 				searchResults: action.data.results,
 				searchTerms: action.data.terms,
@@ -185,6 +219,7 @@ var App = React.createClass({
 				{ this.props.currentPage == 7 ?
 					<div className="wrapper">
 						<AdminMain />
+						<Footer />
 					</div>
 				: null} 
 
