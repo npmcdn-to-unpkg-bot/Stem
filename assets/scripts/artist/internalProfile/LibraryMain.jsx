@@ -10,18 +10,16 @@ var LibraryMain = React.createClass({
 		var userInfo = this.context.userInfo;
 
 		stemApi.getSongsByArtist({
-			request: {
-				artistId: userInfo.id
-			},
-			success: function(data) {
-				this.setState({ 
-					songs: data,
-					displayedSongs: data
-				});
-			}.bind(this),
-			error: function(error) {
-				console.log('Error occured while fetching songs by artist: ' + error.responseText);
-			}
+			artistId: userInfo.id
+		})
+		.then(function(res) {
+			this.setState({ 
+				songs: res,
+				displayedSongs: res
+			});
+		}.bind(this))
+		.catch(function(reason) {
+			console.error('Error occured while fetching songs by artist: ' + Utilities.normalizeError(reason));
 		});
 	},
 	handleFilter: function(ev) {
