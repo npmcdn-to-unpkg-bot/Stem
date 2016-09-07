@@ -35,47 +35,6 @@
 	border-radius: @bd-rad-circle;
 }
 
-// .artist-upload-wrapper {
-// 	font-family: @font-reg;
-// }
-// .artist-internal-greeting {
-// 	font-family: @font-reg;
-// 	display: inline-block;
-// 	max-width: 300px;
-// }
-// .artist-upload-drop {
-// 	padding: 30px;
-// 	margin: 20px 15px;
-// 	border: 1px dashed @grey-6;
-// 	text-align: center;
-// }
-// .artist-upload-up {
-// 	color: @grey-3;
-// }
-// .artist-upload p {
-// 	margin: 20px 0 2px 0;
-// }
-// .artist-add-artist-link {
-// 	margin-top: 8px;
-// }
-// .artist-upload-input {
-// 	height: 50px;
-// 	box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-// }
-// .artist-upload-textarea {
-// 	height: 120px;
-// 	padding: @space-sm;
-// 	margin-bottom: @space-sm;
-// 	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-// 	box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-// }
-// .album-art-box {
-// 	height: 300px;
-// 	max-width: 300px;
-// 	background-color: @grey-6;
-// 	margin-top: @space-lg;
-// 	margin-left: 80px;
-// }
 // -- submit --
 .submit-album-form {
 	text-align: center;
@@ -100,7 +59,6 @@
 .upload-album-content {
 	position: relative;
 	top: 50%;
-	transform: translateY(-50%);
 	padding: 30px;
 	display: block;
 	color: @grey-3;
@@ -145,16 +103,19 @@
 	}
 	.submit-track-wrapper {
 		select {
-			color: @grey-3;
+			color: black;
 			font-family: @font-reg;
 			font-size: 18px;
-			:active {
-				color: @grey-3; 
-			}
 		}
+
+		select:active,:hover,:focus {
+			color: black; 
+		}
+
 		a i {
 			vertical-align: middle;
 		}
+
 		textarea {
 			font-family: @font-reg;
 			width: 100%;
@@ -163,13 +124,19 @@
 			padding: @space-md;
 		}
 	}
-		.submit-add-genre {
-			text-align: center;
-		}
+	.submit-add-genre {
+		text-align: center;
+	}
 	.explicit-checkbox {
 		h5, input {
 			display: inline-block;
 		}
+	}
+	.info-tags {
+		font-size: 10px;
+	}
+	.genre-tag-selector-wrapper {
+		padding: 0 5px;
 	}
 	.submit-btns {
 		text-align: right;
@@ -179,19 +146,22 @@
 		color: @primary;
 		height: 40px;
 		padding: @space-sm @space-md;
-    border: none;
-    -moz-box-shadow: @drop-2;
-    -webkit-box-shadow: @drop-2;
-    box-shadow: @drop-2;
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	    border: none;
+	    -moz-box-shadow: @drop-2;
+	    -webkit-box-shadow: @drop-2;
+	    box-shadow: @drop-2;
+	    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	}
 	.loaded-track {
 		display: inline-block;
 		height: 40px;
 		background-color: @grey-5;
 		padding: @space-sm @space-md;
+		p{
+			text-overflow: ellipsis;
+		}
 		p, i {
 			display: inline-block;
 		}
