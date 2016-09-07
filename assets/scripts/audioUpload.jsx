@@ -74,7 +74,7 @@ var AudioUpload = React.createClass({
 			zIndex: '-1'
 		};
 
-		var element = <label htmlFor={ this.getId() } className="btn-primary pull-right">Browse for file</label>;
+		var element = <label htmlFor={ this.getId() } className="btn-primary">Browse for file</label>;
 
 		if (this.state.isUploading) {
 			element = <LoadingButton />;
@@ -86,7 +86,7 @@ var AudioUpload = React.createClass({
 		}
 
 		return (
-			<div>
+			<div className="upload-browse-btn-wrapper pull-right">
 				{ /* This element is always hidden */ }
 				<input ref="fileInput" id={ this.getId() } type="file" style={ fileInputStyles } accept="audio/*"
 					onChange={ this.handleFileSelect } />
