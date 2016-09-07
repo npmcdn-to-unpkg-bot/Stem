@@ -247,6 +247,7 @@ var StemApi = (function () {
     	return $.ajax({
     		type: 'GET',
     		url: this.baseUrl + 'tagtypes',
+    		data: req,
     		headers: { 'Authorization': this.authorization },
             contentType: 'application/json; charset=utf-8'
     	});

@@ -32,30 +32,30 @@ var SubmitMusicTrack = React.createClass({
 		};
 	},
 	componentDidMount: function() {
-		stemApi.getAllTagTypes()
-			.then(function(res) {
-				var genreTag = res.find(function(item) {
-					return item.systemType === Tag.SystemType.Genre;
-				});
+		stemApi.getAllTagTypes({
+			systemType: Tag.SystemType.Genre
+		})
+		.then(function(res) {
+			var genreTag = res[0];
 
-				this.setState({
-					genreTag: genreTag
-				});
-
-				return stemApi.getTagValues({
-					tagTypeId: genreTag.id
-				});
-
-			}.bind(this))
-			.then(function(res) {
-				this.setState({
-					genreTagValues: res
-				});
-
-			}.bind(this))
-			.catch(function(reason) {
-				console.log('Error fetching all tag types: ' + JSON.stringify(reason));
+			this.setState({
+				genreTag: genreTag
 			});
+
+			return stemApi.getTagValues({
+				tagTypeId: genreTag.id
+			});
+
+		}.bind(this))
+		.then(function(res) {
+			this.setState({
+				genreTagValues: res
+			});
+
+		}.bind(this))
+		.catch(function(reason) {
+			console.log('Error fetching all tag types: ' + Utilities.normalizeError(reason));
+		});
 
 	},
 	onAudioChanged: function(file) {

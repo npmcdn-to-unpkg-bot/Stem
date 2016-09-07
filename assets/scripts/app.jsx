@@ -40,8 +40,14 @@ var Utilities = {
 			return error;
 		}
 
+		// These are jQuery AJAX errors
 		if (typeof error === 'object' && error.hasOwnProperty('responseJSON')) {
 			return error.responseJSON.message;
+		}
+
+		// These are Blue Bird errors
+		if (typeof error === 'object' && error.hasOwnProperty('message')) {
+			return error.message;
 		}
 	}
 };
