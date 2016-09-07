@@ -1,20 +1,10 @@
 var createStore = Redux.createStore,
+	combineReducers = Redux.combineReducers,
 	applyMiddleware = Redux.applyMiddleware,
 	Provider = ReactRedux.Provider,
 	connect = ReactRedux.connect,
 	stemApi = new StemApi("http://52.32.255.104/api/"),
 	thunk = ReduxThunk.default;
-
-const initialState = {
-	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: false,
-	userInfo: {},
-	currentPage: 0,
-	pageParams: {},
-	searchTerms: '',
-	searchResults: [],
-	tagList: []
-};
 
 // This should be moved to it's own file at some point
 var Tag = {
@@ -76,10 +66,17 @@ function beginSearch(searchTerms) {
 	};
 }
 
-var reducer = function(state, action) {
-	if (state === undefined) {
-		return initialState;
-	}
+// This should be moved to it's own file at some point
+const initialState = {
+	baseAPI: 'http://52.32.255.104/api',
+	isLoggedIn: false,
+	currentPage: 0,
+	pageParams: {},
+	searchTerms: '',
+	searchResults: [],
+	tagList: []
+};
+var appReducer = function(state = initialState, action) {
 	var newState = state;
 	switch (action.type) {
 		case 'UpdateLoginStatus':
@@ -87,16 +84,6 @@ var reducer = function(state, action) {
 			newState = Object.assign({}, state, {
 				isLoggedIn: action.data.isLoggedIn,
 				userInfo: action.data.userInfo || {},
-				currentPage: action.data.currentPage
-			});
-			console.log('newState = ' + JSON.stringify(newState));
-			return newState;
-
-		case 'UpdateUserRecord':
-			console.log('UpdateUserRecord Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
-			// TODO:  Object.assign is not supported in IE, we may want to use lodash _.assign for compatibility
-			newState = Object.assign({}, state, {
-				userInfo: action.data.userInfo,
 				currentPage: action.data.currentPage
 			});
 			console.log('newState = ' + JSON.stringify(newState));
@@ -127,16 +114,44 @@ var reducer = function(state, action) {
 	return newState;
 }
 
-var store = createStore(reducer,
-	initialState,
+// This should be moved to it's own file at some point
+const initialUserState = {
+	userInfo: {}
+};
+var userReducer = function(state = initialUserState, action) {
+	var newState = state;
+	switch (action.type) {
+		case 'UpdateUserRecord':
+			console.log('UpdateUserRecord Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
+			// TODO:  Object.assign is not supported in IE, we may want to use lodash _.assign for compatibility
+			newState = Object.assign({}, state, {
+				userInfo: action.data.userInfo,
+				currentPage: action.data.currentPage
+			});
+			console.log('newState = ' + JSON.stringify(newState));
+			return newState;
+
+		default: 
+			console.log('state = ' + JSON.stringify(state));
+			return state;
+	}
+	return newState;
+}
+
+const reducers = combineReducers({
+	appState: appReducer,
+	userState: userReducer
+});
+
+const store = createStore(reducers,
 	applyMiddleware(thunk));
 
-var AppState = function(state) {
+var AppState = function(store) {
 	return {
-		baseAPI: state.baseAPI,
-		isLoggedIn: state.isLoggedIn,
-		userInfo: state.userInfo,
-		currentPage: state.currentPage,
+		baseAPI: store.appState.baseAPI,
+		isLoggedIn: store.appState.isLoggedIn,
+		userInfo: store.userState.userInfo,
+		currentPage: store.appState.currentPage,
 	}
 }
 
