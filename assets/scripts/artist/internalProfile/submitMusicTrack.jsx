@@ -32,30 +32,30 @@ var SubmitMusicTrack = React.createClass({
 		};
 	},
 	componentDidMount: function() {
-		stemApi.getAllTagTypes()
-			.then(function(res) {
-				var genreTag = res.find(function(item) {
-					return item.systemType === Tag.SystemType.Genre;
-				});
+		stemApi.getAllTagTypes({
+			systemType: Tag.SystemType.Genre
+		})
+		.then(function(res) {
+			var genreTag = res[0];
 
-				this.setState({
-					genreTag: genreTag
-				});
-
-				return stemApi.getTagValues({
-					tagTypeId: genreTag.id
-				});
-
-			}.bind(this))
-			.then(function(res) {
-				this.setState({
-					genreTagValues: res
-				});
-
-			}.bind(this))
-			.catch(function(reason) {
-				console.log('Error fetching all tag types: ' + JSON.stringify(reason));
+			this.setState({
+				genreTag: genreTag
 			});
+
+			return stemApi.getTagValues({
+				tagTypeId: genreTag.id
+			});
+
+		}.bind(this))
+		.then(function(res) {
+			this.setState({
+				genreTagValues: res
+			});
+
+		}.bind(this))
+		.catch(function(reason) {
+			console.log('Error fetching all tag types: ' + Utilities.normalizeError(reason));
+		});
 
 	},
 	onAudioChanged: function(file) {
@@ -74,10 +74,25 @@ var SubmitMusicTrack = React.createClass({
 			selectedGenres: selections
 		});
 	},
+	onDecreaseOrder: function(track) {
+		var currentIndex = this.state.addedTracks.indexOf(track);
+
+		if (currentIndex < this.state.addedTracks.length - 1) {
+			var newArray = [].concat(this.state.addedTracks);
+			var temp = newArray[currentIndex];
+			
+			newArray[currentIndex] = newArray[currentIndex + 1];
+			newArray[currentIndex + 1] = temp;
+
+			this.setState({
+				addedTracks: newArray
+			});
+		}
+	},
 	onAddClicked: function() {
 		// Make a deep copy of our state
 		var trackCopy = this.getTrackState();
-		
+
 		this.setState({	
 			addedTracks: this.state.addedTracks.concat(trackCopy),
 			id: null,
@@ -154,7 +169,8 @@ var SubmitMusicTrack = React.createClass({
 
 		return (
 			<div className="submit-track-wrapper">
-				<TrackList playerStateVisible="true" tracks={ this.state.addedTracks } onEditTrack={ this.onEditTrack } />
+				<TrackList playerStateVisible="true" tracks={ this.state.addedTracks } onEditTrack={ this.onEditTrack } 
+					onDecreaseOrder={ this.onDecreaseOrder } />
 
 				<div className="submit-track-name col-lg-6">
 					<p>Track Name</p>

@@ -4,6 +4,9 @@ var TrackList = React.createClass({
 	onEditTrack: function(item) {
 		this.props.onEditTrack(item);
 	},
+	onDecreaseOrder: function(item) {
+		this.props.onDecreaseOrder(item);
+	},
 	render: function() {
 	    return (
 			<div className="submit-track-edit-wrapper col-xs-12">
@@ -13,7 +16,7 @@ var TrackList = React.createClass({
 					{ this.props.tracks.map(function(item, index) {
 						return ( 
 							<li key={index} className="pad-b-sm">
-								{ this.props.playerStateVisible ? <i className="icon-down-open fa-2x"></i> : null }
+								{ this.props.playerStateVisible ? <i onClick={ this.onDecreaseOrder.bind(this, item) } className="icon-down-open fa-2x"></i> : null }
 								{ this.props.playerStateVisible ? null : <i className="icon-play-2 primary fa-2x"></i> }
 
 								<span>{ item.trackName }</span>
