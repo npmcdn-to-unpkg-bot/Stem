@@ -32,30 +32,30 @@ var SubmitMusicTrack = React.createClass({
 		};
 	},
 	componentDidMount: function() {
-		stemApi.getAllTagTypes()
-			.then(function(res) {
-				var genreTag = res.find(function(item) {
-					return item.systemType === Tag.SystemType.Genre;
-				});
+		stemApi.getAllTagTypes({
+			systemType: Tag.SystemType.Genre
+		})
+		.then(function(res) {
+			var genreTag = res[0];
 
-				this.setState({
-					genreTag: genreTag
-				});
-
-				return stemApi.getTagValues({
-					tagTypeId: genreTag.id
-				});
-
-			}.bind(this))
-			.then(function(res) {
-				this.setState({
-					genreTagValues: res
-				});
-
-			}.bind(this))
-			.catch(function(reason) {
-				console.log('Error fetching all tag types: ' + JSON.stringify(reason));
+			this.setState({
+				genreTag: genreTag
 			});
+
+			return stemApi.getTagValues({
+				tagTypeId: genreTag.id
+			});
+
+		}.bind(this))
+		.then(function(res) {
+			this.setState({
+				genreTagValues: res
+			});
+
+		}.bind(this))
+		.catch(function(reason) {
+			console.log('Error fetching all tag types: ' + Utilities.normalizeError(reason));
+		});
 
 	},
 	onAudioChanged: function(file) {
@@ -74,10 +74,25 @@ var SubmitMusicTrack = React.createClass({
 			selectedGenres: selections
 		});
 	},
+	onDecreaseOrder: function(track) {
+		var currentIndex = this.state.addedTracks.indexOf(track);
+
+		if (currentIndex < this.state.addedTracks.length - 1) {
+			var newArray = [].concat(this.state.addedTracks);
+			var temp = newArray[currentIndex];
+			
+			newArray[currentIndex] = newArray[currentIndex + 1];
+			newArray[currentIndex + 1] = temp;
+
+			this.setState({
+				addedTracks: newArray
+			});
+		}
+	},
 	onAddClicked: function() {
 		// Make a deep copy of our state
 		var trackCopy = this.getTrackState();
-		
+
 		this.setState({	
 			addedTracks: this.state.addedTracks.concat(trackCopy),
 			id: null,
@@ -154,7 +169,8 @@ var SubmitMusicTrack = React.createClass({
 
 		return (
 			<div className="submit-track-wrapper">
-				<TrackList playerStateVisible="true" tracks={ this.state.addedTracks } onEditTrack={ this.onEditTrack } />
+				<TrackList playerStateVisible="true" tracks={ this.state.addedTracks } onEditTrack={ this.onEditTrack } 
+					onDecreaseOrder={ this.onDecreaseOrder } />
 
 				<div className="submit-track-name col-lg-6">
 					<p>Track Name</p>
@@ -162,7 +178,7 @@ var SubmitMusicTrack = React.createClass({
 					<AudioUpload value={ this.state.audioFile } onAudioChanged={ this.onAudioChanged } />
 				</div>
 				<div className="col-lg-6">
-					<p>ISRC # <a>Whats an ISRC#?</a></p>
+					<p>ISRC # <a className="info-tags">Whats an ISRC#?</a></p>
 					<input name="isrc" value={ this.state.isrc } onChange={ this.handleInputChanged } placeholder="( optional )" />
 				</div> 
 				<div className="col-lg-6">
@@ -173,11 +189,16 @@ var SubmitMusicTrack = React.createClass({
 					<p>Additionl Credits</p>
 					<input name="additionalCredits" value={ this.state.additionalCredits } onChange={ this.handleInputChanged } placeholder="( optional )" />
 				</div>
-				<div className="col-lg-6">
-					<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } value={ this.state.selectedGenres } onSelectionsChange={ this.genreTagsUpdated } />
+				<div className="genre-tag-selector-wrapper mar-b-md col-lg-12">
+					<div className="col-lg-6 pad-l-sm">	
+						<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } value={ this.state.selectedGenres } onSelectionsChange={ this.genreTagsUpdated } />
+					</div>
+					<div className="col-lg-6">	
+						<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } value={ this.state.selectedGenres } onSelectionsChange={ this.genreTagsUpdated } />
+					</div>	
 				</div>
-				<div className=" pad-b-sm col-xs-12">
-					<p>Lyrics<a>Why upload lyrics?</a></p>
+				<div className="pad-b-sm col-xs-12">
+					<p>Lyrics <a className="info-tags"> Why upload lyrics?</a></p>
 					<textarea name="lyrics" value={ this.state.lyrics } onChange={ this.handleInputChanged } placeholder="Paste your lyrics here.." />
 				</div>
 				<div className="explicit-checkbox pad-b-lg col-xs-12 red">
