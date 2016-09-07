@@ -162,7 +162,7 @@ var SubmitMusicTrack = React.createClass({
 					<AudioUpload value={ this.state.audioFile } onAudioChanged={ this.onAudioChanged } />
 				</div>
 				<div className="col-lg-6">
-					<p>ISRC # <a>Whats an ISRC#?</a></p>
+					<p>ISRC # <a className="info-tags">Whats an ISRC#?</a></p>
 					<input name="isrc" value={ this.state.isrc } onChange={ this.handleInputChanged } placeholder="( optional )" />
 				</div> 
 				<div className="col-lg-6">
@@ -173,11 +173,16 @@ var SubmitMusicTrack = React.createClass({
 					<p>Additionl Credits</p>
 					<input name="additionalCredits" value={ this.state.additionalCredits } onChange={ this.handleInputChanged } placeholder="( optional )" />
 				</div>
-				<div className="col-lg-6">
-					<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } value={ this.state.selectedGenres } onSelectionsChange={ this.genreTagsUpdated } />
+				<div className="genre-tag-selector-wrapper mar-b-md col-lg-12">
+					<div className="col-lg-6 pad-l-sm">	
+						<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } value={ this.state.selectedGenres } onSelectionsChange={ this.genreTagsUpdated } />
+					</div>
+					<div className="col-lg-6">	
+						<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } value={ this.state.selectedGenres } onSelectionsChange={ this.genreTagsUpdated } />
+					</div>	
 				</div>
-				<div className=" pad-b-sm col-xs-12">
-					<p>Lyrics<a>Why upload lyrics?</a></p>
+				<div className="pad-b-sm col-xs-12">
+					<p>Lyrics <a className="info-tags"> Why upload lyrics?</a></p>
 					<textarea name="lyrics" value={ this.state.lyrics } onChange={ this.handleInputChanged } placeholder="Paste your lyrics here.." />
 				</div>
 				<div className="explicit-checkbox pad-b-lg col-xs-12 red">
