@@ -67,7 +67,7 @@ function beginSearch(searchTerms) {
             		results: response.songs,
             		terms: response.terms.join(' '),
             		// We automatically navigate to the artist search page when a search is initiated
-            		currentPage: 6
+            		currentPage: 106
             	}
 	        });
 		}, function(error) {
