@@ -152,12 +152,19 @@ var App = React.createClass({
 	},
 
 	render: function() {
-		var currentPage = this.props.currentPage;
-		
+		var currentPage = this.props.currentPage,
+			menu = this.props.artistMenu,
+			accountType = this.props.userInfo.accountType;
+
+		if(accountType == 'Creator') {
+			menu = this.props.creatorMenu;
+		} else if(accountType == 'Admin') {
+			menu = this.props.adminMenu;
+		}
+
 		return (  
 			<div>  
-
-				<Header artistMenu={this.props.artistMenu} currentPage={this.props.currentPage} />
+				<Header menu={menu} currentPage={this.props.currentPage} />
 
 				{ this.props.currentPage == 0 ?
 					<div className="wrapper">
@@ -208,22 +215,7 @@ var App = React.createClass({
 					</div>
 				: null} 
 
-				{ this.props.currentPage == 6 ?
-					<div className="wrapper">
-						<FilterNav />
-						<ArtistSearch />
-						<Footer />
-					</div>
-				: null}
-
-				{ this.props.currentPage == 7 ?
-					<div className="wrapper">
-						<AdminMain />
-						<Footer />
-					</div>
-				: null} 
-
-				{ this.props.currentPage == 8 ?
+				{ this.props.currentPage == 10 ?
 					<div className="wrapper">
 						<FilterNav />
 						<CreatorMain />
@@ -231,9 +223,16 @@ var App = React.createClass({
 					</div>
 				: null} 
 
-				{ this.props.currentPage == 9 ?
+				{ this.props.currentPage == 11 ?
 					<div className="wrapper">
 						<CreatorProfileMain />
+						<Footer />
+					</div>
+				: null} 
+
+				{ this.props.currentPage == 20 ?
+					<div className="wrapper">
+						<AdminMain />
 						<Footer />
 					</div>
 				: null} 
@@ -278,12 +277,21 @@ var App = React.createClass({
 					</div>
 				: null}
 
+				{ this.props.currentPage == 106 ?
+					<div className="wrapper">
+						<FilterNav />
+						<ArtistSearch />
+						<Footer />
+					</div>
+				: null}
+
 				{ this.props.currentPage === 110 ? 
 					<div className="wrapper">
 						<ArtistProfile artistId={this.props.pageParams.artistId} />
 						<Footer />
 					</div>
 				: null}
+
 			</div>
 		);
 	}
@@ -319,28 +327,99 @@ var artistMenu = [
 		pageID: 5,
 		text: "Account Settings",
 		icon: "icon-cog-2"
-	},
+	}
+]; 
+
+var creatorMenu = [
 	{
-		pageID: 6,
-		text: "Artist Search",
-		icon: "icon-search"
-	},
-	{
-		pageID: 7,
-		text: "Admin Dashboard",
-		icon: "icon-star"
-	},
-	{
-		pageID: 8,
+		pageID: 10,
 		text: "Creator Home",
 		icon: "icon-home"
 	},
 	{
-		pageID: 9,
+		pageID: 11,
 		text: "Creator Profile",
-		icon: "icon-home"
+		icon: "icon-user"
+	},
+	{
+		pageID: 12,
+		text: "Loved",
+		icon: "icon-heart"
+	},
+	{
+		pageID: 13,
+		text: "Downloads",
+		icon: "icon-down-circle"
+	},
+	{
+		pageID: 14,
+		text: "Spin History",
+		icon: "icon-down-circle"
+	},
+	{
+		pageID: 15,
+		text: "Creator Account Settings",
+		icon: "icon-cog-2"
 	}
 ]; 
+
+var adminMenu = [
+	{
+		pageID: 20,
+		text: "Admin Dashboard",
+	},
+	{
+		pageID: 21,
+		text: "Creators",
+	},
+	{
+		pageID: 22,
+		text: "Artists",
+	},
+	{
+		pageID: 23,
+		text: "Music Admin",
+	},
+	{
+		pageID: 23.1,
+		text: "Approved Music",
+		level: 2
+	},
+	{
+		pageID: 23.2,
+		text: "Live Music",
+		level: 2
+	},
+	{
+		pageID: 23.3,
+		text: "Pending Music",
+		level: 2
+	},
+	{
+		pageID: 24,
+		text: "Top Of...",
+	},
+	{
+		pageID: 24.1,
+		text: "Top Downloads",
+		level: 2
+	},
+	{
+		pageID: 24.2,
+		text: "Top Artists",
+		level: 2
+	},
+	{
+		pageID: 24.3,
+		text: "Top Creators",
+		level: 2
+	},
+	{
+		pageID: 25,
+		text: "Settings",
+	},
+]; 
+
 
 App.childContextTypes = {
 	baseAPI: React.PropTypes.string,
@@ -356,7 +435,7 @@ App = connect(
 ReactDOM.render(
 	<div>
 		<ReactRedux.Provider store={store}>
-			<App artistMenu={artistMenu} />
+			<App artistMenu={artistMenu} creatorMenu={creatorMenu} adminMenu={adminMenu} />
 		</ReactRedux.Provider>
 	</div>,
 	document.getElementById('app')
