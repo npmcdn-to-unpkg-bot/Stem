@@ -277,5 +277,13 @@ var StemApi = (function () {
             contentType: 'application/json; charset=utf-8',
         });
     }
+    StemApi.prototype.getArtistDashboard = function (rse) {
+        return $.ajax({
+            type: 'GET',
+            url: this.baseUrl + 'artists/' + rse.artistId + '/dashboard',
+            headers: { 'Authorization': this.authorization },
+            contentType: 'application/json; charset=utf-8',
+        });
+    }
     return StemApi;
 }());
