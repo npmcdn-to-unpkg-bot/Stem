@@ -254,7 +254,7 @@ var App = React.createClass({
 						<CreatorProfileMain creatorId={this.props.pageParams} />
 						<Footer />
 					</div>
-				: null} 
+				: null}
 
 				{ this.props.currentPage == 14 ?
 					<div className="wrapper">
@@ -319,14 +319,12 @@ var App = React.createClass({
 					</div>
 				: null}
 
-
 				{ this.props.currentPage == 108 ?
 					<div className="wrapper">
 						<CreatorBookmarkMain />
 						<Footer />
 					</div>
 				: null}
-
 
 				{ this.props.currentPage === 110 ? 
 					<div className="wrapper">
@@ -402,6 +400,11 @@ var creatorMenu = [
 	{
 		pageID: 15,
 		text: "Creator Account Settings",
+		icon: "icon-cog-2"
+	}
+	{
+		pageID: 16,
+		text: "Creator Bookmarks",
 		icon: "icon-cog-2"
 	}
 ]; 
