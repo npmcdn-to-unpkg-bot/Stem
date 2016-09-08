@@ -36,11 +36,9 @@ var LibraryMain = React.createClass({
 	},
 	getFilterList: function() {
 		var filterList = [
-			'All',
+			'Live',
 			'Approved',
 			'Pending',
-			'Disabled',
-			'Rejected'
 		];
 
 		return filterList.map(function(filter, index) {

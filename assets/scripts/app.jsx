@@ -153,7 +153,7 @@ var App = React.createClass({
 
 	render: function() {
 		var currentPage = this.props.currentPage;
-		
+
 		return (  
 			<div>  
 
@@ -231,9 +231,9 @@ var App = React.createClass({
 					</div>
 				: null} 
 
-				{ this.props.currentPage == 9 ?
+				{ this.props.currentPage === 9 ?
 					<div className="wrapper">
-						<CreatorProfileMain />
+						<CreatorProfileMain creatorId={this.props.pageParams} />
 						<Footer />
 					</div>
 				: null} 
@@ -274,6 +274,22 @@ var App = React.createClass({
 					<div className="wrapper">
 						<AdminHeader />
 						<AdminSubmitMusic />
+						<Footer />
+					</div>
+				: null}
+
+				{ this.props.currentPage == 106 ?
+					<div className="wrapper">
+						<FilterNav />
+						<CreatorBookmarkMain />
+						<Footer />
+					</div>
+				: null}
+
+				{ this.props.currentPage == 107 ?
+					<div className="wrapper">
+						<FilterNav />
+						<CreatorSpinHistoryMain />
 						<Footer />
 					</div>
 				: null}
@@ -336,9 +352,9 @@ var artistMenu = [
 		icon: "icon-home"
 	},
 	{
-		pageID: 9,
-		text: "Creator Profile",
-		icon: "icon-home"
+		pageID: 107,
+		text: "Creator History",
+		icon: "icon-bookmark-2"
 	}
 ]; 
 
