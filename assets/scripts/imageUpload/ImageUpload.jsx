@@ -16,7 +16,8 @@ var ImageUpload = React.createClass({
 			background: false,
 			movable: false,
 			rotatable: false,
-			zoomable: false
+			zoomable: false,
+			aspectRatio: 1
 		}).on('crop.cropper', function(ev) {
 			var imageData = $(ev.target)
 				.cropper('getCroppedCanvas')
