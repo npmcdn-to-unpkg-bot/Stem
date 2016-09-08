@@ -177,8 +177,6 @@ var App = React.createClass({
 			menu = this.props.adminMenu;
 		}
 
-		menu = this.props.adminMenu;
-
 		return (  
 			<div>  
 				<Header menu={menu} currentPage={this.props.currentPage} />
