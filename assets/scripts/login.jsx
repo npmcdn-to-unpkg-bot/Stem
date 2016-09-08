@@ -231,7 +231,7 @@ var Login = React.createClass({
 				console.log(JSON.stringify(response, null, 2));
 				var page = 100;
 				if (response.accountType == 'Artist') {
-					page = 0;
+					page = 6;
 				} else if (response.accountType == 'Creator') {
 					page = 10;
 				} else if (response.accountType == 'Admin') {

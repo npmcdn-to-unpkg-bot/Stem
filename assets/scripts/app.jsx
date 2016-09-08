@@ -185,16 +185,9 @@ var App = React.createClass({
 
 				{ this.props.currentPage == 0 ?
 					<div className="wrapper">
-						{ this.props.isLoggedIn ? 
-							<span>
-								<LibraryMain />
-								<Footer />
-							</span>
-						:
-							<Login /> 
-						}
+						 <Login /> 
 					</div>
-				: null}
+				: null }
 				
 				{ this.props.currentPage == 1 ?
 					<div className="wrapper">
@@ -215,7 +208,7 @@ var App = React.createClass({
 						<ArtistProfile />
 						<Footer />
 					</div>
-				: null} 
+				: null } 
 
 				{ this.props.currentPage == 4 ?
 					<div className="wrapper">
@@ -223,14 +216,21 @@ var App = React.createClass({
 						<PlaylistMain />
 						<Footer />
 					</div>
-				: null} 
+				: null } 
 
 				{ this.props.currentPage == 5 ?
 					<div className="wrapper">
 						<ArtistSettings />
 						<Footer />
 					</div>
-				: null} 
+				: null }
+
+				{ this.props.currentPage === 6 ? 
+					<div className="wrapper">
+						<LibraryMain />
+						<Footer />
+					</div>
+				: null }
 
 				{ this.props.currentPage == 10 ?
 					<div className="wrapper">
