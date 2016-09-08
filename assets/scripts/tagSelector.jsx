@@ -1,6 +1,7 @@
 var TagSelector = React.createClass({
 	componentDidMount: function() {
 		$(this.refs.selectElement).selectize({
+			plugins: ['remove_button'],
 			create: false,
 			valueField: 'id',
         	labelField: 'name',
