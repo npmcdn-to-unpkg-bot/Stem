@@ -1,15 +1,12 @@
-var lastImgTagId = 0;
-
 var ImageUpload = React.createClass({
 	getInitialState: function() {
 		return {
-			imgTagId: 'imgTag-' + lastImgTagId++,
 			imageLoaded: false,
 			originalImage: null
 		};
 	}, 
 	componentDidMount: function() {
-		$('#' + this.state.imgTagId).cropper({
+		$(this.refs.imageElement).cropper({
 			viewMode: 3,
 			guides: false,
 			center: true,
@@ -27,7 +24,7 @@ var ImageUpload = React.createClass({
 		}.bind(this));
 	},
 	componentWillUnmount: function() {
-		$('#' + this.state.imgTagId).cropper('destroy');
+		$(this.refs.imageElement).cropper('destroy');
 	},
 	
 	handleChangeFile: function(ev) {
@@ -37,7 +34,7 @@ var ImageUpload = React.createClass({
 		if (file) {
 			fileReader.readAsDataURL(file);
 			fileReader.onloadend = function() {
-				var cropperEl = $('#' + this.state.imgTagId);
+				var cropperEl = $(this.refs.imageElement);
 				cropperEl.cropper('replace', fileReader.result);
 				this.setState({
 					imageLoaded: true,
@@ -58,9 +55,9 @@ var ImageUpload = React.createClass({
 
 		return (
 			<div>
-				<img id={this.state.imgTagId} style={imageStyles} />
+				<img ref="imageElement" style={ imageStyles } />
 				{ !this.state.imageLoaded ? this.props.children : null }
-				<input onChange={this.handleChangeFile} type="file" accept="image/*" />
+				<input onChange={ this.handleChangeFile } type="file" accept="image/*" />
 			</div>
 		);
 	}
