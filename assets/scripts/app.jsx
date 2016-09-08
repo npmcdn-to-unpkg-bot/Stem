@@ -1,20 +1,10 @@
 var createStore = Redux.createStore,
+	combineReducers = Redux.combineReducers,
 	applyMiddleware = Redux.applyMiddleware,
 	Provider = ReactRedux.Provider,
 	connect = ReactRedux.connect,
 	stemApi = new StemApi("http://52.32.255.104/api/"),
 	thunk = ReduxThunk.default;
-
-const initialState = {
-	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: false,
-	userInfo: {},
-	currentPage: 0,
-	pageParams: {},
-	searchTerms: '',
-	searchResults: [],
-	tagList: []
-};
 
 // This should be moved to it's own file at some point
 var Tag = {
@@ -40,8 +30,14 @@ var Utilities = {
 			return error;
 		}
 
+		// These are jQuery AJAX errors
 		if (typeof error === 'object' && error.hasOwnProperty('responseJSON')) {
 			return error.responseJSON.message;
+		}
+
+		// These are Blue Bird errors
+		if (typeof error === 'object' && error.hasOwnProperty('message')) {
+			return error.message;
 		}
 	}
 };
@@ -55,82 +51,112 @@ function beginSearch(searchTerms) {
             }
         })
 		.then(function(response) {
-			dispatch({
-            	type: 'UpdateSearch',
-            	data: {
-            		results: response.songs,
-            		terms: response.terms.join(' '),
-            		// We automatically navigate to the artist search page when a search is initiated
-            		currentPage: 6
-            	}
-	        });
+			store.dispatch((dispatch) => {
+				dispatch({
+		        	type: 'UpdateSearch',
+        	    	data: {
+            			results: response.songs,
+            			terms: response.terms.join(' ')
+            		}
+            	})
+				dispatch({
+	            	type: 'GoToPage',
+	            	data: {
+	            		// We automatically navigate to the artist search page when a search is initiated
+	            		currentPage: 106
+	            	}
+		    	})
+			})
 		}, function(error) {
 			console.error(JSON.stringify(response, null, 2));
 		});
 	};
 }
 
-var reducer = function(state, action) {
-	if (state === undefined) {
-		return initialState;
-	}
-	var newState = state;
+// This should be moved to it's own file at some point
+const initialAuthState = {
+	isLoggedIn: false
+};
+var authReducer = function(state = initialAuthState, action) {
 	switch (action.type) {
 		case 'UpdateLoginStatus':
-			console.log('UpdateLoginStatus Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
-			newState = Object.assign({}, state, {
-				isLoggedIn: action.data.isLoggedIn,
-				userInfo: action.data.userInfo || {},
-				currentPage: action.data.currentPage
-			});
-			console.log('newState = ' + JSON.stringify(newState));
-			return newState;
+			console.log('UpdateLoginStatus Equality Check (isLoggedIn): ' + (action.data.isLoggedIn === state.isLoggedIn));
+			return Object.assign({}, state, {
+				isLoggedIn: action.data.isLoggedIn
+			})
 
-		case 'UpdateUserRecord':
-			console.log('UpdateUserRecord Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
-			// TODO:  Object.assign is not supported in IE, we may want to use lodash _.assign for compatibility
-			newState = Object.assign({}, state, {
-				userInfo: action.data.userInfo,
-				currentPage: action.data.currentPage
-			});
-			console.log('newState = ' + JSON.stringify(newState));
-			return newState;
+		default: 
+			return state;
+	}
+	return state;
+}
 
+// This should be moved to it's own file at some point
+const initialAppState = {
+	baseAPI: 'http://52.32.255.104/api',
+	currentPage: 0,
+	pageParams: {},
+	searchTerms: '',
+	searchResults: [],
+	tagList: []
+};
+var appReducer = function(state = initialAppState, action) {
+	switch (action.type) {
 		case 'GoToPage':
 			console.log('GoToPage action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, {
-				currentPage: action.data.currentPage,
-				pageParams: action.data.pageParams || {}
-			});
-			console.log('newState = ' + JSON.stringify(newState));
-			return newState;
+			return Object.assign({}, state, {
+				pageParams: action.data.pageParams || {},
+				currentPage: action.data.currentPage
+			})
 
 		case 'UpdateSearch':
 			console.log('Equality Check (searchResults): ' + (action.data.results === state.searchResults));
-			newState = Object.assign({}, state, { 
+			return Object.assign({}, state, {
 				searchResults: action.data.results,
-				searchTerms: action.data.terms,
-				currentPage: action.data.currentPage
-			});
-			return newState;
+				searchTerms: action.data.terms
+			})
 
 		default: 
-			console.log('state = ' + JSON.stringify(state));
 			return state;
 	}
 	return newState;
 }
 
-var store = createStore(reducer,
-	initialState,
+// This should be moved to it's own file at some point
+const initialUserState = {
+	userInfo: {}
+};
+var userReducer = function(state = initialUserState, action) {
+	switch (action.type) {
+		case 'UpdateUserRecord':
+			console.log('UpdateUserRecord Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
+			// TODO:  Object.assign is not supported in IE, we may want to use lodash _.assign for compatibility
+			return Object.assign({}, state, {
+				userInfo: action.data.userInfo
+			});
+
+		default: 
+			return state;
+	}
+	return newState;
+}
+
+const reducers = combineReducers({
+	authState: authReducer,
+	appState: appReducer,
+	userState: userReducer
+});
+
+const store = createStore(reducers,
 	applyMiddleware(thunk));
 
-var AppState = function(state) {
+var AppState = function(store) {
+	console.log('state = ' + JSON.stringify(store, null, 2));
 	return {
-		baseAPI: state.baseAPI,
-		isLoggedIn: state.isLoggedIn,
-		userInfo: state.userInfo,
-		currentPage: state.currentPage,
+		baseAPI: store.appState.baseAPI,
+		isLoggedIn: store.authState.isLoggedIn,
+		userInfo: store.userState.userInfo,
+		currentPage: store.appState.currentPage,
 	}
 }
 
@@ -152,12 +178,19 @@ var App = React.createClass({
 	},
 
 	render: function() {
-		var currentPage = this.props.currentPage;
+		var currentPage = this.props.currentPage,
+			menu = this.props.artistMenu,
+			accountType = this.props.userInfo.accountType;
+
+		if(accountType == 'Creator') {
+			menu = this.props.creatorMenu;
+		} else if(accountType == 'Admin') {
+			menu = this.props.adminMenu;
+		}
 
 		return (  
 			<div>  
-
-				<Header artistMenu={this.props.artistMenu} currentPage={this.props.currentPage} />
+				<Header menu={menu} currentPage={this.props.currentPage} />
 
 				{ this.props.currentPage == 0 ?
 					<div className="wrapper">
@@ -208,22 +241,7 @@ var App = React.createClass({
 					</div>
 				: null} 
 
-				{ this.props.currentPage == 6 ?
-					<div className="wrapper">
-						<FilterNav />
-						<ArtistSearch />
-						<Footer />
-					</div>
-				: null}
-
-				{ this.props.currentPage == 7 ?
-					<div className="wrapper">
-						<AdminMain />
-						<Footer />
-					</div>
-				: null} 
-
-				{ this.props.currentPage == 8 ?
+				{ this.props.currentPage == 10 ?
 					<div className="wrapper">
 						<FilterNav />
 						<CreatorMain />
@@ -231,9 +249,24 @@ var App = React.createClass({
 					</div>
 				: null} 
 
-				{ this.props.currentPage === 9 ?
+				{ this.props.currentPage == 11 ?
 					<div className="wrapper">
 						<CreatorProfileMain creatorId={this.props.pageParams} />
+						<Footer />
+					</div>
+				: null} 
+
+				{ this.props.currentPage == 14 ?
+					<div className="wrapper">
+						<FilterNav />
+						<CreatorSpinHistoryMain />
+						<Footer />
+					</div>
+				: null}
+
+				{ this.props.currentPage == 20 ?
+					<div className="wrapper">
+						<AdminMain />
 						<Footer />
 					</div>
 				: null} 
@@ -281,18 +314,19 @@ var App = React.createClass({
 				{ this.props.currentPage == 106 ?
 					<div className="wrapper">
 						<FilterNav />
+						<ArtistSearch />
+						<Footer />
+					</div>
+				: null}
+
+
+				{ this.props.currentPage == 108 ?
+					<div className="wrapper">
 						<CreatorBookmarkMain />
 						<Footer />
 					</div>
 				: null}
 
-				{ this.props.currentPage == 107 ?
-					<div className="wrapper">
-						<FilterNav />
-						<CreatorSpinHistoryMain />
-						<Footer />
-					</div>
-				: null}
 
 				{ this.props.currentPage === 110 ? 
 					<div className="wrapper">
@@ -300,6 +334,7 @@ var App = React.createClass({
 						<Footer />
 					</div>
 				: null}
+
 			</div>
 		);
 	}
@@ -335,28 +370,99 @@ var artistMenu = [
 		pageID: 5,
 		text: "Account Settings",
 		icon: "icon-cog-2"
-	},
+	}
+]; 
+
+var creatorMenu = [
 	{
-		pageID: 6,
-		text: "Artist Search",
-		icon: "icon-search"
-	},
-	{
-		pageID: 7,
-		text: "Admin Dashboard",
-		icon: "icon-star"
-	},
-	{
-		pageID: 8,
+		pageID: 10,
 		text: "Creator Home",
 		icon: "icon-home"
 	},
 	{
-		pageID: 107,
-		text: "Creator History",
-		icon: "icon-bookmark-2"
+		pageID: 11,
+		text: "Creator Profile",
+		icon: "icon-user"
+	},
+	{
+		pageID: 12,
+		text: "Loved",
+		icon: "icon-heart"
+	},
+	{
+		pageID: 13,
+		text: "Downloads",
+		icon: "icon-down-circle"
+	},
+	{
+		pageID: 14,
+		text: "Spin History",
+		icon: "icon-down-circle"
+	},
+	{
+		pageID: 15,
+		text: "Creator Account Settings",
+		icon: "icon-cog-2"
 	}
 ]; 
+
+var adminMenu = [
+	{
+		pageID: 20,
+		text: "Admin Dashboard",
+	},
+	{
+		pageID: 21,
+		text: "Creators",
+	},
+	{
+		pageID: 22,
+		text: "Artists",
+	},
+	{
+		pageID: 23,
+		text: "Music Admin",
+	},
+	{
+		pageID: 23.1,
+		text: "Approved Music",
+		level: 2
+	},
+	{
+		pageID: 23.2,
+		text: "Live Music",
+		level: 2
+	},
+	{
+		pageID: 23.3,
+		text: "Pending Music",
+		level: 2
+	},
+	{
+		pageID: 24,
+		text: "Top Of...",
+	},
+	{
+		pageID: 24.1,
+		text: "Top Downloads",
+		level: 2
+	},
+	{
+		pageID: 24.2,
+		text: "Top Artists",
+		level: 2
+	},
+	{
+		pageID: 24.3,
+		text: "Top Creators",
+		level: 2
+	},
+	{
+		pageID: 25,
+		text: "Settings",
+	},
+]; 
+
 
 App.childContextTypes = {
 	baseAPI: React.PropTypes.string,
@@ -372,7 +478,7 @@ App = connect(
 ReactDOM.render(
 	<div>
 		<ReactRedux.Provider store={store}>
-			<App artistMenu={artistMenu} />
+			<App artistMenu={artistMenu} creatorMenu={creatorMenu} adminMenu={adminMenu} />
 		</ReactRedux.Provider>
 	</div>,
 	document.getElementById('app')

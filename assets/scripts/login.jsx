@@ -229,7 +229,15 @@ var Login = React.createClass({
             success: function (response) {
                 console.log('success!');
 				console.log(JSON.stringify(response, null, 2));
-				self.updateLoginStatus(true, response, 0);
+				var page = 100;
+				if (response.accountType == 'Artist') {
+					page = 0;
+				} else if (response.accountType == 'Creator') {
+					page = 10;
+				} else if (response.accountType == 'Admin') {
+					page = 20;
+				}
+				self.updateLoginStatus(true, response, page);	
             },
             error: function (response) { 
             	console.log(JSON.stringify(response, null, 2));
@@ -240,10 +248,21 @@ var Login = React.createClass({
 
     updateLoginStatus: function(isLoggedIn, userInfo, currentPage) {
 		//FB.logout();
-        store.dispatch({
-          type: 'UpdateLoginStatus',
-          data: {isLoggedIn: isLoggedIn, userInfo: userInfo, currentPage: currentPage}
-        });
+
+		store.dispatch((dispatch) => {
+			dispatch({
+				type: 'UpdateLoginStatus',
+				data: {isLoggedIn: isLoggedIn}
+			})	
+			dispatch({
+	        	type: 'UpdateUserRecord',
+	        	data: {userInfo: userInfo}
+	    	})
+	    	dispatch({
+	        	type: 'GoToPage',
+	        	data: {currentPage: currentPage}
+	    	})
+		})
     },
 
 //					<a onClick={self.updateLoginStatus(false)}>Logout</a>

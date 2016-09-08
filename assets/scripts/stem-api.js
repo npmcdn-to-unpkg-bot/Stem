@@ -117,7 +117,8 @@ var StemApi = (function () {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({ fileName: req.file.name }),
             dataType: 'json'
-        }).then(function(res) {
+        })
+        .then(function(res) {
         	uploadResponse = res;
 
             return $.ajax({
@@ -130,7 +131,8 @@ var StemApi = (function () {
                 // the actual file is sent raw
                 data: req.file
             });
-        }.bind(this)).then(function(res) {
+        }.bind(this))
+        .then(function(res) {
         	return $.ajax({
 	            type: 'PUT',
 	            url: this.baseUrl + 'files/upload/' + uploadResponse.id,
@@ -199,21 +201,14 @@ var StemApi = (function () {
         });
     };
 
-    StemApi.prototype.getSongsByArtist = function (rse) {
-        var _this = this;
-        $.ajax({
+    StemApi.prototype.getSongsByArtist = Promise.method(function (req) {
+        return $.ajax({
             type: 'GET',
-            url: _this.baseUrl + 'artist/' + rse.request.artistId + '/songs',
-            headers: { 'Authorization': _this.authorization },
-            contentType: 'application/json; charset=utf-8',
-            error: function (response) {
-                rse.error(response);
-            },
-            success: function (response) {
-                rse.success(response);
-            }
+            url: this.baseUrl + 'artists/' + req.artistId + '/songs',
+            headers: { 'Authorization': this.authorization },
+            contentType: 'application/json; charset=utf-8'
         });
-    };
+    });
 
     StemApi.prototype.getAlbumsByArtist = function (rse) {
         var _this = this;
@@ -247,6 +242,7 @@ var StemApi = (function () {
     	return $.ajax({
     		type: 'GET',
     		url: this.baseUrl + 'tagtypes',
+    		data: req,
     		headers: { 'Authorization': this.authorization },
             contentType: 'application/json; charset=utf-8'
     	});
@@ -285,5 +281,13 @@ var StemApi = (function () {
             contentType: 'application/json; charset=utf-8'
         });
     }); 
+    StemApi.prototype.getArtistDashboard = function (rse) {
+        return $.ajax({
+            type: 'GET',
+            url: this.baseUrl + 'artists/' + rse.artistId + '/dashboard',
+            headers: { 'Authorization': this.authorization },
+            contentType: 'application/json; charset=utf-8',
+        });
+    }
     return StemApi;
 }());
