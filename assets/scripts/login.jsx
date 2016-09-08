@@ -254,10 +254,12 @@ var Login = React.createClass({
 				type: 'UpdateLoginStatus',
 				data: {isLoggedIn: isLoggedIn}
 			})	
-			dispatch({
-	        	type: 'UpdateUserRecord',
-	        	data: {userInfo: userInfo}
-	    	})
+			if(userInfo != null) {
+				dispatch({
+		        	type: 'UpdateUserRecord',
+		        	data: {userInfo: userInfo}
+		    	})
+			}
 	    	dispatch({
 	        	type: 'GoToPage',
 	        	data: {currentPage: currentPage}
