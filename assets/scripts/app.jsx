@@ -51,15 +51,22 @@ function beginSearch(searchTerms) {
             }
         })
 		.then(function(response) {
-			dispatch({
-            	type: 'UpdateSearch',
-            	data: {
-            		results: response.songs,
-            		terms: response.terms.join(' '),
-            		// We automatically navigate to the artist search page when a search is initiated
-            		currentPage: 106
-            	}
-	        });
+			store.dispatch((dispatch) => {
+				dispatch({
+		        	type: 'UpdateSearch',
+        	    	data: {
+            			results: response.songs,
+            			terms: response.terms.join(' ')
+            		}
+            	})
+				dispatch({
+	            	type: 'GoToPage',
+	            	data: {
+	            		// We automatically navigate to the artist search page when a search is initiated
+	            		currentPage: 106
+	            	}
+		    	})
+			})
 		}, function(error) {
 			console.error(JSON.stringify(response, null, 2));
 		});
@@ -67,48 +74,49 @@ function beginSearch(searchTerms) {
 }
 
 // This should be moved to it's own file at some point
-const initialState = {
+const initialAuthState = {
+	isLoggedIn: false
+};
+var authReducer = function(state = initialAuthState, action) {
+	switch (action.type) {
+		case 'UpdateLoginStatus':
+			console.log('UpdateLoginStatus Equality Check (isLoggedIn): ' + (action.data.isLoggedIn === state.isLoggedIn));
+			return Object.assign({}, state, {
+				isLoggedIn: action.data.isLoggedIn
+			})
+
+		default: 
+			return state;
+	}
+	return state;
+}
+
+// This should be moved to it's own file at some point
+const initialAppState = {
 	baseAPI: 'http://52.32.255.104/api',
-	isLoggedIn: false,
 	currentPage: 0,
 	pageParams: {},
 	searchTerms: '',
 	searchResults: [],
 	tagList: []
 };
-var appReducer = function(state = initialState, action) {
-	var newState = state;
+var appReducer = function(state = initialAppState, action) {
 	switch (action.type) {
-		case 'UpdateLoginStatus':
-			console.log('UpdateLoginStatus Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
-			newState = Object.assign({}, state, {
-				isLoggedIn: action.data.isLoggedIn,
-				userInfo: action.data.userInfo || {},
-				currentPage: action.data.currentPage
-			});
-			console.log('newState = ' + JSON.stringify(newState));
-			return newState;
-
 		case 'GoToPage':
 			console.log('GoToPage action.data = ' + JSON.stringify(action.data));
-			newState = Object.assign({}, state, {
-				currentPage: action.data.currentPage,
-				pageParams: action.data.pageParams || {}
-			});
-			console.log('newState = ' + JSON.stringify(newState));
-			return newState;
+			return Object.assign({}, state, {
+				pageParams: action.data.pageParams || {},
+				currentPage: action.data.currentPage
+			})
 
 		case 'UpdateSearch':
 			console.log('Equality Check (searchResults): ' + (action.data.results === state.searchResults));
-			newState = Object.assign({}, state, { 
+			return Object.assign({}, state, {
 				searchResults: action.data.results,
-				searchTerms: action.data.terms,
-				currentPage: action.data.currentPage
-			});
-			return newState;
+				searchTerms: action.data.terms
+			})
 
 		default: 
-			console.log('state = ' + JSON.stringify(state));
 			return state;
 	}
 	return newState;
@@ -119,26 +127,22 @@ const initialUserState = {
 	userInfo: {}
 };
 var userReducer = function(state = initialUserState, action) {
-	var newState = state;
 	switch (action.type) {
 		case 'UpdateUserRecord':
 			console.log('UpdateUserRecord Equality Check (userInfo): ' + (action.data.userInfo === state.userInfo));
 			// TODO:  Object.assign is not supported in IE, we may want to use lodash _.assign for compatibility
-			newState = Object.assign({}, state, {
-				userInfo: action.data.userInfo,
-				currentPage: action.data.currentPage
+			return Object.assign({}, state, {
+				userInfo: action.data.userInfo
 			});
-			console.log('newState = ' + JSON.stringify(newState));
-			return newState;
 
 		default: 
-			console.log('state = ' + JSON.stringify(state));
 			return state;
 	}
 	return newState;
 }
 
 const reducers = combineReducers({
+	authState: authReducer,
 	appState: appReducer,
 	userState: userReducer
 });
@@ -147,9 +151,10 @@ const store = createStore(reducers,
 	applyMiddleware(thunk));
 
 var AppState = function(store) {
+	console.log('state = ' + JSON.stringify(store, null, 2));
 	return {
 		baseAPI: store.appState.baseAPI,
-		isLoggedIn: store.appState.isLoggedIn,
+		isLoggedIn: store.authState.isLoggedIn,
 		userInfo: store.userState.userInfo,
 		currentPage: store.appState.currentPage,
 	}

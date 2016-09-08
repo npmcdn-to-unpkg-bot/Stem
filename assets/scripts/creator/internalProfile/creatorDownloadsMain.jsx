@@ -1,6 +1,6 @@
 var CreatorDownloadsMain = ReactRedux.connect(function(state) {
 	return {
-		creatorId: state.userInfo.id
+		creatorId: state.userState.userInfo.id
 	};
 })(React.createClass({
 	getInitialState: function () {
