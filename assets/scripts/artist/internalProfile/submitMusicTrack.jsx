@@ -69,7 +69,7 @@ var SubmitMusicTrack = React.createClass({
 		newState[ev.target.name] = ev.target.value;
 		this.setState(newState);
 	},
-	genreTagsUpdated: function(selections) {
+	onGenresChanged: function(selections) {
 		this.setState({
 			selectedGenres: selections
 		});
@@ -191,10 +191,11 @@ var SubmitMusicTrack = React.createClass({
 				</div>
 				<div className="genre-tag-selector-wrapper mar-b-md col-lg-12">
 					<div className="col-lg-6 pad-l-sm">	
-						<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } value={ this.state.selectedGenres } onSelectionsChange={ this.genreTagsUpdated } />
-					</div>
-					<div className="col-lg-6">	
-						<TagSelector tag={ this.state.genreTag } tagList={ this.state.genreTagValues } value={ this.state.selectedGenres } onSelectionsChange={ this.genreTagsUpdated } />
+						<TagSelector 
+							tag={ this.state.genreTag } 
+							tagList={ this.state.genreTagValues } 
+							onSelectionsChange={ this.onGenresChanged }
+							values={ this.state.selectedGenres } />
 					</div>	
 				</div>
 				<div className="pad-b-sm col-xs-12">
